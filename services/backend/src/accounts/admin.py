@@ -1,12 +1,8 @@
-from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-
-from api.models import Product, Category, CustomUser
+from django.contrib import admin
 from django.contrib.auth.models import Group
 
-admin.site.unregister(Group)
-admin.site.register(Product)
-admin.site.register(Category)
+from accounts.models import CustomUser
 
 
 class CustomUserAdmin(UserAdmin):
@@ -20,3 +16,4 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.unregister(Group)
