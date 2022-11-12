@@ -1,7 +1,7 @@
 from rest_framework import generics
-from sections.models import Product, Category
+from sections.models import Product, Category, RealtyApartmentsSaleSecondary
 from sections.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
-from sections.serializer import ProductSerializer, CategorySerializer
+from sections.serializer import ProductSerializer, CategorySerializer, RealtyApartmentsSaleSecondarySerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
@@ -27,3 +27,9 @@ class CategoryAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = (IsAdminOrReadOnly, IsOwnerOrReadOnly,)
+
+
+class Realty(generics.ListCreateAPIView):
+    queryset = RealtyApartmentsSaleSecondary.objects.all()
+    serializer_class = RealtyApartmentsSaleSecondarySerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
