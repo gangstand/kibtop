@@ -29,7 +29,13 @@ class CategoryAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAdminOrReadOnly, IsOwnerOrReadOnly,)
 
 
-class Realty(generics.ListCreateAPIView):
+class RealtyAPIList(generics.ListCreateAPIView):
+    queryset = RealtyApartmentsSaleSecondary.objects.all()
+    serializer_class = RealtyApartmentsSaleSecondarySerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class RealtyAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = RealtyApartmentsSaleSecondary.objects.all()
     serializer_class = RealtyApartmentsSaleSecondarySerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

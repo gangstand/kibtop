@@ -7,5 +7,6 @@ urlpatterns = [
     # path('products/<int:pk>/', ProductAPIUpdateDestroy.as_view()),
     # path('products/category', CategoryAPIList.as_view()),
     # path('products/category/<int:pk>/', CategoryAPIUpdateDestroy.as_view()),
-    path('realty/', Realty.as_view()),
+    path('realty/', RealtyAPIList.as_view()),
+    path('realty/<int:pk>/', RealtyAPIUpdateDestroy.as_view()),
 ]
