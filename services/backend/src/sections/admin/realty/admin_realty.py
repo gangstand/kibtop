@@ -1,12 +1,5 @@
+from sections.models import *
 from django.contrib import admin
-
-from sections.models import RASSUpload, RealtyApartmentsSaleSecondary, RASRUpload, RealtyApartmentsSaleRent, RHSSUpload, \
-    RealtyHomeSaleSecondary, RealtyHomeSaleRent, RHSRUpload, RealtyLandPlotSaleSecondary, RLPSSUpload, \
-    RealtyLandPlotSaleRent, RLPSRUpload
-
-admin.site.site_header = 'KIBTOP Administration'
-admin.site.index_title = 'Panel'
-admin.site.site_title = 'KIBTOP'
 
 
 class RASSImageAdmin(admin.StackedInline):
@@ -50,7 +43,7 @@ class RHSRImageAdmin(admin.StackedInline):
 
 
 @admin.register(RealtyHomeSaleRent)
-class RHSSAdmin(admin.ModelAdmin):
+class RHSRAdmin(admin.ModelAdmin):
     inlines = [RHSRImageAdmin]
 
     class Meta:
