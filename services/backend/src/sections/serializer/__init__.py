@@ -1,5 +1,5 @@
 from .realry.serializer import *
-
+from .realry.serializer_img import *
 
 __all__ = [
     'RealtyApartmentsSaleSecondarySerializer',
@@ -8,4 +8,10 @@ __all__ = [
     'RealtyHomeSaleRentSerializer',
     'RealtyLandPlotSaleSecondarySerializer',
     'RealtyLandPlotSaleRentSerializer',
+    'RASSUploadSerializer',
+    'RASRUploadSerializer',
+    'RHSSUploadSerializer',
+    'RHSRUploadSerializer',
+    'RLPSSUploadSerializer',
+    'RLPSRUploadSerializer'
 ]

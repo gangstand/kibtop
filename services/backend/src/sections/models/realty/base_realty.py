@@ -4,6 +4,10 @@ from accounts.models import CustomUser
 from .for_realty import *
 
 
+def upload_to(instance, filename):
+    return instance, filename
+
+
 class RealtyBase(models.Model):
     user_realty = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.CASCADE)
     address = models.CharField(max_length=1024, verbose_name='The address is')
@@ -22,10 +26,6 @@ class RealtyBase(models.Model):
 
     class Meta:
         abstract = True
-
-
-def upload_to(instance, filename):
-    return instance, filename
 
 
 class AboutApartmentBase(models.Model):
