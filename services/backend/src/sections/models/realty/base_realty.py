@@ -1,28 +1,22 @@
 from django.db import models
 
-from accounts.models import CustomUser
 from .for_realty import *
+from sections.models import *
+from sections.models.base_models_full import BaseModelFull
 
 
-def upload_to(instance, filename):
-    return instance, filename
-
-
-class RealtyBase(models.Model):
-    user_realty = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.CASCADE)
-    address = models.CharField(max_length=1024, verbose_name='The address is')
+class RealtyBase(BaseModelFull):
     apartment_number = models.CharField(max_length=255, verbose_name='Apartment number')
     place_ad = models.CharField(choices=PLACES_AD, max_length=255, verbose_name='Places an ad')
     phone = models.CharField(max_length=255, verbose_name='Phone')
     com_method = models.CharField(choices=COM_METHOD, max_length=255, verbose_name='Communication method')
     onl_screening = models.CharField(choices=ONLINE_SCREENING, max_length=255, verbose_name='Online-Screening')
-    upload = models.FileField(blank=False)
+    upload = models.FileField(upload_to='', blank=False)
     url_video = models.URLField()
     description = models.TextField()
-    price = models.IntegerField(verbose_name='Starting price')
 
     def __str__(self):
-        return f'{self.user_realty} {self.address}'
+        return f'{self.user} {self.address}'
 
     class Meta:
         abstract = True

@@ -1,34 +1,11 @@
 from .realty.views_realty import *
-from .realty.views_realty_upload import *
+from .stock.views_stock import *
 
 __all__ = [
-    'RealtyApartmentsSaleSecondaryAPIList',
-    'RealtyApartmentsSaleSecondaryAPIUpdateDestroy',
-    'RASSUploadAPIList',
-    'RASSUploadAPIUpdateDestroy',
+    'RealtyFullAPIList',
+    'RealtyFullAPIListCreate',
+    'RealtyFullAPIUpdateDestroy',
 
-    'RealtyApartmentsSaleRentAPIList',
-    'RealtyApartmentsSaleRentAPIUpdateDestroy',
-    'RASRUploadAPIList',
-    'RASRUploadAPIUpdateDestroy',
-
-    'RealtyHomeSaleSecondaryAPIList',
-    'RealtyHomeSaleSecondaryAPIUpdateDestroy',
-    'RHSSUploadAPIList',
-    'RHSSUploadAPIUpdateDestroy',
-
-    'RealtyHomeSaleRentAPIList',
-    'RealtyHomeSaleRentAPIUpdateDestroy',
-    'RHSRUploadAPIList',
-    'RHSRUploadAPIUpdateDestroy',
-
-    'RealtyLandPlotSaleSecondaryAPIList',
-    'RealtyLandPlotSaleSecondaryAPIUpdateDestroy',
-    'RLPSSUploadAPIList',
-    'RLPSSUploadAPIUpdateDestroy',
-
-    'RealtyLandPlotSaleRentAPIList',
-    'RealtyLandPlotSaleRentAPIUpdateDestroy',
-    'RLPSRUploadAPIList',
-    'RLPSRUploadAPIUpdateDestroy',
+    'StockAPIList',
+    'StockAPIUpdateDestroy',
 ]

@@ -1,39 +1,18 @@
 from rest_framework import serializers
 
 from sections.models import *
+from .serializer_img import *
 
 
-class RealtyApartmentsSaleSecondarySerializer(serializers.ModelSerializer):
+class RealtyFullSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RealtyApartmentsSaleSecondary
-        fields = '__all__'
+        model = RealtyFull
+        fields = ('title', 'created_at', 'updated_at', 'address', 'price', 'upload',)
 
 
-class RealtyApartmentsSaleRentSerializer(serializers.ModelSerializer):
+class RealtyFullSerializerDetail(serializers.ModelSerializer):
+    realty_full_upload = RealtyFullUploadSerializer(many=True)
+
     class Meta:
-        model = RealtyApartmentsSaleRent
-        fields = '__all__'
-
-
-class RealtyHomeSaleSecondarySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RealtyHomeSaleSecondary
-        fields = '__all__'
-
-
-class RealtyHomeSaleRentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RealtyHomeSaleRent
-        fields = '__all__'
-
-
-class RealtyLandPlotSaleSecondarySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RealtyLandPlotSaleSecondary
-        fields = '__all__'
-
-
-class RealtyLandPlotSaleRentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RealtyLandPlotSaleRent
+        model = RealtyFull
         fields = '__all__'

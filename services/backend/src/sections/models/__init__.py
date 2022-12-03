@@ -1,16 +1,11 @@
-from .realty.models_realty import *
+from .base_models_full import BaseModelFull
+from .realty.models_realty import RealtyFull, RealtyFullUpload
+from .stock.models_stock import Stock
 
 __all__ = [
-    'RealtyApartmentsSaleSecondary',
-    'RASSUpload',
-    'RealtyApartmentsSaleRent',
-    'RASRUpload',
-    'RealtyHomeSaleSecondary',
-    'RHSSUpload',
-    'RealtyHomeSaleRent',
-    'RHSRUpload',
-    'RealtyLandPlotSaleSecondary',
-    'RLPSSUpload',
-    'RealtyLandPlotSaleRent',
-    'RLPSRUpload'
+    'RealtyFull',
+    'BaseModelFull',
+    'RealtyFullUpload',
+
+    'Stock',
 ]
