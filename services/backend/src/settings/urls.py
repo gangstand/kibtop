@@ -21,7 +21,8 @@ urlpatterns = [
   path('api/v1/', include([
       path('auth/', include('accounts.urls')),
       path('', include('sections.urls.stock.urls_stock')),
-      path('realty/', include('sections.urls.realty.urls_realty')),
+      path('', include('sections.urls.realty.urls_realty')),
+      path('', include('sections.urls.base_urls')),
       path('docs/', include([
           path('', schema_view.with_ui('swagger', cache_timeout=0), name="swagger-schema"),
           path('api.json/', schema_view.without_ui(cache_timeout=0), name='schema-swagger-ui'),

@@ -6,6 +6,7 @@ from sections.models.base_models_full import BaseModelFull
 
 
 class RealtyBase(BaseModelFull):
+    sub_apartment = models.CharField(choices=REALTY_CATEGORY, max_length=255, verbose_name='Sub Apartment')
     apartment_number = models.CharField(max_length=255, verbose_name='Apartment number')
     place_ad = models.CharField(choices=PLACES_AD, max_length=255, verbose_name='Places an ad')
     phone = models.CharField(max_length=255, verbose_name='Phone')

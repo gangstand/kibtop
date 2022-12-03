@@ -1,18 +1,19 @@
 REALTY_CATEGORY = [
     ('Apartments', 'Apartments'),
-    ('Rooms', 'Rooms'),
-    ('Houses, Dachas, Cottages', 'Houses, Dachas, Cottages'),
+    ('House', 'House'),
     ('Land', 'Land'),
-    ('Garages and Parking spaces', 'Garages and Parking spaces'),
-    ('Commercial Real Estate', 'Commercial Real Estate'),
-    ('Real Estate Abroad', 'Real Estate Abroad'),
+    ('Other', 'Other'),
 ]
 
 REALTY_CATEGORY_TYPE = [
-    ('Sale', 'Sale'),
     ('Rent', 'Rent'),
-    ('Buying', 'Buying'),
-    ('Retrieved', 'Retrieved'),
+    ('Buy', 'Buy'),
+]
+
+ALL_OLD_NEW = [
+    ('All', 'All'),
+    ('Old', 'Old'),
+    ('New', 'New'),
 ]
 
 PLACES_AD = [
@@ -32,13 +33,12 @@ ONLINE_SCREENING = [
     ('I dont want to.', 'I dont want to.')
 ]
 
-NUMBER_ROOMS_FOR = ((i, i) for i in range(1, 10))
+NUMBER_ROOMS_FOR = ((str(i) + '+1', str(i) + '+1') for i in range(1, 4))
 
 NUMBER_ROOMS = [
     ('Studio', 'Studio'),
     *NUMBER_ROOMS_FOR,
-    ('10 rooms and more', '10 rooms and more'),
-    ('Free layout', 'Free layout'),
+    ('4+1 and more', '4+1 and more'),
 ]
 
 REPAIR = [

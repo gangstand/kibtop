@@ -5,10 +5,13 @@ from .for_realty import *
 
 
 class RealtyFull(RealtyBase, AboutApartmentBase):
-    sell_type = models.CharField(choices=REALTY_CATEGORY_TYPE_USE, max_length=255,
-                                 verbose_name='Realty category type use')
+    sell_type = models.CharField(choices=REALTY_CATEGORY_TYPE, max_length=255,
+                                 verbose_name='Category type use')
+    all_old_new = models.CharField(choices=ALL_OLD_NEW, max_length=255,
+                                   verbose_name='ALL OLD NEW')
     sell_type_rent = models.CharField(choices=REALTY_CATEGORY_RENT_TYPE_USE, max_length=255,
                                       verbose_name='Realty category type use')
+    number_rooms = models.CharField(choices=NUMBER_ROOMS, max_length=255, verbose_name="Number Rooms")
     location = models.CharField(choices=LOCATION, max_length=255, verbose_name='Location')
     type_obj = models.CharField(choices=TYPE_OBJECT, max_length=255, verbose_name='Type of object')
     location_rent = models.CharField(choices=LOCATION, max_length=255, verbose_name='Location')

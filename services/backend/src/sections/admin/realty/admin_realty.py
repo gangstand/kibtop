@@ -12,3 +12,6 @@ class RASSIAdmin(admin.ModelAdmin):
 
     class Meta:
         model = RealtyFull
+
+
+admin.site.register(BaseCategory)
