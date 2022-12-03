@@ -2,9 +2,12 @@ import django_filters
 
 from sections.models import *
 
+import django_filters
 
-# class CharFilterInFilter(filters.BaseInFilter, filters.CharFilter):
-#     pass
+
+def filter_by_ids(queryset, name, value):
+    values = value.split(',')
+    return queryset.filter(id__in=values)
 
 
 class FilterRealty(django_filters.FilterSet):
@@ -16,7 +19,8 @@ class FilterRealty(django_filters.FilterSet):
     all_old_new = django_filters.CharFilter()
     number_rooms = django_filters.CharFilter()
     id = django_filters.RangeFilter()
+    ids = django_filters.CharFilter(method=filter_by_ids)
 
     class Meta:
         model = RealtyFull
-        fields = ['price', 'sub_apartment', 'sell_type', 'all_old_new', 'number_rooms', 'id']
+        fields = ['price', 'sub_apartment', 'sell_type', 'all_old_new', 'number_rooms', 'id', 'ids']
