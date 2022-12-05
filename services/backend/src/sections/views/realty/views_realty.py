@@ -1,10 +1,9 @@
 from rest_framework import generics
-from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import *
-from sections.serializer import *
+from sections.models import RealtyFull
+from sections.serializer import RealtyFullSerializer, RealtyFullSerializerDetail
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import *
+from sections.service import FilterRealty
 
 
 class RealtyFullAPIList(generics.ListAPIView):

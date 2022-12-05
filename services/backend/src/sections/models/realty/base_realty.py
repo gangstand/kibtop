@@ -12,7 +12,6 @@ class RealtyBase(BaseModelFull):
     phone = models.CharField(max_length=255, verbose_name='Phone')
     com_method = models.CharField(choices=COM_METHOD, max_length=255, verbose_name='Communication method')
     onl_screening = models.CharField(choices=ONLINE_SCREENING, max_length=255, verbose_name='Online-Screening')
-    upload = models.FileField(upload_to='', blank=False)
     url_video = models.URLField()
     description = models.TextField()
 

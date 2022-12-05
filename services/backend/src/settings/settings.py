@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_multiple_model',
     'dj_rest_auth',
     'django.contrib.sites',
     'allauth',

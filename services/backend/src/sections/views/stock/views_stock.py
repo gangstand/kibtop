@@ -1,6 +1,6 @@
 from rest_framework import generics
-from sections.models import *
-from sections.serializer import *
+from sections.models import Stock
+from sections.serializer import StockSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 

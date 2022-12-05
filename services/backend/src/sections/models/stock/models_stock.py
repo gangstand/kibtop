@@ -2,5 +2,8 @@ from django.db import models
 
 
 class Stock(models.Model):
+    isDark = models.BooleanField()
+    img = models.FileField(upload_to='stock/')
     title = models.CharField(max_length=255)
-    upload_stock = models.FileField(upload_to='stock/')
+    desc = models.TextField()
+    background = models.FileField(upload_to='stock/')

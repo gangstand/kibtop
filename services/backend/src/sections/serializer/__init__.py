@@ -1,11 +1,8 @@
-from .realry.serializer import *
-from .realry.serializer_img import *
-from .stock.serializer import *
-from .base_serializer import *
+from .realry.serializer import RealtyFullSerializer, RealtyFullSerializerDetail
+from .stock.serializer import StockSerializer
 
 __all__ = [
     'RealtyFullSerializer',
     'RealtyFullSerializerDetail',
-    'CategoryFullSerializer',
     'StockSerializer',
 ]

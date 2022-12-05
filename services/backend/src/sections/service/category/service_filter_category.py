@@ -1,11 +1,11 @@
 import django_filters
 
-from sections.models import *
+from sections.models import BaseModelFull
 
 
 class FilterCategory(django_filters.FilterSet):
     category = django_filters.CharFilter()
 
     class Meta:
-        model = BaseCategory
+        model = BaseModelFull
         fields = ['category', ]

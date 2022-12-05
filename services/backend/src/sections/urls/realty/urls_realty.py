@@ -1,6 +1,6 @@
 from django.urls import path
 
-from sections.views import *
+from sections.views import RealtyFullAPIList, RealtyFullAPIListCreate, RealtyFullAPIUpdateDestroy
 
 urlpatterns = [
     path('realty/', RealtyFullAPIList.as_view()),

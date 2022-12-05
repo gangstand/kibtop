@@ -1,6 +1,4 @@
-import django_filters
-
-from sections.models import *
+from sections.models import RealtyFull
 
 import django_filters
 

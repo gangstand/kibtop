@@ -1,6 +1,6 @@
 from django.urls import path
 
-from sections.views import *
+from sections.views import StockAPIList, StockAPIUpdateDestroy
 
 urlpatterns = [
     path('stock/', StockAPIList.as_view()),

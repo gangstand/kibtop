@@ -1,4 +1,4 @@
-from sections.models import *
+from sections.models import RealtyFullUpload, RealtyFull
 from django.contrib import admin
 
 

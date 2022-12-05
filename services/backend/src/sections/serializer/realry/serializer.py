@@ -1,15 +1,12 @@
 from rest_framework import serializers
 
-from sections.models import *
-from .serializer_img import *
+from sections.models import RealtyFull, RealtyFullUpload
 
 
-class RealtyFullSerializer(serializers.ModelSerializer):
+class RealtyFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RealtyFull
-        fields = ('id', 'title', 'created_at', 'updated_at', 'address', 'price', 'upload', 'sub_apartment', 'sell_type',
-                  'all_old_new',
-                  'number_rooms')
+        model = RealtyFullUpload
+        fields = ('uploads',)
 
 
 class RealtyFullSerializerDetail(serializers.ModelSerializer):
@@ -18,3 +15,11 @@ class RealtyFullSerializerDetail(serializers.ModelSerializer):
     class Meta:
         model = RealtyFull
         fields = '__all__'
+
+
+class RealtyFullSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RealtyFull
+        fields = ('id', 'title', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'sub_apartment', 'sell_type',
+                  'all_old_new', 'number_rooms', 'category')
