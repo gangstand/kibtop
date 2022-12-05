@@ -1,12 +1,13 @@
 from django.db import models
 
 from .for_realty import *
-from sections.models import *
 from sections.models.base_models_full import BaseModelFull
 
 
 class RealtyBase(BaseModelFull):
-    sub_apartment = models.CharField(choices=REALTY_CATEGORY, max_length=255, verbose_name='Sub Apartment')
+    sub_apartment_en = models.CharField(choices=REALTY_CATEGORY_EN, max_length=255, verbose_name='Sub Apartment')
+    sub_apartment_ru = models.CharField(choices=REALTY_CATEGORY_RU, max_length=255, verbose_name='Sub Apartment')
+    sub_apartment_tr = models.CharField(choices=REALTY_CATEGORY_TR, max_length=255, verbose_name='Sub Apartment')
     apartment_number = models.CharField(max_length=255, verbose_name='Apartment number')
     place_ad = models.CharField(choices=PLACES_AD, max_length=255, verbose_name='Places an ad')
     phone = models.CharField(max_length=255, verbose_name='Phone')

@@ -1,8 +1,9 @@
 from django.db import models
 
 from accounts.models import CustomUser
+from sections.utils import transl_for
 
-CATEGORY = [
+CATEGORY_EN = [
     ('Real estate', 'Real estate'),
     ('Auto', 'Auto'),
     ('Job', 'Job'),
@@ -13,6 +14,9 @@ CATEGORY = [
     ('Fashion and style', 'Fashion and style')
 ]
 
+CATEGORY_RU = (transl_for(CATEGORY_EN, "Русский"))
+CATEGORY_TR = (transl_for(CATEGORY_EN, "Türk"))
+
 
 class BaseModelFull(models.Model):
     title = models.CharField(verbose_name='Product name', max_length=255)
@@ -22,7 +26,9 @@ class BaseModelFull(models.Model):
     address = models.CharField(max_length=1024, verbose_name='The address is')
     price = models.IntegerField(verbose_name='Starting price')
     upload = models.FileField(upload_to='', blank=False)
-    category = models.CharField(choices=CATEGORY, max_length=255, blank=True, null=True, default=None)
+    category_en = models.CharField(choices=CATEGORY_EN, max_length=255, blank=True, null=True, default=None)
+    category_ru = models.CharField(choices=CATEGORY_RU, max_length=255, blank=True, null=True, default=None)
+    category_tr = models.CharField(choices=CATEGORY_TR, max_length=255, blank=True, null=True, default=None)
 
     class Meta:
         abstract = True

@@ -20,6 +20,13 @@ class RealtyFullSerializerDetail(serializers.ModelSerializer):
 class RealtyFullSerializer(serializers.ModelSerializer):
     class Meta:
         model = RealtyFull
-        fields = ('id', 'title', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_apartment', 'sell_type',
-                  'all_old_new', 'number_rooms', 'category')
+        fields = ('id', 'title_en', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'sub_apartment_en', 'sell_type_en',
+                  'all_old_new_en', 'number_rooms_en', 'category_en')
+
+class RealtyFullSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RealtyFull
+        fields = ('id', 'title_en', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'sub_apartment_en', 'sell_type_en',
+                  'all_old_new_en', 'number_rooms_en', 'category_en')

@@ -5,13 +5,17 @@ from .for_realty import *
 
 
 class RealtyFull(RealtyBase, AboutApartmentBase):
-    sell_type = models.CharField(choices=REALTY_CATEGORY_TYPE, max_length=255,
-                                 verbose_name='Category type use')
-    all_old_new = models.CharField(choices=ALL_OLD_NEW, max_length=255,
-                                   verbose_name='ALL OLD NEW')
+    sell_type_en = models.CharField(choices=REALTY_CATEGORY_TYPE_EN, max_length=255)
+    sell_type_ru = models.CharField(choices=REALTY_CATEGORY_TYPE_RU, max_length=255)
+    sell_type_tr = models.CharField(choices=REALTY_CATEGORY_TYPE_TR, max_length=255)
+    all_old_new_en = models.CharField(choices=ALL_OLD_NEW_EN, max_length=255)
+    all_old_new_ru = models.CharField(choices=ALL_OLD_NEW_RU, max_length=255)
+    all_old_new_tr = models.CharField(choices=ALL_OLD_NEW_TR, max_length=255)
     sell_type_rent = models.CharField(choices=REALTY_CATEGORY_RENT_TYPE_USE, max_length=255,
                                       verbose_name='Realty category type use')
-    number_rooms = models.CharField(choices=NUMBER_ROOMS, max_length=255, verbose_name="Number Rooms")
+    number_rooms_en = models.CharField(choices=NUMBER_ROOMS_EN, max_length=255)
+    number_rooms_ru = models.CharField(choices=NUMBER_ROOMS_RU, max_length=255)
+    number_rooms_tr = models.CharField(choices=NUMBER_ROOMS_TR, max_length=255)
     location = models.CharField(choices=LOCATION, max_length=255, verbose_name='Location')
     type_obj = models.CharField(choices=TYPE_OBJECT, max_length=255, verbose_name='Type of object')
     location_rent = models.CharField(choices=LOCATION, max_length=255, verbose_name='Location')
