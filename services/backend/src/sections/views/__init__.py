@@ -1,6 +1,7 @@
 from .realty.views_realty import RealtyFullAPIList, RealtyFullAPIListCreate, RealtyFullAPIUpdateDestroy
 from .stock.views_stock import StockAPIList, StockAPIUpdateDestroy
 from .category.views_category import CategoryFullAPIList
+from .new.new_views import NewAPIList
 
 __all__ = [
     'RealtyFullAPIList',
@@ -9,4 +10,5 @@ __all__ = [
     'StockAPIList',
     'StockAPIUpdateDestroy',
     'CategoryFullAPIList',
+    'NewAPIList',
 ]
