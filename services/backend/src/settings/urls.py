@@ -20,6 +20,8 @@ urlpatterns = [
   path('admin/', admin.site.urls),
   path('api/v1/', include([
       path('auth/', include('accounts.urls')),
+      path('', include('sections.urls.recommend.urls_recommend')),
+      path('', include('sections.urls.base_urls')),
       path('', include('sections.urls.new.urls_new')),
       path('', include('sections.urls.category.urls_category')),
       path('', include('sections.urls.stock.urls_stock')),

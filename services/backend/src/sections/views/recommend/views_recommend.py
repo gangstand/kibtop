@@ -1,30 +1,27 @@
-from django.utils import timezone
-from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics
 from sections.models import RealtyFull
+from django_filters.rest_framework import DjangoFilterBackend
 from sections.serializer import RealtyFullSerializerEN, RealtyFullSerializerRU, RealtyFullSerializerTR
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from sections.utils import query_list_lang
 
-model_realty = RealtyFull.objects.filter(created_at__lte=timezone.now()).order_by('-created_at')
+model_realty = RealtyFull.objects.all()
 
 
-class NewLimitPagination(MultipleModelLimitOffsetPagination):
-    default_limit = 3
+class RecommendLimitPagination(MultipleModelLimitOffsetPagination):
+    default_limit = 10
 
 
-class NewAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
+class RecommendFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     filter_backends = (DjangoFilterBackend,)
-    pagination_class = NewLimitPagination
+    pagination_class = RecommendLimitPagination
 
     def get_querylist(self):
-
         query = self.request.query_params
-
         querylist_full = [
             {
                 'queryset': model_realty,

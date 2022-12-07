@@ -16,9 +16,7 @@ class FilterRealty(django_filters.FilterSet):
     sell_type_en = django_filters.CharFilter()
     all_old_new_en = django_filters.CharFilter()
     number_rooms_en = django_filters.CharFilter()
-    id = django_filters.RangeFilter()
-    ids = django_filters.CharFilter(method=filter_by_ids)
 
     class Meta:
         model = RealtyFull
-        fields = ['price', 'sub_apartment_en', 'sell_type_en', 'all_old_new_en', 'number_rooms_en', 'id', 'ids']
+        fields = ['price', 'sub_apartment_en', 'sell_type_en', 'all_old_new_en', 'number_rooms_en']

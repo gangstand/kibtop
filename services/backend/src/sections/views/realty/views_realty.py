@@ -1,66 +1,68 @@
+from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics, views, status
+from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
-from rest_framework.response import Response
-
 from sections.models import RealtyFull
 from sections.serializer import RealtyFullSerializerDetail, RealtyFullSerializerEN, RealtyFullSerializerRU, \
     RealtyFullSerializerTR
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from sections.service import FilterRealty
+from sections.utils import query_list_lang
+
+model_realty = RealtyFull.objects.all()
+
+
+class RealtyLimitPagination(MultipleModelLimitOffsetPagination):
+    default_limit = 10
 
 
 class RealtyFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
-    querylist = [
-        {
-            'queryset': RealtyFull.objects.all(),
-            'serializer_class': RealtyFullSerializerEN,
-            'label': 'en',
-        },
-        {
-            'queryset': RealtyFull.objects.all(),
-            'serializer_class': RealtyFullSerializerRU,
-            'label': 'ru',
-        },
-        {
-            'queryset': RealtyFull.objects.all(),
-            'serializer_class': RealtyFullSerializerTR,
-            'label': 'tr',
-        },
-    ]
     permission_classes = (IsAuthenticatedOrReadOnly,)
-    filter_backends = (DjangoFilterBackend, )
+    filter_backends = (DjangoFilterBackend,)
     filterset_class = FilterRealty
+    pagination_class = RealtyLimitPagination
 
-    # def get_queryset(self):
-    #     querysets = RealtyFull.objects.all()
-    #     serializer = RealtyFullSerializer(querysets)
-    #     return serializer.data
+    def get_querylist(self):
 
+        query = self.request.query_params
 
-# class RealtyFullAPIList(views.APIView):
-#     permission_classes = (IsAuthenticatedOrReadOnly,)
-# filter_backends = (DjangoFilterBackend,)
-# filterset_class = FilterRealty
+        querylist_full = [
+            {
+                'queryset': model_realty,
+                'serializer_class': RealtyFullSerializerEN,
+                'label': 'en',
+            },
+            {
+                'queryset': model_realty,
+                'serializer_class': RealtyFullSerializerRU,
+                'label': 'ru',
+            },
+            {
+                'queryset': model_realty,
+                'serializer_class': RealtyFullSerializerTR,
+                'label': 'tr',
+            },
+        ]
 
-# def get(self, request):
-#     language_type = self.kwargs.get('type', None)
-#     articles = RealtyFull.objects.filter(language=language_type)
-#     serializer = RealtyFullSerializer(articles, many=True)
-#     if serializer.is_valid():
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-#     else:
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            if query['lang'] == 'en':
+                return query_list_lang(model_realty, RealtyFullSerializerEN, 'en')
+            elif query['lang'] == 'ru':
+                return query_list_lang(model_realty, RealtyFullSerializerRU, 'ru')
+            elif query['lang'] == 'tr':
+                return query_list_lang(model_realty, RealtyFullSerializerTR, 'tr')
+            return querylist_full
+        except Exception:
+            return querylist_full
 
 
 class RealtyFullAPIListCreate(generics.CreateAPIView):
-    queryset = RealtyFull.objects.all()
+    queryset = model_realty
     serializer_class = RealtyFullSerializerDetail
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 class RealtyFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = RealtyFull.objects.all()
+    queryset = model_realty
     serializer_class = RealtyFullSerializerDetail
     permission_classes = (IsAuthenticatedOrReadOnly,)

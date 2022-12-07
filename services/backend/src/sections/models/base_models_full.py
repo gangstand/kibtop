@@ -19,6 +19,36 @@ CATEGORY_EN = [
 CATEGORY_RU = (transl_for(CATEGORY_EN, "Русский"))
 CATEGORY_TR = (transl_for(CATEGORY_EN, "Türk"))
 
+CITY_EN = [
+    ('Nicosia', 'Nicosia'),
+    ('Kyrenia', 'Kyrenia'),
+    ('Famagusta', 'Famagusta'),
+    ('Iskele', 'Iskele'),
+    ('Guzelyurt', 'Guzelyurt'),
+    ('Lefke', 'Lefke'),
+]
+
+CITY_RU = (transl_for(CITY_EN, "Русский"))
+CITY_TR = (transl_for(CITY_EN, "Türk"))
+
+
+class City(models.Model):
+    city_name_en = models.CharField(choices=CITY_EN, max_length=255)
+    city_name_ru = models.CharField(choices=CITY_RU, max_length=255)
+    city_name_tr = models.CharField(choices=CITY_TR, max_length=255)
+
+    def __str__(self):
+        return f"en - {self.city_name_en}, ru - {self.city_name_ru}, tr - {self.city_name_tr}"
+
+
+class Money(models.Model):
+    money_dollar = models.IntegerField()
+    monet_rub = models.IntegerField()
+    money_tr = models.IntegerField()
+
+    def __str__(self):
+        return f"en - {self.money_dollar}$, ru - {self.monet_rub}₽, tr - {self.money_tr}₤"
+
 
 class BaseModelFull(models.Model):
     title = models.CharField(verbose_name='Product name', max_length=255)
@@ -31,6 +61,7 @@ class BaseModelFull(models.Model):
     category_en = models.CharField(choices=CATEGORY_EN, max_length=255, blank=True, null=True, default=None)
     category_ru = models.CharField(choices=CATEGORY_RU, max_length=255, blank=True, null=True, default=None)
     category_tr = models.CharField(choices=CATEGORY_TR, max_length=255, blank=True, null=True, default=None)
+    recommend = models.BooleanField()
 
     def updated_at(self):
         self.published_date = timezone.now()

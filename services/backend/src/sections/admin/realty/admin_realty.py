@@ -1,15 +1,14 @@
-from modeltranslation.admin import TabbedTranslationAdmin
 from modeltranslation.translator import TranslationOptions, translator
 
 from sections.models import RealtyFullUpload, RealtyFull
 from django.contrib import admin
 
 
-class PageTranslationOptions(TranslationOptions):
+class RealtyTranslationOptions(TranslationOptions):
     fields = ('title',)
 
 
-translator.register(RealtyFull, PageTranslationOptions)
+translator.register(RealtyFull, RealtyTranslationOptions)
 
 
 class RealtyFullImageAdmin(admin.StackedInline):
@@ -22,3 +21,4 @@ class RASSIAdmin(admin.ModelAdmin):
 
     class Meta:
         model = RealtyFull
+

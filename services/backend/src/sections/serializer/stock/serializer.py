@@ -3,7 +3,19 @@ from rest_framework import serializers
 from sections.models import Stock
 
 
-class StockSerializer(serializers.ModelSerializer):
+class StockSerializerEN(serializers.ModelSerializer):
     class Meta:
         model = Stock
-        fields = '__all__'
+        fields = ('id', 'isDark', 'img', 'title_en', 'desc_en', 'background')
+
+
+class StockSerializerRU(serializers.ModelSerializer):
+    class Meta:
+        model = Stock
+        fields = ('id', 'isDark', 'img', 'title_ru', 'desc_ru', 'background')
+
+
+class StockSerializerTR(serializers.ModelSerializer):
+    class Meta:
+        model = Stock
+        fields = ('id', 'isDark', 'img', 'title_tr', 'desc_tr', 'background')

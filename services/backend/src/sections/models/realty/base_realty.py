@@ -16,9 +16,6 @@ class RealtyBase(BaseModelFull):
     url_video = models.URLField()
     description = models.TextField()
 
-    def __str__(self):
-        return f'{self.user} {self.address}'
-
     class Meta:
         abstract = True
 

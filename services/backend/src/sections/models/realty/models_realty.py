@@ -24,6 +24,9 @@ class RealtyFull(RealtyBase, AboutApartmentBase):
     sell_type_plot_type = models.CharField(choices=REALTY_CATEGORY_LAND_PLOT_TYPE_USE, max_length=255,
                                            verbose_name='Realty category type use')
 
+    def __str__(self):
+        return f'{self.title} {self.user} {self.address}'
+
 
 class RealtyFullUpload(models.Model):
     realty_full_upload = models.ForeignKey(RealtyFull, default=None, on_delete=models.CASCADE,
