@@ -15,6 +15,8 @@ Django Admin - http://127.0.0.1:8000/admin/
 **Creating Admin user**
 ```
 docker ps
+```
+```
 # Сonclusion ...
 <id container react>    frontend-react  "docker-entrypoint.s…"   1 minutes ago   Up 1 minutes   0.0.0.0:3000->3000/tcp   react
 <id container postgres> postgres        "docker-entrypoint.s…"   1 minutes ago   Up 1 minutes   0.0.0.0:5432->5432/tcp   backend-postgresql-1
@@ -22,6 +24,8 @@ docker ps
 ```
 ```
 docker exec -ti <id container api> python manage.py createsuperuser
+```
+```
 # Сonclusion ...
 Username: admin # The input is displayed (user by default 'admin')
 Email: admin@admin.com # The input is displayed (email by default 'admin@admin.com')
