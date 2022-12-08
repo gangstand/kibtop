@@ -17,7 +17,7 @@ Redoc - http://127.0.0.1:8000/api/v1/docs/redoc/
 
 **Admin link** \
 Django Admin - http://127.0.0.1:8000/admin/
-![img_2.png](readme_img/img_2.png)
+![img_2.png](readme_img/img_3.png)
 
 **Creating Admin user**
 ```
