@@ -3,9 +3,8 @@ from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
 from rest_framework import generics
 from sections.models import Stock
-from sections.serializer import StockSerializerEN, StockSerializerRU, StockSerializerTR
+from sections.serializer import StockSerializerEN, StockSerializerRU, StockSerializerTR, StockSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
 from sections.utils import query_list_lang
 
 model_stock = Stock.objects.all()
@@ -19,6 +18,7 @@ class StockAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     filter_backends = (DjangoFilterBackend,)
     pagination_class = StockLimitPagination
+    serializer_class = StockSerializer
 
     def get_querylist(self):
         query = self.request.query_params

@@ -3,7 +3,7 @@ from drf_multiple_model.views import ObjectMultipleModelAPIView
 from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from sections.models import RealtyFull
-from sections.serializer import RealtyFullSerializerEN, RealtyFullSerializerRU, RealtyFullSerializerTR
+from sections.serializer import RealtyFullSerializerEN, RealtyFullSerializerRU, RealtyFullSerializerTR, RealtyFullSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from sections.service import FilterCategory
 from sections.utils import query_list_lang
@@ -14,6 +14,7 @@ class CategoryLimitPagination(MultipleModelLimitOffsetPagination):
 
 
 class CategoryFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
+    serializer_class = RealtyFullSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     filter_backends = (DjangoFilterBackend,)
     filterset_class = FilterCategory

@@ -5,12 +5,20 @@ cd services/backend
 docker compose up --build
 ```
 
-**Api links:** \
-Swagger - http://127.0.0.1:8000/api/v1/docs/ \
+**Api links:** 
+
+Swagger - http://127.0.0.1:8000/api/v1/docs/ 
+
+![img.png](readme_img/img.png)
+
 Redoc - http://127.0.0.1:8000/api/v1/docs/redoc/
 
-**Admin link:** \
+![img_1.png](readme_img/img_1.png)
+
+**Admin link** \
 Django Admin - http://127.0.0.1:8000/admin/
+![img_2.png](readme_img/img_2.png)
+![img.png](readme_img/img_3.png)
 
 **Creating Admin user**
 ```

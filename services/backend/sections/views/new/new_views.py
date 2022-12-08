@@ -4,7 +4,7 @@ from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
 from rest_framework import generics
 from sections.models import RealtyFull
-from sections.serializer import RealtyFullSerializerEN, RealtyFullSerializerRU, RealtyFullSerializerTR
+from sections.serializer import RealtyFullSerializerEN, RealtyFullSerializerRU, RealtyFullSerializerTR, RealtyFullSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from sections.utils import query_list_lang
@@ -17,6 +17,7 @@ class NewLimitPagination(MultipleModelLimitOffsetPagination):
 
 
 class NewAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
+    serializer_class = RealtyFullSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     filter_backends = (DjangoFilterBackend,)
     pagination_class = NewLimitPagination

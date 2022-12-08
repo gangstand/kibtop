@@ -1,5 +1,8 @@
-from .realry.serializer import RealtyFullSerializerEN, RealtyFullSerializerDetail, RealtyFullSerializerRU, RealtyFullSerializerTR
-from .stock.serializer import StockSerializerEN, StockSerializerRU, StockSerializerTR
+from .realry.serializer import (
+    RealtyFullSerializerEN, RealtyFullSerializerDetail, RealtyFullSerializerRU, RealtyFullSerializerTR,
+    RealtyFullSerializer
+)
+from .stock.serializer import StockSerializerEN, StockSerializerRU, StockSerializerTR, StockSerializer
 from .base_serializer import CitySerializer, MoneySerializer
 
 __all__ = [
@@ -12,4 +15,6 @@ __all__ = [
     'RealtyFullSerializerTR',
     'CitySerializer',
     'MoneySerializer',
+    'RealtyFullSerializer',
+    'StockSerializer',
 ]

@@ -3,7 +3,7 @@ from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
 from sections.models import RealtyFull
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.serializer import RealtyFullSerializerEN, RealtyFullSerializerRU, RealtyFullSerializerTR
+from sections.serializer import RealtyFullSerializerEN, RealtyFullSerializerRU, RealtyFullSerializerTR, RealtyFullSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from sections.utils import query_list_lang
@@ -19,6 +19,7 @@ class RecommendFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     filter_backends = (DjangoFilterBackend,)
     pagination_class = RecommendLimitPagination
+    serializer_class = RealtyFullSerializer
 
     def get_querylist(self):
         query = self.request.query_params

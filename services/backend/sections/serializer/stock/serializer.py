@@ -19,3 +19,9 @@ class StockSerializerTR(serializers.ModelSerializer):
     class Meta:
         model = Stock
         fields = ('id', 'isDark', 'img', 'title_tr', 'desc_tr', 'background')
+
+
+class StockSerializer(serializers.Serializer):
+    en = StockSerializerEN(many=True)
+    ru = StockSerializerRU(many=True)
+    tr = StockSerializerTR(many=True)

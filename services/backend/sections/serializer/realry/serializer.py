@@ -39,3 +39,9 @@ class RealtyFullSerializerTR(serializers.ModelSerializer):
         fields = ('id', 'title_tr', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'sub_apartment_tr', 'sell_type_tr',
                   'all_old_new_tr', 'number_rooms_tr', 'category_tr')
+
+
+class RealtyFullSerializer(serializers.Serializer):
+    en = RealtyFullSerializerEN(many=True)
+    ru = RealtyFullSerializerRU(many=True)
+    tr = RealtyFullSerializerTR(many=True)
