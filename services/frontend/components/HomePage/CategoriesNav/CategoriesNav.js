@@ -49,9 +49,11 @@ const CategoriesNav = () => {
                         <span className="categories-nav__line"></span>
                     </div>
                     <ul className="categories-nav__list">
-                        {
-                            NavLinks.map(link => <CategoryNavLink {...link} key={link.id} />)
-                        }
+                        <div className="categories-nav__wrapper">
+                            {
+                                NavLinks.map(link => <CategoryNavLink {...link} key={link.id} />)
+                            }
+                        </div>
                     </ul>
                 </div>
             </nav>
