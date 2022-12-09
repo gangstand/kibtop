@@ -17,12 +17,12 @@ const index = ({slides, recommendGoods, newGoods}) => {
 
 export async function getStaticProps(context) {
     const {locale} = context
-    const slides = await GoodsApi.getSlider(locale)
+    const slides = await GoodsApi.getSlider(locale) || null
 
 
-    const recommendGoods = await GoodsApi.getRecommends(locale)
+    const recommendGoods = await GoodsApi.getRecommends(locale) || null
     
-    const newGoods = await GoodsApi.getNews(locale)
+    const newGoods = await GoodsApi.getNews(locale) || null
 
     return {
         props: {slides, recommendGoods, newGoods}

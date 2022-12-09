@@ -41,12 +41,12 @@ const Slider = ({switchToBefore, switchToNext, transition, slideList, offset}) =
         switchSlider(switchToBefore)
     }
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         onNext()
-    //     }, transition*5)
+    useEffect(() => {
+        setTimeout(() => {
+            onNext()
+        }, transition*5)
 
-    // }, [offset])
+    }, [offset])
 
 
     return (
