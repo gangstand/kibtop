@@ -14,8 +14,8 @@ const HomePage = ({slides, recommendGoods, newGoods}) => {
             <HeaderService />
             <CategoriesNav />
             <BannerContainer {...{slides}} />
-            {/* <Recommend {...{recommendGoods}} />
-            <News {...{newGoods}} /> */}
+            <Recommend {...{recommendGoods}} />
+            <News {...{newGoods}} />
         </>
     );
 }

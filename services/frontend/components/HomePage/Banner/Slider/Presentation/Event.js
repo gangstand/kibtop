@@ -4,7 +4,7 @@ import Text from "../../../../Elementes/Text/Text";
 const Event = ({id, isDark, img, title, desc, background}) => {
     return (
         <>
-            <div style={{background}} className={'event' + (isDark ? '' : ' event--light')}>
+            <div style={{backgroundImage: `url(${background})`}} className={'event' + (isDark ? '' : ' event--light')}>
                 <div className="event__img">
                     { !!img && <img src={img} alt="Event" />}
                 </div>

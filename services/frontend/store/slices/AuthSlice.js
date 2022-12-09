@@ -26,9 +26,6 @@ export const authReducer = authSlice.reducer
 export const {setAuth} = authSlice.actions
 
 export const setAuthThunk = () => async dispatch => {
-    AuthApi.auth().then(res => {
-        dispatch(setAuth(res))
-    }, () => {
-        console.log('Не авторизован');
-    })
+    const user = await AuthApi.auth()
+    if(!!user) dispatch(setAuth(user))
 }

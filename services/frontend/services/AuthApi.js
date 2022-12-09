@@ -15,7 +15,7 @@ export const AuthApi = {
                 Cookies.setCookie('access_token', access)
 
                 return {userId: user_id}
-            })
+            }, () => null).catch(err => console.log(err))
     }
 }
 

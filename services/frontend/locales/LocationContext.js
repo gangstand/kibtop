@@ -14,14 +14,16 @@ export const LocationProvider = ({children}) => {
         setLocation(city)
     }
 
-    useEffect(() => {
-        const cityId = localStorage.getItem('location')
-        if(!!cityId) {
-            LocationApi.getCityById(cityId, locale)
-                .then(city => {
-                    changeLocation(city)
-                }, () => null)
+    const checkcity = async (cityId) => {
+        const city = await LocationApi.getCityById(cityId, locale)
+        if(!!city) {
+            changeLocation(city)
         }
+    }
+
+    useEffect(() => {
+        const cityId = parseInt(localStorage.getItem('location'))
+        if(!!cityId) checkcity(cityId)
     }, [locale])
         
     return (

@@ -19,7 +19,8 @@ const locationSlice = createSlice({
         },
 
         setCities(state, {payload}) {
-            state.cities = [...payload.cities]
+            const {cities} = payload
+            if(!!cities) state.cities = [...payload.cities]
         },
 
         changeLocationFieldValue(state, {payload}) {
@@ -44,8 +45,5 @@ export const locationReducer = locationSlice.reducer
 
 export const getCitiesThunk = lang => async dispatch => {
     const cities = await LocationApi.getCities(lang)
-        .then(cities => {
-            dispatch(setCities({cities}))
-        })
-
+    dispatch(setCities({cities}))
 }

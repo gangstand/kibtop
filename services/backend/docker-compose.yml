@@ -13,10 +13,10 @@ services:
                     gunicorn settings.wsgi:application --bind 0.0.0.0:8000"
        volumes:
            - .:/app
-   postgresql:
-        image: postgres
-        container_name: postgres
-        environment:
-          - POSTGRES_PASSWORD=password
-        ports:
-          - "5432:5432"
+#   postgresql:
+#        image: postgres
+#        container_name: postgres
+#        environment:
+#          - POSTGRES_PASSWORD=password
+#        ports:
+#          - "5432:5432"

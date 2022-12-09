@@ -33,9 +33,9 @@ CITY_TR = (transl_for(CITY_EN, "Türk"))
 
 
 class City(models.Model):
-    city_name_en = models.CharField(choices=CITY_EN, max_length=255)
-    city_name_ru = models.CharField(choices=CITY_RU, max_length=255)
-    city_name_tr = models.CharField(choices=CITY_TR, max_length=255)
+    city_name_en = models.CharField(max_length=255)
+    city_name_ru = models.CharField(max_length=255)
+    city_name_tr = models.CharField(max_length=255)
 
     def __str__(self):
         return f"en - {self.city_name_en}, ru - {self.city_name_ru}, tr - {self.city_name_tr}"

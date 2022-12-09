@@ -16,7 +16,13 @@
     --slide-margin: 12px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 500px) {
+    .window {
+        --slide: 400px;
+    }
+}
+
+@media (min-width: 1000px) {
     .window {
         --slide: 38.88vw;
         --slide-margin: 2.77vw;
@@ -31,11 +37,32 @@
 }
 
 .slider {
-    height: 220px;
+    height: 140px;
     width: var(--slide);
 
 
     position: relative;
+}
+
+@media (min-width: 500px) {
+    .slider {
+        height: 180px;
+    }
+}
+
+
+@media (min-width: 800px) {
+    .slider {
+        height: 200px;
+
+    }
+}
+
+@media (min-width: 1300px) {
+    .slider {
+        height: 220px;
+
+    }
 }
 
 .container--slider {
@@ -49,7 +76,7 @@
     padding: 0;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1000px) {
     .container--slider {
         width: 80.55%;
         justify-content: space-between;
@@ -94,7 +121,7 @@
     height: 140px;
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     padding: 0 5px 0 0;
@@ -102,19 +129,31 @@
     border-radius: 16px;
 
     overflow: hidden;
+
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 500px) {
+    .event {
+        height: 180px;
+    }
 }
 
 @media (min-width: 800px) {
     .event {
         border-radius: 20px;
-        padding: 0 10px;
-        height: 15.27vw;
+        padding: 0 10px 0 0;
+        height: 200px;
+
     }
 }
 
 @media (min-width: 1300px) {
     .event {
         height: 220px;
+        justify-content: center;
     }
 }
 
@@ -140,22 +179,31 @@
     object-position: right top;
 
     position: relative;
-    bottom: -25px;
+    bottom: -30px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 500px) {
     .event__img {
-        width: 17.7vw;
+        width: 150px;
     }
     
     .event__img img {
         height: 100%;
-        width: 17.7vw;
+        width: 150px;
+    }
+}
 
-        object-fit: contain;
-        object-position: left bottom;
+@media (min-width: 800px) {
+    .event__img {
+        width: 150px;
+    }
+    
+    .event__img img {
+        height: 100%;
+        width: 150px;
 
-        
+        object-fit: cover;
+        object-position: right bottom;
     }
 }
 
@@ -167,6 +215,9 @@
     .event__img img {
         height: calc(95% + 25px);
         width: 255px;
+
+        object-fit: contain;
+        object-position: left bottom;
     }
 }
 

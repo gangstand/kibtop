@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Header from "../components/Header/Header";
 import HomePage from "../components/HomePage/HomePage";
-import { BASE_URL } from "../services/Instance";
+import { GoodsApi } from "../services/IndexApi";
+import { BASE_URL, instance } from "../services/Instance";
 
 const index = ({slides, recommendGoods, newGoods}) => {
     return (
@@ -15,20 +16,13 @@ const index = ({slides, recommendGoods, newGoods}) => {
 
 
 export async function getStaticProps(context) {
-    const slides = await fetch(`${BASE_URL}/api/slider?lang=${context.locale}`)
-        .then(res => { 
-            return res.json()
-        }, (res) => null)
+    const {locale} = context
+    const slides = await GoodsApi.getSlider(locale)
 
-    const recommendGoods = await fetch(`${BASE_URL}/api/recommend?lang=${context.locale}`)
-        .then(res => { 
-            return res.json()
-        }, (res) => null)
 
-    const newGoods = await fetch(`${BASE_URL}/api/recommend?lang=${context.locale}`)
-        .then(res => { 
-            return res.json()
-        }, (res) => null)
+    const recommendGoods = await GoodsApi.getRecommends(locale)
+    
+    const newGoods = await GoodsApi.getNews(locale)
 
     return {
         props: {slides, recommendGoods, newGoods}

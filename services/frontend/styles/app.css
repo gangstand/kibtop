@@ -108,17 +108,17 @@ input,  input:hover, input:focus {
     color: var(--color-black);
 }
 
-@media (min-width: 800px) {
+@media (min-width: 500px) {
     .title {
         font-weight: 700;
-        font-size: 21px;
+        font-size: 24px;
         line-height: normal;
     }
 }
 
 @media (min-width: 1100px) {
     .title {
-        font-size: 24px;
+        font-size: 28px;
     }
 }
 
@@ -138,24 +138,30 @@ input,  input:hover, input:focus {
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 13px;
     letter-spacing: -0.408px;
 }
 
-
-@media (min-width: 800px) {
+@media (min-width: 500px) {
     .text {
-        font-size: 14px;
+        font-size: 16px;
         line-height: normal;
     }
 }
 
-@media (min-width: 1100px) {
+/* 
+@media (min-width: 900px) {
     .text {
         font-size: 16px;
+        line-height: normal;
+    }
+} */
+
+@media (min-width: 1100px) {
+    .text {
+        font-size: 18px;
     }
 }
-
 
 @media (min-width: 1300px) {
     .text {
