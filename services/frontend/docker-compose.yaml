@@ -6,8 +6,8 @@ services:
          restart: on-failure
          build: .
          volumes:
-              - ./src:/app/src
+              - .:/app/src
          ports:
               - "3000:3000"
          command: >
-              sh -c "yarn start"
+              sh -c "npm run dev"

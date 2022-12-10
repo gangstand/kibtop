@@ -17,7 +17,6 @@ const HeaderService = () => {
             </div>
             <BurgerLocaleMenuContainer />
             <BurgerUserMenuContainer />
-            <AddAdvertMobileButton />
         </>
         
     );
