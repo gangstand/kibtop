@@ -886,3 +886,96 @@
     font-size: 21px;
     line-height: 14px;
 }
+
+
+@media (max-width: 1170px) {
+    .filter-button {
+        font-size: 13px !important;
+        padding: 0 13px 0 11px;
+    }
+
+    .filter-button svg {
+        margin-right: 5px;
+    }
+    .search__field--product input::placeholder {
+        font-size: 13px !important;
+    }
+}
+
+@media (max-width: 1101px) {
+    .filter-button {
+        font-size: 14px !important;
+    }
+
+    .filter-button svg {
+        margin-right: 11px;
+    }
+    .search__field--product input::placeholder {
+        font-size: 14px !important;
+        padding: 0 13px 0 11px;
+    }
+}
+
+@media (max-width: 830px) {
+    .filter-button {
+        font-size: 13px !important;
+        padding: 0 13px 0 11px;
+    }
+
+    .filter-button svg {
+        margin-right: 5px;
+    }
+    .search__field--product input::placeholder {
+        font-size: 13px !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .filter-button {
+        font-size: 14px !important;
+    }
+
+    .filter-button svg {
+        margin-right: 11px;
+    }
+    .search__field--product input::placeholder {
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 660px) {
+    .filter-button {
+        font-size: 13px !important;
+        padding: 0 13px 0 11px;
+    }
+
+    .filter-button svg {
+        margin-right: 5px;
+    }
+    .search__field--product input::placeholder {
+        font-size: 13px !important;
+    }
+}
+
+@media (max-width: 620px) {
+    .search__field--product input {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .filter-button {
+        font-size: 14px !important;
+    }
+
+    .filter-button svg {
+        margin-right: 11px;
+    }
+    .search__field--product input::placeholder {
+        font-size: 14px !important;
+    }
+
+    .search__field--product input {
+        padding-left: 9px;
+    }
+}

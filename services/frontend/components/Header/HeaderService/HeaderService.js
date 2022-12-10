@@ -1,4 +1,5 @@
 
+import AddAdvertMobileButton from "./AddAdvertMobileButton/AddAdvertMobileButton";
 import BurgerLocaleMenuContainer from "./BurgerLocaleMenu/BurgerLocaleMenuContainer";
 import BurgerUserMenuContainer from "./BurgerUserMenu/BurgerUserMenuContainer";
 import Logo from "./Logo/Logo";
@@ -16,6 +17,7 @@ const HeaderService = () => {
             </div>
             <BurgerLocaleMenuContainer />
             <BurgerUserMenuContainer />
+            <AddAdvertMobileButton />
         </>
         
     );

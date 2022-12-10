@@ -254,11 +254,14 @@ input,  input:hover, input:focus {
     align-items: center;
 
     position: fixed;
-    top: calc(50vh - 340px / 2);
+    bottom: calc(50vh - 340px / 2);
     left: calc(50vw - 760px / 2);
 
 
     z-index: 3;
 }
+
+
+
 
 

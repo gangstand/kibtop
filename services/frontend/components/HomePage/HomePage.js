@@ -1,3 +1,4 @@
+import AddAdvertMobileButton from "../Header/HeaderService/AddAdvertMobileButton/AddAdvertMobileButton";
 import HeaderService from "../Header/HeaderService/HeaderService";
 import BannerContainer from "./Banner/BannerContainer";
 import CategoriesNav from "./CategoriesNav/CategoriesNav";
@@ -16,6 +17,8 @@ const HomePage = ({slides, recommendGoods, newGoods}) => {
             <BannerContainer {...{slides}} />
             <Recommend {...{recommendGoods}} />
             <News {...{newGoods}} />
+            <AddAdvertMobileButton />
+            
         </>
     );
 }
