@@ -4,7 +4,7 @@ from .base_realty import *
 from .for_realty import *
 
 
-class RealtyFull(RealtyBase, AboutRealtyBase):
+class RealtyFull(RealtyBase):
     sub_category_en = models.CharField(choices=REALTY_CATEGORY_EN, max_length=255, verbose_name='Sub Apartment')
     sub_category_ru = models.CharField(choices=REALTY_CATEGORY_RU, max_length=255, verbose_name='Sub Apartment')
     sub_category_tr = models.CharField(choices=REALTY_CATEGORY_TR, max_length=255, verbose_name='Sub Apartment')
