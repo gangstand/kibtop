@@ -21,21 +21,21 @@ class AvtoFullSerializerEN(serializers.ModelSerializer):
     class Meta:
         model = AvtoFull
         fields = ('id', 'title_en', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_apartment_en', 'brand_en', 'mileage', 'year', 'category_en')
+                  'price', 'upload', 'sub_category_en', 'brand_en', 'mileage', 'year', 'category_en')
 
 
 class AvtoFullSerializerRU(serializers.ModelSerializer):
     class Meta:
         model = AvtoFull
         fields = ('id', 'title_ru', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_apartment_ru', 'brand_ru', 'mileage', 'year', 'category_ru')
+                  'price', 'upload', 'sub_category_ru', 'brand_ru', 'mileage', 'year', 'category_ru')
 
 
 class AvtoFullSerializerTR(serializers.ModelSerializer):
     class Meta:
         model = AvtoFull
         fields = ('id', 'title_tr', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_apartment_tr', 'brand_tr', 'mileage', 'year', 'category_tr')
+                  'price', 'upload', 'sub_category_tr', 'brand_tr', 'mileage', 'year', 'category_tr')
 
 
 class AvtoFullSerializer(serializers.Serializer):

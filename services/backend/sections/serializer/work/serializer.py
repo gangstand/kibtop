@@ -21,21 +21,21 @@ class WorkFullSerializerEN(serializers.ModelSerializer):
     class Meta:
         model = WorkFull
         fields = ('id', 'title_en', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_apartment_en', 'for_work_type_en', 'employment_en', 'category_en')
+                  'price', 'upload', 'sub_category_en', 'for_work_type_en', 'employment_en', 'category_en')
 
 
 class WorkFullSerializerRU(serializers.ModelSerializer):
     class Meta:
         model = WorkFull
         fields = ('id', 'title_ru', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_apartment_ru', 'for_work_type_ru', 'employment_ru', 'category_ru')
+                  'price', 'upload', 'sub_category_ru', 'for_work_type_ru', 'employment_ru', 'category_ru')
 
 
 class WorkFullSerializerTR(serializers.ModelSerializer):
     class Meta:
         model = WorkFull
         fields = ('id', 'title_tr', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_apartment_tr', 'for_work_type_tr', 'employment_tr', 'category_tr')
+                  'price', 'upload', 'sub_category_tr', 'for_work_type_tr', 'employment_tr', 'category_tr')
 
 
 class WorkFullSerializer(serializers.Serializer):

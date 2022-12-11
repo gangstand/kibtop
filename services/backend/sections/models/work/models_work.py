@@ -5,9 +5,9 @@ from .for_work import *
 
 
 class WorkFull(BaseModelFull):
-    sub_apartment_en = models.CharField(choices=WORK_CATEGORY_EN, max_length=255)
-    sub_apartment_ru = models.CharField(choices=WORK_CATEGORY_RU, max_length=255)
-    sub_apartment_tr = models.CharField(choices=WORK_CATEGORY_TR, max_length=255)
+    sub_category_en = models.CharField(choices=WORK_CATEGORY_EN, max_length=255)
+    sub_category_ru = models.CharField(choices=WORK_CATEGORY_RU, max_length=255)
+    sub_category_tr = models.CharField(choices=WORK_CATEGORY_TR, max_length=255)
     for_work_type_en = models.CharField(choices=FOR_WORK_EN, max_length=255)
     for_work_type_ru = models.CharField(choices=FOR_WORK_RU, max_length=255)
     for_work_type_tr = models.CharField(choices=FOR_WORK_TR, max_length=255)
