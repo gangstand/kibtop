@@ -26,6 +26,8 @@
 @media (min-width: 800px) {
     .container--header {
         width: 80%;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 

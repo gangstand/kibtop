@@ -22,7 +22,7 @@ const Logo = () => {
                 </div>
 
                 <div className="logo-title__item logo-title__item--desk">
-                    <Link href="description" className="desc-link-text desc-link"><Text content="Brief description of the service" /></Link>
+                    <Link href="description" className="desc-link-text desc-link"><Text content="North Cyprus bulletin board" /></Link>
                 </div>
             </div>
         </>
