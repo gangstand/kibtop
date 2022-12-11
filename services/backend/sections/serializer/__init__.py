@@ -6,7 +6,11 @@ from .stock.serializer import StockSerializerEN, StockSerializerRU, StockSeriali
 from .base_serializer import CitySerializer, MoneySerializer
 from .avto.serializer import (
     AvtoFullSerializer, AvtoFullSerializerDetail, AvtoFullSerializerEN, AvtoFullSerializerRU,
-    AvtoFullSerializerTR, AvtoFullUploadSerializer
+    AvtoFullSerializerTR
+)
+from .work.serializer import (
+    WorkFullSerializer, WorkFullSerializerDetail, WorkFullSerializerEN, WorkFullSerializerRU,
+    WorkFullSerializerTR
 )
 
 __all__ = [
@@ -26,5 +30,9 @@ __all__ = [
     'AvtoFullSerializerEN',
     'AvtoFullSerializerRU',
     'AvtoFullSerializerTR',
-    'AvtoFullUploadSerializer',
+    'WorkFullSerializer',
+    'WorkFullSerializerDetail',
+    'WorkFullSerializerEN',
+    'WorkFullSerializerRU',
+    'WorkFullSerializerTR',
 ]

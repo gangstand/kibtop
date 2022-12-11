@@ -4,8 +4,10 @@ from sections.models import RealtyFull
 
 
 class FilterCategory(django_filters.FilterSet):
-    category = django_filters.CharFilter()
+    category_en = django_filters.CharFilter()
+    category_ru = django_filters.CharFilter()
+    category_tr = django_filters.CharFilter()
 
     class Meta:
         model = RealtyFull
-        fields = ['category', ]
+        fields = ['category_en', 'category_ru', 'category_tr']
