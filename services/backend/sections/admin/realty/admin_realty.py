@@ -16,7 +16,7 @@ class RealtyFullImageAdmin(admin.StackedInline):
 
 
 @admin.register(RealtyFull)
-class RASSIAdmin(admin.ModelAdmin):
+class RUAdmin(admin.ModelAdmin):
     inlines = [RealtyFullImageAdmin]
 
     class Meta:

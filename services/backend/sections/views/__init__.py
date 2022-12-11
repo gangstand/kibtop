@@ -4,6 +4,7 @@ from .category.views_category import CategoryFullAPIList
 from .new.new_views import NewAPIList
 from .views_base import CityAPIList, MoneyAPIList, MoneyAPIUpdateDestroy
 from .recommend.views_recommend import RecommendFullAPIList
+from .avto.views_avto import AvtoFullAPIList, AvtoFullAPIListCreate, AvtoFullAPIUpdateDestroy
 
 __all__ = [
     'RealtyFullAPIList',
@@ -17,4 +18,7 @@ __all__ = [
     'MoneyAPIList',
     'MoneyAPIUpdateDestroy',
     'RecommendFullAPIList',
+    'AvtoFullAPIList',
+    'AvtoFullAPIListCreate',
+    'AvtoFullAPIUpdateDestroy',
 ]
