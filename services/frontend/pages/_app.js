@@ -1,5 +1,4 @@
 import '../public/fonts/SFPro/stylesheet.css'
-// import '../public/fonts/OpenSans/stylesheet.css'
 import '../styles/app.css'
 import '../styles/header.css'
 import '../styles/slider.css'
@@ -18,8 +17,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Head>
-      </Head>
       <Provider store={store}>
         <LocationProvider>
           <CurrencyProvider>

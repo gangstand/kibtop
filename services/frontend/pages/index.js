@@ -1,9 +1,7 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import Header from "../components/Header/Header";
 import HomePage from "../components/HomePage/HomePage";
 import { GoodsApi } from "../services/IndexApi";
-import { BASE_URL, instance } from "../services/Instance";
+
 
 const index = ({slides, recommendGoods, newGoods}) => {
     return (
