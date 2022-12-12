@@ -67,5 +67,8 @@ class BaseModelFull(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    def __str__(self):
+        return f'{self.title} {self.user} {self.address}'
+
     class Meta:
         abstract = True

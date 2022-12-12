@@ -10,4 +10,4 @@ class FilterCategory(django_filters.FilterSet):
 
     class Meta:
         model = RealtyFull
-        fields = ['category_en', 'category_ru', 'category_tr', ]
+        fields = ['category_en', 'category_ru', 'category_tr']

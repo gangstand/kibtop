@@ -1,7 +1,5 @@
 from django.urls import path, include
-
-from accounts.serializer import FacebookLogin
-from accounts.serializer import GoogleLogin
+from accounts.views import FacebookLogin, GoogleLogin
 
 urlpatterns = [
     path('', include('dj_rest_auth.urls')),

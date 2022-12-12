@@ -4,7 +4,10 @@ from .base_realty import *
 from .for_realty import *
 
 
-class RealtyFull(RealtyBase, AboutApartmentBase):
+class RealtyFull(RealtyBase):
+    sub_category_en = models.CharField(choices=REALTY_CATEGORY_EN, max_length=255, verbose_name='Sub Apartment')
+    sub_category_ru = models.CharField(choices=REALTY_CATEGORY_RU, max_length=255, verbose_name='Sub Apartment')
+    sub_category_tr = models.CharField(choices=REALTY_CATEGORY_TR, max_length=255, verbose_name='Sub Apartment')
     sell_type_en = models.CharField(choices=REALTY_CATEGORY_TYPE_EN, max_length=255)
     sell_type_ru = models.CharField(choices=REALTY_CATEGORY_TYPE_RU, max_length=255)
     sell_type_tr = models.CharField(choices=REALTY_CATEGORY_TYPE_TR, max_length=255)
@@ -23,9 +26,6 @@ class RealtyFull(RealtyBase, AboutApartmentBase):
     square = models.IntegerField(verbose_name='Square footage')
     sell_type_plot_type = models.CharField(choices=REALTY_CATEGORY_LAND_PLOT_TYPE_USE, max_length=255,
                                            verbose_name='Realty category type use')
-
-    def __str__(self):
-        return f'{self.title} {self.user} {self.address}'
 
 
 class RealtyFullUpload(models.Model):
