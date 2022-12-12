@@ -23,8 +23,20 @@ from .children.serializer import (
 )
 
 from .electronics.serializer import (
-    ElectronicsFullSerializer, ElectronicsFullSerializerDetail, ElectronicsFullSerializerEN, ElectronicsFullSerializerRU,
+    ElectronicsFullSerializer, ElectronicsFullSerializerDetail, ElectronicsFullSerializerEN,
+    ElectronicsFullSerializerRU,
     ElectronicsFullSerializerTR,
+)
+
+from .house_garden.serializer import (
+    HouseGardenFullSerializer, HouseGardenFullSerializerDetail, HouseGardenFullSerializerEN,
+    HouseGardenFullSerializerRU,
+    HouseGardenFullSerializerTR,
+)
+
+from .fashion.serializer import (
+    FashionFullSerializer, FashionFullSerializerDetail, FashionFullSerializerEN, FashionFullSerializerRU,
+    FashionFullSerializerTR,
 )
 
 __all__ = [
@@ -64,4 +76,14 @@ __all__ = [
     'ElectronicsFullSerializerEN',
     'ElectronicsFullSerializerRU',
     'ElectronicsFullSerializerTR',
+    'HouseGardenFullSerializer',
+    'HouseGardenFullSerializerDetail',
+    'HouseGardenFullSerializerEN',
+    'HouseGardenFullSerializerRU',
+    'HouseGardenFullSerializerTR',
+    'FashionFullSerializer',
+    'FashionFullSerializerDetail',
+    'FashionFullSerializerEN',
+    'FashionFullSerializerRU',
+    'FashionFullSerializerTR',
 ]

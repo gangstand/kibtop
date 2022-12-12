@@ -8,8 +8,11 @@ from .avto.views_avto import AvtoFullAPIList, AvtoFullAPIListCreate, AvtoFullAPI
 from .work.views_work import WorkFullAPIList, WorkFullAPIListCreate, WorkFullAPIUpdateDestroy
 from .services.views_services import ServicesFullAPIList, ServicesFullAPIListCreate, ServicesFullAPIUpdateDestroy
 from .children.views_children import ChildrenFullAPIList, ChildrenFullAPIListCreate, ChildrenFullAPIUpdateDestroy
+from .fashion.views_fashion import FashionFullAPIList, FashionFullAPIListCreate, FashionFullAPIUpdateDestroy
 from .electronics.views_electronics import ElectronicsFullAPIList, ElectronicsFullAPIListCreate, \
     ElectronicsFullAPIUpdateDestroy
+from .house_garden.views_house_garden import HouseGardenFullAPIUpdateDestroy, HouseGardenFullAPIList, \
+    HouseGardenFullAPIListCreate
 
 __all__ = [
     'RealtyFullAPIList',
@@ -37,5 +40,11 @@ __all__ = [
     'ChildrenFullAPIUpdateDestroy',
     'ElectronicsFullAPIList',
     'ElectronicsFullAPIListCreate',
-    'ElectronicsFullAPIUpdateDestroy'
+    'ElectronicsFullAPIUpdateDestroy',
+    'FashionFullAPIList',
+    'FashionFullAPIListCreate',
+    'FashionFullAPIUpdateDestroy',
+    'HouseGardenFullAPIUpdateDestroy',
+    'HouseGardenFullAPIList',
+    'HouseGardenFullAPIListCreate'
 ]
