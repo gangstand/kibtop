@@ -1,53 +1,53 @@
-from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
-from drf_multiple_model.views import ObjectMultipleModelAPIView
-from sections.models import RealtyFull
-from django_filters.rest_framework import DjangoFilterBackend
-from sections.serializer import RealtyFullSerializerEN, RealtyFullSerializerRU, RealtyFullSerializerTR, RealtyFullSerializer
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.status import HTTP_200_OK
+
+from sections.models import (
+    AvtoFull, ChildrenFull, FashionFull, RealtyFull, HouseGardenFull, ServicesFull, WorkFull,
+    ElectronicsFull
+)
+from sections.serializer import (
+    CategoryFullSerializerEN, CategoryFullSerializerRU, CategoryFullSerializerTR,
+    CategoryFullSerializer
+)
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
-from sections.utils import query_list_lang
-
-model_realty = RealtyFull.objects.all()
+from sections.service import FilterCategory
 
 
 class RecommendLimitPagination(MultipleModelLimitOffsetPagination):
     default_limit = 10
 
 
-class RecommendFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
+class RecommendFullAPIList(generics.ListAPIView):
+    serializer_class = CategoryFullSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
-    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterCategory
     pagination_class = RecommendLimitPagination
-    serializer_class = RealtyFullSerializer
 
-    def get_querylist(self):
+    def get(self, request, *args, **kwargs):
         query = self.request.query_params
-        querylist_full = [
-            {
-                'queryset': model_realty,
-                'serializer_class': RealtyFullSerializerEN,
-                'label': 'en',
-            },
-            {
-                'queryset': model_realty,
-                'serializer_class': RealtyFullSerializerRU,
-                'label': 'ru',
-            },
-            {
-                'queryset': model_realty,
-                'serializer_class': RealtyFullSerializerTR,
-                'label': 'tr',
-            },
-        ]
+        filters = {
+            'avto': AvtoFull.objects.filter(recommend=True),
+            'children': ChildrenFull.objects.filter(recommend=True),
+            'electronics': ElectronicsFull.objects.filter(recommend=True),
+            'fashion': FashionFull.objects.filter(recommend=True),
+            'house_garden': HouseGardenFull.objects.filter(recommend=True),
+            'realty': RealtyFull.objects.filter(recommend=True),
+            'services': ServicesFull.objects.filter(recommend=True),
+            'work': WorkFull.objects.filter(recommend=True),
+        }
+        serializer_en = CategoryFullSerializerEN(filters)
+        serializer_ru = CategoryFullSerializerRU(filters)
+        serializer_tr = CategoryFullSerializerTR(filters)
 
         try:
             if query['lang'] == 'en':
-                return query_list_lang(model_realty, RealtyFullSerializerEN, 'en')
+                return Response(serializer_en.data, status=HTTP_200_OK)
             elif query['lang'] == 'ru':
-                return query_list_lang(model_realty, RealtyFullSerializerRU, 'ru')
+                return Response(serializer_ru.data, status=HTTP_200_OK)
             elif query['lang'] == 'tr':
-                return query_list_lang(model_realty, RealtyFullSerializerTR, 'tr')
-            return querylist_full
+                return Response(serializer_tr.data, status=HTTP_200_OK)
+            return Response(serializer_en.data, status=HTTP_200_OK)
         except Exception:
-            return querylist_full
+            return Response(serializer_en.data, status=HTTP_200_OK)

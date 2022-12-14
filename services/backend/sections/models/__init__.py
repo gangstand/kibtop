@@ -10,6 +10,8 @@ from .fashion.models_fashion import FashionFull, FashionFullUpload
 from .house_garden.models_house_garden import HouseGardenFull, HouseGardenFullUpload
 
 __all__ = [
+    'FashionFullUpload',
+    'FashionFull',
     'HouseGardenFull',
     'HouseGardenFullUpload',
     'ElectronicsFull',

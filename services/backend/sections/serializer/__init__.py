@@ -3,7 +3,6 @@ from .realry.serializer import (
     RealtyFullSerializer
 )
 from .stock.serializer import StockSerializerEN, StockSerializerRU, StockSerializerTR, StockSerializer
-from .base_serializer import CitySerializer, MoneySerializer
 from .avto.serializer import (
     AvtoFullSerializer, AvtoFullSerializerDetail, AvtoFullSerializerEN, AvtoFullSerializerRU,
     AvtoFullSerializerTR
@@ -16,7 +15,6 @@ from .services.serializer import (
     ServicesFullSerializer, ServicesFullSerializerDetail, ServicesFullSerializerEN, ServicesFullSerializerRU,
     ServicesFullSerializerTR,
 )
-
 from .children.serializer import (
     ChildrenFullSerializer, ChildrenFullSerializerDetail, ChildrenFullSerializerEN, ChildrenFullSerializerRU,
     ChildrenFullSerializerTR,
@@ -33,11 +31,13 @@ from .house_garden.serializer import (
     HouseGardenFullSerializerRU,
     HouseGardenFullSerializerTR,
 )
-
 from .fashion.serializer import (
     FashionFullSerializer, FashionFullSerializerDetail, FashionFullSerializerEN, FashionFullSerializerRU,
     FashionFullSerializerTR,
 )
+
+from .base_serializer import CitySerializer, MoneySerializer, CategoryFullSerializerEN, CategoryFullSerializerRU, \
+    CategoryFullSerializerTR, CategoryFullSerializer
 
 __all__ = [
     'RealtyFullSerializerDetail',
@@ -86,4 +86,8 @@ __all__ = [
     'FashionFullSerializerEN',
     'FashionFullSerializerRU',
     'FashionFullSerializerTR',
+    'CategoryFullSerializerEN',
+    'CategoryFullSerializerRU',
+    'CategoryFullSerializerTR',
+    'CategoryFullSerializer',
 ]
