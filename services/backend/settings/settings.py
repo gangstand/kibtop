@@ -43,13 +43,13 @@ SITE_ID = 1
 REST_USE_JWT = True
 JWT_AUTH_COOKIE = 'jwt-auth'
 
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CreateUserSerializer',
+}
+
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'accounts.serializers.CreateUserSerializer',
 }
-
-# REST_AUTH_REGISTER_SERIALIZERS = {
-#     'REGISTER_SERIALIZER': 'CreateUserSerializer',
-# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
