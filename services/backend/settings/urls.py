@@ -28,6 +28,11 @@ urlpatterns = [
       path('', include('sections.urls.realty.urls_realty')),
       path('', include('sections.urls.avto.urls_avto')),
       path('', include('sections.urls.work.urls_work')),
+      path('', include('sections.urls.services.urls_services')),
+      path('', include('sections.urls.children.urls_children')),
+      path('', include('sections.urls.electronics.urls_electronics')),
+      path('', include('sections.urls.fashion.urls_fashion')),
+      path('', include('sections.urls.house_garden.urls_house_garden')),
       path('docs/', include([
           path('', schema_view.with_ui('swagger', cache_timeout=0), name="swagger-schema"),
           path('api.json/', schema_view.without_ui(cache_timeout=0), name='schema-swagger-ui'),

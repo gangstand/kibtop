@@ -7,12 +7,15 @@ class FilterWork(django_filters.FilterSet):
     price = django_filters.NumberFilter()
     price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt')
     price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt')
+
     sub_category_en = django_filters.CharFilter()
     sub_category_ru = django_filters.CharFilter()
     sub_category_tr = django_filters.CharFilter()
+
     for_work_type_en = django_filters.CharFilter()
     for_work_type_ru = django_filters.CharFilter()
     for_work_type_tr = django_filters.CharFilter()
+
     employment_en = django_filters.CharFilter()
     employment_ru = django_filters.CharFilter()
     employment_tr = django_filters.CharFilter()
