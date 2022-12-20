@@ -3,6 +3,7 @@ import '../styles/app.css'
 import '../styles/header.css'
 import '../styles/slider.css'
 import '../styles/home.css'
+import '../styles/registration.css'
 
 
 import React, { Suspense } from 'react';

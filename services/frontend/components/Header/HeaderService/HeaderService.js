@@ -15,8 +15,7 @@ const HeaderService = () => {
                     <Services />
                 </div>
             </div>
-            <BurgerLocaleMenuContainer />
-            <BurgerUserMenuContainer />
+            
         </>
         
     );

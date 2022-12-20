@@ -20,6 +20,7 @@ const SearchProductsForm = () => {
 
                 </button>
 
+
                 <div className="search__field search__field--product">
                     <input  {...register('product', {required: true})}
                             placeholder={t("Search product")} 

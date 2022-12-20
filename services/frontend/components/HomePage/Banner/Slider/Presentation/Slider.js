@@ -20,30 +20,35 @@ const Slider = ({switchToBefore, switchToNext, transition, slideList, offset}) =
     }
 
     const switchSlider = setOffset => {
-        setTimeout(() => {
-            setOffset()
-            sliderLineEl.current.style.transitionDuration = '0ms'
-            sliderLineEl.current.style.left = `-${multiplySlide(slide(), 1)}`
-        }, transition)
+        
+            setTimeout(() => {
+                if(!!sliderLineEl.current) {
+                    setOffset()
+                    sliderLineEl.current.style.transitionDuration = '0ms'
+                    sliderLineEl.current.style.left = `-${multiplySlide(slide(), 1)}`
+                }
+            }, transition)
     }
 
     const onNext = () => {
-        sliderLineEl.current.style.transitionDuration = `${transition}ms`
-        sliderLineEl.current.style.left = `-${multiplySlide(slide(), 2)}`
+        if(!!sliderLineEl.current) {
+            sliderLineEl.current.style.transitionDuration = `${transition}ms`
+            sliderLineEl.current.style.left = `-${multiplySlide(slide(), 2)}`
 
-        switchSlider(switchToNext)
+            switchSlider(switchToNext)
+        }
     }
 
-    const onBefore = () => {
-        sliderLineEl.current.style.transitionDuration = `${transition}ms`
-        sliderLineEl.current.style.left = '0'
+    // const onBefore = () => {
+    //     sliderLineEl.current.style.transitionDuration = `${transition}ms`
+    //     sliderLineEl.current.style.left = '0'
 
-        switchSlider(switchToBefore)
-    }
+    //     switchSlider(switchToBefore)
+    // }
 
     useEffect(() => {
         setTimeout(() => {
-            onNext()
+            if(!!sliderLineEl.current) onNext()
         }, transition*5)
 
     }, [offset])
