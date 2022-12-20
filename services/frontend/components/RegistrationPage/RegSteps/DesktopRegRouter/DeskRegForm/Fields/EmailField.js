@@ -6,9 +6,9 @@ const EmailField = () => {
     const {t} = useLanguage()
     const {register, formState, getFieldState} = useFormContext()
     
-    const {isDirty, error} = getFieldState('email', formState)
+    const {isTouched, error} = getFieldState('email', formState)
 
-    const isError = isDirty  && error 
+    const isError = isTouched  && error 
 
     return (
         <>

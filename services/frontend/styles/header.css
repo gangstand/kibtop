@@ -655,7 +655,7 @@
 
 .locale-menu__btns {
     padding: 29px 0 15px;
-    margin: 0 15px;
+    margin: 0 12px;
     border-bottom: 1px solid #EDEDED;
 
     display: flex;
@@ -678,7 +678,7 @@
 }
 
 .locale-menu__btn {
-    font-family: 'SFProText';
+    font-family: 'SF Pro Text';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -694,7 +694,7 @@
 
 .close {
     position: absolute;
-    right: 15px;
+    right: 12px;
     top: 23px;
 }
 

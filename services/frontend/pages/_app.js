@@ -1,4 +1,4 @@
-import '../public/fonts/SFPro/stylesheet.css'
+
 import '../styles/app.css'
 import '../styles/header.css'
 import '../styles/slider.css'
@@ -14,7 +14,9 @@ import Head from 'next/head';
 import { LocationProvider } from '../locales/LocationContext'
 
 
+
 function MyApp({ Component, pageProps }) {
+  
 
   return (
     <>

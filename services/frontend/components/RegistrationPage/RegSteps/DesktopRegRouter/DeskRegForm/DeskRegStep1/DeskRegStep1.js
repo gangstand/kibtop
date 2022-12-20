@@ -7,8 +7,14 @@ import PasswordField from "../Fields/PasswordField";
 import PasswordRepeat from "../Fields/PasswordRepeat";
 import NextRegBtnContainer from "./NextRegBtn/NextRegBtnContainer";
 
-const DeskRegStep1 = ({isError, warn}) => {
+const DeskRegStep1 = ({dirtyFields, errors, name, message, touchedFields}) => {
     const {t} = useLanguage()
+
+    const isStepError = !!errors ? (!!errors.email || !!errors.password1 || !!errors.password2) : true
+    const isFieldsDirty = !!dirtyFields ? !(dirtyFields.email && dirtyFields.password1 && dirtyFields.password2) : true
+
+    const isError = isStepError || isFieldsDirty
+    const isTouched = !!touchedFields ? Object.keys(touchedFields).includes(name) : false
 
     return (
         <>
@@ -23,7 +29,7 @@ const DeskRegStep1 = ({isError, warn}) => {
             <div className="reg-wrapper">
                 <NextRegBtnContainer isError={isError} />
 
-                {isError && <p className="warn">{warn}</p>}
+                {(isTouched && isError) && <p className="warn">{message}</p>}
             </div>
                             
 

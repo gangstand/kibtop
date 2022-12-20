@@ -4,8 +4,16 @@ import CityField from "../Fields/CityField";
 import FileField from "../Fields/FileField";
 import NameField from "../Fields/NameField";
 
-const DeskRegStep2 = ({isError, warn, onSubmit, isValid}) => {
+const DeskRegStep2 = ({dirtyFields, errors, name, message, touchedFields, onSubmit, isValid}) => {
     const {t} = useLanguage()
+
+    const isStepError = !!errors ? (!!errors.name || !!errors.city || !!errors.file) : true
+    const isFieldsDirty = !!dirtyFields ? !(dirtyFields.name && dirtyFields.city && dirtyFields.file) : true
+    
+    const isError = isStepError || isFieldsDirty
+    const isTouched = !!touchedFields ? Object.keys(touchedFields).includes(name) || name === 'file' : false
+
+    
     return (
             <>
                 <div className="form__fields form__fields--file">
@@ -22,7 +30,7 @@ const DeskRegStep2 = ({isError, warn, onSubmit, isValid}) => {
                         <button onClick={onSubmit} disabled={!isValid} className="reg-btn reg-btn--free"><Text content="Skip" /></button>
                     </div>
 
-                    {isError && <p className="warn">{warn}</p>}
+                    {(isTouched && isError) && <p className="warn warn--high">{message}</p>}
                 </div>
                 
             </>

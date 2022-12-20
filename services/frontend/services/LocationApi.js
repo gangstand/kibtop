@@ -18,13 +18,13 @@ export const LocationApi = {
         return await instance.get(`city/`)
                 .then(({data}) => {
                     return serializeCities(data, lang)
-                }).catch(err => console.log(err))
+                }).catch(err => undefined)
     },
 
     async getCityById(cityId, lang) {
             return instance.get(`city/`)
                 .then(({data}) => {
                     return serializeCityById(cityId, data, lang)
-                }).catch(err => console.log(err))
+                }).catch(err => undefined)
     }
 }

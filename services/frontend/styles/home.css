@@ -469,6 +469,10 @@
     }
 }
 
+.title--goods {
+    font-weight: 700;
+}
+
 .location {
     color: var(--color-grey);
     font-style: normal;

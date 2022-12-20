@@ -2,9 +2,13 @@
 import NameField from "../../../DesktopRegRouter/DeskRegForm/Fields/NameField";
 import NextMobRegBtnContainer from "../NextMobRegBtn/NextMobRegBtnContainer";
 
-const MobStep3 = ({errors, dirtyFields}) => {
+const MobStep3 = ({errors, dirtyFields, name, message, touchedFields}) => {
     const isStepError = !!errors ? (!!errors.name) : true
-    const isFieldsTouched = !!dirtyFields ? !(dirtyFields.name) : true
+    const isFieldsDirty = !!dirtyFields ? !(dirtyFields.name) : true
+
+    const isTouched = !!touchedFields ? Object.keys(touchedFields).includes(name) : false
+
+    const isError = isStepError || isFieldsDirty
     
     return (
         <>
@@ -12,9 +16,10 @@ const MobStep3 = ({errors, dirtyFields}) => {
                 <div className="form__fields">
                     <NameField />
                                 
+                    {(isTouched && isError) && <p className="warn warn--mob">{message}</p>}  
                 </div>
                             
-                <NextMobRegBtnContainer isError={isStepError || isFieldsTouched} />
+                <NextMobRegBtnContainer {...{isError}} />
             </div>
         </>
     );

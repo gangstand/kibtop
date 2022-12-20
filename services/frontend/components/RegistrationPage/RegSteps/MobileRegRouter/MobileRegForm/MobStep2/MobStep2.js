@@ -6,20 +6,26 @@ import PasswordField from "../../../DesktopRegRouter/DeskRegForm/Fields/Password
 import PasswordRepeat from "../../../DesktopRegRouter/DeskRegForm/Fields/PasswordRepeat";
 import NextMobRegBtnContainer from "../NextMobRegBtn/NextMobRegBtnContainer";
 
-const MobStep2 = ({errors, dirtyFields}) => {
+const MobStep2 = ({errors, dirtyFields, name, message, touchedFields}) => {
     const isStepError = !!errors ? (!!errors.password1 || !!errors.password2) : true
-    const isFieldsTouched = !!dirtyFields ? !(dirtyFields.password1 && dirtyFields.password2) : true
+    const isFieldsDirty = !!dirtyFields ? !(dirtyFields.password1 && dirtyFields.password2) : true
+
+    const isTouched = !!touchedFields ? Object.keys(touchedFields).includes(name) : false
+
+    const isError = isStepError || isFieldsDirty
     
     return (
         <>
             <div className="form__step">
-                        <div className="form__fields">
-                            <PasswordField />
-                            <PasswordRepeat />
+                <div className="form__fields">
+                    <PasswordField />
+                    <PasswordRepeat />
                                 
-                        </div>
+                    {(isTouched && isError) && <p className="warn warn--mob">{message}</p>}  
                             
-                        <NextMobRegBtnContainer isError={isStepError || isFieldsTouched} />
+                </div>
+                            
+                <NextMobRegBtnContainer {...{isError}} />
             </div>
         </>
     );

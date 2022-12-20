@@ -33,7 +33,7 @@ export const GoodsApi = {
                     const goods = serializeGoods(res, lang)
 
                     return goods
-                }).catch(err => console.log(err))
+                }).catch(err => undefined)
     },
 
     async getNews(lang) {
@@ -44,7 +44,7 @@ export const GoodsApi = {
                     const goods = serializeGoods(res, lang)
 
                     return goods.reverse()
-                }).catch(err => console.log(err))
+                }).catch(err => undefined)
     },
 
     async getSlider(lang) {
@@ -55,6 +55,6 @@ export const GoodsApi = {
                     const slides = serializeSlider(res, lang)
 
                     return slides
-                }).catch(err => console.log(err))
+                }).catch(err => undefined)
     },
 }

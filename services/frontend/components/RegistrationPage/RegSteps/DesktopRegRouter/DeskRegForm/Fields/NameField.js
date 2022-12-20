@@ -5,9 +5,9 @@ const NameField = () => {
     const {t} = useLanguage()
     const {register, formState, getFieldState} = useFormContext()
     
-    const {isDirty, error} = getFieldState('name', formState)
+    const {isTouched, error} = getFieldState('name', formState)
 
-    const isError = isDirty  && error 
+    const isError = isTouched  && error 
 
     return (
         <>

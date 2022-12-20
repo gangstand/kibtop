@@ -8,9 +8,10 @@ import MobStep3 from "./MobStep3/MobStep3";
 import MobStep4 from "./MobStep4/MobStep4";
 import MobStep5 from "./MobStep5/MobStep5";
 
-const MobileRegForm = ({mobileStep}) => {
+
+const MobileRegForm = ({mobileStep, seriealizeErrors}) => {
     const RegistrationForm = useForm({mode: 'onChange'})
-    const {handleSubmit, formState: {errors, isValid, dirtyFields}} = RegistrationForm
+    const {handleSubmit, formState: {errors, isValid, dirtyFields, touchedFields}} = RegistrationForm
 
     const onRegistrationSubmit = data => {
         console.log(data);
@@ -24,19 +25,25 @@ const MobileRegForm = ({mobileStep}) => {
                         <h2 className="reg-title"><Text content="Create new account" /></h2>
                     </div>
                     {
-                        mobileStep === 1 && <MobStep1 {...{errors, dirtyFields}} />
+                        mobileStep === 1 && <MobStep1 {...{...seriealizeErrors(errors), errors, 
+                                                            dirtyFields, touchedFields}} />
                     }
                     {
-                        mobileStep === 2 && <MobStep2 {...{errors, dirtyFields}} />
+                        mobileStep === 2 && <MobStep2 {...{...seriealizeErrors(errors), errors, 
+                                                            dirtyFields, touchedFields}} />
                     }
                     {
-                        mobileStep === 3 && <MobStep3 {...{errors, dirtyFields}} />
+                        mobileStep === 3 && <MobStep3 {...{...seriealizeErrors(errors), errors, 
+                                                            dirtyFields, touchedFields}} />
                     }
                     {
-                        mobileStep === 4 && <MobStep5 {...{errors}} />
+                        mobileStep === 4 && <MobStep4 {...{...seriealizeErrors(errors), errors,
+                            touchedFields}} />
                     }
                     {
-                        mobileStep === 5 && <MobStep4 {...{errors, isValid, onSubmit: handleSubmit(onRegistrationSubmit)}} />
+                        mobileStep === 5 && <MobStep5 {...{...seriealizeErrors(errors), errors, isValid, 
+                                                        onSubmit: handleSubmit(onRegistrationSubmit),
+                                                        touchedFields}} />
                     }
                 </FormProvider>
             </form>

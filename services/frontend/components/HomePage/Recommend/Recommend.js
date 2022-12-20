@@ -7,7 +7,7 @@ const Recommend = ({recommendGoods}) => {
         <>
             <section className="goods">
                 <div className="container container--goods">
-                    <h2 className="title"><Text content="Recommended" /></h2>
+                    <h2 className="title title--goods"><Text content="Recommended" /></h2>
 
                     <LocationContainer />
                 </div>

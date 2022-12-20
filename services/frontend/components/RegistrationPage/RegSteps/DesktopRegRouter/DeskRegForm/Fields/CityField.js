@@ -6,9 +6,9 @@ const CityField = () => {
     const {t} = useLanguage()
     const {register, formState, getFieldState} = useFormContext()
     
-    const {isDirty, error} = getFieldState('city', formState)
+    const {isTouched, error} = getFieldState('city', formState)
 
-    const isError = isDirty  && error 
+    const isError = isTouched  && error 
 
     return (
         <>

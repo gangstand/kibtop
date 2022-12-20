@@ -5,7 +5,7 @@ const PasswordField = () => {
     const {t} = useLanguage()
     const {register, formState, getFieldState, watch} = useFormContext()
     
-    const {isDirty, error, isTouched} = getFieldState('password1', formState)
+    const {error, isTouched} = getFieldState('password1', formState)
 
     const isError = isTouched  && error 
 

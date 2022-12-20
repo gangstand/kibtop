@@ -6,7 +6,7 @@ const LanguageSelectOption = ({language, value, text, closeLocaleBurgerMenu}) =>
 
     return (
         <>
-            <Link href="/" locale={value}  
+            <Link href="" locale={value}  
                   className={"modal-select__option" + 
                   (isChecked ? ' modal-select__option--checked' : '')}>
 

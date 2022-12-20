@@ -5,7 +5,7 @@ const PasswordRepeat = () => {
     const {t} = useLanguage()
     const {register, formState, getFieldState, getValues} = useFormContext()
     
-    const {isDirty, error, isTouched} = getFieldState('password2', formState)
+    const {error, isTouched} = getFieldState('password2', formState)
 
     const isError = isTouched  && error 
 

@@ -6,7 +6,7 @@ const News = ({newGoods}) => {
         <>
             <section className="goods">
                 <div className="container container--goods">
-                    <h2 className="title"><Text content="New announcements" /></h2>
+                    <h2 className="title title--goods"><Text content="New announcements" /></h2>
                     
                 </div>
 

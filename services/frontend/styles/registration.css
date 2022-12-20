@@ -1,3 +1,5 @@
+
+
 .section {
     width: 100%;
     height: 100vh;
@@ -28,15 +30,25 @@
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 
     position: absolute;
     top: 26px;
     left: 0;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
     .reg-nav {
+        display: none;
+    }
+}
+
+.reg-nav__locale {
+    display: block;
+}
+
+@media (min-width: 800px) {
+    .reg-nav__locale {
         display: none;
     }
 }
@@ -44,6 +56,12 @@
 .reg-nav__back {
     width: 25px;
     height: 25px;
+}
+
+@media (min-width: 600px) {
+    .reg-nav__back {
+        display: none;
+    }
 }
 
 .container--reg {
@@ -466,7 +484,7 @@
 
 @media (min-width: 600px) {
     .reg-title {
-        font-family: 'Open sans', sans-serif;
+        font-family: 'Open Sans', sans-serif;
         font-weight: 700;
         font-size: 40px;
         line-height: 53px;
@@ -509,6 +527,12 @@
     display: flex;
     align-items: center;
 }
+/* 
+@media (min-width: 600px) {
+    .form__field {
+        border: 2px solid #EDEDED;
+    }
+} */
 
 .form__field--error {
     border-color: #FF5A5A;
@@ -577,7 +601,7 @@
 
     font-size: 40px;
     letter-spacing: 2px;
-    margin-left: 40px;
+    margin-left: 38px;
 
     padding-bottom: 2px;
 }
@@ -669,6 +693,8 @@
     padding-left: 0;
     padding-right: 0;
     margin-left: 0;
+
+    min-width: max-content;
 }
 
 @media (min-width: 600px) {
@@ -683,6 +709,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+
+    position: relative;
 }
 
 .warn {
@@ -691,11 +719,27 @@
     font-size: 10px;
     line-height: 10px;
     color: #FF5A5A;
+
+    
+}
+
+.warn--high {
+    position: absolute;
+    top: -13px;
+    right: 0;
+}
+
+.warn--mob {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .form__fields {
     height: max-content;
     margin-bottom: 11px;
+
+    position: relative;
 }
 
 @media (max-width: 600px) {
@@ -884,6 +928,8 @@
     color: var(--color-blue);
 
     margin-top: 8px;
+
+    cursor: pointer;
 }
 
 .label-file {
@@ -912,6 +958,7 @@
     fill: #BDBDBD;
 }
 
+
 .form__file-field--mob {
     display: flex;
     flex-direction: column;
@@ -927,10 +974,6 @@
     border: 2px solid #F6F6F6;
 }
 
-.form__file-field--error .label-file {
-    border: 2px solid #FF5A5A;
-}
-
 .form__file-field--selected .label-file {
     border: 2px solid var(--color-opacity-black);
     background: #EDEDED;
@@ -939,6 +982,11 @@
 .form__file-field--selected svg {
     fill: var(--color-opacity-black);
 }
+
+.form__file-field--error .label-file {
+    border: 2px solid #FF5A5A;
+}
+
 
 .form__help {
     grid-area: help;
