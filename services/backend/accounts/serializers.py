@@ -16,16 +16,16 @@ except ImportError:
 
 
 class CreateUserSerializer(serializers.Serializer):
-    username = serializers.CharField(
-        max_length=get_username_max_length(),
-        min_length=allauth_settings.USERNAME_MIN_LENGTH,
-        required=allauth_settings.USERNAME_REQUIRED,
-    )
+    # username = serializers.CharField(
+    #     max_length=get_username_max_length(),
+    #     min_length=allauth_settings.USERNAME_MIN_LENGTH,
+    #     required=allauth_settings.USERNAME_REQUIRED,
+    # )
     email = serializers.EmailField(required=allauth_settings.EMAIL_REQUIRED)
     password1 = serializers.CharField(write_only=True)
     password2 = serializers.CharField(write_only=True)
-    first_name = serializers.CharField()
-    last_name = serializers.CharField()
+    #first_name = serializers.CharField()
+    #last_name = serializers.CharField()
     middle_name = serializers.CharField()
     addres = serializers.CharField()
     upload_user = serializers.FileField()
@@ -84,4 +84,5 @@ class CreateUserSerializer(serializers.Serializer):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user')
+        #fields = ('username', 'email', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user')
+        fields = ('email', 'middle_name', 'addres', 'upload_user')
