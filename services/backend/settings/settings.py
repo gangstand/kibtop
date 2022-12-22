@@ -18,38 +18,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "corsheaders",
+
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'drf_multiple_model',
-    'dj_rest_auth',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'dj_rest_auth.registration',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.facebook',
-    'djoser',
-    'drf_yasg',
     'django_filters',
     'modeltranslation',
+
+    'django.contrib.sites',
+
+    'drf_yasg',
+    'djoser',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
 ]
 
 SITE_ID = 1
-
-REST_USE_JWT = True
-JWT_AUTH_COOKIE = 'jwt-auth'
-
-REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'accounts.serializers.CreateUserSerializer',
-}
-
-REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'accounts.serializers.CreateUserSerializer',
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -169,49 +154,23 @@ REST_FRAMEWORK = {
     ),
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
 
 DJOSER = {
-    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
-    'USERNAME_RESET_CONFIRM_URL': '/username/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': '/activate/{uid}/{token}',
+    'USER_CREATE_PASSWORD_RETYPE': True,
     'SEND_ACTIVATION_EMAIL': True,
+    'SET_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'TOKEN_MODEL': None,  # We use only JWT
+    'ACTIVATION_URL': 'api/v1/auth/verify/{uid}/{token}/',
     'SERIALIZERS': {
-        'user_create': 'api.serializer.UserRegistrationSerializer',
-        'user': 'api.serializer.SpecialUserSerializer',
-        'current_user': 'api.serializer.SpecialUserSerializer',
-
+        "user_create": 'accounts.serializer.UserRegistrationSerializer',
+        "user": "accounts.serializer.UserAPISerializer",
+        'user_create_password_retype': 'accounts.serializer.UserAPICreatePasswordRetypeSerializer',
     }
 }
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
-    'ROTATE_REFRESH_TOKENS': False,
-    'BLACKLIST_AFTER_ROTATION': False,
-    'UPDATE_LAST_LOGIN': False,
-
-    'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
-    'VERIFYING_KEY': None,
-    'AUDIENCE': None,
-    'ISSUER': None,
-    'JWK_URL': None,
-    'LEEWAY': 0,
-
-    'AUTH_HEADER_TYPES': ('Bearer',),
-    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM': 'user_id',
-    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
-
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_TYPE_CLAIM': 'token_type',
-    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
-
-    'JTI_CLAIM': 'jti',
-
-    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
-    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
-    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
-}
+# EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

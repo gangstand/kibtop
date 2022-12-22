@@ -1,14 +1,22 @@
-from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
-from allauth.socialaccount.providers.oauth2.client import OAuth2Client
-from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
-from dj_rest_auth.registration.views import SocialLoginView
+import requests
+from rest_framework import serializers
+from rest_framework.generics import GenericAPIView
+from rest_framework.response import Response
 
 
-class FacebookLogin(SocialLoginView):
-    adapter_class = FacebookOAuth2Adapter
+class ActivateSerializerUser(serializers.Serializer):
+    uid = serializers.CharField()
+    token = serializers.CharField()
 
 
-class GoogleLogin(SocialLoginView):
-    adapter_class = GoogleOAuth2Adapter
-    callback_url = 'http://127.0.0.1:8000'
-    client_class = OAuth2Client
+class ActivateUser(GenericAPIView):
+    serializer_class = ActivateSerializerUser
+
+    def get(self, request, uid, token, format=None):
+        payload = {'uid': uid, 'token': token}
+        url = "http://localhost:8000/api/v1/auth/users/activation/"
+        response = requests.post(url, data=payload)
+        if response.status_code == 204:
+            return Response({}, response.status_code)
+        else:
+            return Response(response.json())

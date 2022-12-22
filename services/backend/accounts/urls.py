@@ -1,9 +1,9 @@
 from django.urls import path, include
-from accounts.views import FacebookLogin, GoogleLogin
+
+from accounts.views import ActivateUser
 
 urlpatterns = [
-    path('', include('dj_rest_auth.urls')),
-    path('registration/', include('dj_rest_auth.registration.urls')),
-    path('google/', GoogleLogin.as_view(), name='google_login'),
-    path('facebook/', FacebookLogin.as_view(), name='fb_login'),
+    path('verify/<str:uid>/<str:token>/', ActivateUser.as_view()),
+    path('', include('djoser.urls')),
+    path('', include('djoser.urls.jwt')),
 ]
