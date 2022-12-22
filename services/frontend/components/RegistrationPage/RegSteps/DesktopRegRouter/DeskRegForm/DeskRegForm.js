@@ -5,15 +5,9 @@ import Text from "../../../../Elementes/Text/Text";
 import DeskRegStep1 from "./DeskRegStep1/DeskRegStep1";
 import DeskRegStep2 from "./DeskRegStep2/DeskRegStep2";
 
-const DeskRegForm = ({deskStep, seriealizeErrors, firstStepStyle, secondStepStyle}) => {
+const DeskRegForm = ({deskStep, seriealizeErrors, firstStepStyle, secondStepStyle, onRegistrationSubmit}) => {
     const RegistrationForm = useForm({mode: 'onChange'})
     const {handleSubmit, formState: {errors, isValid, dirtyFields, touchedFields}} = RegistrationForm
-
-    const onRegistrationSubmit = data => {
-        console.log(data);
-    }
-
-
 
     return (
         <>

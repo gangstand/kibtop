@@ -71,6 +71,7 @@
     "field is required": "field is required",
     "password is too easy": "password is too easy",
     "passwords aren't the same": "passwords aren't the same",
-    "invalid format": "invalid format"
+    "invalid format": "invalid format",
+    "email is registered": "email is registered"
 
 }

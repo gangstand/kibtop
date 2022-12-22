@@ -2,7 +2,12 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     deskStep: 1,
-    mobileStep: 1
+    mobileStep: 1,
+    error: {
+        step: null,
+        name: null,
+        message: null
+    }
 }
 
 const RegistrationSlice = createSlice({
@@ -28,6 +33,13 @@ const RegistrationSlice = createSlice({
         },
         setMobileStep(state, {payload}) {
             state.mobileStep = payload.step
+        },
+
+        
+        setRegistrationError(state, {payload}) {
+            state.error.step = payload.step
+            state.error.name = payload.name
+            state.error.message = payload.message
         }
     }
 })
@@ -36,7 +48,8 @@ export const {
         deskStepIncrement, 
         deskStepDecrement, 
         mobileStepIncrement, 
-        mobileStepDecrement
+        mobileStepDecrement,
+        setRegistrationError
 
     } = RegistrationSlice.actions
 

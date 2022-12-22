@@ -72,6 +72,7 @@
     "field is required": "alan gereklidir",
     "password is too easy": "şifre çok kolay",
     "passwords aren't the same": "şifreler aynı değil",
-    "invalid format": "geçersiz biçim"
+    "invalid format": "geçersiz biçim",
+    "email is registered": "e-posta kayıtlı"
 }
 

@@ -72,6 +72,7 @@
     "field is required": "поле обязательно",
     "password is too easy": "слишком лёгкий пароль",
     "passwords aren't the same": "пароли не совпадают",
-    "invalid format": "неверный формат"
+    "invalid format": "неверный формат",
+    "email is registered": "почта занята"
 
 }

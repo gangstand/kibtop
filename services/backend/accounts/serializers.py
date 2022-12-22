@@ -1,34 +1,25 @@
-from dj_rest_auth.registration.serializers import RegisterSerializer
 from django.core.exceptions import ValidationError as DjangoValidationError
 from rest_framework import serializers
 from accounts.models import CustomUser
-
-try:
-    from allauth.account import app_settings as allauth_settings
-    from allauth.account.adapter import get_adapter
-    from allauth.account.utils import setup_user_email
-    from allauth.socialaccount.helpers import complete_social_login
-    from allauth.socialaccount.models import SocialAccount
-    from allauth.socialaccount.providers.base import AuthProcess
-    from allauth.utils import email_address_exists, get_username_max_length
-except ImportError:
-    raise ImportError('allauth needs to be added to INSTALLED_APPS.')
+from allauth.account import app_settings as allauth_settings
+from allauth.account.adapter import get_adapter
+from allauth.account.utils import setup_user_email
+from allauth.utils import email_address_exists, get_username_max_length
 
 
 class CreateUserSerializer(serializers.Serializer):
-    # username = serializers.CharField(
-    #     max_length=get_username_max_length(),
-    #     min_length=allauth_settings.USERNAME_MIN_LENGTH,
-    #     required=allauth_settings.USERNAME_REQUIRED,
-    # )
+
     email = serializers.EmailField(required=allauth_settings.EMAIL_REQUIRED)
+    phone = serializers.CharField(required=False)
     password1 = serializers.CharField(write_only=True)
     password2 = serializers.CharField(write_only=True)
-    #first_name = serializers.CharField()
-    #last_name = serializers.CharField()
-    middle_name = serializers.CharField()
-    addres = serializers.CharField()
-    upload_user = serializers.FileField()
+
+    first_name = serializers.CharField(required=False)
+    last_name = serializers.CharField(required=False)
+    middle_name = serializers.CharField(required=False)
+    addres = serializers.CharField(required=False)
+    upload_user = serializers.FileField(required=False)
+
 
     def custom_signup(self, request, user) -> None:
         for f in self.Meta.fields:
@@ -84,5 +75,5 @@ class CreateUserSerializer(serializers.Serializer):
 
     class Meta:
         model = CustomUser
-        #fields = ('username', 'email', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user')
-        fields = ('email', 'middle_name', 'addres', 'upload_user')
+        fields = ('username', 'email', 'phone', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user')
+

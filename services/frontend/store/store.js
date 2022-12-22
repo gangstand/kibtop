@@ -35,3 +35,4 @@ export const store = configureStore({reducer,
     // "Increase your ad views": "Increase your ad views",
     // "Promo slider": "Promo slider",
     // "Detailed description of the promotion": "Detailed description of the promotion",
+
