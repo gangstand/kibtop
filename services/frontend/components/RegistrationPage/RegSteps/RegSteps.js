@@ -1,12 +1,21 @@
-import DesktopRegRouterContainer from "./DesktopRegRouter/DesktopRegRouterContainer";
-import MobileRegRouterContainer from "./MobileRegRouter/MobileRegRouterContainer";
+import DeskGreeting from "./DesktopRegRouter/DeskGreeting/DeskGreeting";
+import DeskGreetingContainer from "./DesktopRegRouter/DeskGreeting/DeskGreetingContainer";
+import DeskRegFormContainer from "./DesktopRegRouter/DeskRegForm/DeskRegFormContainer";
+import MobileRegFormContainer from "./MobileRegRouter/MobileRegForm/MobileRegFormContainer";
 
 
-const RegSteps = () => {
+const RegSteps = ({isRegistered}) => {
+    
     return (
         <>
-            <DesktopRegRouterContainer />
-            <MobileRegRouterContainer />
+            {
+                !isRegistered ? <>
+                                    <DeskRegFormContainer />
+                                    <MobileRegFormContainer />
+                                </>
+                              : <DeskGreetingContainer />
+            }
+            
         </>
     );
 }

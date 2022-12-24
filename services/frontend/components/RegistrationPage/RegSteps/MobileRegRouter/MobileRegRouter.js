@@ -1,17 +1,17 @@
-import MobileGreetingContainer from "./MobileGreeting/MobileGreetingContainer";
+import DeskGreetingContainer from "../DesktopRegRouter/DeskGreeting/DeskGreetingContainer";
 import MobileRegFormContainer from "./MobileRegForm/MobileRegFormContainer";
 
-const MobileRegRouter = ({mobileStep}) => {
+const MobileRegRouter = ({isRegistered}) => {
     return (
         <>
             {
-                mobileStep <= 5 ? 
+                !isRegistered ? 
                         <>
                             <MobileRegFormContainer />
                         </>
                         :
                         <>
-                            <MobileGreetingContainer />
+                            <DeskGreetingContainer />
                         </>
             }
         </>

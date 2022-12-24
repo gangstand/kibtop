@@ -1,17 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { registrationThunk } from "../../../../../store/slices/AuthSlice";
+import { setDeskStep } from "../../../../../store/slices/RegistrationSlice";
 import DeskRegForm from "./DeskRegForm";
 
 const DeskRegFormContainer = () => {
-    const {deskStep} = useSelector(state => state.registration)
+    const {deskStep, isLoading, error} = useSelector(state => state.registration)
     const dispatch = useDispatch()
 
     const onRegistrationSubmit = data => {
         const {email, password1, password2, name, city, file} = data
-
-        console.log(file);
         dispatch(registrationThunk(email, password1, password2, name, city, file[0]))
     }
+
+    const setErrorStep = step => dispatch(setDeskStep({step}))
 
     const seriealizeErrors = (errors) => ({
         name: Object.keys(errors)[0],
@@ -21,8 +22,8 @@ const DeskRegFormContainer = () => {
     const firstStepStyle = {display: (deskStep === 1 ? 'flex' : 'none')}
     const secondStepStyle = {display: (deskStep === 2 ? 'flex' : 'none')}
 
-    return <DeskRegForm {...{deskStep, firstStepStyle, secondStepStyle, 
-                            seriealizeErrors, onRegistrationSubmit}} />;
+    return <DeskRegForm {...{deskStep, isLoading, firstStepStyle, secondStepStyle, 
+                            seriealizeErrors, onRegistrationSubmit, error, setErrorStep}} />;
 }
 
 export default DeskRegFormContainer;

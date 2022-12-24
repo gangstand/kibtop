@@ -1,11 +1,11 @@
 import DeskGreetingContainer from "./DeskGreeting/DeskGreetingContainer";
 import DeskRegFormContainer from "./DeskRegForm/DeskRegFormContainer";
 
-const DesktopRegRouter = ({deskStep}) => {
+const DesktopRegRouter = ({isRegistered}) => {
     return (
         <>
             {
-                deskStep <= 2 ? 
+                !isRegistered ? 
                             <>
                                 <DeskRegFormContainer />
                             </> 

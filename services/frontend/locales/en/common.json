@@ -67,11 +67,16 @@
     "Sing up": "Sing up",
     "Use my location": "Use my location",
 
+
     "email not found": "email not found",
     "field is required": "field is required",
     "password is too easy": "password is too easy",
     "passwords aren't the same": "passwords aren't the same",
     "invalid format": "invalid format",
-    "email is registered": "email is registered"
+    "email is registered": "email is registered",
 
+    "Almost ready": "Almost ready",
+    "We have sent an email to your email address": "We have sent an email to your email address.",
+    "Please check this and confirm your email address": "Please check this and confirm your email address",
+    "Resend": "Resend"
 }

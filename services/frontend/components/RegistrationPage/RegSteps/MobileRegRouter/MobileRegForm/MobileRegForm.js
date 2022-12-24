@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useLanguage } from "../../../../../locales/hooks/useLanguage";
 import Text from "../../../../Elementes/Text/Text";
@@ -9,13 +10,19 @@ import MobStep4 from "./MobStep4/MobStep4";
 import MobStep5 from "./MobStep5/MobStep5";
 
 
-const MobileRegForm = ({mobileStep, seriealizeErrors}) => {
+const MobileRegForm = ({mobileStep, seriealizeErrors, isLoading,
+                         error, setErrorStep, onRegistrationSubmit}) => {
+    const {t} = useLanguage()
     const RegistrationForm = useForm({mode: 'onChange'})
-    const {handleSubmit, formState: {errors, isValid, dirtyFields, touchedFields}} = RegistrationForm
+    const {handleSubmit, setError, formState: {errors, isValid, dirtyFields, touchedFields}} = RegistrationForm
 
-    const onRegistrationSubmit = data => {
-        console.log(data);
-    }
+    useEffect(() => {
+        const {mobileStep, name, message} = error
+        if(!!name) {
+            setErrorStep(mobileStep)
+            setError(name, {type: 'submit', message: t(message)})
+        }
+    }, [error.message, errors])
 
     return (
         <>
@@ -41,7 +48,8 @@ const MobileRegForm = ({mobileStep, seriealizeErrors}) => {
                             touchedFields}} />
                     }
                     {
-                        mobileStep === 5 && <MobStep5 {...{...seriealizeErrors(errors), errors, isValid, 
+                        mobileStep === 5 && <MobStep5 {...{...seriealizeErrors(errors), errors, 
+                                                        isValid, isLoading,
                                                         onSubmit: handleSubmit(onRegistrationSubmit),
                                                         touchedFields}} />
                     }

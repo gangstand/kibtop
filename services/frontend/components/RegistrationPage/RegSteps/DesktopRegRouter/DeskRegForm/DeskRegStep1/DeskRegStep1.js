@@ -15,6 +15,7 @@ const DeskRegStep1 = ({dirtyFields, errors, name, message, touchedFields}) => {
 
     const isError = isStepError || isFieldsDirty
     const isTouched = !!touchedFields ? Object.keys(touchedFields).includes(name) : false
+    // const isClear = !!touchedFields ? Object.keys(touchedFields).length === 0 : true
 
     return (
         <>
@@ -29,7 +30,13 @@ const DeskRegStep1 = ({dirtyFields, errors, name, message, touchedFields}) => {
             <div className="reg-wrapper">
                 <NextRegBtnContainer isError={isError} />
 
-                {(isTouched && isError) && <p className="warn">{message}</p>}
+                {
+                ((isTouched && isError)) && (
+                        <p className="warn">
+                            {message}
+                        </p>
+                    )
+                }
             </div>
                             
 

@@ -4,7 +4,7 @@ import CityField from "../Fields/CityField";
 import FileField from "../Fields/FileField";
 import NameField from "../Fields/NameField";
 
-const DeskRegStep2 = ({dirtyFields, errors, name, message, touchedFields, onSubmit, isValid}) => {
+const DeskRegStep2 = ({dirtyFields, errors, name, message, touchedFields, onSubmit, isValid, isLoading}) => {
     const {t} = useLanguage()
 
     const isStepError = !!errors ? (!!errors.name || !!errors.city || !!errors.file) : true
@@ -26,8 +26,8 @@ const DeskRegStep2 = ({dirtyFields, errors, name, message, touchedFields, onSubm
 
                 <div className="reg-wrapper">
                     <div className="reg__submit">
-                        <button onClick={onSubmit} disabled={!isValid} className="reg-btn"><Text content="Sing up" /></button>
-                        <button onClick={onSubmit} disabled={!isValid} className="reg-btn reg-btn--free"><Text content="Skip" /></button>
+                        <button onClick={onSubmit} disabled={!isValid && isLoading} className="reg-btn"><Text content="Sing up" /></button>
+                        <button onClick={onSubmit} disabled={!isValid && isLoading} className="reg-btn reg-btn--free"><Text content="Skip" /></button>
                     </div>
 
                     {(isTouched && isError) && <p className="warn warn--high">{message}</p>}

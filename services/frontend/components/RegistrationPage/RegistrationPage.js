@@ -3,7 +3,7 @@ import { useLanguage } from "../../locales/hooks/useLanguage";
 import Text from "../Elementes/Text/Text";
 import RegNavContainer from "./RegNav/RegNavContainer";
 import RegDecorationContainer from "./RegSteps/RegDecoration/RegDecorationContainer";
-import RegSteps from "./RegSteps/RegSteps";
+import RegStepsContainer from "./RegSteps/RegStepsContainer";
 
 const RegistrationPage = () => {
     const {t} = useLanguage()
@@ -14,7 +14,7 @@ const RegistrationPage = () => {
                 <RegNavContainer />
 
                 <div className="container container--reg">
-                    <RegSteps />
+                    <RegStepsContainer />
 
 
                     <RegDecorationContainer />

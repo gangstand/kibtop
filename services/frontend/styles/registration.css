@@ -526,6 +526,8 @@
     position: relative;
     display: flex;
     align-items: center;
+
+    overflow: hidden;
 }
 /* 
 @media (min-width: 600px) {
@@ -599,16 +601,35 @@
 .form__field--password input {
    font-family: 'passwords';
 
-    font-size: 40px;
+    font-size: 38px;
     letter-spacing: 2px;
     margin-left: 38px;
 
-    padding-bottom: 2px;
+    padding-top: 1px;
 }
 
 .form__field--password input::placeholder {
     position: relative;
-    bottom: 8px;
+    bottom: 6.5px;
+}
+
+.form__field--shown {
+    padding: 0;
+}
+
+.form__field--shown input {
+    font-size: 16px;
+    letter-spacing: normal;
+    font-family: 'Open Sans', sans-serif;
+
+    height: 100%;
+    margin-left: 38px;
+    padding-top: 0;
+
+}
+
+.form__field--shown input::placeholder {
+    position: initial;
 }
 
 .password-circles {
@@ -1041,13 +1062,15 @@
     align-items: center;
     justify-content: flex-start;
 
-    margin-bottom: 26px;
+    margin-bottom: 46px;
 }
 
 @media (min-width: 600px) {
     .greeting__desc {
         flex-direction: row;
         justify-content: space-between;
+
+        margin-bottom: 26px;
     }
 }
 
@@ -1122,7 +1145,6 @@
     text-align: center;
 
     max-width: 160px;
-    margin-bottom: 46px;
 }
 
 @media (min-width: 600px) {
@@ -1134,7 +1156,6 @@
         text-align: left;
 
         max-width: max-content;
-        margin-bottom: 0;
     }
 }
 
@@ -1184,4 +1205,71 @@
     .use-location {
         display: none;
     }
+}
+
+
+
+@media (max-width: 600px) {
+    .greeting--confirm {
+        width: 100%;
+    }
+
+    .greeting--confirm .reg-btn {
+        width: 75%;
+
+        display: block;
+
+        margin: auto;
+    }
+
+    .greeting--confirm .greeting__text {
+        max-width: 75%;
+    }
+}
+
+.clear-field {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    z-index: 3;
+
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #BDBDBD;
+    border-radius: 50%;
+}
+
+.clear-field svg {
+    margin-left: 0;
+    width: 8px;
+    height: 8px;
+}
+
+.password-eye {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    z-index: 3;
+
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-eye svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 0;
 }

@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import RegDecoration from "./RegDecoration";
 
 const RegDecorationContainer = () => {
-    const {deskStep} = useSelector(state => state.registration)
+    const {deskStep, isConfirmed} = useSelector(state => state.registration)
 
-    return <RegDecoration {...{deskStep}} />;
+    return <RegDecoration {...{deskStep, isConfirmed}} />;
 }
 
 export default RegDecorationContainer;

@@ -73,6 +73,10 @@
     "password is too easy": "слишком лёгкий пароль",
     "passwords aren't the same": "пароли не совпадают",
     "invalid format": "неверный формат",
-    "email is registered": "почта занята"
-
+    "email is registered": "почта занята",
+    
+    "Almost ready": "Почти готово",
+    "We have sent an email to your email address": "Мы отправили письмо на ваш электронная почта.",
+    "Please check this and confirm your email address": "Пожалуйста, проверьте это и подтвердите свой адрес электронной почты",
+    "Resend": "Отправить заново"
 }

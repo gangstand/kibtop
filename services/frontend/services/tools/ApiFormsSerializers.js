@@ -1,7 +1,7 @@
 export const serializeRegistrationErrors = error => {
     if(!error || Object.keys(error) === 0) return {name: null, message: null}
 
-    let name, message, step
+    let name, message, deskStep, mobileStep
 
     for (const key in error) {
         name = convertFieldName(key)
@@ -9,13 +9,19 @@ export const serializeRegistrationErrors = error => {
     }
 
     const firstStepFields = ['email', 'password1', 'password1']
-    step = firstStepFields.some(field => field === name) ? 1 : 2
+    deskStep = firstStepFields.some(field => field === name) ? 1 : 2
 
-    return {name, message, step}
+
+    mobileStep = name === 'email' ? 1 : 5
+
+    return {name, message, deskStep, mobileStep}
 }
 
 const convertFieldName = name => {
     switch (name) {
+        case 'username':
+            return 'email'
+
         case 'middle_name':
             return 'name'
 
@@ -32,8 +38,10 @@ const convertFieldName = name => {
 
 const convertFieldError = message => {
     switch (message) {
-        case 'A user is already registered with this e-mail address.':
+        case 'user with this email address already exists.':
             return 'email is registered'
+        case 'user with this username already exists.':
+                return 'email is registered'
         default:
             return null
     }

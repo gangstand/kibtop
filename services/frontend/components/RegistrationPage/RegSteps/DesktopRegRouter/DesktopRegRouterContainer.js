@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import DesktopRegRouter from "./DesktopRegRouter";
 
 const DesktopRegRouterContainer = () => {
-    const {deskStep} = useSelector(state => state.registration)
+    const {isRegistered} = useSelector(state => state.registration)
 
-    return <DesktopRegRouter {...{deskStep}} />;
+    return <DesktopRegRouter {...{isRegistered}} />;
 }
 
 export default DesktopRegRouterContainer;

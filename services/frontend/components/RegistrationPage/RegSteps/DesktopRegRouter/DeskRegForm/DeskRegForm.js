@@ -1,13 +1,25 @@
 import Link from "next/link";
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useLanguage } from "../../../../../locales/hooks/useLanguage";
 import Text from "../../../../Elementes/Text/Text";
 import DeskRegStep1 from "./DeskRegStep1/DeskRegStep1";
 import DeskRegStep2 from "./DeskRegStep2/DeskRegStep2";
 
-const DeskRegForm = ({deskStep, seriealizeErrors, firstStepStyle, secondStepStyle, onRegistrationSubmit}) => {
+const DeskRegForm = ({deskStep, error, setErrorStep,
+                    isLoading, seriealizeErrors, 
+                    firstStepStyle, secondStepStyle, 
+                    onRegistrationSubmit}) => {
     const RegistrationForm = useForm({mode: 'onChange'})
-    const {handleSubmit, formState: {errors, isValid, dirtyFields, touchedFields}} = RegistrationForm
+    const {handleSubmit, setError, formState: {errors, isValid, dirtyFields, touchedFields}} = RegistrationForm
+
+    useEffect(() => {
+        const {deskStep, name, message} = error
+        if(!!name) {
+            setErrorStep(deskStep)
+            setError(name, {type: 'submit', message})
+        }
+    }, [error.name])
 
     return (
         <>
@@ -26,7 +38,8 @@ const DeskRegForm = ({deskStep, seriealizeErrors, firstStepStyle, secondStepStyl
                     <div className="form__step" style={secondStepStyle}>
                         <DeskRegStep2 {...{errors, dirtyFields, touchedFields,
                                             ...seriealizeErrors(errors),
-                                            isValid, onSubmit: handleSubmit(onRegistrationSubmit)}} />
+                                            isValid, isLoading, 
+                                            onSubmit: handleSubmit(onRegistrationSubmit)}} />
                     </div>
                 </FormProvider>
             </form>

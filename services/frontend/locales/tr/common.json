@@ -73,6 +73,11 @@
     "password is too easy": "şifre çok kolay",
     "passwords aren't the same": "şifreler aynı değil",
     "invalid format": "geçersiz biçim",
-    "email is registered": "e-posta kayıtlı"
+    "email is registered": "e-posta kayıtlı",
+
+    "Almost ready": "Neredeyse hazır",
+    "We have sent an email to your email address": "E-posta adresinize bir e-posta gönderdik.",
+    "Please check this and confirm your email address": "Lütfen bunu kontrol edin ve e-posta adresinizi onaylayın",
+    "Resend": "Yeniden gönder"
 }
 

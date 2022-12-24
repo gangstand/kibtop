@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AuthApi } from "../../services/AuthApi";
 import { serializeRegistrationErrors } from "../../services/tools/ApiFormsSerializers";
-import { setRegistrationError } from "./RegistrationSlice";
+import { setDeskStep, setMobileStep, setRegistrationConfirm, setRegistrationError, setRegistrationLoading, setRegistrationStatus } from "./RegistrationSlice";
 
 
 const initialState = {
@@ -33,16 +33,37 @@ export const setAuthThunk = () => async dispatch => {
 }
 
 export const registrationThunk = (email, password1, password2, name, city, file) => async dispatch => {
-    AuthApi.registration(email, password1, password2, name, city, file)
+    dispatch(setRegistrationLoading({bool: true}))
+    await AuthApi.registration(email, password1, password2, name, city, file)
         .then(data => {
-            dispatch(setAuthThunk())
+            dispatch(setRegistrationStatus({bool: true}))
+
+            dispatch(setDeskStep({step: 1}))
+            dispatch(setMobileStep({step: 1}))
+
+            dispatch(setRegistrationLoading({bool: false}))
+
+            
+            const checkAuthId = setInterval(() => {
+                AuthApi.login(email, password1)
+                    .then(data => {
+                        clearInterval(checkAuthId)
+
+                        dispatch(setRegistrationConfirm({bool: true}))
+                        dispatch(setAuthThunk())
+
+                    }).catch(err => {
+                        console.log(err);
+                    })
+            }, 4000)
+
         }).catch(err => {
             console.log(err)
             const error = err.response.data
 
-            const {name, message, step} = serializeRegistrationErrors(error)
+            const {name, message, deskStep, mobileStep} = serializeRegistrationErrors(error)
             console.log(name, ':', message)
 
-            dispatch(setRegistrationError({name, message, step}))
+            dispatch(setRegistrationError({name, message, deskStep, mobileStep}))
         })
 }

@@ -6,18 +6,19 @@ from accounts.managers import UserManager
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=255, unique=True)
-    email = models.EmailField()
-    phone = models.CharField(max_length=30)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    middle_name = models.CharField(max_length=255)
-    upload_user = models.FileField(upload_to='user/')
-    addres = models.CharField(max_length=255)
-    date_joined = models.DateTimeField(default=timezone.now)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_verified = models.BooleanField(default=False)
+    username = models.CharField('username', max_length=255, unique=True)
+    email = models.EmailField('email address', null=True, blank=True)
+    phone = models.CharField('phone number', max_length=30, null=True, blank=True)
+    date_joined = models.DateTimeField('date joined', default=timezone.now)
+    is_active = models.BooleanField('active', default=False)
+    is_staff = models.BooleanField('staff', default=False)
+    first_name = models.CharField(max_length=255, null=True, blank=True)
+    last_name = models.CharField(max_length=255, null=True, blank=True)
+    middle_name = models.CharField(max_length=255, null=True, blank=True)
+    upload_user = models.FileField(upload_to='user/', null=True, blank=True)
+    addres = models.CharField(max_length=255, null=True, blank=True)
+
+    is_verified = models.BooleanField('verified', default=False)
 
     objects = UserManager()
 
@@ -27,4 +28,3 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
-        unique_together = 'username', 'email', 'phone'
