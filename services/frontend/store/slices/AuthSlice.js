@@ -53,16 +53,16 @@ export const registrationThunk = (email, password1, password2, name, city, file)
                         dispatch(setAuthThunk())
 
                     }).catch(err => {
-                        console.log(err);
+                        // console.log(err);
                     })
             }, 4000)
 
         }).catch(err => {
-            console.log(err)
+            // console.log(err)
             const error = err.response.data
 
             const {name, message, deskStep, mobileStep} = serializeRegistrationErrors(error)
-            console.log(name, ':', message)
+            // console.log(name, ':', message)
 
             dispatch(setRegistrationError({name, message, deskStep, mobileStep}))
         })

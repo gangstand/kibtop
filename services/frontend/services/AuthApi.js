@@ -47,8 +47,6 @@ export const AuthApi = {
 
         return await instance.post('auth/users/', formData)
             .then((res) => {
-                console.log(res);
-
                 return res.data
             })
     },
