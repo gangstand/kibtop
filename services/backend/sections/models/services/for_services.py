@@ -1,5 +1,3 @@
-from sections.utils import transl_for
-
 SERVICES_CATEGORY_EN = [
     ('Cleaning', 'Cleaning'),
     ('Business', 'Business'),
@@ -10,6 +8,23 @@ SERVICES_CATEGORY_EN = [
     ('Construction / Repair', 'Construction / Repair'),
     ('Other', 'Other'),
 ]
-
-SERVICES_CATEGORY_RU = (transl_for(SERVICES_CATEGORY_EN, "Русский"))
-SERVICES_CATEGORY_TR = (transl_for(SERVICES_CATEGORY_EN, "Türk"))
+SERVICES_CATEGORY_RU = [
+    ('Уборка', 'Очищение'),
+    ('Бизнес', 'Business'),
+    ('Бытовые услуги', 'Бытовые услуги'),
+    ('Красота / здоровье', 'Красота / Здоровье'),
+    ('Образование', 'Education'),
+    ('Транспорт', 'Транспортировка'),
+    ('Строительство / ремонт', 'Строительство / ремонт'),
+    ('Другое', 'Прочее'),
+]
+SERVICES_CATEGORY_TR = [
+    ('Temizlik', 'Temizlik'),
+    ('İş', 'iş'),
+    ('Yurt içi hizmetler', 'Yurt içi hizmetler'),
+    ('Güzellik / Sağlık', 'Güzellik / Sağlık'),
+    ('Eğitim', 'Eğitim'),
+    ('Ulaşım', 'Ulaşım'),
+    ('İnşaat / Onarım', 'İnşaat / Onarım'),
+    ('Diğer', 'Diğer'),
+]
