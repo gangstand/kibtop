@@ -1,8 +1,11 @@
 
 
 .section {
+    box-sizing: border-box;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: max-content;
+    padding: 30px 0;
 
     display: flex;
     flex-direction: column;
@@ -12,7 +15,7 @@
 
 @media (min-width: 600px) {
     .section {
-        height: calc(100vh - 40px);
+        min-height: calc(100vh - 40px);
     }
 }
 
@@ -493,6 +496,12 @@
     }
 }
 
+.reg-title__line {
+    display: block;
+}
+    
+
+
 .form__count {
     font-family: 'SF Pro Text';
     font-style: normal;
@@ -918,7 +927,13 @@
 }
 
 .to-login a {
+    font-style: normal;
     color: var(--color-blue);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 11px;
+
+    letter-spacing: normal;
 }
 
 .form__file-field {

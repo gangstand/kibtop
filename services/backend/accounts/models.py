@@ -7,7 +7,7 @@ from accounts.managers import UserManager
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField('username', max_length=255, unique=True)
-    email = models.EmailField('email address', null=True, blank=True)
+    email = models.EmailField('email address', null=True, blank=True, unique=True)
     phone = models.CharField('phone number', max_length=30, null=True, blank=True)
     date_joined = models.DateTimeField('date joined', default=timezone.now)
     is_active = models.BooleanField('active', default=False)

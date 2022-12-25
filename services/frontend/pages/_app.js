@@ -4,6 +4,8 @@ import '../styles/header.css'
 import '../styles/slider.css'
 import '../styles/home.css'
 import '../styles/registration.css'
+import '../styles/login.css'
+
 
 
 import React, { Suspense } from 'react';

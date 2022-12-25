@@ -5,18 +5,18 @@ import FormDataCreator from "./tools/FormDataCreator";
 
 export const AuthApi = {
     async auth() {
-        const { refresh_token } = Cookies.getCookies();
+        const { refresh } = Cookies.getCookies();
         return await instance.post('auth/jwt/refresh/',
             {
-                "refresh": refresh_token
+                "refresh": refresh
             }).then(res => {
                 const access = res.data.access
 
                 const {user_id} = jwtDecode(access)
-                Cookies.setCookie('access_token', access)
+                Cookies.setCookie('access', access)
 
                 return {userId: user_id}
-            }, () => null).catch(err => undefined)
+            }, () => null).catch(err => console.log(err))
     },
 
     async registration(email, password1, password2, name, city, file) {
@@ -60,6 +60,8 @@ export const AuthApi = {
         
         return await instance.post('auth/jwt/create/', body)
             .then(({data}) => {
+
+                console.log(data);
 
                 const {access, refresh} = data
 

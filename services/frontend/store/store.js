@@ -6,6 +6,7 @@ import { locationReducer } from "./slices/LocationSlice";
 import { LocaleReducer } from "./slices/LocaleSlice";
 import { MobileReducer } from "./slices/MobileSlice";
 import { RegistrationRducer } from "./slices/RegistrationSlice";
+import { LoginReducer } from "./slices/LoginSlice";
 
 const reducer = {
     auth: authReducer,
@@ -14,6 +15,7 @@ const reducer = {
     locale: LocaleReducer,
     mobile: MobileReducer,
     registration: RegistrationRducer,
+    login: LoginReducer,
     [HomePageApi.reducerPath]: HomePageApi.reducer
 }
 

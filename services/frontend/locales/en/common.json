@@ -48,6 +48,7 @@
     "Repeat password": "Repeat password",
     "Next": "Next",
     "Sing in with Google or Facebook": "Sing in with Google or Facebook",
+    "Login with Google or Facebook": "Login with Google or Facebook",
     "Google": "Google",
     "Facebook": "Facebook",
     "Already have an account": "Already have an account",
@@ -66,6 +67,8 @@
     "Place ad": "Place ad",
     "Sing up": "Sing up",
     "Use my location": "Use my location",
+    "Forgot your password?": "Forgot your password?",
+    "Don't have an account?": "Don't have an account?",
 
 
     "email not found": "email not found",
@@ -78,5 +81,8 @@
     "Almost ready": "Almost ready",
     "We have sent an email to your email address": "We have sent an email to your email address.",
     "Please check this and confirm your email address": "Please check this and confirm your email address",
-    "Resend": "Resend"
+    "Resend": "Resend",
+
+    "Welcome back": "Welcome back",
+    "to": "to"
 }

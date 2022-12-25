@@ -49,6 +49,7 @@
     "Repeat password": "Şifreyi tekrarla",
     "Next": "Sonraki",
     "Sing in with Google or Facebook": "Google veya Facebook ile oturum açın",
+    "Login with Google or Facebook": "Google veya Facebook ile oturum açın",
     "Google": "Google",
     "Facebook": "Facebook",
     "Already have an account": "Zaten bir hesabınız var",
@@ -67,6 +68,8 @@
     "Place ad": "İlan ver",
     "Sing up": "Kaydolmak",
     "Use my location": "Konumumu kullan",
+    "Forgot your password?": "Şifrenizi mi unuttunuz?",
+    "Don't have an account?": "Hesabınız yok mu?",
 
     "email not found": "e-posta bulunamadı",
     "field is required": "alan gereklidir",
@@ -78,6 +81,9 @@
     "Almost ready": "Neredeyse hazır",
     "We have sent an email to your email address": "E-posta adresinize bir e-posta gönderdik.",
     "Please check this and confirm your email address": "Lütfen bunu kontrol edin ve e-posta adresinizi onaylayın",
-    "Resend": "Yeniden gönder"
+    "Resend": "Yeniden gönder",
+
+    "Welcome back": "Roma'ya tekrar",
+    "to": "hoş"
 }
 
