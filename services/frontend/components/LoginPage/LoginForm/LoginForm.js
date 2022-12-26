@@ -1,6 +1,8 @@
+import { t } from "i18next";
 import Link from "next/link";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { useLanguage } from "../../../locales/hooks/useLanguage";
 import Text from "../../Elementes/Text/Text";
 import AltReg from "../../RegistrationPage/RegSteps/AltReg/AltReg";
 import EmailField from "../../RegistrationPage/RegSteps/DesktopRegRouter/DeskRegForm/Fields/EmailField";
@@ -8,16 +10,16 @@ import PasswordField from "../../RegistrationPage/RegSteps/DesktopRegRouter/Desk
 import LoginFormSubmit from "./LoginFormSubmit/LoginFormSubmit";
 
 const LoginForm = ({seriealizeErrors, onLoginSubmit, isLoading, error}) => {
-
+    const {t} = useLanguage()
     const LoginForm = useForm({mode: 'onChange'})
-    const {handleSubmit, formState: {isValid, errors, touchedFields}} = LoginForm
+    const {handleSubmit, setError, formState: {isValid, errors, touchedFields}} = LoginForm
 
     useEffect(() => {
-        const {name, message} = error
-        if(!!name) {
-            setError(name, {type: 'submit', message})
+        if(!!error) {
+            setError('email', {type: 'submit', message: t('Incorrect email or password')})
+            setError('password1', {type: 'submit', message: t('Incorrect email or password')})
         }
-    }, [error.name])
+    }, [error])
 
     return (
         <>
@@ -44,7 +46,7 @@ const LoginForm = ({seriealizeErrors, onLoginSubmit, isLoading, error}) => {
                 <AltReg text="Login with Google or Facebook" />
 
                 <p className="to-login">
-                    <Text content="Don't have an account?" /> <Link className="bigger" href="/registration"><Text content="Sign up" /></Link>
+                    <Text content="Don't have an account?" /> <Link className="bigger" href="/auth/registration"><Text content="Sign up" /></Link>
                 </p>
             </form>
         </>

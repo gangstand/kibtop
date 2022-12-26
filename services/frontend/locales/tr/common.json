@@ -42,7 +42,8 @@
     "Messages": "Mesajlar",
     "Cancel": "İptal",
 
-    "Create new account": "Yeni hesap oluştur",
+    "Create new": "Yeni hesap",
+    "account": "oluştur",
     "of": "-den",
     "Your email": "E-postanız",
     "Password": "Şifre",
@@ -77,6 +78,8 @@
     "passwords aren't the same": "şifreler aynı değil",
     "invalid format": "geçersiz biçim",
     "email is registered": "e-posta kayıtlı",
+    "Incorrect email or password": "Yanlış e-posta veya şifre",
+
 
     "Almost ready": "Neredeyse hazır",
     "We have sent an email to your email address": "E-posta adresinize bir e-posta gönderdik.",

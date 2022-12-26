@@ -13,7 +13,7 @@ const LoginFormSubmit = ({onSubmit, isValid, name, message, touchedFields, isLoa
                 </button>
 
                 <div className="submit__column">
-                    <Link className="link-opacity" href="recovery"><Text content="Forgot your password?" /></Link>
+                    <Link className="link-opacity" href="/auth/recovery"><Text content="Forgot your password?" /></Link>
                         
                     {(!!message && isTouched) && <p className="warn">{message}</p>}
                 </div>

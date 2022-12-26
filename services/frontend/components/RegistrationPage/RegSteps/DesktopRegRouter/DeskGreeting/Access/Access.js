@@ -5,7 +5,10 @@ const Access = () => {
     return (
         <>
             <article className="greeting">
-                <h2 className="reg-title"><Text content="Create new account" /></h2>
+                <h2 className="reg-title">
+                    <span className="reg-title__line"><Text content="Create new" /></span>
+                    <span className="reg-title__line"><Text content="account" /></span>
+                </h2>
 
                 <div className="greeting__desc">
                     <svg className="greeting__img" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">

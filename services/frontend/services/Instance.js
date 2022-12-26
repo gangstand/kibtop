@@ -8,6 +8,6 @@ export const instance = axios.create({
     headers: {
         
     },
-    withCredentials: true
+    withCredentials: false
 })
 

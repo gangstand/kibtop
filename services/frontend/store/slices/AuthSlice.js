@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AuthApi } from "../../services/AuthApi";
 import { serializeLoginErrors, serializeRegistrationErrors } from "../../services/tools/ApiFormsSerializers";
-import { setLoginError } from "./LoginSlice";
-import { setDeskStep, setMobileStep, setRegistrationConfirm, setRegistrationError, setRegistrationLoading, setRegistrationStatus } from "./RegistrationSlice";
+import { setLoginError, setLoginLoading } from "./LoginSlice";
+import { setDeskStep, setMobileStep, setRegistrationConfirm, setRegistrationError, setRegistrationLoading, setRegistrationStatus, setResendEmail } from "./RegistrationSlice";
 
 
 const initialState = {
@@ -34,26 +34,27 @@ export const setAuthThunk = () => async dispatch => {
 }
 
 export const registrationThunk = (email, password1, password2, name, city, file) => async dispatch => {
-    dispatch(setRegistrationLoading({bool: true}))
+    dispatch(setRegistrationLoading({bool: true})) // Loader switch on
     await AuthApi.registration(email, password1, password2, name, city, file)
         .then(data => {
-            dispatch(setRegistrationStatus({bool: true}))
+            dispatch(setResendEmail({email: data.email})) // Set email fo resending account activation letter
+            dispatch(setRegistrationStatus({bool: true})) // Switch to wainting for activation page
 
-            dispatch(setDeskStep({step: 1}))
-            dispatch(setMobileStep({step: 1}))
+            dispatch(setDeskStep({step: 1})) // Reseting registration steps to start
+            dispatch(setMobileStep({step: 1})) // Reseting registration steps to start
 
-            dispatch(setRegistrationLoading({bool: false}))
+            dispatch(setRegistrationLoading({bool: false})) // Loader switch off
 
             
-            const checkAuthId = setInterval(async () => {
+            const checkAuthId = setInterval(async () => { // Start checking account activation every 4s
                 await AuthApi.login(email, password1)
-                    .then(data => {
-                        clearInterval(checkAuthId)
+                    .then(data => { // If successfuly activated
+                        clearInterval(checkAuthId) // Stop checking
 
-                        dispatch(setRegistrationConfirm({bool: true}))
-                        dispatch(setAuthThunk())
-
-                    }).catch(err => {
+                        dispatch(setRegistrationConfirm({bool: true})) // Switch to welcome page
+                        dispatch(setAuthThunk()) // Send auth
+                        dispatch(setResendEmail({email: null})) // Default resendEmail
+                    }).catch(err => { // Else pass...
                         // console.log(err);
                     })
             }, 4000)
@@ -66,19 +67,19 @@ export const registrationThunk = (email, password1, password2, name, city, file)
             // console.log(name, ':', message)
 
             dispatch(setRegistrationError({name, message, deskStep, mobileStep}))
+            dispatch(setRegistrationLoading({bool: false}))
         })
 }
 
 export const loginThunk = (email, password) => async dispatch => {
+    dispatch(setLoginLoading({bool: true}))
+
     await AuthApi.login(email, password)
         .then(data => {
-
             dispatch(setAuthThunk())
+            dispatch(setLoginLoading({bool: false}))
         }).catch(err => {
-            const error = err.response.data
-
-            const {name, message} = serializeLoginErrors(error)
-
-            dispatch(setLoginError({name, message}))
+            dispatch(setLoginError({bool: true}))
+            dispatch(setLoginLoading({bool: false}))
         })
 }

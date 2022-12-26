@@ -41,7 +41,8 @@
     "Messages": "Messages",
     "Cancel": "Cancel",
 
-    "Create new account": "Create new account",
+    "Create new": "Create new",
+    "account": "account",
     "of": "of",
     "Your email": "Your email",
     "Password": "Password",
@@ -77,6 +78,7 @@
     "passwords aren't the same": "passwords aren't the same",
     "invalid format": "invalid format",
     "email is registered": "email is registered",
+    "Incorrect email or password": "Incorrect email or password",
 
     "Almost ready": "Almost ready",
     "We have sent an email to your email address": "We have sent an email to your email address.",
