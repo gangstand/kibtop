@@ -49,6 +49,7 @@
     "Repeat password": "Повторите пароль",
     "Next": "Далее",
     "Sing in with Google or Facebook": "Войти через Google или Facebook",
+    "Login with Google or Facebook": "Войти через Google или Facebook",
     "Google": "Google",
     "Facebook": "Facebook",
     "Already have an account": "Уже есть аккаунт",
@@ -67,6 +68,8 @@
     "Place ad": "Разместить товар",
     "Sing up": "Зрегистрироваться",
     "Use my location": "Использовать геолокацию",
+    "Forgot your password?": "Забыли ваш пароль?",
+    "Don't have an account?": "Нет аккаунта?",
 
     "email not found": "почта не найдена",
     "field is required": "поле обязательно",
@@ -78,5 +81,8 @@
     "Almost ready": "Почти готово",
     "We have sent an email to your email address": "Мы отправили письмо на ваш электронная почта.",
     "Please check this and confirm your email address": "Пожалуйста, проверьте это и подтвердите свой адрес электронной почты",
-    "Resend": "Отправить заново"
+    "Resend": "Отправить заново",
+
+    "Welcome back": "С возвращением",
+    "to": "в"
 }

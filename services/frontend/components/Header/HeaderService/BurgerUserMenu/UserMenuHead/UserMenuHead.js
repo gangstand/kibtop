@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Text from "../../../../Elementes/Text/Text";
 import UserMenuAvaContainer from "./UserMenuAva/UserMenuAvaContainer";
 
@@ -9,9 +10,9 @@ const UserMenuHead = ({isAuthed}) => {
 
                 {
                     !isAuthed && (
-                        <button className="btn btn--signup">
+                        <Link href="registration" className="btn btn--signup">
                             <Text content="Sign up" />
-                        </button>
+                        </Link>
                     )
                 }
             </nav>

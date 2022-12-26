@@ -1,3 +1,43 @@
+const convertFieldName = name => {
+    switch (name) {
+        case 'username':
+            return 'email'
+
+        case 'middle_name':
+            return 'name'
+
+        case 'upload_user':
+            return 'file'
+
+        case 'addres':
+            return 'city'
+        
+        case 'password':
+            return 'password1'
+
+        default:
+            return name
+    }
+}
+
+const convertFieldError = message => {
+    switch (message) {
+        case 'user with this email address already exists.':
+            return 'email is registered'
+        case 'user with this username already exists.':
+                return 'email is registered'
+        default:
+            return null
+    }
+}
+
+
+
+
+
+
+
+
 export const serializeRegistrationErrors = error => {
     if(!error || Object.keys(error) === 0) return {name: null, message: null}
 
@@ -17,32 +57,16 @@ export const serializeRegistrationErrors = error => {
     return {name, message, deskStep, mobileStep}
 }
 
-const convertFieldName = name => {
-    switch (name) {
-        case 'username':
-            return 'email'
+export const serializeLoginErrors = error => {
+    if(!error || Object.keys(error) === 0) return {name: null, message: null}
 
-        case 'middle_name':
-            return 'name'
+    let name, message
 
-        case 'upload_user':
-            return 'file'
-
-        case 'addres':
-            return 'city'
-
-        default:
-            return name
+    for (const key in error) {
+        name = convertFieldName(key)
+        message = convertFieldError(error[key][0])
     }
+
+    return {name, message}
 }
 
-const convertFieldError = message => {
-    switch (message) {
-        case 'user with this email address already exists.':
-            return 'email is registered'
-        case 'user with this username already exists.':
-                return 'email is registered'
-        default:
-            return null
-    }
-}

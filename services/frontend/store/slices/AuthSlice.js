@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AuthApi } from "../../services/AuthApi";
-import { serializeRegistrationErrors } from "../../services/tools/ApiFormsSerializers";
+import { serializeLoginErrors, serializeRegistrationErrors } from "../../services/tools/ApiFormsSerializers";
+import { setLoginError } from "./LoginSlice";
 import { setDeskStep, setMobileStep, setRegistrationConfirm, setRegistrationError, setRegistrationLoading, setRegistrationStatus } from "./RegistrationSlice";
 
 
@@ -65,5 +66,19 @@ export const registrationThunk = (email, password1, password2, name, city, file)
             // console.log(name, ':', message)
 
             dispatch(setRegistrationError({name, message, deskStep, mobileStep}))
+        })
+}
+
+export const loginThunk = (email, password) => async dispatch => {
+    await AuthApi.login(email, password)
+        .then(data => {
+
+            dispatch(setAuthThunk())
+        }).catch(err => {
+            const error = err.response.data
+
+            const {name, message} = serializeLoginErrors(error)
+
+            dispatch(setLoginError({name, message}))
         })
 }

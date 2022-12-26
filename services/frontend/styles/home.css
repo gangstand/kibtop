@@ -858,6 +858,7 @@
 }
 
 .location-select {
+    max-height: 643px;
     height: calc(100vh - 50px);
     width: 100vw;
     box-sizing: border-box;
