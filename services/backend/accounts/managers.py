@@ -31,8 +31,6 @@ class UserManager(BaseUserManager):
                 **extra_fields
             )
 
-        # проверяем является ли пользователь
-        # суперпользователем
         if extra_fields.get('is_superuser'):
             user = self.model(
                 username=username,
@@ -45,6 +43,11 @@ class UserManager(BaseUserManager):
 
     def create_user(self, username, email, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', False)
+        return self._create_user(username=username, email=email, password=password, **extra_fields)
+
+    def create_user_activate(self, username, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_superuser', False)
+        extra_fields.setdefault('is_active', True)
         return self._create_user(username=username, email=email, password=password, **extra_fields)
 
     def create_superuser(self, username, password, **extra_fields):

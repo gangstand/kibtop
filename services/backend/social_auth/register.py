@@ -1,5 +1,9 @@
+import json
 import environ
-from django.contrib.auth import authenticate
+import requests
+from django.http import JsonResponse
+from rest_framework.response import Response
+
 from accounts.models import CustomUser
 import random
 from rest_framework.exceptions import AuthenticationFailed
@@ -9,7 +13,6 @@ environ.Env.read_env('.env')
 
 
 def generate_username(name):
-
     username = "".join(name.split(' ')).lower()
     if not CustomUser.objects.filter(username=username).exists():
         return username
@@ -24,32 +27,23 @@ def register_social_user(provider, user_id, email, name):
     if filtered_user_by_email.exists():
 
         if provider == filtered_user_by_email[0].auth_provider:
-
-            registered_user = authenticate(
-                email=email, password=env('SOCIAL_SECRET'))
-
-            return {
-                'username': 'ganggstand',
-                'email': registered_user.email,
-                'tokens': registered_user.tokens()}
-
+            payload = {'username': name, 'password': env('SOCIAL_SECRET')}
+            response = requests.post(f'{env("URL")}/api/v1/auth/jwt/create', data=payload).json()
+            return {"refresh": response['refresh'], "access": response['access']}
         else:
             raise AuthenticationFailed(
                 detail='Please continue your login using ' + filtered_user_by_email[0].auth_provider)
 
     else:
         user = {
-            'username': generate_username(name), 'email': email,
-            'password': env('SOCIAL_SECRET')}
-        user = CustomUser.objects.create_user(**user)
-        user.is_verified = True
-        user.auth_provider = provider
+            'username': generate_username(name),
+            'email': email,
+            'password': env('SOCIAL_SECRET'),
+            'auth_provider': provider,
+        }
+        user = CustomUser.objects.create_user_activate(**user)
         user.save()
 
-        new_user = authenticate(
-            email=email, password=env('SOCIAL_SECRET'))
-        return {
-            'email': new_user.email,
-            'username': new_user.username,
-            'tokens': new_user.tokens()
-        }
+        payload = {'username': name, 'password': env('SOCIAL_SECRET')}
+        response = requests.post(f'{env("URL")}/api/v1/auth/jwt/create', data=payload).json()
+        return {"refresh": response['refresh'], "access": response['access']}
