@@ -8,7 +8,7 @@ export const AuthApi = {
         const { refresh } = Cookies.getCookies();
         return await instance.post('auth/jwt/refresh/',
             {
-                "refresh": refresh
+                "refresh": refresh || 'refresh'
             }).then(res => {
                 const access = res.data.access
 

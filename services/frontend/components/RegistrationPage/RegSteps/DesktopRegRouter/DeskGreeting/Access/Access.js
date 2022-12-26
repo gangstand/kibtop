@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Text from "../../../../../Elementes/Text/Text";
 
 const Access = () => {
@@ -18,8 +19,8 @@ const Access = () => {
                     </div>
                 </div>
                         
-                <button className="reg-btn"><Text content="Watch ads" /></button>
-                <button className="reg-btn reg-btn--free"><Text content="Place ad" /></button>
+                <Link href="/" className="reg-btn"><Text content="Watch ads" /></Link>
+                <Link href="/" className="reg-btn reg-btn--free"><Text content="Place ad" /></Link>
             </article>
         </>
     );

@@ -45,8 +45,8 @@ export const registrationThunk = (email, password1, password2, name, city, file)
             dispatch(setRegistrationLoading({bool: false}))
 
             
-            const checkAuthId = setInterval(() => {
-                AuthApi.login(email, password1)
+            const checkAuthId = setInterval(async () => {
+                await AuthApi.login(email, password1)
                     .then(data => {
                         clearInterval(checkAuthId)
 
