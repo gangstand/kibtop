@@ -136,8 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "accounts.CustomUser"
 AUTHENTICATION_BACKENDS = ('accounts.backends.AuthBackend',)
 
-EMAIL_USE_TLS = True
-
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
@@ -167,6 +165,7 @@ DJOSER = {
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'TOKEN_MODEL': None,  # We use only JWT
     'ACTIVATION_URL': 'api/v1/auth/verify/{uid}/{token}/',
+    'PASSWORD_RESET_CONFIRM_URL': 'api/v1/auth/password/reset/confirm/{uid}/{token}',
     'SERIALIZERS': {
         "user_create": 'accounts.serializer.UserRegistrationSerializer',
         "user": "accounts.serializer.UserAPISerializer",
@@ -175,4 +174,13 @@ DJOSER = {
 }
 
 # EMAIL
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = env("EMAIL_HOST_USER")
+SERVER_EMAIL = env("EMAIL_HOST_USER")
