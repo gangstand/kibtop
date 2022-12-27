@@ -1,3 +1,30 @@
+# Сonfiguration API
+Сreate file **.env** path **services/backend** \
+Full path - **services/backend/.env**
+```
+# WEB SITE SETTINGS
+SECRET_KEY=
+POSTGRES_HOST=
+POSTGRES_DB=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_PORT=
+
+# SOCIAL SETTINGS
+URL=
+SOCIAL_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+# EMAIL CREDENTIALS
+EMAIL_HOST=
+EMAIL_PORT=
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+```
+
+Get data on request **@gangfv**
+
 # Launching API
 
 ```
@@ -45,6 +72,11 @@ Bypass password validation and create user anyway? [y/N]: y # <- Important
 Superuser created successfully.
 
 ```
+
+# Сonfiguration API Admin
+**Change sites**
+
+![img4.png](readme_img/img4.png)
 
 # Launching React
 
