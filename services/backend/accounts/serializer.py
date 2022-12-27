@@ -4,19 +4,19 @@ from djoser.serializers import UserSerializer, UserCreateSerializer, UserCreateP
 class UserRegistrationSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         fields = (
-            'username', 'email', 'phone', 'password', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user'
+            'username', 'email', 'password', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user'
         )
 
 
 class UserAPISerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
         fields = (
-            'username', 'email', 'phone', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user'
+            'username', 'email', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user'
         )
 
 
 class UserAPICreatePasswordRetypeSerializer(UserCreatePasswordRetypeSerializer):
     class Meta(UserCreatePasswordRetypeSerializer.Meta):
-        fields = fields = (
-            'username', 'email', 'phone', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user', 'password'
+        fields = (
+            'username', 'email', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user', 'password'
         )
