@@ -25,9 +25,9 @@ INSTALLED_APPS = [
     'modeltranslation',
 
     'django.contrib.sites',
-
-    'drf_yasg',
     'djoser',
+    'django_messages_drf',
+    'drf_yasg',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
 ]
