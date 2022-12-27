@@ -21,6 +21,7 @@ urlpatterns = [
   path('api/v1/', include([
       path('auth/', include('accounts.urls')),
       path('social_auth/', include(('social_auth.urls', 'social_auth'), namespace="social_auth")),
+      path("messages/", include("django_messages_drf.urls", namespace="messages")),
       path('', include('sections.urls.recommend.urls_recommend')),
       path('', include('sections.urls.base_urls')),
       path('', include('sections.urls.new.urls_new')),

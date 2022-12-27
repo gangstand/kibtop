@@ -18,12 +18,13 @@ services:
       - "443:443"
 
   postgresql:
-    image: postgres
-    container_name: postgres
+    image: postgres:12.0-alpine
     volumes:
-      - postgres_volume:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data/
     environment:
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
     ports:
       - "5432:5432"
 
@@ -31,7 +32,8 @@ services:
     build: ./backend
     container_name: api
     command: >
-      sh -c " python manage.py migrate &&
+      sh -c " python manage.py makemigrations &&
+              python manage.py migrate &&
               python manage.py collectstatic --noinput &&
               gunicorn settings.wsgi:application --bind 0.0.0.0:8000"
     volumes:
@@ -53,6 +55,6 @@ services:
       - "3000:3000"
 
 volumes:
-  postgres_volume:
+  postgres_data:
   static_volume:
   media_volume:

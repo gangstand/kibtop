@@ -25,9 +25,9 @@ INSTALLED_APPS = [
     'modeltranslation',
 
     'django.contrib.sites',
-
-    'drf_yasg',
     'djoser',
+    'django_messages_drf',
+    'drf_yasg',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
 ]
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env("POSTGRES_DB"),
         'USER': env("POSTGRES_USER"),
         'PASSWORD': env("POSTGRES_PASSWORD"),
