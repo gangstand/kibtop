@@ -1,4 +1,4 @@
-from datetime import timedelta
+
 from pathlib import Path
 import environ
 
@@ -26,9 +26,9 @@ INSTALLED_APPS = [
     'modeltranslation',
 
     'django.contrib.sites',
-
-    'drf_yasg',
     'djoser',
+    'django_messages_drf',
+    'drf_yasg',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
 ]
@@ -135,20 +135,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "accounts.CustomUser"
 AUTHENTICATION_BACKENDS = ('accounts.backends.AuthBackend',)
 
-EMAIL_USE_TLS = True
-
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
+
     ),
     'DEFAULT_FILTER_BACKEND': (
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -175,4 +169,13 @@ DJOSER = {
 }
 
 # EMAIL
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = env("EMAIL_HOST_USER")
+SERVER_EMAIL = env("EMAIL_HOST_USER")
