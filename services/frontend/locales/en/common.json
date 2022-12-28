@@ -86,5 +86,9 @@
     "Resend": "Resend",
 
     "Welcome back": "Welcome back",
-    "to": "to"
+    "to": "to",
+
+    "Password recovery": "Password recovery",
+    "Change password": "Change password",
+    "Link is not valid": "Link is not valid"
 }

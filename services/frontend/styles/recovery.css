@@ -1,0 +1,72 @@
+.section--recovery {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-top: 61px;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+@media (max-width: 600px) {
+    .section--recovery {
+        align-items: flex-start;
+    }
+}
+
+.recovery-title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 53px;
+    text-align: center;
+    color: var(--color-black);
+
+    max-width: 240px;
+
+    margin-top: 20px;
+    margin-bottom: 31px;
+}
+
+
+@media (max-width: 600px) {
+    .recovery-title {
+        text-align: left;
+        font-family: 'SF Pro Text';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 35px;
+
+        margin-bottom: 48px;
+    }
+}
+
+@media (max-width: 600px) {
+    .form--recovery {
+        width: 100%
+    }
+}
+
+@media (max-width: 600px) {
+    .logo-icon--recovery {
+        display: none;
+    }
+}
+
+.form__fields--recovery {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .warn--recovery {
+        margin-bottom: 5px;
+        height: 10px;
+        width: 100%;
+    }
+}
+
+.section--recovery .form__field {
+    margin-bottom: 20px;
+}

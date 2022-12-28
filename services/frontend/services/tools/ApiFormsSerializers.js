@@ -70,3 +70,8 @@ export const serializeLoginErrors = error => {
     return {name, message}
 }
 
+
+export const seriealizeErrors = (errors) => ({
+    name: Object.keys(errors)[0],
+    message: errors[Object.keys(errors)[0]]?.message
+})

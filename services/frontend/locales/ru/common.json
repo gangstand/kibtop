@@ -87,5 +87,10 @@
     "Resend": "Отправить заново",
 
     "Welcome back": "С возвращением",
-    "to": "в"
+    "to": "в",
+
+    "Password recovery": "Восстановление пароля",
+    "Change password": "Изменить пароль",
+    "Link is not valid": "Ссылка не действительна"
+
 }

@@ -4,6 +4,9 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils import timezone
 from accounts.managers import UserManager
 
+AUTH_PROVIDERS = {'facebook': 'facebook', 'google': 'google',
+                  'twitter': 'twitter', 'email': 'email'}
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField('username', max_length=255, unique=True)
@@ -17,6 +20,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     middle_name = models.CharField(max_length=255, null=True, blank=True)
     upload_user = models.FileField(upload_to='user/', null=True, blank=True)
     addres = models.CharField(max_length=255, null=True, blank=True)
+    auth_provider = models.CharField(
+        max_length=255, blank=False,
+        null=False, default=AUTH_PROVIDERS.get('email'))
 
     is_verified = models.BooleanField('verified', default=False)
 

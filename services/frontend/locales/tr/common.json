@@ -87,6 +87,11 @@
     "Resend": "Yeniden gönder",
 
     "Welcome back": "Roma'ya tekrar",
-    "to": "hoş"
+    "to": "hoş",
+
+    "Password recovery": "Şifre kurtarma",
+    "Change password": "Şifreyi değiştir",
+    "Link is not valid": "Bağlantı geçerli değil"
+
 }
 

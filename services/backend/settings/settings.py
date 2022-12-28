@@ -165,7 +165,8 @@ DJOSER = {
     'SET_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'TOKEN_MODEL': None,  # We use only JWT
-    'ACTIVATION_URL': 'api/v1/auth/verify/{uid}/{token}/',
+    'ACTIVATION_URL': 'auth/confirm/{uid}/{token}/',
+    'PASSWORD_RESET_CONFIRM_URL': '/auth/recovery/{uid}/{token}',
     'SERIALIZERS': {
         "user_create": 'accounts.serializer.UserRegistrationSerializer',
         "user": "accounts.serializer.UserAPISerializer",
