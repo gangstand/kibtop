@@ -27,6 +27,9 @@
 
     margin-top: 20px;
     margin-bottom: 31px;
+
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -69,4 +72,66 @@
 
 .section--recovery .form__field {
     margin-bottom: 20px;
+}
+
+.reg-title--rec {
+    margin-bottom: 38px;
+}
+
+@media (max-width: 600px) {
+    .reg-title--rec {
+        max-width: 238px !important;
+    }
+}
+
+@media (min-width: 600px) {
+    .form__fields--rec {
+        margin-bottom: 0;
+    }
+}
+
+
+.form__fields--rec .form__field {
+    margin-bottom: 15px;
+}
+
+.warn--top {
+    position: relative;
+    top: -3px;
+}
+
+@media (min-width: 600px) {
+    .form__bottom {
+        margin-top: 166px;
+    }
+
+    .warn--top {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .warn--bottom {
+        display: none;
+    }
+
+    .greeting__desc--rec {
+        margin-bottom: 25px;
+    }
+
+    .reg-btn--sended {
+        padding: 0;
+        background-color: #fff;
+        color: var(--color-blue);
+    }
+}
+
+.greeting__bottom {
+    margin-top: 115px;
+}
+
+@media (max-width: 600px) {
+    .greeting__bottom {
+        margin-top: 115px;
+    }
 }

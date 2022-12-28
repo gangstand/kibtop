@@ -91,6 +91,11 @@
 
     "Password recovery": "Восстановление пароля",
     "Change password": "Изменить пароль",
-    "Link is not valid": "Ссылка не действительна"
+    "Link is not valid": "Ссылка не действительна",
 
+    "Submit code": "Отправить код",
+    "incorrect email": "неверная почта",
+
+    "Ready! Check your email": "Готово! Проверьте вашу почту",
+    "We have sent a password reset link to your email": "Мы отправили ссылку для сброса пароля на вашу почту"
 }

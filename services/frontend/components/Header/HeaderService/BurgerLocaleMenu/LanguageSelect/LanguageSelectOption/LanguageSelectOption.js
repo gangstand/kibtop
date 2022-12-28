@@ -1,12 +1,15 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Text from "../../../../../Elementes/Text/Text";
 
 const LanguageSelectOption = ({language, value, text, closeLocaleBurgerMenu}) => {
     const isChecked = language === value;
 
+    const { pathname, query} = useRouter()
+
     return (
         <>
-            <Link href="" locale={value}  
+            <Link href={{pathname, query}} locale={value}  
                   className={"modal-select__option" + 
                   (isChecked ? ' modal-select__option--checked' : '')}>
 

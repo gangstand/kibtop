@@ -91,7 +91,12 @@
 
     "Password recovery": "Şifre kurtarma",
     "Change password": "Şifreyi değiştir",
-    "Link is not valid": "Bağlantı geçerli değil"
+    "Link is not valid": "Bağlantı geçerli değil",
 
+    "Submit code": "Kodu gönder",
+    "incorrect email": "yanlış e-posta",
+
+    "Ready! Check your email": "Hazır! E-postanızı kontrol edin",
+    "We have sent a password reset link to your email": "E-postanıza bir şifre sıfırlama bağlantısı gönderdik"
 }
 

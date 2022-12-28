@@ -83,3 +83,10 @@ export const loginThunk = (email, password) => async dispatch => {
             dispatch(setLoginLoading({bool: false}))
         })
 }
+
+export const googleLoginThunk = auth_token => async dispatch => {
+    await AuthApi.googleLogin(auth_token)
+        .then(data => {
+            dispatch(setAuthThunk())
+        }).catch(err => null)
+}

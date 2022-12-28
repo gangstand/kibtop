@@ -5,7 +5,8 @@ const initialState = {
     isSended: false,
     isError: false,
     isSuccess: false,
-    isLoading: false
+    isLoading: false,
+    isUserFail: false
 }
 
 const RecoverySlice = createSlice({
@@ -26,12 +27,30 @@ const RecoverySlice = createSlice({
 
         setRecoveryLoading(state, {payload}) {
             state.isLoading = payload
+        },
+
+        setRecoveryisUserFail(state, {payload}) {
+            state.isUserFail = payload
         }
     
     }
 })
 
-export const { setRecoverySend, setRecoveryError, setRecoverySuccess, setRecoveryLoading } = RecoverySlice.actions
+export const { setRecoverySend, setRecoveryError, setRecoverySuccess, setRecoveryLoading, setRecoveryisUserFail } = RecoverySlice.actions
+
+export const sendRecoveryLinkThunk = email => async dispatch => {
+    dispatch(setRecoveryLoading(true))
+    RecoveryApi.sendRecoveryLink(email)
+        .then(() => {
+            dispatch(setRecoveryLoading(false))
+            dispatch(setRecoveryisUserFail(false))
+            dispatch(setRecoverySend(true))
+        }).catch(err => {
+            console.log(err)
+            dispatch(setRecoveryLoading(false))
+            dispatch(setRecoveryisUserFail(true))
+        })
+}
 
 export const confirmRecoveryThunk = ( {new_password, re_new_password, uid, token} ) => async dispatch => {
     dispatch(setRecoveryLoading(true))
@@ -49,7 +68,8 @@ export const confirmRecoveryThunk = ( {new_password, re_new_password, uid, token
 }
 
 export const activateEmailThunk = ({uid, token}) => async dispatch => {
-    await RecoveryApi.confirmEmail(uid, token).catch(err => null)
+    await RecoveryApi.confirmEmail(uid, token).catch(err => console.log(err))
 }
+
 
 export const RecoveryReducer = RecoverySlice.reducer

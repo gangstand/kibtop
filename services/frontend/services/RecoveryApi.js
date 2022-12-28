@@ -12,5 +12,11 @@ export const RecoveryApi = {
         return await instance.post('auth/users/activation/', {
             uid, token
         })
+    },
+
+    async sendRecoveryLink(email) {
+        return await instance.post('auth/users/reset_password/', {
+            email
+        })
     }
 }

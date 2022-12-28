@@ -72,6 +72,18 @@ export const AuthApi = {
 
     async resendEmail(email) {
         return await instance.post('auth/users/resend_activation/', {email})
+    },
+
+    async googleLogin(auth_token) {
+        return await instance.post('social_auth/google/', {auth_token})
+            .then(({data}) => {
+                const {access, refresh} = data
+
+                Cookies.setCookie('access', access)
+                Cookies.setCookie('refresh', refresh)
+
+                return data
+            })
     }
 }
 

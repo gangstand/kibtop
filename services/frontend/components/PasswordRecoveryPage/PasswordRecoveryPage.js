@@ -11,7 +11,7 @@ const PasswordRecoveryPage = () => {
     const {push} = useRouter()
 
     useEffect(() => {
-        if(isSuccess) push('/auth/login')
+        if(isSuccess) push('/auth/login', '/auth/login', {locale: localStorage.getItem('i18nextLng') || 'en'})
     }, [isSuccess])
 
     return (

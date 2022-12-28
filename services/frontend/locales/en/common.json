@@ -90,5 +90,11 @@
 
     "Password recovery": "Password recovery",
     "Change password": "Change password",
-    "Link is not valid": "Link is not valid"
+    "Link is not valid": "Link is not valid",
+
+    "Submit code": "Submit code",
+    "incorrect email": "incorrect email",
+    
+    "Ready! Check your email": "Ready! Check your email",
+    "We have sent a password reset link to your email": "We have sent a password reset link to your email"
 }
