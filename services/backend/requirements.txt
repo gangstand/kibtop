@@ -67,3 +67,4 @@ wcwidth==0.2.5
 django-messages-drf
 psycopg2-binary==2.8.6
 gunicorn
+gevent
