@@ -16,7 +16,7 @@ export const AuthApi = {
                 Cookies.setCookie('access', access)
 
                 return {userId: user_id}
-            }, () => null).catch(err => console.log(err))
+            }, () => null).catch(err => null)
     },
 
     async registration(email, password1, password2, name, city, file) {

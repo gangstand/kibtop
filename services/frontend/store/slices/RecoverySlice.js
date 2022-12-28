@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { RecoveryApi } from "../../services/RecoveryApi"
+import { clearUserData, getUserData } from "../../services/tools/crypto"
+import { loginThunk } from "./AuthSlice"
 
 const initialState = {
     isSended: false,
@@ -68,7 +70,13 @@ export const confirmRecoveryThunk = ( {new_password, re_new_password, uid, token
 }
 
 export const activateEmailThunk = ({uid, token}) => async dispatch => {
-    await RecoveryApi.confirmEmail(uid, token).catch(err => console.log(err))
+    await RecoveryApi.confirmEmail(uid, token)
+        .then(() => {
+            const {email, password} = getUserData()
+            console.log(email, password)
+            clearUserData()
+            dispatch(loginThunk(email, password))
+        }).catch(err => console.log(err))
 }
 
 

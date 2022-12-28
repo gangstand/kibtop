@@ -23,3 +23,23 @@ export const decrypt = hash => {
 
   return decrpyted.toString()
 }
+
+export const setHashedUserData = userData => {
+    const userDataJson = JSON.stringify(userData)
+    const hash = encrypt(userDataJson)
+    const hashJson = JSON.stringify(hash)
+
+    localStorage.setItem('activation', hashJson)
+}
+
+export const getUserData = () => {
+    const hash = JSON.parse(localStorage.getItem('activation'))
+    const userDataJson = decrypt(hash)
+    const userData = JSON.parse(userDataJson)
+
+    return userData
+}
+
+export const clearUserData = () => {
+    localStorage.removeItem('activation')
+}
