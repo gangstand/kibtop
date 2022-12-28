@@ -42,7 +42,8 @@
     "Messages": "Mesajlar",
     "Cancel": "İptal",
 
-    "Create new account": "Yeni hesap oluştur",
+    "Create new": "Yeni hesap",
+    "account": "oluştur",
     "of": "-den",
     "Your email": "E-postanız",
     "Password": "Şifre",
@@ -77,6 +78,8 @@
     "passwords aren't the same": "şifreler aynı değil",
     "invalid format": "geçersiz biçim",
     "email is registered": "e-posta kayıtlı",
+    "Incorrect email or password": "Yanlış e-posta veya şifre",
+
 
     "Almost ready": "Neredeyse hazır",
     "We have sent an email to your email address": "E-posta adresinize bir e-posta gönderdik.",
@@ -84,6 +87,16 @@
     "Resend": "Yeniden gönder",
 
     "Welcome back": "Roma'ya tekrar",
-    "to": "hoş"
+    "to": "hoş",
+
+    "Password recovery": "Şifre kurtarma",
+    "Change password": "Şifreyi değiştir",
+    "Link is not valid": "Bağlantı geçerli değil",
+
+    "Submit code": "Kodu gönder",
+    "incorrect email": "yanlış e-posta",
+
+    "Ready! Check your email": "Hazır! E-postanızı kontrol edin",
+    "We have sent a password reset link to your email": "E-postanıza bir şifre sıfırlama bağlantısı gönderdik"
 }
 

@@ -22,7 +22,7 @@ export const Cookies = {
 
         const expires = new Date(Year, Month, Day+10).toUTCString()
 
-        document.cookie = `${cookieName}=${cookieVal}; domain=localhost; expires=${expires}; path='/';`
+        document.cookie = `${cookieName}=${cookieVal}; domain=localhost; expires=${expires}; path=/;`
     },
 
     delCookie(cookieName) {
@@ -30,6 +30,6 @@ export const Cookies = {
         const expires = new Date().toUTCString()
         
 
-        document.cookie = `${cookieName}=${null}; domain=localhost; expires=${expires}; path='/';`
+        document.cookie = `${cookieName}=${null}; domain=localhost; expires=${expires}; path=/;`
     }
 }

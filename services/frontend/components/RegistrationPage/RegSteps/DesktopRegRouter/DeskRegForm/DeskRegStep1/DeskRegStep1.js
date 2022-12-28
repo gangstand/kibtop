@@ -43,7 +43,7 @@ const DeskRegStep1 = ({dirtyFields, errors, name, message, touchedFields}) => {
             <AltReg />
 
             <p className="to-login">
-                <Text content="Already have an account" /> ? <Link href="/login"><Text content="Login" /></Link>
+                <Text content="Already have an account" /> ? <Link href="/auth/login"><Text content="Login" /></Link>
             </p>
                     
         </>

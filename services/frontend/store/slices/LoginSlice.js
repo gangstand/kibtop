@@ -2,10 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     isLoading: false,
-    error: {
-        name: null,
-        message: null
-    }
+    error: false
 }
 
 const LoginSlice = createSlice({
@@ -13,8 +10,7 @@ const LoginSlice = createSlice({
     initialState,
     reducers: {
         setLoginError(state, {payload}) {
-            state.error.name = payload.name
-            state.error.message = payload.message
+            state.error = payload.bool
         },
 
         setLoginLoading(state, {payload}) {

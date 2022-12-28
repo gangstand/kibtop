@@ -1,3 +1,4 @@
+
 from pathlib import Path
 import environ
 
@@ -141,6 +142,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+
     ),
     'DEFAULT_FILTER_BACKEND': (
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -157,8 +159,8 @@ DJOSER = {
     'SET_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'TOKEN_MODEL': None,  # We use only JWT
-    'ACTIVATION_URL': 'api/v1/auth/verify/{uid}/{token}/',
-    'PASSWORD_RESET_CONFIRM_URL': 'api/v1/auth/password/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'auth/confirm/{uid}/{token}/',
+    'PASSWORD_RESET_CONFIRM_URL': '/auth/recovery/{uid}/{token}',
     'SERIALIZERS': {
         "user_create": 'accounts.serializer.UserRegistrationSerializer',
         "user": "accounts.serializer.UserAPISerializer",

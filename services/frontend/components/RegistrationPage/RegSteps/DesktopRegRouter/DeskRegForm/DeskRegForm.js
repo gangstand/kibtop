@@ -25,7 +25,10 @@ const DeskRegForm = ({deskStep, error, setErrorStep,
         <>
             <form className="form reg-form--desk">
                 <div className="form__head">
-                    <h2 className="reg-title"><Text content="Create new account" /></h2>
+                    <h1 className="reg-title">
+                        <span className="reg-title__line"><Text content="Create new" /></span>
+                        <span className="reg-title__line"><Text content="account" /></span>
+                    </h1>
                     <p className="form__count">{deskStep} <Text content="of"/> 2</p>
                 </div>
                 <FormProvider {...RegistrationForm}>

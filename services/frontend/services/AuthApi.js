@@ -8,7 +8,7 @@ export const AuthApi = {
         const { refresh } = Cookies.getCookies();
         return await instance.post('auth/jwt/refresh/',
             {
-                "refresh": refresh
+                "refresh": refresh || 'refresh'
             }).then(res => {
                 const access = res.data.access
 
@@ -24,7 +24,7 @@ export const AuthApi = {
             "phone": '',
             "first_name": '',
             "last_name": '',
-            "username": email.split('@')[0]+((+new Date()).toString(16)),
+            "username": email.replace('@', '_'),
             "email": email,
             "password": password1,
             "re_password": password2,
@@ -35,7 +35,7 @@ export const AuthApi = {
             "phone": '',
             "first_name": '',
             "last_name": '',
-            "username": email.split('@')[0]+((+new Date()).toString(16)),
+            "username": email.replace('@', '_'),
             "email": email,
             "password": password1,
             "re_password": password2,
@@ -61,8 +61,22 @@ export const AuthApi = {
         return await instance.post('auth/jwt/create/', body)
             .then(({data}) => {
 
-                console.log(data);
+                const {access, refresh} = data
 
+                Cookies.setCookie('access', access)
+                Cookies.setCookie('refresh', refresh)
+
+                return data
+            })
+    },
+
+    async resendEmail(email) {
+        return await instance.post('auth/users/resend_activation/', {email})
+    },
+
+    async googleLogin(auth_token) {
+        return await instance.post('social_auth/google/', {auth_token})
+            .then(({data}) => {
                 const {access, refresh} = data
 
                 Cookies.setCookie('access', access)

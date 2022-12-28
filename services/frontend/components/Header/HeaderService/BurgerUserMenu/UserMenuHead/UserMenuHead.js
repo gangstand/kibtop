@@ -10,7 +10,7 @@ const UserMenuHead = ({isAuthed}) => {
 
                 {
                     !isAuthed && (
-                        <Link href="registration" className="btn btn--signup">
+                        <Link href="/auth/registration" className="btn btn--signup">
                             <Text content="Sign up" />
                         </Link>
                     )

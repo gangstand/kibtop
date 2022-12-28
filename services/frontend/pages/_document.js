@@ -13,7 +13,8 @@ export default function Document() {
                     
             <link rel="stylesheet" href="/fonts/SFPro/stylesheet.css" />
 
-            <link rel="stylesheet" href="/fonts/OpenSans/base/stylesheet.css" />
+            {/* <link rel="stylesheet" href="/fonts/OpenSans/base/stylesheet.css" /> */}
+            <link rel="stylesheet" href="/fonts/OpenSans/ttf/stylesheet.css" />
             {/* <link rel="stylesheet" href="/fonts/OpenSans/cons/stylesheet.css" /> */}
             {/* <link rel="stylesheet" href="/fonts/OpenSans/google/stylesheet.css" /> */}
 
