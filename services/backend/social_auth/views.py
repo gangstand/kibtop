@@ -11,10 +11,6 @@ environ.Env.read_env('.env')
 class GoogleSocialAuthView(GenericAPIView):
     serializer_class = GoogleSocialAuthSerializer
 
-    def get(self, request):
-        auth_google = f"https://accounts.google.com/o/oauth2/v2/auth?redirect_uri={env('URL')}/api/v1/auth/accounts/profile/&prompt=consent&response_type=code&client_id={env('GOOGLE_CLIENT_ID')}&scope=openid+email+profile"
-        return Response({"auth_google": auth_google})
-
     def post(self, request):
         """
 
