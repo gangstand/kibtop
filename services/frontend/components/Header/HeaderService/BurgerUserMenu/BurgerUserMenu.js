@@ -48,7 +48,7 @@ const BurgerUserMenu = ({isOpen, closeBurgerUserMenu, delay}) => {
                     <div className="user-menu" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
                             ref={userMenuElement} 
                             style={{transition: `all ${appearDelay}ms 0s linear`}} >
-                        <UserMenuHeadContainer />
+                        <UserMenuHeadContainer {...{onClose: closeBurgerUserMenu}} />
                         <UserMenuBody />
                     </div>
                     

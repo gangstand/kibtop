@@ -1,10 +1,15 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import UserMenuHead from "./UserMenuHead";
 
-const UserMenuHeadContainer = () => {
+const UserMenuHeadContainer = ({onClose}) => {
     const {isAuthed} = useSelector(state => state.auth)
 
-    return <UserMenuHead {...{isAuthed}} />;
+    useEffect(() => {
+
+    }, [isAuthed])
+
+    return <UserMenuHead {...{isAuthed, onClose}} />;
 }
 
 export default UserMenuHeadContainer;

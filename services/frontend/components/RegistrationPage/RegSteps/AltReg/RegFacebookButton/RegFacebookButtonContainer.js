@@ -4,9 +4,9 @@ import RegFacebookButton from "./RegFacebookButton";
 const RegFacebookButtonContainer = () => {
     const {data} = useSession()
     
-    console.log(data);
+    const onSigInClick = () => signIn('facebook')
 
-    return <RegFacebookButton {...{signIn}} />;
+    return <RegFacebookButton {...{onSigInClick}} />;
 }
 
 export default RegFacebookButtonContainer;
