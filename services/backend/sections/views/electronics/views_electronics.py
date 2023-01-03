@@ -1,13 +1,18 @@
+from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import ElectronicsFull
-from sections.serializer import (
-    ElectronicsFullSerializer, ElectronicsFullSerializerEN, ElectronicsFullSerializerRU, ElectronicsFullSerializerTR, ElectronicsFullSerializerDetail
-)
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterElectronics
+from sections.models import (
+    ElectronicsFull, ElectronicsFullFavouritesUser, ElectronicsFullViewsUser
+)
+from sections.serializer import (
+    ElectronicsFullSerializer, ElectronicsFullSerializerEN, ElectronicsFullSerializerRU, ElectronicsFullSerializerTR,
+    ElectronicsFullSerializerDetail, ElectronicsFullFavouritesUserSerializer, ElectronicsFullViewsUserSerializer
+)
+from sections.service import (
+    FilterElectronics, FilterElectronicsViews, FilterElectronicsFavourites,
+)
 from sections.utils import query_list_lang
 
 model_electronics = ElectronicsFull.objects.filter(publisher=True)
@@ -67,4 +72,26 @@ class ElectronicsFullAPIListCreate(generics.CreateAPIView):
 class ElectronicsFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = model_electronics
     serializer_class = ElectronicsFullSerializerDetail
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ElectronicsFullViewsUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterElectronicsViews
+    queryset = ElectronicsFullViewsUser.objects.all()
+    serializer_class = ElectronicsFullViewsUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ElectronicsFullFavouritesUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterElectronicsFavourites
+    queryset = ElectronicsFullFavouritesUser.objects.all()
+    serializer_class = ElectronicsFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ElectronicsFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
+    queryset = ElectronicsFullFavouritesUser.objects.all()
+    serializer_class = ElectronicsFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

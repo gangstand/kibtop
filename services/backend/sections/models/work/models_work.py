@@ -1,5 +1,7 @@
 from django.db import models
+from django.utils import timezone
 
+from accounts.models import CustomUser
 from sections.models import BaseModelFull
 from .for_work import *
 
@@ -14,6 +16,17 @@ class WorkFull(BaseModelFull):
     employment_en = models.CharField(choices=EMPLOYMENT_EN, max_length=255)
     employment_ru = models.CharField(choices=EMPLOYMENT_RU, max_length=255)
     employment_tr = models.CharField(choices=EMPLOYMENT_TR, max_length=255)
+
+
+class WorkFullViewsUser(models.Model):
+    avto_full = models.ForeignKey(WorkFull, default=None, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(default=timezone.now)
+
+
+class WorkFullFavouritesUser(models.Model):
+    avto_full = models.ForeignKey(WorkFull, default=None, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
 
 
 class WorkFullUpload(models.Model):

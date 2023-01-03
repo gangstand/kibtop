@@ -1,14 +1,18 @@
+from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import AvtoFull, AvtoFullFavouritesUser, AvtoFullViewsUser
-from sections.serializer import (
-    AvtoFullSerializer, AvtoFullSerializerEN, AvtoFullSerializerRU, AvtoFullSerializerTR, AvtoFullSerializerDetail,
-    AvtoFullViewsUserSerializer, AvtoFullFavouritesUserSerializer
-)
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterAvto, FilterViews, FilterFavourites
+from sections.models import (
+    AvtoFull, AvtoFullFavouritesUser, AvtoFullViewsUser
+)
+from sections.serializer import (
+    AvtoFullSerializer, AvtoFullSerializerEN, AvtoFullSerializerRU, AvtoFullSerializerTR,
+    AvtoFullSerializerDetail, AvtoFullViewsUserSerializer, AvtoFullFavouritesUserSerializer
+)
+from sections.service import (
+    FilterAvto, FilterAvtoViews, FilterAvtoFavourites)
+
 from sections.utils import query_list_lang
 
 model_avto = AvtoFull.objects.filter(publisher=True)
@@ -73,7 +77,7 @@ class AvtoFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
 class AvtoFullViewsUserAPIList(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend,)
-    filterset_class = FilterViews
+    filterset_class = FilterAvtoViews
     queryset = AvtoFullViewsUser.objects.all()
     serializer_class = AvtoFullViewsUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
@@ -81,10 +85,11 @@ class AvtoFullViewsUserAPIList(generics.ListCreateAPIView):
 
 class AvtoFullFavouritesUserAPIList(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend,)
-    filterset_class = FilterFavourites
+    filterset_class = FilterAvtoFavourites
     queryset = AvtoFullFavouritesUser.objects.all()
     serializer_class = AvtoFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
+
 
 class AvtoFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
     queryset = AvtoFullFavouritesUser.objects.all()

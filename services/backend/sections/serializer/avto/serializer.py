@@ -1,7 +1,7 @@
 from rest_framework import serializers
-
-from sections.models import AvtoFull, AvtoFullUpload, AvtoFullViewsUser
-from sections.models.avto.models_avto import AvtoFullFavouritesUser
+from sections.models import (
+    AvtoFull, AvtoFullUpload, AvtoFullViewsUser, AvtoFullFavouritesUser
+)
 
 
 class AvtoFullUploadSerializer(serializers.ModelSerializer):

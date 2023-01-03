@@ -1,13 +1,18 @@
+from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import HouseGardenFull
-from sections.serializer import (
-    HouseGardenFullSerializer, HouseGardenFullSerializerEN, HouseGardenFullSerializerRU, HouseGardenFullSerializerTR, HouseGardenFullSerializerDetail
-)
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterHouseGarden
+from sections.models import (
+    HouseGardenFull, HouseGardenFullViewsUser, HouseGardenFullFavouritesUser
+)
+from sections.serializer import (
+    HouseGardenFullSerializer, HouseGardenFullSerializerEN, HouseGardenFullSerializerRU, HouseGardenFullSerializerTR,
+    HouseGardenFullSerializerDetail, HouseGardenFullViewsUserSerializer, HouseGardenFullFavouritesUserSerializer
+)
+from sections.service import (
+    FilterHouseGarden, FilterHouseGardenViews, FilterHouseGardenFavourites
+)
 from sections.utils import query_list_lang
 
 model_fashion = HouseGardenFull.objects.filter(publisher=True)
@@ -67,4 +72,26 @@ class HouseGardenFullAPIListCreate(generics.CreateAPIView):
 class HouseGardenFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = model_fashion
     serializer_class = HouseGardenFullSerializerDetail
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class HouseGardenFullViewsUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterHouseGardenViews
+    queryset = HouseGardenFullViewsUser.objects.all()
+    serializer_class = HouseGardenFullViewsUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class HouseGardenFullFavouritesUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterHouseGardenFavourites
+    queryset = HouseGardenFullFavouritesUser.objects.all()
+    serializer_class = HouseGardenFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class HouseGardenFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
+    queryset = HouseGardenFullFavouritesUser.objects.all()
+    serializer_class = HouseGardenFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

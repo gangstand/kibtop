@@ -1,16 +1,21 @@
+from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import ServicesFull
-from sections.serializer import (
-    ServicesFullSerializer, ServicesFullSerializerEN, ServicesFullSerializerRU, ServicesFullSerializerTR, ServicesFullSerializerDetail
-)
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterServices
+from sections.models import (
+    ServicesFull, ServicesFullFavouritesUser, ServicesFullViewsUser
+)
+from sections.serializer import (
+    ServicesFullSerializer, ServicesFullSerializerEN, ServicesFullSerializerRU, ServicesFullSerializerTR,
+    ServicesFullSerializerDetail, ServicesFullFavouritesUserSerializer, ServicesFullViewsUserSerializer
+)
+from sections.service import (
+    FilterServices, FilterServicesViews, FilterServicesFavourites
+)
 from sections.utils import query_list_lang
 
-model_services = ServicesFull.objects.filter(publisher=True,)
+model_services = ServicesFull.objects.filter(publisher=True, )
 
 
 class ServicesLimitPagination(MultipleModelLimitOffsetPagination):
@@ -67,4 +72,26 @@ class ServicesFullAPIListCreate(generics.CreateAPIView):
 class ServicesFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = model_services
     serializer_class = ServicesFullSerializerDetail
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ServicesFullViewsUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterServicesViews
+    queryset = ServicesFullViewsUser.objects.all()
+    serializer_class = ServicesFullViewsUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ServicesFullFavouritesUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterServicesFavourites
+    queryset = ServicesFullFavouritesUser.objects.all()
+    serializer_class = ServicesFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ServicesFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
+    queryset = ServicesFullFavouritesUser.objects.all()
+    serializer_class = ServicesFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

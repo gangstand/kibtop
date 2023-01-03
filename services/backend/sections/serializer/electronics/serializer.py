@@ -1,12 +1,27 @@
 from rest_framework import serializers
 
-from sections.models import ElectronicsFull, ElectronicsFullUpload
+from sections.models import (
+    ElectronicsFull, ElectronicsFullUpload, ElectronicsFullViewsUser,
+    ElectronicsFullFavouritesUser
+)
 
 
 class ElectronicsFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = ElectronicsFullUpload
         fields = ('uploads',)
+
+
+class ElectronicsFullViewsUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ElectronicsFullViewsUser
+        fields = '__all__'
+
+
+class ElectronicsFullFavouritesUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ElectronicsFullFavouritesUser
+        fields = '__all__'
 
 
 class ElectronicsFullSerializerDetail(serializers.ModelSerializer):

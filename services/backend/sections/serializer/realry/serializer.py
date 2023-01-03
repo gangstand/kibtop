@@ -1,12 +1,26 @@
 from rest_framework import serializers
 
-from sections.models import RealtyFull, RealtyFullUpload
+from sections.models import (
+    RealtyFull, RealtyFullUpload, RealtyFullViewsUser, RealtyFullFavouritesUser
+)
 
 
 class RealtyFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = RealtyFullUpload
         fields = ('uploads',)
+
+
+class RealtyFullViewsUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RealtyFullViewsUser
+        fields = '__all__'
+
+
+class RealtyFullFavouritesUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RealtyFullFavouritesUser
+        fields = '__all__'
 
 
 class RealtyFullSerializerDetail(serializers.ModelSerializer):

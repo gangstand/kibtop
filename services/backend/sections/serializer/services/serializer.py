@@ -1,12 +1,25 @@
 from rest_framework import serializers
-
-from sections.models import ServicesFull, ServicesFullUpload
+from sections.models import (
+    ServicesFull, ServicesFullUpload, ServicesFullViewsUser, ServicesFullFavouritesUser
+)
 
 
 class ServicesFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServicesFullUpload
         fields = ('uploads',)
+
+
+class ServicesFullViewsUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServicesFullViewsUser
+        fields = '__all__'
+
+
+class ServicesFullFavouritesUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServicesFullFavouritesUser
+        fields = '__all__'
 
 
 class ServicesFullSerializerDetail(serializers.ModelSerializer):

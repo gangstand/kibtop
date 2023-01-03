@@ -1,6 +1,7 @@
-from sections.models import ElectronicsFull
-
 import django_filters
+from sections.models import (
+    ElectronicsFull, ElectronicsFullViewsUser, ElectronicsFullFavouritesUser
+)
 
 
 class FilterElectronics(django_filters.FilterSet):
@@ -14,3 +15,21 @@ class FilterElectronics(django_filters.FilterSet):
     class Meta:
         model = ElectronicsFull
         fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr']
+
+
+class FilterElectronicsViews(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = ElectronicsFullViewsUser
+        fields = ['avto_full', 'user']
+
+
+class FilterElectronicsFavourites(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = ElectronicsFullFavouritesUser
+        fields = ['avto_full', 'user']

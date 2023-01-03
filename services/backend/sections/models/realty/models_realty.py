@@ -1,5 +1,7 @@
 from django.db import models
+from django.utils import timezone
 
+from accounts.models import CustomUser
 from .base_realty import *
 from .for_realty import *
 
@@ -26,6 +28,17 @@ class RealtyFull(RealtyBase):
     square = models.IntegerField(verbose_name='Square footage')
     sell_type_plot_type = models.CharField(choices=REALTY_CATEGORY_LAND_PLOT_TYPE_USE, max_length=255,
                                            verbose_name='Realty category type use')
+
+
+class RealtyFullViewsUser(models.Model):
+    avto_full = models.ForeignKey(RealtyFull, default=None, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(default=timezone.now)
+
+
+class RealtyFullFavouritesUser(models.Model):
+    avto_full = models.ForeignKey(RealtyFull, default=None, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
 
 
 class RealtyFullUpload(models.Model):

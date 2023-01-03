@@ -1,12 +1,24 @@
 from rest_framework import serializers
-
-from sections.models import WorkFull, WorkFullUpload
-
+from sections.models import (
+    WorkFull, WorkFullUpload, WorkFullViewsUser, WorkFullFavouritesUser
+)
 
 class WorkFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkFullUpload
         fields = ('uploads',)
+
+
+class WorkFullViewsUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkFullViewsUser
+        fields = '__all__'
+
+
+class WorkFullFavouritesUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkFullFavouritesUser
+        fields = '__all__'
 
 
 class WorkFullSerializerDetail(serializers.ModelSerializer):

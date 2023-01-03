@@ -1,12 +1,26 @@
 from rest_framework import serializers
 
-from sections.models import ChildrenFull, ChildrenFullUpload
+from sections.models import (
+    ChildrenFull, ChildrenFullUpload, ChildrenFullViewsUser, ChildrenFullFavouritesUser
+)
 
 
 class ChildrenFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChildrenFullUpload
         fields = ('uploads',)
+
+
+class ChildrenFullViewsUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChildrenFullViewsUser
+        fields = '__all__'
+
+
+class ChildrenFullFavouritesUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChildrenFullFavouritesUser
+        fields = '__all__'
 
 
 class ChildrenFullSerializerDetail(serializers.ModelSerializer):

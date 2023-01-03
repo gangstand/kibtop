@@ -1,6 +1,7 @@
-from sections.models import ServicesFull
-
 import django_filters
+from sections.models import (
+    ServicesFull, ServicesFullViewsUser, ServicesFullFavouritesUser
+)
 
 
 class FilterServices(django_filters.FilterSet):
@@ -14,3 +15,21 @@ class FilterServices(django_filters.FilterSet):
     class Meta:
         model = ServicesFull
         fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr']
+
+
+class FilterServicesViews(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = ServicesFullViewsUser
+        fields = ['avto_full', 'user']
+
+
+class FilterServicesFavourites(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = ServicesFullFavouritesUser
+        fields = ['avto_full', 'user']

@@ -1,12 +1,26 @@
 from rest_framework import serializers
 
-from sections.models import FashionFull, FashionFullUpload
+from sections.models import (
+    FashionFull, FashionFullUpload, FashionFullViewsUser, FashionFullFavouritesUser
+)
 
 
 class FashionFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = FashionFullUpload
         fields = ('uploads',)
+
+
+class FashionFullViewsUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FashionFullViewsUser
+        fields = '__all__'
+
+
+class FashionFullFavouritesUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FashionFullFavouritesUser
+        fields = '__all__'
 
 
 class FashionFullSerializerDetail(serializers.ModelSerializer):

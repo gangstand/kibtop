@@ -1,13 +1,20 @@
+from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import ChildrenFull
-from sections.serializer import (
-    ChildrenFullSerializer, ChildrenFullSerializerEN, ChildrenFullSerializerRU, ChildrenFullSerializerTR, ChildrenFullSerializerDetail
-)
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterChildren
+
+from sections.models import (
+    ChildrenFull, ChildrenFullFavouritesUser, ChildrenFullViewsUser
+)
+from sections.serializer import (
+    ChildrenFullSerializer, ChildrenFullSerializerEN, ChildrenFullSerializerRU,
+    ChildrenFullSerializerTR, ChildrenFullSerializerDetail, ChildrenFullFavouritesUserSerializer,
+    ChildrenFullViewsUserSerializer
+)
+from sections.service import (
+    FilterChildren, FilterChildrenViews, FilterChildrenFavourites
+)
 from sections.utils import query_list_lang
 
 model_children = ChildrenFull.objects.filter(publisher=True)
@@ -67,4 +74,26 @@ class ChildrenFullAPIListCreate(generics.CreateAPIView):
 class ChildrenFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = model_children
     serializer_class = ChildrenFullSerializerDetail
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ChildrenFullViewsUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterChildrenViews
+    queryset = ChildrenFullViewsUser.objects.all()
+    serializer_class = ChildrenFullViewsUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ChildrenFullFavouritesUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterChildrenFavourites
+    queryset = ChildrenFullFavouritesUser.objects.all()
+    serializer_class = ChildrenFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ChildrenFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
+    queryset = ChildrenFullFavouritesUser.objects.all()
+    serializer_class = ChildrenFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

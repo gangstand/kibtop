@@ -1,13 +1,18 @@
+from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import FashionFull
-from sections.serializer import (
-    FashionFullSerializer, FashionFullSerializerEN, FashionFullSerializerRU, FashionFullSerializerTR, FashionFullSerializerDetail
-)
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterFashion
+from sections.models import (
+    FashionFull, FashionFullViewsUser, FashionFullFavouritesUser
+)
+from sections.serializer import (
+    FashionFullSerializer, FashionFullSerializerEN, FashionFullSerializerRU, FashionFullSerializerTR,
+    FashionFullSerializerDetail, FashionFullFavouritesUserSerializer, FashionFullViewsUserSerializer
+)
+from sections.service import (
+    FilterFashion, FilterFashionViews, FilterFashionFavourites
+)
 from sections.utils import query_list_lang
 
 model_fashion = FashionFull.objects.filter(publisher=True)
@@ -67,4 +72,26 @@ class FashionFullAPIListCreate(generics.CreateAPIView):
 class FashionFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = model_fashion
     serializer_class = FashionFullSerializerDetail
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class FashionFullViewsUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterFashionViews
+    queryset = FashionFullViewsUser.objects.all()
+    serializer_class = FashionFullViewsUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class FashionFullFavouritesUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterFashionFavourites
+    queryset = FashionFullFavouritesUser.objects.all()
+    serializer_class = FashionFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class FashionFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
+    queryset = FashionFullFavouritesUser.objects.all()
+    serializer_class = FashionFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

@@ -1,6 +1,7 @@
-from sections.models import WorkFull
-
 import django_filters
+from sections.models import (
+    WorkFull, WorkFullViewsUser, WorkFullFavouritesUser
+)
 
 
 class FilterWork(django_filters.FilterSet):
@@ -26,3 +27,21 @@ class FilterWork(django_filters.FilterSet):
             'price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr', 'for_work_type_en',
             'for_work_type_ru', 'for_work_type_tr', 'employment_en', 'employment_ru', 'employment_tr',
         ]
+
+
+class FilterWorkViews(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = WorkFullViewsUser
+        fields = ['avto_full', 'user']
+
+
+class FilterWorkFavourites(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = WorkFullFavouritesUser
+        fields = ['avto_full', 'user']
