@@ -4,7 +4,8 @@ from .category.views_category import CategoryFullAPIList
 from .new.new_views import NewAPIList
 from .views_base import CityAPIList, MoneyAPIList, MoneyAPIUpdateDestroy
 from .recommend.views_recommend import RecommendFullAPIList
-from .avto.views_avto import AvtoFullAPIList, AvtoFullAPIListCreate, AvtoFullAPIUpdateDestroy
+from .avto.views_avto import AvtoFullAPIList, AvtoFullAPIListCreate, AvtoFullAPIUpdateDestroy, AvtoFullViewsUserAPIList, \
+    AvtoFullFavouritesUserAPIList, AvtoFullFavouritesUserAPIUpdateDestroy
 from .work.views_work import WorkFullAPIList, WorkFullAPIListCreate, WorkFullAPIUpdateDestroy
 from .services.views_services import ServicesFullAPIList, ServicesFullAPIListCreate, ServicesFullAPIUpdateDestroy
 from .children.views_children import ChildrenFullAPIList, ChildrenFullAPIListCreate, ChildrenFullAPIUpdateDestroy
@@ -13,6 +14,8 @@ from .electronics.views_electronics import ElectronicsFullAPIList, ElectronicsFu
     ElectronicsFullAPIUpdateDestroy
 from .house_garden.views_house_garden import HouseGardenFullAPIUpdateDestroy, HouseGardenFullAPIList, \
     HouseGardenFullAPIListCreate
+from .my_ads.my_ads_views import MyAdsAPIList
+from .user_archive.user_archive_views import UserArchiveAPIList
 
 __all__ = [
     'RealtyFullAPIList',
@@ -29,6 +32,8 @@ __all__ = [
     'AvtoFullAPIList',
     'AvtoFullAPIListCreate',
     'AvtoFullAPIUpdateDestroy',
+    'AvtoFullFavouritesUserAPIList',
+    'AvtoFullFavouritesUserAPIUpdateDestroy',
     'WorkFullAPIList',
     'WorkFullAPIListCreate',
     'WorkFullAPIUpdateDestroy',
@@ -46,5 +51,8 @@ __all__ = [
     'FashionFullAPIUpdateDestroy',
     'HouseGardenFullAPIUpdateDestroy',
     'HouseGardenFullAPIList',
-    'HouseGardenFullAPIListCreate'
+    'HouseGardenFullAPIListCreate',
+    'MyAdsAPIList',
+    'UserArchiveAPIList',
+    'AvtoFullViewsUserAPIList',
 ]

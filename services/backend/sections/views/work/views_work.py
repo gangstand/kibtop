@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from sections.service import FilterWork
 from sections.utils import query_list_lang
 
-model_work = WorkFull.objects.all()
+model_work = WorkFull.objects.filter(publisher=True,)
 
 
 class WorkLimitPagination(MultipleModelLimitOffsetPagination):

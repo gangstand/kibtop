@@ -1,6 +1,6 @@
 from modeltranslation.translator import TranslationOptions, translator
 
-from sections.models import AvtoFullUpload, AvtoFull
+from sections.models import AvtoFullUpload, AvtoFull, AvtoFullViewsUser
 from django.contrib import admin
 
 
@@ -21,4 +21,3 @@ class AUAdmin(admin.ModelAdmin):
 
     class Meta:
         model = AvtoFull
-

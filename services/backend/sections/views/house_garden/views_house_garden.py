@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from sections.service import FilterHouseGarden
 from sections.utils import query_list_lang
 
-model_fashion = HouseGardenFull.objects.all()
+model_fashion = HouseGardenFull.objects.filter(publisher=True)
 
 
 class HouseGardenLimitPagination(MultipleModelLimitOffsetPagination):

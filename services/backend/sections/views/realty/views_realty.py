@@ -11,7 +11,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from sections.service import FilterRealty
 from sections.utils import query_list_lang
 
-model_realty = RealtyFull.objects.all()
+model_realty = RealtyFull.objects.filter(publisher=True,)
 
 
 class RealtyLimitPagination(MultipleModelLimitOffsetPagination):

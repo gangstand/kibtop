@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from sections.service import FilterFashion
 from sections.utils import query_list_lang
 
-model_fashion = FashionFull.objects.all()
+model_fashion = FashionFull.objects.filter(publisher=True)
 
 
 class FashionLimitPagination(MultipleModelLimitOffsetPagination):

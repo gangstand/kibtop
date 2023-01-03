@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from sections.service import FilterChildren
 from sections.utils import query_list_lang
 
-model_children = ChildrenFull.objects.all()
+model_children = ChildrenFull.objects.filter(publisher=True)
 
 
 class ChildrenLimitPagination(MultipleModelLimitOffsetPagination):

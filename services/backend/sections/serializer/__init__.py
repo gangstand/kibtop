@@ -5,7 +5,7 @@ from .realry.serializer import (
 from .stock.serializer import StockSerializerEN, StockSerializerRU, StockSerializerTR, StockSerializer
 from .avto.serializer import (
     AvtoFullSerializer, AvtoFullSerializerDetail, AvtoFullSerializerEN, AvtoFullSerializerRU,
-    AvtoFullSerializerTR
+    AvtoFullSerializerTR, AvtoFullViewsUserSerializer, AvtoFullFavouritesUserSerializer
 )
 from .work.serializer import (
     WorkFullSerializer, WorkFullSerializerDetail, WorkFullSerializerEN, WorkFullSerializerRU,
@@ -56,6 +56,8 @@ __all__ = [
     'AvtoFullSerializerEN',
     'AvtoFullSerializerRU',
     'AvtoFullSerializerTR',
+    'AvtoFullViewsUserSerializer',
+    'AvtoFullFavouritesUserSerializer',
     'WorkFullSerializer',
     'WorkFullSerializerDetail',
     'WorkFullSerializerEN',

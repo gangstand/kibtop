@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from sections.service import FilterElectronics
 from sections.utils import query_list_lang
 
-model_electronics = ElectronicsFull.objects.all()
+model_electronics = ElectronicsFull.objects.filter(publisher=True)
 
 
 class ElectronicsLimitPagination(MultipleModelLimitOffsetPagination):

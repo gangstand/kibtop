@@ -2,15 +2,16 @@ from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
 from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import AvtoFull
+from sections.models import AvtoFull, AvtoFullFavouritesUser, AvtoFullViewsUser
 from sections.serializer import (
-    AvtoFullSerializer, AvtoFullSerializerEN, AvtoFullSerializerRU, AvtoFullSerializerTR, AvtoFullSerializerDetail
+    AvtoFullSerializer, AvtoFullSerializerEN, AvtoFullSerializerRU, AvtoFullSerializerTR, AvtoFullSerializerDetail,
+    AvtoFullViewsUserSerializer, AvtoFullFavouritesUserSerializer
 )
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterAvto
+from sections.service import FilterAvto, FilterViews, FilterFavourites
 from sections.utils import query_list_lang
 
-model_avto = AvtoFull.objects.all()
+model_avto = AvtoFull.objects.filter(publisher=True)
 
 
 class AvtoLimitPagination(MultipleModelLimitOffsetPagination):
@@ -67,4 +68,25 @@ class AvtoFullAPIListCreate(generics.CreateAPIView):
 class AvtoFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = model_avto
     serializer_class = AvtoFullSerializerDetail
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class AvtoFullViewsUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterViews
+    queryset = AvtoFullViewsUser.objects.all()
+    serializer_class = AvtoFullViewsUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class AvtoFullFavouritesUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterFavourites
+    queryset = AvtoFullFavouritesUser.objects.all()
+    serializer_class = AvtoFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+class AvtoFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
+    queryset = AvtoFullFavouritesUser.objects.all()
+    serializer_class = AvtoFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

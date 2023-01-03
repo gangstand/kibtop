@@ -3,7 +3,8 @@ AVTO_CATEGORY_EN = [
     ('Other technique', 'Other technique'),
 ]
 AVTO_CATEGORY_RU = [
-    ('Arabalar', 'Arabalar'), ('Diğer teknik', 'Diğer teknik')
+    ('Автомобили', 'Автомобили'),
+    ('Другая техника', 'Другая техника'),
 ]
 AVTO_CATEGORY_TR = [
     ('Arabalar', 'Arabalar'), ('Diğer teknik', 'Diğer teknik')

@@ -29,14 +29,14 @@ class NewAPIList(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         query = self.request.query_params
         filters = {
-            'avto': AvtoFull.objects.filter(created_at__lte=timezone.now()).order_by('-created_at'),
-            'children': ChildrenFull.objects.filter(created_at__lte=timezone.now()).order_by('-created_at'),
-            'electronics': ElectronicsFull.objects.filter(created_at__lte=timezone.now()).order_by('-created_at'),
-            'fashion': FashionFull.objects.filter(created_at__lte=timezone.now()).order_by('-created_at'),
-            'house_garden': HouseGardenFull.objects.filter(created_at__lte=timezone.now()).order_by('-created_at'),
-            'realty': RealtyFull.objects.filter(created_at__lte=timezone.now()).order_by('-created_at'),
-            'services': ServicesFull.objects.filter(created_at__lte=timezone.now()).order_by('-created_at'),
-            'work': WorkFull.objects.filter(created_at__lte=timezone.now()).order_by('-created_at'),
+            'avto': AvtoFull.objects.filter(publisher=True, created_at__lte=timezone.now()).order_by('-created_at'),
+            'children': ChildrenFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
+            'electronics': ElectronicsFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
+            'fashion': FashionFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
+            'house_garden': HouseGardenFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
+            'realty': RealtyFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
+            'services': ServicesFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
+            'work': WorkFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
         }
         serializer_en = CategoryFullSerializerEN(filters)
         serializer_ru = CategoryFullSerializerRU(filters)

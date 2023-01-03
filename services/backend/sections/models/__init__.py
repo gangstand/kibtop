@@ -1,7 +1,7 @@
 from .base_models_full import BaseModelFull, City, Money
 from .realty.models_realty import RealtyFull, RealtyFullUpload
 from .stock.models_stock import Stock
-from .avto.models_avto import AvtoFull, AvtoFullUpload
+from .avto.models_avto import AvtoFull, AvtoFullUpload, AvtoFullViewsUser, AvtoFullFavouritesUser
 from .work.models_work import WorkFull, WorkFullUpload
 from .children.models_children import ChildrenFull, ChildrenFullUpload
 from .services.models_services import ServicesFull, ServicesFullUpload
@@ -24,6 +24,8 @@ __all__ = [
     'WorkFullUpload',
     'AvtoFull',
     'AvtoFullUpload',
+    'AvtoFullViewsUser',
+    'AvtoFullFavouritesUser',
     'RealtyFull',
     'BaseModelFull',
     'RealtyFullUpload',

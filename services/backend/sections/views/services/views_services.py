@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from sections.service import FilterServices
 from sections.utils import query_list_lang
 
-model_services = ServicesFull.objects.all()
+model_services = ServicesFull.objects.filter(publisher=True,)
 
 
 class ServicesLimitPagination(MultipleModelLimitOffsetPagination):

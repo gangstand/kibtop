@@ -1,7 +1,9 @@
 from django.db import models
 
+from accounts.models import CustomUser
 from sections.models import BaseModelFull
 from .for_avto import *
+from django.utils import timezone
 
 
 class AvtoFull(BaseModelFull):
@@ -11,6 +13,17 @@ class AvtoFull(BaseModelFull):
     brand = models.CharField(max_length=255)
     mileage = models.IntegerField()
     year = models.IntegerField()
+
+
+class AvtoFullViewsUser(models.Model):
+    avto_full = models.ForeignKey(AvtoFull, default=None, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(default=timezone.now)
+
+
+class AvtoFullFavouritesUser(models.Model):
+    avto_full = models.ForeignKey(AvtoFull, default=None, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
 
 
 class AvtoFullUpload(models.Model):

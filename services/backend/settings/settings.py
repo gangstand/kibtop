@@ -1,4 +1,3 @@
-
 from pathlib import Path
 import environ
 
@@ -161,10 +160,15 @@ DJOSER = {
     'TOKEN_MODEL': None,  # We use only JWT
     'ACTIVATION_URL': 'auth/confirm/{uid}/{token}/',
     'PASSWORD_RESET_CONFIRM_URL': '/auth/recovery/{uid}/{token}',
+    'HIDE_USERS': True,
+    'PERMISSIONS': {
+        'user': ['rest_framework.permissions.AllowAny'],
+    },
     'SERIALIZERS': {
         "user_create": 'accounts.serializer.UserRegistrationSerializer',
-        "user": "accounts.serializer.UserAPISerializer",
+        "user": 'accounts.serializer.UserAPISerializer',
         'user_create_password_retype': 'accounts.serializer.UserAPICreatePasswordRetypeSerializer',
+        'current_user': 'accounts.serializer.UserAPISerializer',
     }
 }
 
