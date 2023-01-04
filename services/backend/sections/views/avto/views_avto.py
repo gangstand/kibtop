@@ -68,8 +68,7 @@ class AvtoFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
 class AvtoFullAPIListCreate(generics.CreateAPIView):
     queryset = model_avto
     serializer_class = AvtoFullSerializerDetail
-
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     def post(self, request, *args, **kwargs):
         request_data = request.data
         serializer_class = self.get_serializer_class()

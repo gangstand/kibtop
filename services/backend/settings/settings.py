@@ -26,10 +26,10 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'djoser',
-    'django_messages_drf',
     'drf_yasg',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
+    'messages_drf.apps.MessagesDrfConfig',
 ]
 
 SITE_ID = 1
