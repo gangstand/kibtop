@@ -62,7 +62,9 @@ class Money(models.Model):
 
 
 class BaseModelFull(models.Model):
-    title = models.CharField(verbose_name='Product name', max_length=255)
+    title_en = models.CharField(max_length=255, blank=True, null=True)
+    title_ru = models.CharField(max_length=255, blank=True, null=True)
+    title_tr = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(blank=True, null=True)
     user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.CASCADE)
@@ -80,7 +82,7 @@ class BaseModelFull(models.Model):
         self.save()
 
     def __str__(self):
-        return f'{self.title} {self.user} {self.address}'
+        return f'{self.title_en} {self.user} {self.address}'
 
     class Meta:
         abstract = True
