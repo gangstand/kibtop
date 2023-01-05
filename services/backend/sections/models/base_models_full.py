@@ -62,7 +62,9 @@ class Money(models.Model):
 
 
 class BaseModelFull(models.Model):
-    title = models.CharField(verbose_name='Product name', max_length=255)
+    title_en = models.CharField(max_length=255, blank=True, null=True)
+    title_ru = models.CharField(max_length=255, blank=True, null=True)
+    title_tr = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(blank=True, null=True)
     user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.CASCADE)
@@ -73,13 +75,14 @@ class BaseModelFull(models.Model):
     category_ru = models.CharField(choices=CATEGORY_RU, max_length=255, blank=True, null=True, default=None)
     category_tr = models.CharField(choices=CATEGORY_TR, max_length=255, blank=True, null=True, default=None)
     recommend = models.BooleanField()
+    publisher = models.BooleanField()
 
     def updated_at(self):
         self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
-        return f'{self.title} {self.user} {self.address}'
+        return f'{self.title_en} {self.user} {self.address}'
 
     class Meta:
         abstract = True

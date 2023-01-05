@@ -1,4 +1,4 @@
-from sections.models import ChildrenFull
+from sections.models import ChildrenFull, ChildrenFullFavouritesUser, ChildrenFullViewsUser
 
 import django_filters
 
@@ -14,3 +14,21 @@ class FilterChildren(django_filters.FilterSet):
     class Meta:
         model = ChildrenFull
         fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr']
+
+
+class FilterChildrenViews(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = ChildrenFullViewsUser
+        fields = ['avto_full', 'user']
+
+
+class FilterChildrenFavourites(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = ChildrenFullFavouritesUser
+        fields = ['avto_full', 'user']

@@ -28,14 +28,14 @@ class CategoryFullAPIList(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         query = self.request.query_params
         filters = {
-            'avto': AvtoFull.objects.all(),
-            'children': ChildrenFull.objects.all(),
-            'electronics': ElectronicsFull.objects.all(),
-            'fashion': FashionFull.objects.all(),
-            'house_garden': HouseGardenFull.objects.all(),
-            'realty': RealtyFull.objects.all(),
-            'services': ServicesFull.objects.all(),
-            'work': WorkFull.objects.all(),
+            'avto': AvtoFull.objects.filter(publisher=True),
+            'children': ChildrenFull.objects.filter(publisher=True),
+            'electronics': ElectronicsFull.objects.filter(publisher=True),
+            'fashion': FashionFull.objects.filter(publisher=True),
+            'house_garden': HouseGardenFull.objects.filter(publisher=True),
+            'realty': RealtyFull.objects.filter(publisher=True),
+            'services': ServicesFull.objects.filter(publisher=True),
+            'work': WorkFull.objects.filter(publisher=True),
         }
         serializer_en = CategoryFullSerializerEN(filters)
         serializer_ru = CategoryFullSerializerRU(filters)

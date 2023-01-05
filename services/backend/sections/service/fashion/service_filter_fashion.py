@@ -1,4 +1,6 @@
-from sections.models import FashionFull
+from sections.models import (
+    FashionFull, FashionFullViewsUser, FashionFullFavouritesUser
+)
 
 import django_filters
 
@@ -14,3 +16,21 @@ class FilterFashion(django_filters.FilterSet):
     class Meta:
         model = FashionFull
         fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr']
+
+
+class FilterFashionViews(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = FashionFullViewsUser
+        fields = ['avto_full', 'user']
+
+
+class FilterFashionFavourites(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = FashionFullFavouritesUser
+        fields = ['avto_full', 'user']

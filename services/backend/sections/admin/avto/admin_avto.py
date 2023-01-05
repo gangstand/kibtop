@@ -1,14 +1,5 @@
-from modeltranslation.translator import TranslationOptions, translator
-
 from sections.models import AvtoFullUpload, AvtoFull
 from django.contrib import admin
-
-
-class AvtoTranslationOptions(TranslationOptions):
-    fields = ('title', 'brand', )
-
-
-translator.register(AvtoFull, AvtoTranslationOptions)
 
 
 class AvtoFullImageAdmin(admin.StackedInline):
@@ -21,4 +12,3 @@ class AUAdmin(admin.ModelAdmin):
 
     class Meta:
         model = AvtoFull
-

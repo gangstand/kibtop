@@ -1,16 +1,21 @@
+from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics
-from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import WorkFull
-from sections.serializer import (
-    WorkFullSerializer, WorkFullSerializerEN, WorkFullSerializerRU, WorkFullSerializerTR, WorkFullSerializerDetail
-)
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterWork
+from django_filters.rest_framework import DjangoFilterBackend
+from sections.models import (
+    WorkFull, WorkFullFavouritesUser, WorkFullViewsUser
+)
+from sections.serializer import (
+    WorkFullSerializer, WorkFullSerializerEN, WorkFullSerializerRU, WorkFullSerializerTR, WorkFullSerializerDetail,
+    WorkFullViewsUserSerializer, WorkFullFavouritesUserSerializer
+)
+from sections.service import (
+    FilterWork, FilterWorkFavourites, FilterWorkViews
+)
 from sections.utils import query_list_lang
 
-model_work = WorkFull.objects.all()
+model_work = WorkFull.objects.filter(publisher=True, )
 
 
 class WorkLimitPagination(MultipleModelLimitOffsetPagination):
@@ -67,4 +72,26 @@ class WorkFullAPIListCreate(generics.CreateAPIView):
 class WorkFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = model_work
     serializer_class = WorkFullSerializerDetail
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class WorkFullViewsUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterWorkViews
+    queryset = WorkFullViewsUser.objects.all()
+    serializer_class = WorkFullViewsUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class WorkFullFavouritesUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterWorkFavourites
+    queryset = WorkFullFavouritesUser.objects.all()
+    serializer_class = WorkFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class WorkFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
+    queryset = WorkFullFavouritesUser.objects.all()
+    serializer_class = WorkFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

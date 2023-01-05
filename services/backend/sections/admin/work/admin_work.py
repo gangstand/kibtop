@@ -1,14 +1,5 @@
-from modeltranslation.translator import TranslationOptions, translator
-
 from sections.models import WorkFullUpload, WorkFull
 from django.contrib import admin
-
-
-class WorkTranslationOptions(TranslationOptions):
-    fields = ('title', )
-
-
-translator.register(WorkFull, WorkTranslationOptions)
 
 
 class WorkFullImageAdmin(admin.StackedInline):
@@ -21,4 +12,3 @@ class WUAdmin(admin.ModelAdmin):
 
     class Meta:
         model = WorkFull
-

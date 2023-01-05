@@ -1,5 +1,6 @@
-from sections.models import HouseGardenFull
-
+from sections.models import (
+    HouseGardenFull, HouseGardenFullViewsUser, HouseGardenFullFavouritesUser
+)
 import django_filters
 
 
@@ -14,3 +15,21 @@ class FilterHouseGarden(django_filters.FilterSet):
     class Meta:
         model = HouseGardenFull
         fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr']
+
+
+class FilterHouseGardenViews(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = HouseGardenFullViewsUser
+        fields = ['avto_full', 'user']
+
+
+class FilterHouseGardenFavourites(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = HouseGardenFullFavouritesUser
+        fields = ['avto_full', 'user']

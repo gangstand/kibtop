@@ -1,17 +1,21 @@
+from rest_framework import generics
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-from rest_framework import generics
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
-from sections.models import RealtyFull
+from sections.models import (
+    RealtyFull, RealtyFullFavouritesUser, RealtyFullViewsUser
+)
 from sections.serializer import (
     RealtyFullSerializerDetail, RealtyFullSerializerEN, RealtyFullSerializerRU,
-    RealtyFullSerializerTR, RealtyFullSerializer
+    RealtyFullSerializerTR, RealtyFullSerializer, RealtyFullViewsUserSerializer, RealtyFullFavouritesUserSerializer
 )
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterRealty
+from sections.service import (
+    FilterRealty, FilterRealtyFavourites, FilterRealtyViews
+)
 from sections.utils import query_list_lang
 
-model_realty = RealtyFull.objects.all()
+model_realty = RealtyFull.objects.filter(publisher=True,)
 
 
 class RealtyLimitPagination(MultipleModelLimitOffsetPagination):
@@ -68,4 +72,26 @@ class RealtyFullAPIListCreate(generics.CreateAPIView):
 class RealtyFullAPIUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = model_realty
     serializer_class = RealtyFullSerializerDetail
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class RealtyFullViewsUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterRealtyViews
+    queryset = RealtyFullViewsUser.objects.all()
+    serializer_class = RealtyFullViewsUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class RealtyFullFavouritesUserAPIList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterRealtyFavourites
+    queryset = RealtyFullFavouritesUser.objects.all()
+    serializer_class = RealtyFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class RealtyFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
+    queryset = RealtyFullFavouritesUser.objects.all()
+    serializer_class = RealtyFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
