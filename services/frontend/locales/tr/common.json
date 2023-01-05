@@ -97,6 +97,17 @@
     "incorrect email": "yanlış e-posta",
 
     "Ready! Check your email": "Hazır! E-postanızı kontrol edin",
-    "We have sent a password reset link to your email": "E-postanıza bir şifre sıfırlama bağlantısı gönderdik"
+    "We have sent a password reset link to your email": "E-postanıza bir şifre sıfırlama bağlantısı gönderdik",
+
+    "Profile": "Profil",
+    "Go back to the main page": "Ana sayfaya geri dön",
+    "deals": "pazarlıklar",
+    "Edit profile": "Profili düzenle",
+    "Settings": "Ayarlar",
+    "Archive": "Arşiv",
+    "My Ads": "Reklamlarım",
+    "language and currency": "dil ve para birimi",
+    "Back": "Geri",
+    "Delete Account": "Hesabı Sil"
 }
 

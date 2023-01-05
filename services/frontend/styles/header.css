@@ -105,6 +105,7 @@
 
     background-color: var(--color-white);
     box-shadow: none;
+    z-index: 3;
 }
 
 @media (min-width: 800px) {
@@ -282,7 +283,7 @@
 
 .screen-dimmer {
     display: none;
-    z-index: 1;
+    z-index: 10;
     background-color: rgba(0, 0, 0, 0.3);;
     cursor: pointer;
     
@@ -314,7 +315,7 @@
     width: 100%;
 
     padding-bottom: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     padding-top: 23px;
     border-bottom: 1px solid #EDEDED;
 }
@@ -563,7 +564,9 @@
     padding: 10px 9px;
     margin-right: 10px;
     border-radius: 10px;
+
     border: 2px solid #65A4FE;
+    background-color: var(--color-blue);
 
     white-space: nowrap;
 
@@ -644,7 +647,7 @@
     border-radius: 0 0 20px 20px;
 
     background-color: #fff;
-    z-index: 3;
+    z-index: 20;
 
     position: fixed;
     top: 0;
@@ -713,7 +716,7 @@
     left: -100%;
 
 
-    z-index: 3;
+    z-index: 20;
     background-color: #fff;
 
     display: flex;

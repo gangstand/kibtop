@@ -96,5 +96,18 @@
     "incorrect email": "incorrect email",
     
     "Ready! Check your email": "Ready! Check your email",
-    "We have sent a password reset link to your email": "We have sent a password reset link to your email"
+    "We have sent a password reset link to your email": "We have sent a password reset link to your email",
+
+    "Profile": "Profile",
+    "Go back to the main page": "Go back to the main page",
+    "deals": "deals",
+    "Edit profile": "Edit profile",
+    "Settings": "Settings",
+    "Archive": "Archive",
+    "My Ads": "My Ads",
+    "language and currency": "language and currency",
+    "Back": "Back",
+    "Delete Account": "Delete Account",
+    "Profile Photo": "Profile Photo"
+    
 }

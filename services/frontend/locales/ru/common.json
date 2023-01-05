@@ -27,7 +27,7 @@
     "MORE": "ПОДРОБНЕЕ",
 
     "Recommended": "Рекомендации",
-    "Location": "Местоположение",
+    "Location": "Геолокация",
 
     "New announcements": "Новые объявления",
     "City or region": "Город или регион",
@@ -97,5 +97,16 @@
     "incorrect email": "неверная почта",
 
     "Ready! Check your email": "Готово! Проверьте вашу почту",
-    "We have sent a password reset link to your email": "Мы отправили ссылку для сброса пароля на вашу почту"
+    "We have sent a password reset link to your email": "Мы отправили ссылку для сброса пароля на вашу почту",
+
+    "Profile": "Профиль",
+    "Go back to the main page": "Вернуться на главную страницу",
+    "deals": "сделок",
+    "Edit profile": "Редактировать профиль",
+    "Settings": "Настройки",
+    "Archive": "Архив",
+    "My Ads": "Мои товары",
+    "language and currency": "Язык и валюта",
+    "Back": "Назад",
+    "Delete Account": "Удалить аккаунт"
 }

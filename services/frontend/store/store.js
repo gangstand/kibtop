@@ -8,6 +8,7 @@ import { MobileReducer } from "./slices/MobileSlice";
 import { RegistrationRducer } from "./slices/RegistrationSlice";
 import { LoginReducer } from "./slices/LoginSlice";
 import { RecoveryReducer } from "./slices/RecoverySlice";
+import { ProfileReducer } from "./slices/ProfileSlice";
 
 const reducer = {
     auth: authReducer,
@@ -18,6 +19,7 @@ const reducer = {
     registration: RegistrationRducer,
     login: LoginReducer,
     recovery: RecoveryReducer,
+    profile: ProfileReducer,
     [HomePageApi.reducerPath]: HomePageApi.reducer
 }
 

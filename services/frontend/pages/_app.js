@@ -6,6 +6,11 @@ import '../styles/home.css'
 import '../styles/registration.css'
 import '../styles/login.css'
 import '../styles/recovery.css'
+import '../styles/profile.css'
+import '../styles/settings.css'
+import '../styles/edit_profile.css'
+
+
 
 
 import React, { Suspense } from 'react';
