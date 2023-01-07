@@ -608,6 +608,10 @@
     fill: var(--color-black);
 }
 
+.user-btns__item--checked {
+    
+}
+
 .wrapper {
     display: flex;
     align-items: center;

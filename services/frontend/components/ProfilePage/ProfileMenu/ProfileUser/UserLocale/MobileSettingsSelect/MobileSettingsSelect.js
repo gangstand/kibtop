@@ -15,7 +15,7 @@ const MobileSettingsSelect = ({onBack}) => {
 
     return (
         <>
-            <div className="container">
+            <div className="container container--select">
                 <div className="settings-mobile-select">
                     <MobileSettingsSelectHead onBackClick={onBack || onBackClick} />
                     <CurrencyChoice />

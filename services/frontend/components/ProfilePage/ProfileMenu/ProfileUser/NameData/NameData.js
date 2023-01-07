@@ -1,12 +1,12 @@
-const NameData = ({img, name, phone}) => {
+const NameData = ({avatar, name, surname}) => {
     return (
         <>
             <div className="user__wrapper name-data">
-                <div className="user__ava"></div>
+                <img src={avatar} className="user__ava" />
 
                 <div className="user__data">
                     <p className="user__name">{name}</p>
-                    <p className="user__phone">{phone}</p>
+                    <p className="user__name">{surname}</p>
                 </div>
             </div>
 

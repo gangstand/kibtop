@@ -2,11 +2,11 @@ import Link from "next/link";
 import Text from "../../Elementes/Text/Text";
 import ProfileUserContainer from "./ProfileUser/ProfileUserContainer";
 
-const ProfileMenu = () => {
+const ProfileMenu = ({user}) => {
     return (
         <>
             <aside className="profile__menu">
-                <ProfileUserContainer />
+                <ProfileUserContainer {...{user}} />
                 
                 <Link href="/profile/settings" className="profile__link">
                     <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

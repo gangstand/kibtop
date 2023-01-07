@@ -119,6 +119,7 @@
 
     line-height: 14px;
     color: var(--color-blue);
+    white-space: nowrap;
 }
 
 
@@ -172,11 +173,18 @@
     margin-left: 261px;
 }
 
+@media (max-width: 900px) {
+    .reg-btn--edit {
+        margin-left: 185px;
+    }
+}
+
 @media (max-width: 600px) {
     .reg-btn--edit {
         margin-left: 0;
     }
 }
+
 
 .warn--profile {
     position: absolute;
@@ -208,5 +216,34 @@
 
     .warn--mobile-hide {
         display: none;
+    }
+}
+
+.reg-btn:disabled {
+    opacity: .8;
+}
+
+.ask-text {
+    font-size: 16px;
+    line-height: 18px;
+
+    margin-left: 0;
+    max-width: 100%;
+
+    color: var(--color-blue);
+    text-align: center;
+}
+
+@media (min-width: 600px) {
+    .ask-text {
+        max-width: 340px;
+        margin-left: 185px;
+        text-align: left;
+    }
+}
+
+@media (min-width: 900px) {
+    .ask-text {
+        margin-left: 261px;
     }
 }

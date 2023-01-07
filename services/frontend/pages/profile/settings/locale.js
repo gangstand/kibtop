@@ -4,12 +4,15 @@ import HeaderService from "../../../components/Header/HeaderService/HeaderServic
 import MobileSettingsSelect from "../../../components/ProfilePage/ProfileMenu/ProfileUser/UserLocale/MobileSettingsSelect/MobileSettingsSelect";
 import { backPath } from "../../../components/SettingsPage/backPath";
 import SettingsNav from "../../../components/SettingsPage/SettingsNav";
+import { getServerSideUser } from "../../../services/tools/getServerSideUser/getServerSideUser";
 
-const locale = () => {
+const locale = ({user}) => {
     const {pathname, push} = useRouter()
     const back = backPath(pathname)
 
     const onBack = () => push(back)
+
+    useAuthRedirect(user)
 
     return (
         <>
@@ -22,6 +25,15 @@ const locale = () => {
             
         </>
     );
+}
+
+export async function getServerSideProps({req, res}) {
+
+    const user = await getServerSideUser(cookies)
+
+    return {
+      props: {user},
+    }
 }
 
 export default locale;

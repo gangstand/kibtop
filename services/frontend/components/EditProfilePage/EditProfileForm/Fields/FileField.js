@@ -83,7 +83,7 @@ const FileField = ({file}) => {
                                 )
                             }
                                 
-                            <img src={file || valueSrc} className="file-img file-img--edit" style={{opacity: (valueSrc || file) && !error ? 1 : 0}} />
+                            <img src={valueSrc || file} className="file-img file-img--edit" style={{opacity: (valueSrc || file) && !error ? 1 : 0}} />
                 </label>
                 {
                     isError ? (

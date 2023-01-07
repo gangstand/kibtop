@@ -4,7 +4,7 @@ const UserAdevrt = () => {
     return (
         <>
             <div className="advert advert--profile">
-                <div className="advert__img advert__img--profile" />
+                <img src="/img/goods/camera.png" className="advert__img advert__img--profile" />
 
                 <div className="advert__desc">
                     <div className="advert__column">

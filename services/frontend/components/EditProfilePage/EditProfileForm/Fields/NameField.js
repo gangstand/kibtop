@@ -17,7 +17,7 @@ const NameField = () => {
                 {...register('name', {
                                 required: t('field is required'),
                                 pattern: {
-                                    value: /^[А-яA-ZİĞÜŞÖÇа-яa-zğüşöç]+$/,
+                                    value: /^[А-яA-ZİĞÜŞÖÇа-яa-zğüşöç\s]+$/,
                                     message: t('invalid format')
                                 }
                         })} type="text" placeholder={t("Your name")} />

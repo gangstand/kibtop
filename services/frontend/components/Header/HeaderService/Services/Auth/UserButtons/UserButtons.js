@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 
-const UserButtons = ({isAuthed}) => {
+const UserButtons = ({isAuthed, checkedVal}) => {
     return (
         <>
             {
@@ -19,7 +19,7 @@ const UserButtons = ({isAuthed}) => {
                                 </defs>
                             </svg>
                         </Link>
-                        <Link href={'/messages'} className="user-btns__item">
+                        <Link href={'/chat'} className="user-btns__item">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_200_620)">
                                     <path d="M29.9425 6.92749L19.42 17.45C18.2467 18.6203 16.6572 19.2775 15 19.2775C13.3428 19.2775 11.7533 18.6203 10.58 17.45L0.0575 6.92749C0.04 7.12499 0 7.30374 0 7.49999V22.5C0.00198482 24.157 0.661102 25.7455 1.83277 26.9172C3.00445 28.0889 4.59301 28.748 6.25 28.75H23.75C25.407 28.748 26.9956 28.0889 28.1672 26.9172C29.3389 25.7455 29.998 24.157 30 22.5V7.49999C30 7.30374 29.96 7.12499 29.9425 6.92749Z" fill="#414042" />
@@ -33,7 +33,7 @@ const UserButtons = ({isAuthed}) => {
                             </svg>
 
                         </Link>
-                        <Link href={'/account'} className="user-btns__item">
+                        <Link href={'/profile'} className={"user-btns__item"}>
                             <svg viewBox="0 0 40 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 26.6584 36.7462 32.5569 31.742 36.1921C30.5971 30.7553 25.776 26.6731 20 26.6667C14.224 26.6731 9.40296 30.7553 8.25798 36.192C3.25375 32.5568 0 26.6584 0 20ZM20 24C24.4183 24 28 20.4183 28 16C28 11.5817 24.4183 8 20 8C15.5817 8 12 11.5817 12 16C12 20.4183 15.5817 24 20 24Z" fill="#414042" />
                             </svg>

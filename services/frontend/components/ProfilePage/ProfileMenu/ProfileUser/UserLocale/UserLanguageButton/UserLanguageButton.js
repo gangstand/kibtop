@@ -9,9 +9,12 @@ const UserLanguageButton = ({isLanguageOpen, onProfileLanguageSwitch}) => {
         'tr': 'Türkçe',
     }
 
+    const isOpenStyle = isLanguageOpen ? ' user-locale-btn--opened' : ''
+
+
     return (
         <>
-            <button className="user-locale-btn" onClick={onProfileLanguageSwitch}>
+            <button className={"user-locale-btn" + isOpenStyle} onClick={onProfileLanguageSwitch}>
                 {langs[locale]}
             </button>
         </>
