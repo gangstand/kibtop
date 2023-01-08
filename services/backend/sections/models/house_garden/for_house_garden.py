@@ -1,3 +1,5 @@
+from sections.utils.translate.utils_translate import transl_for
+
 HOUSE_GARDEN_CATEGORY_EN = [
     ('Furniture', 'Furniture'),
     ('Food / Drinks', 'Food / Drinks'),
@@ -6,19 +8,5 @@ HOUSE_GARDEN_CATEGORY_EN = [
     ('Construction / Renovation', 'Construction / Renovation'),
     ('Other household goods', 'Other household goods'),
 ]
-HOUSE_GARDEN_CATEGORY_RU = [
-    ('Мебель', 'Furniture'),
-    ('Еда / напитки', 'Еда / напитки'),
-    ('Сад', 'Огород'),
-    ("Предметы интерьера", "Предметы интерьера"),
-    ("Строительство / реконструкция", "Строительство / реновация"),
-    ("Прочие товары для дома", "Прочие товары для дома"),
-]
-HOUSE_GARDEN_CATEGORY_TR = [
-    ('Mobilya', 'Mobilya'),
-    ('Yiyecek / içecekler', 'Yiyecek / içecekler'),
-    ('Bahçe', 'Bahçe'),
-    ('İç eşyalar', 'iç eşyalar'),
-    ('İnşaat / Yenileme', 'İnşaat / Yenileme'),
-    ('Diğer ev eşyaları', 'Diğer ev eşyaları'),
-]
+HOUSE_GARDEN_CATEGORY_RU = (transl_for(HOUSE_GARDEN_CATEGORY_EN, "Русский"))
+HOUSE_GARDEN_CATEGORY_TR = (transl_for(HOUSE_GARDEN_CATEGORY_EN, "Türk"))

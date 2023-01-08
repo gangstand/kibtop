@@ -7,9 +7,9 @@ from .for_fashion import *
 
 
 class FashionFull(BaseModelFull):
-    sub_category_en = models.CharField(choices=FASHION_CATEGORY_EN, max_length=255)
-    sub_category_ru = models.CharField(choices=FASHION_CATEGORY_RU, max_length=255)
-    sub_category_tr = models.CharField(choices=FASHION_CATEGORY_TR, max_length=255)
+    sub_category_en = models.CharField(choices=FASHION_CATEGORY_EN, max_length=255, blank=True, null=True)
+    sub_category_ru = models.CharField(choices=FASHION_CATEGORY_RU, max_length=255, blank=True, null=True)
+    sub_category_tr = models.CharField(choices=FASHION_CATEGORY_TR, max_length=255, blank=True, null=True)
 
 class FashionFullViewsUser(models.Model):
     avto_full = models.ForeignKey(FashionFull, default=None, on_delete=models.CASCADE)

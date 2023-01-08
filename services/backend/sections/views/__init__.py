@@ -7,7 +7,7 @@ from .user_archive.user_archive_views import UserArchiveAPIList
 
 from .realty.views_realty import (
     RealtyFullAPIList, RealtyFullAPIListCreate, RealtyFullAPIUpdateDestroy, RealtyFullViewsUserAPIList,
-    RealtyFullFavouritesUserAPIList, RealtyFullFavouritesUserAPIUpdateDestroy
+    RealtyFullFavouritesUserAPIList, RealtyFullFavouritesUserAPIUpdateDestroy, RealtyFullArchiveUserAPIDestroy
 )
 from .views_base import (
     CityAPIList, MoneyAPIList, MoneyAPIUpdateDestroy
@@ -18,29 +18,30 @@ from .avto.views_avto import (
 )
 from .work.views_work import (
     WorkFullAPIList, WorkFullAPIListCreate, WorkFullAPIUpdateDestroy, WorkFullViewsUserAPIList,
-    WorkFullFavouritesUserAPIList, WorkFullFavouritesUserAPIUpdateDestroy
+    WorkFullFavouritesUserAPIList, WorkFullFavouritesUserAPIUpdateDestroy, WorkFullArchiveUserAPIDestroy
 )
 from .services.views_services import (
     ServicesFullAPIList, ServicesFullAPIListCreate, ServicesFullAPIUpdateDestroy, ServicesFullViewsUserAPIList,
-    ServicesFullFavouritesUserAPIList, ServicesFullFavouritesUserAPIUpdateDestroy
+    ServicesFullFavouritesUserAPIList, ServicesFullFavouritesUserAPIUpdateDestroy, ServicesFullArchiveUserAPIDestroy
 )
 from .children.views_children import (
     ChildrenFullAPIList, ChildrenFullAPIListCreate, ChildrenFullAPIUpdateDestroy,
-    ChildrenFullViewsUserAPIList, ChildrenFullFavouritesUserAPIList, ChildrenFullFavouritesUserAPIUpdateDestroy
+    ChildrenFullViewsUserAPIList, ChildrenFullFavouritesUserAPIList, ChildrenFullFavouritesUserAPIUpdateDestroy,
+    ChildrenFullArchiveUserAPIDestroy
 )
 from .fashion.views_fashion import (
     FashionFullAPIList, FashionFullAPIListCreate, FashionFullAPIUpdateDestroy, FashionFullViewsUserAPIList,
-    FashionFullFavouritesUserAPIList, FashionFullFavouritesUserAPIUpdateDestroy
+    FashionFullFavouritesUserAPIList, FashionFullFavouritesUserAPIUpdateDestroy, FashionFullArchiveUserAPIDestroy
 )
 from .electronics.views_electronics import (
     ElectronicsFullAPIList, ElectronicsFullAPIListCreate,
     ElectronicsFullAPIUpdateDestroy, ElectronicsFullViewsUserAPIList, ElectronicsFullFavouritesUserAPIList,
-    ElectronicsFullFavouritesUserAPIUpdateDestroy
+    ElectronicsFullFavouritesUserAPIUpdateDestroy, ElectronicsFullArchiveUserAPIDestroy
 )
 from .house_garden.views_house_garden import (
     HouseGardenFullAPIUpdateDestroy, HouseGardenFullAPIList,
     HouseGardenFullAPIListCreate, HouseGardenFullViewsUserAPIList, HouseGardenFullFavouritesUserAPIList,
-    HouseGardenFullFavouritesUserAPIUpdateDestroy
+    HouseGardenFullFavouritesUserAPIUpdateDestroy, HouseGardenFullArchiveUserAPIDestroy
 )
 
 __all__ = [
@@ -50,6 +51,7 @@ __all__ = [
     'RealtyFullViewsUserAPIList',
     'RealtyFullFavouritesUserAPIList',
     'RealtyFullFavouritesUserAPIUpdateDestroy',
+    'RealtyFullArchiveUserAPIDestroy',
 
     'StockAPIList',
     'StockAPIUpdateDestroy',
@@ -81,6 +83,7 @@ __all__ = [
     'WorkFullViewsUserAPIList',
     'WorkFullFavouritesUserAPIList',
     'WorkFullFavouritesUserAPIUpdateDestroy',
+    'WorkFullArchiveUserAPIDestroy',
 
     'ServicesFullAPIList',
     'ServicesFullAPIListCreate',
@@ -88,6 +91,7 @@ __all__ = [
     'ServicesFullViewsUserAPIList',
     'ServicesFullFavouritesUserAPIList',
     'ServicesFullFavouritesUserAPIUpdateDestroy',
+    'ServicesFullArchiveUserAPIDestroy',
 
     'ChildrenFullAPIList',
     'ChildrenFullAPIListCreate',
@@ -95,6 +99,7 @@ __all__ = [
     'ChildrenFullViewsUserAPIList',
     'ChildrenFullFavouritesUserAPIList',
     'ChildrenFullFavouritesUserAPIUpdateDestroy',
+    'ChildrenFullArchiveUserAPIDestroy',
 
     'ElectronicsFullAPIList',
     'ElectronicsFullAPIListCreate',
@@ -102,6 +107,7 @@ __all__ = [
     'ElectronicsFullViewsUserAPIList',
     'ElectronicsFullFavouritesUserAPIList',
     'ElectronicsFullFavouritesUserAPIUpdateDestroy',
+    'ElectronicsFullArchiveUserAPIDestroy',
 
     'FashionFullAPIList',
     'FashionFullAPIListCreate',
@@ -109,6 +115,7 @@ __all__ = [
     'FashionFullViewsUserAPIList',
     'FashionFullFavouritesUserAPIList',
     'FashionFullFavouritesUserAPIUpdateDestroy',
+    'FashionFullArchiveUserAPIDestroy',
 
     'HouseGardenFullAPIUpdateDestroy',
     'HouseGardenFullAPIList',
@@ -116,4 +123,5 @@ __all__ = [
     'HouseGardenFullViewsUserAPIList',
     'HouseGardenFullFavouritesUserAPIList',
     'HouseGardenFullFavouritesUserAPIUpdateDestroy',
+    'HouseGardenFullArchiveUserAPIDestroy',
 ]

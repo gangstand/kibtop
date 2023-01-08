@@ -2,7 +2,7 @@ from django.urls import path
 from sections.views import (
     HouseGardenFullAPIUpdateDestroy, HouseGardenFullAPIListCreate, HouseGardenFullAPIList,
     HouseGardenFullViewsUserAPIList, HouseGardenFullFavouritesUserAPIList,
-    HouseGardenFullFavouritesUserAPIUpdateDestroy
+    HouseGardenFullFavouritesUserAPIUpdateDestroy, HouseGardenFullArchiveUserAPIDestroy
 )
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('house_garden/favourites/', HouseGardenFullFavouritesUserAPIList.as_view()),
     path('house_garden/favourites/<int:pk>/', HouseGardenFullFavouritesUserAPIUpdateDestroy.as_view()),
     path('house_garden/<int:pk>/', HouseGardenFullAPIUpdateDestroy.as_view()),
+    path('house_garden/archive/<int:pk>/', HouseGardenFullArchiveUserAPIDestroy.as_view()),
 ]
