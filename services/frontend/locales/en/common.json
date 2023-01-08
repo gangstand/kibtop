@@ -109,6 +109,15 @@
     "Back": "Back",
     "Delete Account": "Delete Account",
     "Profile Photo": "Profile Photo",
-    "Please confirm the changes by following the link sent to your email": "Please confirm the changes by following the link sent to your email"
+    "Please confirm the changes by following the link sent to your email": "Please confirm the changes by following the link sent to your email",
     
+    "Click on this button to create new advert": "Click on this button to create new advert",
+    "Archive is empty": "Archive is empty",
+    "You don't have active ads": "You don't have active ads",
+
+    "No featured ads": "No featured ads",
+    "Click": "Click",
+    "on the ad to save it here": "on the ad to save it here",
+    "Need to sign up": "Need to sign up",
+    "To add ads to Favorites, you need to sign up": "To add ads to Favorites, you need to sign up"
 }

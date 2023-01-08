@@ -4,11 +4,12 @@ import CityField from "./Fields/CityField";
 import EmailField from "./Fields/EmailField";
 import FileField from "./Fields/FileField";
 import NameField from "./Fields/NameField";
+import ResendEmailButtonContainer from "./ResendEmailButton/ResendEmailButtonContainer";
 
 const EditProfileForm = ({onEditProfileSubmit, email, name, city, avatar, surname, isLoading, isSuccess}) => {
     
     const EditProfileForm = useForm({mode: 'onChange', defaultValues: {
-        name: `${name} ${surname}`, city, email
+        name: `${name || ''} ${surname || ''}`, city, email
     }})
     const {handleSubmit, setError, formState: {isValid, errors}} = EditProfileForm
 
@@ -52,7 +53,11 @@ const EditProfileForm = ({onEditProfileSubmit, email, name, city, avatar, surnam
 
                 {
                     isSuccess ? (
-                        <p className="ask-text"><Text content="Please confirm the changes by following the link sent to your email" /></p>
+                        <div style={{display: 'flex'}}>
+                            <p className="ask-text"><Text content="Please confirm the changes by following the link sent to your email" /></p>
+                            <ResendEmailButtonContainer />
+                        </div>
+
                     ) : (
                         <button disabled={!isValid || isLoading} className="reg-btn reg-btn--edit">
                             <Text content="Apply" />

@@ -6,7 +6,7 @@ import { useAuthRedirect } from "../PageHooks/useAuthRedirect";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 import UserAdevrtsContainer from "./UserAdevrts/UserAdevrtsContainer";
 
-const ProfilePage = ({user}) => {
+const ProfilePage = ({user, adverts}) => {
 
 
     return (
@@ -35,7 +35,7 @@ const ProfilePage = ({user}) => {
                 <div className="profile">
                     <ProfileMenu {...{user}} />
 
-                    <UserAdevrtsContainer />
+                    <UserAdevrtsContainer {...{serverAds: adverts}} />
                 </div>
             </main>
         </>

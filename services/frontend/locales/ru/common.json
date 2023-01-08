@@ -109,5 +109,16 @@
     "language and currency": "Язык и валюта",
     "Back": "Назад",
     "Delete Account": "Удалить аккаунт",
-    "Please confirm the changes by following the link sent to your email": "Пожалуйста, подтвердите изменения, пройдя по ссылке, отправленной вам на почту"
+    "Profile Photo": "Фото профиля",
+    "Please confirm the changes by following the link sent to your email": "Пожалуйста, подтвердите изменения, пройдя по ссылке, отправленной вам на почту",
+
+    "Click on this button to create new advert": "Нажмите на эту кнопку, чтобы создать новое объявление",
+    "Archive is empty": "Архив пуст",
+    "You don't have active ads": "У вас нет активных объявлений",
+
+    "No featured ads": "Нет избранных объявлений",
+    "Click": "Нажмите",
+    "on the ad to save it here": "на объявление, чтобы сохранить его здесь",
+    "Need to sign up": "Необходимо зарегистрироваться",
+    "To add ads to Favorites, you need to sign up": "Чтобы добавить объявление в Избранное, вам надо зарегистрироваться"
 }

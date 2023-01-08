@@ -16,11 +16,11 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         setAuth(state, action) {
-            const {userId} = action.payload;
+            const {userId, isAuthed} = action.payload;
 
 
             state.userId = userId;
-            state.isAuthed = true;
+            state.isAuthed = isAuthed;
         }
     }
 });
@@ -31,7 +31,7 @@ export const {setAuth} = authSlice.actions
 
 export const setAuthThunk = () => async dispatch => {
     const user = await AuthApi.auth()
-    if(!!user) dispatch(setAuth(user))
+    if(!!user) dispatch(setAuth({...user, isAuthed: true}))
 }
 
 export const registrationThunk = (email, password1, password2, name, city, file) => async dispatch => {

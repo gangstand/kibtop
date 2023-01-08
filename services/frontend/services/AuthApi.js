@@ -29,7 +29,7 @@ export const AuthApi = {
     },
 
     async registration(email, password1, password2, names, city, file) {
-        const [name, surname] = names.split(' ')
+        const [name, surname] = names.trim().split(' ')
         const formData = !!file ? FormDataCreator({
             "first_name": surname,
             "last_name": '',

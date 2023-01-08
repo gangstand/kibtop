@@ -76,6 +76,7 @@ class BaseModelFull(models.Model):
     category_tr = models.CharField(choices=CATEGORY_TR, max_length=255, blank=True, null=True, default=None)
     recommend = models.BooleanField()
     publisher = models.BooleanField()
+    description = models.TextField()
 
     def updated_at(self):
         self.published_date = timezone.now()

@@ -4,7 +4,7 @@ import { useAuthRedirect } from "../PageHooks/useAuthRedirect";
 import SettingsNav from "../SettingsPage/SettingsNav";
 import EditProfileFormContainer from "./EditProfileForm/EditProfileFormContainer";
 
-const EditProfilePage = ({email, name, city, avatar, surname, userId}) => {
+const EditProfilePage = ({user}) => {
 
     return (
         <>
@@ -13,7 +13,7 @@ const EditProfilePage = ({email, name, city, avatar, surname, userId}) => {
             <main className="main">
                 <SettingsNav title="Edit profile" />
                 <div className="container">
-                    <EditProfileFormContainer user={{email, name, city, avatar, surname, userId}} />
+                    <EditProfileFormContainer user={user} />
                 </div>
             </main>
         </>

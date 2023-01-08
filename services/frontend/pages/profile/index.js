@@ -5,17 +5,17 @@ import { ProfileApi } from "../../services/ProfileApi";
 import { getServerSideCookies, getStringCookies } from "../../services/tools/CookieController";
 import { getServerSideUser } from "../../services/tools/getServerSideUser/getServerSideUser";
 
-const profile = ({user}) => {
+const profile = ({user, adverts}) => {
     useAuthRedirect(user)
     return (
         <>
-            <ProfilePage {...{user}} />
+            <ProfilePage {...{user, adverts}} />
         </>
     );
 }
 
-export async function getServerSideProps({req, res}) {
-
+export async function getServerSideProps({req, res, locale}) {
+    
     const cookies = getStringCookies(req)
 
     const access = getServerSideCookies(cookies, 'access')
@@ -26,8 +26,10 @@ export async function getServerSideProps({req, res}) {
 
     if(!user) user = await getServerSideUser(cookies)
 
+    const adverts = await ProfileApi.getUserAdverts(user?.userId, locale)
+
     return {
-      props: {user},
+      props: {user, adverts},
     }
 }
 

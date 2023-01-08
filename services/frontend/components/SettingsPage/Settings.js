@@ -1,12 +1,17 @@
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { setDeletingOpen } from "../../store/slices/ProfileSlice";
 import Text from "../Elementes/Text/Text";
+import DeleteAccountButtonContainer from "./DeleteAccountButton/DeleteAccountButtonContainer";
 import SettingsNav from "./SettingsNav";
 
 const Settings = () => {
+    const dispatch = useDispatch()
+    const closeDeletingAccount = () => dispatch(setDeletingOpen(false))
     return (
         <>
             <main className="main">
-                <SettingsNav title={'Settings'} />
+                <SettingsNav title={'Settings'} onClick={closeDeletingAccount} />
 
                 <div className="container">
                     <nav className="settings">
@@ -22,9 +27,7 @@ const Settings = () => {
                             <Text content="Сontact support" />
                         </Link>
 
-                        <Link href="" className="settings__link settings__link--red">
-                            <Text content="Delete Account" />
-                        </Link>
+                        <DeleteAccountButtonContainer />
                     </nav>
                 </div>
             </main>

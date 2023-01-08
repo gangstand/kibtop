@@ -9,6 +9,7 @@ import { RegistrationRducer } from "./slices/RegistrationSlice";
 import { LoginReducer } from "./slices/LoginSlice";
 import { RecoveryReducer } from "./slices/RecoverySlice";
 import { ProfileReducer } from "./slices/ProfileSlice";
+import { ArchiveReducer } from "./slices/ArchiveSlice";
 
 const reducer = {
     auth: authReducer,
@@ -20,6 +21,7 @@ const reducer = {
     login: LoginReducer,
     recovery: RecoveryReducer,
     profile: ProfileReducer,
+    archive: ArchiveReducer,
     [HomePageApi.reducerPath]: HomePageApi.reducer
 }
 

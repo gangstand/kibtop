@@ -27,7 +27,9 @@ export async function getServerSideProps({req, res}) {
     let user = await ProfileApi.getUserData(access)
                     .catch( err => null)
 
-    if(!user) user = getServerSideUser(cookies)
+    if(!user) user = await getServerSideUser(cookies)
+
+    
     
     return {
       props: {user},

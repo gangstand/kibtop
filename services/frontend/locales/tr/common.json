@@ -109,6 +109,19 @@
     "language and currency": "dil ve para birimi",
     "Back": "Geri",
     "Delete Account": "Hesabı Sil",
-    "Please confirm the changes by following the link sent to your email": "Lütfen e-postanıza gönderilen bağlantıyı takip ederek değişiklikleri onaylayın"
+    "Profile Photo": "Profil Fotoğrafı",
+    "Please confirm the changes by following the link sent to your email": "Lütfen e-postanıza gönderilen bağlantıyı takip ederek değişiklikleri onaylayın",
+
+    "Click on this button to create new advert": "Yeni reklam oluşturmak için bu düğmeye tıklayın",
+
+    "Archive is empty": "Arşiv boş",
+    "You don't have active ads": "Aktif reklamlarınız yok",
+
+    "No featured ads": "Öne çıkan reklam yok",
+    "Click": "Tıklayın",
+    "on the ad to save it here": "buraya kaydetmek için reklamda",
+    "Need to sign up": "Kaydolmanız gerekiyor",
+    "To add ads to Favorites, you need to sign up": "Sık Kullanılanlara ekle'yi eklemek için kaydolmanız gerekir"
+
 }
 

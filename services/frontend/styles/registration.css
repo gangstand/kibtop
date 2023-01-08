@@ -1333,6 +1333,10 @@
     fill: #BDBDBD;
 }
 
+.reg-btn--confirm {
+    
+}
+
 .reg-btn--confirm:disabled {
     opacity: .7;
 }

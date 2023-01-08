@@ -1,18 +1,22 @@
+import Link from "next/link";
+import { useCurrency } from "../../../../locales/hooks/useCurrency";
+import { BASE_URL } from "../../../../services/Instance";
 import EditAdvertButtonContainer from "./EditAdvertButton/EditAdvertButtonContainer";
 
-const UserAdevrt = () => {
+const UserAdevrt = ({id, title, cost, address, img, date}) => {
+    const {currency} = useCurrency()
     return (
         <>
-            <div className="advert advert--profile">
-                <img src="/img/goods/camera.png" className="advert__img advert__img--profile" />
+            <Link href={'/adverts/'+id} className="advert">
+                <img src={`${BASE_URL}${img}`} className="advert__img" />
 
                 <div className="advert__desc">
                     <div className="advert__column">
-                        <h5 className="advert-title advert-title--profile">
-                            Product name
+                        <h5 className="advert-title">
+                            {title}
                         </h5>
 
-                        <p className="advert-cost advert-cost--desk advert-cost--profile">$1000</p>
+                        <p className="advert-cost advert-cost--desk">{currency} {cost}</p>
                     
                         
                     </div>
@@ -20,20 +24,20 @@ const UserAdevrt = () => {
                     <div className="advert__column advert__column--right">
                         <EditAdvertButtonContainer /> 
 
-                        <p className="advert-cost advert-cost--mob advert-cost--profile">$1000</p>
+                        <p className="advert-cost advert-cost--mob">{currency} {cost}</p>
 
                         <div className="advert__info advert__info--desk">
-                            <p className="info-text">seller's address</p>
-                            <p className="info-text">announcement date</p>
+                            <p className="info-text">{address}</p>
+                            <p className="info-text">{date}</p>
                         </div>
                     </div>
 
                     <div className="advert__info advert__info--mob">
-                            <p className="info-text">seller's address</p>
-                            <p className="info-text">announcement date</p>
+                            <p className="info-text">{address}</p>
+                            <p className="info-text">{date}</p>
                     </div>
                 </div>
-            </div>
+            </Link>
         </>
     );
 }

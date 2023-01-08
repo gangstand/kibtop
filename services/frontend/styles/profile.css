@@ -142,7 +142,6 @@
     
     height: 100%;
     width: 100%;
-    max-width: 861px;
 }
 
 @media (min-width: 384px) {
@@ -212,6 +211,9 @@
 .advert__img {
     width: 100%;
     height: 260px;
+
+    object-position: center center;
+    object-fit: cover;
 
     border-radius: 20px;
 
@@ -337,7 +339,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
-    line-height: 7px;
+    line-height: 10px;
     text-align: right;
 
     color: var(--color-grey);
@@ -369,15 +371,15 @@
 }
 
 
-.advert--profile {
+.advert {
     width: 140px;
 }
 
-.advert__img--profile {
+.advert__img {
     height: 140px;
 }
 
-.advert-title--profile {
+.advert-title {
     max-width: 89px;
 
     font-weight: 600;
@@ -385,7 +387,7 @@
     line-height: 16px;
 }
 
-.advert-cost--profile {
+.advert-cost {
     max-width: max-content;
 
     font-size: 16px;
@@ -394,33 +396,33 @@
 
 
 @media (min-width: 1060px) {
-    .advert--profile {
+    .advert {
         width: 260px;
     }
     
-    .advert__img--profile {
+    .advert__img {
         height: 260px;
     }
     
-    .advert-title--profile {
+    .advert-title {
         max-width: 153px;
     }
     
-    .advert-cost--profile {
+    .advert-cost {
         max-width: 153px;
     }
 }
 
 @media (min-width: 670px) {
-    .advert--profile {
+    .advert {
         width: 180px;
     }
     
-    .advert__img--profile {
+    .advert__img {
         height: 180px;
     }
     
-    .advert-title--profile {
+    .advert-title {
         font-size: 14px;
         line-height: 16px;
     
@@ -428,7 +430,7 @@
         max-height: 32px;
     }
     
-    .advert-cost--profile {
+    .advert-cost {
         max-width: 100px;
     
         font-size: 20px;
@@ -438,15 +440,15 @@
 }
 
 @media (min-width: 865px) {
-    .advert--profile {
+    .advert {
         width: 220px;
     }
     
-    .advert__img--profile {
+    .advert__img {
         height: 220px;
     }
     
-    .advert-title--profile {
+    .advert-title {
         max-width: 120px;
         max-height: 45px;
 
@@ -454,7 +456,7 @@
         line-height: 20px;
     }
     
-    .advert-cost--profile {
+    .advert-cost {
         max-width: 120px;
 
         font-size: 24px;
@@ -464,55 +466,55 @@
 }
 
 @media (min-width: 1060px) {
-    .advert--profile {
+    .advert {
         width: 260px;
     }
     
-    .advert__img--profile {
+    .advert__img {
         height: 260px;
     }
     
-    .advert-title--profile {
+    .advert-title {
         max-width: 153px;
     }
     
-    .advert-cost--profile {
+    .advert-cost {
         max-width: 153px;
     }
 }
 
 @media (min-width: 1215px) {
-    .advert--profile {
+    .advert {
         width: 220px;
     }
     
-    .advert__img--profile {
+    .advert__img {
         height: 220px;
     }
     
-    .advert-title--profile {
+    .advert-title {
         max-width: 120px;
     }
     
-    .advert-cost--profile {
+    .advert-cost {
         max-width: 120px;
     }
 }
 
 @media (min-width: 1365px) {
-    .advert--profile {
+    .advert {
         width: 260px;
     }
 
-    .advert__img--profile {
+    .advert__img {
         height: 260px;
     }
 
-    .advert-title--profile {
+    .advert-title {
         max-width: 153px;
     }
     
-    .advert-cost--profile {
+    .advert-cost {
         max-width: 153px;
     }
 }
@@ -608,7 +610,7 @@
 
     margin-right: 9px;
 
-    background-color: var(--color-grey);
+    background-color: var(--color-blue);
 }
 
 .user__data {
@@ -725,7 +727,7 @@
     padding: 10px 0;
     width: 100%;
 
-    z-index: 30;
+    z-index: 2;
     background: #F6F6F6;
     border-radius: 10px;
 
@@ -856,6 +858,12 @@
     text-align: center;
     letter-spacing: -0.5px;
     color: var(--color-black);
+}
+
+@media (max-width: 970px) {
+    .edit-profile-btn {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1202,4 +1210,26 @@
     .main--profile .container--select {
         display: none;
     }
+}
+
+.reg-btn--warn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reg-btn--warn svg {
+    margin-right: 12px;
+}
+
+.reg-btn--disabled {
+    opacity: .7;
+}
+
+.reg-btn:disabled {
+    opacity: .7;
+}
+
+.reg-btn--resend {
+    height: max-content;
 }

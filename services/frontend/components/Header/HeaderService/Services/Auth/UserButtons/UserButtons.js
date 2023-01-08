@@ -2,6 +2,7 @@ import Link from "next/link";
 
 
 const UserButtons = ({isAuthed, checkedVal}) => {
+    const selectedStyle = path => (checkedVal === path) ? 'user-btns__item--selected' : 'user-btns__item--close'
     return (
         <>
             {

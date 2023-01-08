@@ -1,10 +1,6 @@
 import { instance } from "./Instance";
 
-const convertDate = (string) => {
-    const date = String(new Date(string).toUTCString())
-    const dateString = date.split(', ')[1].split(' ')
-    return `${dateString[0]} ${dateString[1]} ${dateString[2]}`
-}
+
 
 export const serializeGoods = (res, lang) => res.map((product) => ({
     id: product.id, 
