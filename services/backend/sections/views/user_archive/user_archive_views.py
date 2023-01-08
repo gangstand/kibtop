@@ -28,21 +28,21 @@ class UserArchiveAPIList(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         query = self.request.query_params
         try:
-            if type(int(query['id'])) == int:
-                id = query["id"]
+            if type(int(query['user_id'])) == int:
+                user_id = query["user_id"]
             else:
-                return Response({"message": "not query id"})
+                return Response({"message": "not query user_id"})
         except:
-            return Response({"message": "not query id"})
+            return Response({"message": "not query user_id"})
         filters = {
-            'avto': AvtoFull.objects.filter(user=id, publisher=False),
-            'children': ChildrenFull.objects.filter(user=id, publisher=False),
-            'electronics': ElectronicsFull.objects.filter(user=id, publisher=False),
-            'fashion': FashionFull.objects.filter(user=id, publisher=False),
-            'house_garden': HouseGardenFull.objects.filter(user=id, publisher=False),
-            'realty': RealtyFull.objects.filter(user=id, publisher=False),
-            'services': ServicesFull.objects.filter(user=id, publisher=False),
-            'work': WorkFull.objects.filter(user=id, publisher=False),
+            'avto': AvtoFull.objects.filter(user=user_id, publisher=False),
+            'children': ChildrenFull.objects.filter(user=user_id, publisher=False),
+            'electronics': ElectronicsFull.objects.filter(user=user_id, publisher=False),
+            'fashion': FashionFull.objects.filter(user=user_id, publisher=False),
+            'house_garden': HouseGardenFull.objects.filter(user=user_id, publisher=False),
+            'realty': RealtyFull.objects.filter(user=user_id, publisher=False),
+            'services': ServicesFull.objects.filter(user=user_id, publisher=False),
+            'work': WorkFull.objects.filter(user=user_id, publisher=False),
         }
         serializer_en = CategoryFullSerializerEN(filters)
         serializer_ru = CategoryFullSerializerRU(filters)

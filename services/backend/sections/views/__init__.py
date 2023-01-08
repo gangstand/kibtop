@@ -14,7 +14,7 @@ from .views_base import (
 )
 from .avto.views_avto import (
     AvtoFullAPIList, AvtoFullAPIListCreate, AvtoFullAPIUpdateDestroy, AvtoFullViewsUserAPIList,
-    AvtoFullFavouritesUserAPIList, AvtoFullFavouritesUserAPIUpdateDestroy
+    AvtoFullFavouritesUserAPIList, AvtoFullFavouritesUserAPIUpdateDestroy, AvtoFullArchiveUserAPIDestroy
 )
 from .work.views_work import (
     WorkFullAPIList, WorkFullAPIListCreate, WorkFullAPIUpdateDestroy, WorkFullViewsUserAPIList,
@@ -73,6 +73,7 @@ __all__ = [
     'AvtoFullAPIUpdateDestroy',
     'AvtoFullFavouritesUserAPIList',
     'AvtoFullFavouritesUserAPIUpdateDestroy',
+    'AvtoFullArchiveUserAPIDestroy',
 
     'WorkFullAPIList',
     'WorkFullAPIListCreate',

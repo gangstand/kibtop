@@ -69,6 +69,7 @@ class AvtoFullAPIListCreate(generics.CreateAPIView):
     queryset = model_avto
     serializer_class = AvtoFullSerializerDetail
     permission_classes = (IsAuthenticatedOrReadOnly,)
+
     def post(self, request, *args, **kwargs):
         request_data = request.data
         serializer_class = self.get_serializer_class()
@@ -147,5 +148,11 @@ class AvtoFullFavouritesUserAPIList(generics.ListCreateAPIView):
 
 class AvtoFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
     queryset = AvtoFullFavouritesUser.objects.all()
+    serializer_class = AvtoFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class AvtoFullArchiveUserAPIDestroy(generics.DestroyAPIView):
+    queryset = AvtoFull.objects.all()
     serializer_class = AvtoFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

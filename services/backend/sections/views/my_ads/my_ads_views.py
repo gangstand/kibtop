@@ -28,21 +28,21 @@ class MyAdsAPIList(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         query = self.request.query_params
         try:
-            if type(int(query['id'])) == int:
-                id = query["id"]
+            if type(int(query['user_id'])) == int:
+                user_id = query["user_id"]
             else:
-                return Response({"message": "not query id"})
+                return Response({"message": "not query user_id"})
         except:
-            return Response({"message": "not query id"})
+            return Response({"message": "not query user_id"})
         filters = {
-            'avto': AvtoFull.objects.filter(user=id, publisher=True),
-            'children': ChildrenFull.objects.filter(user=id, publisher=True),
-            'electronics': ElectronicsFull.objects.filter(user=id, publisher=True),
-            'fashion': FashionFull.objects.filter(user=id, publisher=True),
-            'house_garden': HouseGardenFull.objects.filter(user=id, publisher=True),
-            'realty': RealtyFull.objects.filter(user=id, publisher=True),
-            'services': ServicesFull.objects.filter(user=id, publisher=True),
-            'work': WorkFull.objects.filter(user=id, publisher=True),
+            'avto': AvtoFull.objects.filter(user=user_id, publisher=True),
+            'children': ChildrenFull.objects.filter(user=user_id, publisher=True),
+            'electronics': ElectronicsFull.objects.filter(user=user_id, publisher=True),
+            'fashion': FashionFull.objects.filter(user=user_id, publisher=True),
+            'house_garden': HouseGardenFull.objects.filter(user=user_id, publisher=True),
+            'realty': RealtyFull.objects.filter(user=user_id, publisher=True),
+            'services': ServicesFull.objects.filter(user=user_id, publisher=True),
+            'work': WorkFull.objects.filter(user=user_id, publisher=True),
         }
         serializer_en = CategoryFullSerializerEN(filters)
         serializer_ru = CategoryFullSerializerRU(filters)
