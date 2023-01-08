@@ -23,7 +23,7 @@ class HouseGardenFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 
 class HouseGardenFullSerializerDetail(serializers.ModelSerializer):
-    realty_full_upload = HouseGardenFullUploadSerializer(many=True)
+    house_garden_full_upload = HouseGardenFullUploadSerializer(many=True)
 
     class Meta:
         model = HouseGardenFull

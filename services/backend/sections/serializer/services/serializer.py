@@ -23,7 +23,7 @@ class ServicesFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 
 class ServicesFullSerializerDetail(serializers.ModelSerializer):
-    realty_full_upload = ServicesFullUploadSerializer(many=True)
+    services_full_upload = ServicesFullUploadSerializer(many=True)
 
     class Meta:
         model = ServicesFull

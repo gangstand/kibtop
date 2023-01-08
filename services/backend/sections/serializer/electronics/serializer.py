@@ -25,7 +25,7 @@ class ElectronicsFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 
 class ElectronicsFullSerializerDetail(serializers.ModelSerializer):
-    realty_full_upload = ElectronicsFullUploadSerializer(many=True)
+    electronics_full_upload = ElectronicsFullUploadSerializer(many=True)
 
     class Meta:
         model = ElectronicsFull

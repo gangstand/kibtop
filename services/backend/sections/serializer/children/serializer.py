@@ -24,7 +24,7 @@ class ChildrenFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 
 class ChildrenFullSerializerDetail(serializers.ModelSerializer):
-    realty_full_upload = ChildrenFullUploadSerializer(many=True, required=False)
+    children_full_upload = ChildrenFullUploadSerializer(many=True, required=False)
 
     class Meta:
         model = ChildrenFull

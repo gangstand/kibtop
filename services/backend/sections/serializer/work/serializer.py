@@ -22,7 +22,7 @@ class WorkFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 
 class WorkFullSerializerDetail(serializers.ModelSerializer):
-    realty_full_upload = WorkFullUploadSerializer(many=True)
+    work_full_upload = WorkFullUploadSerializer(many=True)
 
     class Meta:
         model = WorkFull

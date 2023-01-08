@@ -24,7 +24,7 @@ class FashionFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 
 class FashionFullSerializerDetail(serializers.ModelSerializer):
-    realty_full_upload = FashionFullUploadSerializer(many=True)
+    fashion_full_upload = FashionFullUploadSerializer(many=True)
 
     class Meta:
         model = FashionFull

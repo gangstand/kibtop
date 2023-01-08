@@ -23,7 +23,7 @@ class AvtoFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 
 class AvtoFullSerializerDetail(serializers.ModelSerializer):
-    realty_full_upload = AvtoFullUploadSerializer(many=True, required=False)
+    avto_full_upload = AvtoFullUploadSerializer(many=True, required=False)
     class Meta:
         model = AvtoFull
         fields = '__all__'

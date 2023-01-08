@@ -24,5 +24,5 @@ class ChildrenFullFavouritesUser(models.Model):
 
 
 class ChildrenFullUpload(models.Model):
-    services_full_upload = models.ForeignKey(ChildrenFull, default=None, on_delete=models.CASCADE)
+    children_full_upload = models.ForeignKey(ChildrenFull, default=None, on_delete=models.CASCADE)
     uploads = models.FileField(upload_to='')
