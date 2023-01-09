@@ -280,7 +280,7 @@ input,  input:hover, input:focus {
     left: calc(50vw - 760px / 2);
 
 
-    z-index: 3;
+    z-index: 30;
 }
 
 

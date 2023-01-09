@@ -2,6 +2,7 @@ import AddAdvertWarn from "../AddAdvertWarn/AddAdvertWarn";
 import UserAdevrt from "./UserAdevrt/UserAdevrt";
 
 const UserAdevrts = ({adverts}) => {
+    
     return (
         <>
             {

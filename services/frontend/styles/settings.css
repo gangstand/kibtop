@@ -194,11 +194,15 @@
 
 .add-greeting__img {
     width: 160px;
+
+    margin-bottom: 30px;
 }
 
 .add-greeting__title {
-    font-weight: 700;
     text-align: center;
+
+    display: flex;
+    justify-content: center;
 
     max-width: 300px;
     margin-bottom: 10px;
@@ -215,4 +219,63 @@
 
     margin-bottom: 33px;
     max-width: 243px;
+}
+
+@media (max-width: 400px) {
+    .add-greeting__text {
+        max-width: 170px;
+    }
+}
+
+@media (max-width: 400px) {
+    .add-greeting__title {
+        font-size: 14px;
+    }
+
+    .add-greeting__text {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+.add-greeting__text--guide {
+    max-width: 305px;
+}
+
+@media (max-width: 400px) {
+    .add-greeting__text--guide {
+        width: 200px;
+        line-height: 16px;
+
+        margin-bottom: 25px;
+    }
+}
+
+.add-greeting__text--guide svg {
+    position: relative;
+    top: 2px;
+
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 400px) {
+    .add-greeting__text--guide svg {
+        width: 11px;
+        height: 11px;
+    }
+}
+
+.reg-btn--guide {
+    font-weight: 600;
+
+    padding-top: 0;
+}
+
+@media (min-width: 400px) {
+    .reg-btn--guide {
+        font-size: 16px;
+
+        padding-top: 47px;
+    }
 }

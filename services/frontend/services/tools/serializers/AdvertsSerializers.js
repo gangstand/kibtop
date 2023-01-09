@@ -1,3 +1,5 @@
+import { BASE_URL } from "../../Instance"
+
 const convertDate = (dateVal) => {
     const date = String(new Date(dateVal).toUTCString())
     const dateString = date.split(', ')[1].split(' ')
@@ -6,7 +8,7 @@ const convertDate = (dateVal) => {
 
 
 
-export const serializeAdverts = async (adverts, lang) => {
+export const serializeAdverts = (adverts, lang) => {
     let advertsFull = []
     for (const category in adverts) {
         advertsFull = [...advertsFull, 
@@ -31,12 +33,19 @@ export const serializeAdverts = async (adverts, lang) => {
         title: advert[`title_${lang}`],
         cost: advert.price,
         address: advert.address,
-        img: advert.upload,
+        img: BASE_URL+advert.upload,
         date: convertDate(advert.created_at),
         category: advert.category
     }))
 
 
-   return advertsFull
+   return [...advertsFull]
 }
 
+
+export const serializeFavorites = (favorites, category) => favorites
+    .map(({id, avto_full, user}) => ({
+        id, category,
+        advertId: avto_full,
+        userId: user,
+    }))

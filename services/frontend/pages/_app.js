@@ -10,6 +10,7 @@ import '../styles/profile.css'
 import '../styles/settings.css'
 import '../styles/edit_profile.css'
 import '../styles/archive.css'
+import '../styles/favorites.css'
 
 
 

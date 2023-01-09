@@ -8,7 +8,7 @@ const ArchiveAdvert = ({id, category, index, title, cost, address, img, date}) =
     return (
         <>
             <div href={'/adverts/'+id} className="advert advert--full advert--del">
-                <img src={`${BASE_URL}${img}`} className="advert__img" />
+                <img src={img} className="advert__img" />
                 <div className="adver-dimmer advert__img" />
 
                 <div className="advert__desc">

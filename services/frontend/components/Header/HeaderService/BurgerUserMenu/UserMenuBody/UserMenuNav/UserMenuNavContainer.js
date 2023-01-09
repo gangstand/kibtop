@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import UserMenuNav from "./UserMenuNav";
 
-const UserMenuNavContainer = () => {
+const UserMenuNavContainer = ({onClose}) => {
     const {isAuthed} = useSelector(state => state.auth)
     
-    return <UserMenuNav {...{isAuthed}} />;
+    return <UserMenuNav {...{isAuthed, onClose}} />;
 }
 
 export default UserMenuNavContainer;

@@ -1,4 +1,5 @@
 import { instance } from "./Instance";
+import { serializeAdverts } from "./tools/serializers/AdvertsSerializers";
 
 
 
@@ -23,24 +24,20 @@ export const serializeSlider = (res, lang) => res.map((product) => ({
 export const GoodsApi = {
     async getRecommends(lang) {
         return await instance.get(`recommend/?limit=8&offset=1&lang=${lang}`)
-                .then(({data}) => {
-                    const res = data.results[lang]
-                    
-                    const goods = serializeGoods(res, lang)
-
-                    return goods
-                }).catch(err => undefined)
+                .then(({data}) => {                    
+                    const goods = serializeAdverts(data, lang)
+                
+                    return goods.splice(0, 8)
+                }).catch(err => null)
     },
 
     async getNews(lang) {
-        return await instance.get(`recommend/?limit=8&offset=1&lang=${lang}`)
+        return await instance.get(`new/?limit=8&offset=1&lang=${lang}`)
                 .then(({data}) => {
-                    const res = data.results[lang]
+                    const goods = serializeAdverts(data, lang)
                     
-                    const goods = serializeGoods(res, lang)
-
-                    return goods.reverse()
-                }).catch(err => undefined)
+                    return goods.splice(0, 8)
+                }).catch(err => console.log(err))
     },
 
     async getSlider(lang) {
@@ -51,6 +48,6 @@ export const GoodsApi = {
                     const slides = serializeSlider(res, lang)
 
                     return slides
-                }).catch(err => undefined)
+                }).catch(err => null)
     },
 }

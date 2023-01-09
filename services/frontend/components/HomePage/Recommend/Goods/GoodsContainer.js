@@ -6,7 +6,7 @@ const GoodsContainer = ({recommendGoods}) => {
     const {locale} = useRouter()
     const {data, isLoading} = useGetRecommendGoodsQuery(locale)
     
-    return <Goods {...{goods: (data || recommendGoods)}} />;
+    return <Goods {...{goods: (recommendGoods)}} />;
 }
 
 export default GoodsContainer;

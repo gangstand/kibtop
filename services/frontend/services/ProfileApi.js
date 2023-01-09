@@ -41,7 +41,7 @@ export const ProfileApi = {
     async getUserAdverts(userId, lang) {
         if(!userId) return null
 
-        return await instance.get(`my_ads/?id=${userId}&lang=${lang}`)
+        return await instance.get(`my_ads/?user_id=${userId}&lang=${lang}`)
             .then(async ({data}) => {
             
                 return serializeAdverts(data, lang)

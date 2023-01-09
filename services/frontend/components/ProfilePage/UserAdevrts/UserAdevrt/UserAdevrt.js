@@ -8,7 +8,7 @@ const UserAdevrt = ({id, title, cost, address, img, date}) => {
     return (
         <>
             <Link href={'/adverts/'+id} className="advert">
-                <img src={`${BASE_URL}${img}`} className="advert__img" />
+                <img src={img} className="advert__img" />
 
                 <div className="advert__desc">
                     <div className="advert__column">

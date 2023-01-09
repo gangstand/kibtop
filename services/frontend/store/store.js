@@ -10,6 +10,7 @@ import { LoginReducer } from "./slices/LoginSlice";
 import { RecoveryReducer } from "./slices/RecoverySlice";
 import { ProfileReducer } from "./slices/ProfileSlice";
 import { ArchiveReducer } from "./slices/ArchiveSlice";
+import { FavoritesReducer } from "./slices/FavoritesSlice";
 
 const reducer = {
     auth: authReducer,
@@ -22,6 +23,7 @@ const reducer = {
     recovery: RecoveryReducer,
     profile: ProfileReducer,
     archive: ArchiveReducer,
+    favorites: FavoritesReducer,
     [HomePageApi.reducerPath]: HomePageApi.reducer
 }
 

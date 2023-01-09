@@ -29,7 +29,6 @@ export const setUserArchiveThunk = (userId, lang) => async dispatch => {
 export const deleteUserArchiveAdvertThunk = ({id, category, index}) => async dispatch => {
     await ArchiveApi.deleteUserArchiveAdvert(id, category)
         .then(() => {
-            console.log(index);
             dispatch(deleteUserArchiveAdvert(index))
         }).catch(err => null)
 }

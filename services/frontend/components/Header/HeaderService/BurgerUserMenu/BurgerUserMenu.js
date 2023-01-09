@@ -15,6 +15,11 @@ const BurgerUserMenu = ({isOpen, closeBurgerUserMenu, delay}) => {
         
     }
 
+    const closeMenu = () => {
+        userMenuElement.current.style.left = '-100%'
+        closeBurgerUserMenu()
+    }
+
 
     useEffect(() => {
         if(isOpen && !!userMenuElement.current) userMenuElement.current.style.left = '0'
@@ -48,8 +53,8 @@ const BurgerUserMenu = ({isOpen, closeBurgerUserMenu, delay}) => {
                     <div className="user-menu" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
                             ref={userMenuElement} 
                             style={{transition: `all ${appearDelay}ms 0s linear`}} >
-                        <UserMenuHeadContainer {...{onClose: closeBurgerUserMenu}} />
-                        <UserMenuBody />
+                        <UserMenuHeadContainer {...{onClose: closeMenu}} />
+                        <UserMenuBody {...{onClose}} />
                     </div>
                     
                     {
