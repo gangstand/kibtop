@@ -14,7 +14,7 @@ export const ArchiveApi = {
     async deleteUserArchiveAdvert(id, category) {
         
         return await instance.delete(`${category}/archive/${id}`, {
-            headers: createHeaders()
+            headers: await createHeaders()
         })
     }
 }

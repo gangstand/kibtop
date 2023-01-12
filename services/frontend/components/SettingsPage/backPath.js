@@ -2,5 +2,7 @@ export const backPath = (pathname) => {
     const backPathList = pathname.split('/')
     backPathList.pop()
 
-    return backPathList.join('/')
+    const backPathname = backPathList.join('/')
+
+    return backPathname[0] !== '/' ? '/'+backPathname : backPathname
 }

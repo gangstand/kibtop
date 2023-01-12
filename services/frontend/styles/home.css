@@ -706,6 +706,9 @@
 
 .goods__img img {
     border-radius: 20px;
+
+    object-fit: cover;
+    object-position: center center;
 }
 
 .goods__article {

@@ -123,5 +123,36 @@
     "To add ads to Favorites, you need to sign up": "Чтобы добавить объявление в Избранное, вам надо зарегистрироваться",
 
     "Great choice!": "Отличный выбор!",
-    "Sign up to have access to the Favorites list": "Зарегистрируйтесь, чтобы получить доступ к Избранным"
+    "Sign up to have access to the Favorites list": "Зарегистрируйтесь, чтобы получить доступ к Избранным",
+
+    "Write to WhatsApp": "Написать в WhatsApp",
+    "Write in chat": "Написать в чате",
+    "description": "описание",
+    "address": "адрес",
+    "Street": "улица",
+    "City": "город",
+    "km from you": "км от вас",
+    "parameter": "свойства",
+    "Category": "Категория",
+    "Goods type": "Тип товара",
+    "seller": "продавец",
+    "Go to profile": "К профилю",
+    "Complain about the ad": "Пожаловаться на объявление",
+    "Publication date": "Дата публикации",
+    "Similar ads": "Похожие товары",
+    "Property types": "Тип недвижимости",
+    "Condition": "Состояние",
+    "Rooms": "Комнаты",
+    "landlord": "Хозяин",
+    "Employment": "Занятость",
+    "Profession": "Специальность",
+    "Car type": "Тип автомобиля",
+    "Brand": "Марка",
+    "Mileage": "Пробег",
+    "Year": "Год",
+    "Vacancy": "Вакансия",
+    "Candidate": "Кандидат",
+    "per month": "в месяц",
+    "Seller": "Продавец"
+
 }

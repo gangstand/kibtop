@@ -1,5 +1,5 @@
 import { createHeaders, instance } from "./Instance"
-import { serializeFavorites } from "./tools/serializers/AdvertsSerializers"
+import { serializeFavorites, serializeFullAdvertData } from "./tools/serializers/AdvertsSerializers"
 
 export const FavoritesApi = {
     async addFavoriteAdvert(id, category, userId) {
@@ -7,19 +7,25 @@ export const FavoritesApi = {
             avto_full: id,
             user: userId
         }, {
-            headers: createHeaders()
+            headers: await createHeaders()
+        })
+    },
+
+    async deleteFavoriteAdvert(favoriteId, category) {
+        return await instance.delete(`${category}/favourites/${favoriteId}/`, {
+            headers: await createHeaders()
         })
     },
 
 
-    async getUserFavorites() {
+    async getUserFavoritesAdverts(userId, lang) {
         const categories = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
         let favorites = []
 
         for (let i = 0; i < categories.length; i++) {
             const category = categories[i];
-            await instance.get(`${category}/favourites/`, {
-                headers: createHeaders()
+            await instance.get(`${category}/favourites/?user=${userId}`, {
+                headers: await createHeaders()
             }).then(({data}) => {
                 const sortedFavorites = serializeFavorites(data, category)
 
@@ -33,10 +39,30 @@ export const FavoritesApi = {
             const {id, category, advertId, userId} = favorites[i];
             await instance.get(`${category}/${advertId}/`)
                 .then(({data}) => {
-                    favoriteAdverts = [...favoriteAdverts, data]
+                    favoriteAdverts = [...favoriteAdverts, serializeFullAdvertData(data, lang, category)]
                 }).catch(() => null)
         }
+        
+        return favoriteAdverts
+    },
 
-        console.log(favorites);
+    async getUserFavorites(userId) {
+        if(!userId) return
+        const categories = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
+        let favorites = []
+
+        for (let i = 0; i < categories.length; i++) {
+            const category = categories[i];
+            await instance.get(`${category}/favourites/?user=${userId}`, {
+                headers: await createHeaders()
+            }).then(({data}) => {
+                    const sortedFavorites = serializeFavorites(data, category)
+
+                    favorites = [...favorites, ...sortedFavorites] 
+                })
+        }
+
+
+        return favorites
     }
 }

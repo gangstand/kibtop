@@ -277,6 +277,10 @@
 .advert__btn {
     width: max-content;
 }
+.advert__btn--mobile {
+    filter: drop-shadow( 0px 0px 10px rgba(0, 0, 0, 1));
+}
+
 
 .advert__btn svg {
     width: 20px;

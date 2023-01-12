@@ -23,7 +23,7 @@ class AvtoFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 
 class AvtoFullSerializerDetail(serializers.ModelSerializer):
-    realty_full_upload = AvtoFullUploadSerializer(many=True, required=False)
+    avto_full_upload = AvtoFullUploadSerializer(many=True, required=False)
     class Meta:
         model = AvtoFull
         fields = '__all__'
@@ -32,7 +32,7 @@ class AvtoFullSerializerDetail(serializers.ModelSerializer):
 class AvtoFullSerializerEN(serializers.ModelSerializer):
     class Meta:
         model = AvtoFull
-        fields = ('id', 'title_en', 'created_at', 'updated_at', 'address',
+        fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'sub_category_en', 'brand', 'mileage', 'year', 'category_en', 'recommend',
                   'publisher')
 
@@ -40,7 +40,7 @@ class AvtoFullSerializerEN(serializers.ModelSerializer):
 class AvtoFullSerializerRU(serializers.ModelSerializer):
     class Meta:
         model = AvtoFull
-        fields = ('id', 'title_ru', 'created_at', 'updated_at', 'address',
+        fields = ('id', 'title_ru', 'description_ru',  'created_at', 'updated_at', 'address',
                   'price', 'upload', 'sub_category_ru', 'brand', 'mileage', 'year', 'category_ru', 'recommend',
                   'publisher')
 
@@ -48,7 +48,7 @@ class AvtoFullSerializerRU(serializers.ModelSerializer):
 class AvtoFullSerializerTR(serializers.ModelSerializer):
     class Meta:
         model = AvtoFull
-        fields = ('id', 'title_tr', 'created_at', 'updated_at', 'address',
+        fields = ('id', 'title_tr', 'description_tr',  'created_at', 'updated_at', 'address',
                   'price', 'upload', 'sub_category_tr', 'brand', 'mileage', 'year', 'category_tr', 'recommend',
                   'publisher')
 

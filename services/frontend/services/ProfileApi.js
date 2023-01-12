@@ -7,7 +7,7 @@ import { serializeUserData } from "./tools/serializers/UserSerializers";
 export const ProfileApi = {
     async getUserData(access) {
         return await instance.get('auth/users/me/', {
-            headers: createHeaders(access)
+            headers: await createHeaders(access)
         }).then(({data}) => {
                 const user = serializeUserData(data)
                 if(!(user.userId)) return null
@@ -34,7 +34,7 @@ export const ProfileApi = {
         }
 
         return await instance.put('auth/users/me/', formData, {
-            headers: createHeaders()
+            headers: await createHeaders()
         })
     },
 
@@ -50,7 +50,7 @@ export const ProfileApi = {
 
     async deletUserAccount(password) {
         return await instance.delete('auth/users/me', {
-            headers: createHeaders(),
+            headers: await createHeaders(),
             data: {
                 current_password: password
             }

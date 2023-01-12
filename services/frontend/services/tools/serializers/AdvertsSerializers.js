@@ -6,6 +6,7 @@ const convertDate = (dateVal) => {
     return `${dateString[0]} ${dateString[1]} ${dateString[2]}`
 }
 
+const serializeAdvertUploads = uploads => uploads.map(({uploads}) => uploads)
 
 
 export const serializeAdverts = (adverts, lang) => {
@@ -42,10 +43,50 @@ export const serializeAdverts = (adverts, lang) => {
    return [...advertsFull]
 }
 
+export const serializeFullAdvertData = (advert, lang, category) => ({
+    category,
+    id: advert.id,
+    title: advert[`title_${lang}`],
+    address: advert.address,
+    cost: advert.price,
+    img: advert.upload,
+    date: convertDate(advert.created_at)
+})
+
 
 export const serializeFavorites = (favorites, category) => favorites
     .map(({id, avto_full, user}) => ({
-        id, category,
+        favouriteId: id, 
         advertId: avto_full,
         userId: user,
+        category,
     }))
+
+export const serializeAdvertDatails = (advert, lang, category) => {
+    return {
+        title: advert[`title_${lang}`],
+        description: advert[`description_${lang}`],
+        categoryName: advert[`category_${lang}`],
+        subCategoryName: advert[`sub_category_${lang}`],
+        condition: advert[`all_old_new_${lang}`],
+        brand: advert.brand,
+        mileage: advert.mileage,
+        year: advert.year,
+        rooms: advert[`number_rooms_${lang}`],
+        employment: advert.employment,
+        workType: advert[`for_work_type_en`],
+        date: convertDate(advert.created_at),
+        address: advert.address,
+        img: advert.upload,
+        uploads: !!(advert[`${category}_full_upload`]?.length) ? serializeAdvertUploads(advert[`${category}_full_upload`]) : [advert.upload, advert.upload ,advert.upload],
+        userId: advert.user,
+        advertId: advert.id,
+        cost: advert.price,
+        category
+    }
+}
+
+export const serializeCategory = (adverts, lang, category) => {
+    if(!adverts) return
+    return adverts[lang].map(advert => serializeAdvertDatails(advert, lang, category))
+}

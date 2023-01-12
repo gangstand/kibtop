@@ -78,7 +78,7 @@ const FavoritesWarning = ({isWarnOpen, closeFavoritesWarning}) => {
                         </div>
                     </div>
 
-                    <div className="screen-dimmer screen-dimmer--location" />
+                    <div className="screen-dimmer screen-dimmer--location" onClick={closeFavoritesWarning} />
                 </>
             }
         </>

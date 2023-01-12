@@ -1,7 +1,7 @@
 from django.db import models
 
 from accounts.models import CustomUser
-from sections.models import BaseModelFull
+from ..base_models_full import BaseModelFull
 from .for_avto import *
 from django.utils import timezone
 

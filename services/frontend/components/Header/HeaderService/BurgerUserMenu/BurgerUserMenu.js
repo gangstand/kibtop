@@ -54,7 +54,7 @@ const BurgerUserMenu = ({isOpen, closeBurgerUserMenu, delay}) => {
                             ref={userMenuElement} 
                             style={{transition: `all ${appearDelay}ms 0s linear`}} >
                         <UserMenuHeadContainer {...{onClose: closeMenu}} />
-                        <UserMenuBody {...{onClose}} />
+                        <UserMenuBody {...{onClose: closeMenu}} />
                     </div>
                     
                     {

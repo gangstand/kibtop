@@ -3,12 +3,14 @@ import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import { BASE_URL } from "../../../../services/Instance";
 import EditAdvertButtonContainer from "./EditAdvertButton/EditAdvertButtonContainer";
 
-const UserAdevrt = ({id, title, cost, address, img, date}) => {
+const UserAdevrt = ({id, title, cost, address, img, date, category}) => {
     const {currency} = useCurrency()
     return (
         <>
-            <Link href={'/adverts/'+id} className="advert">
-                <img src={img} className="advert__img" />
+            <div className="advert">
+                <Link href={`/advert/${category}/${id}`}>
+                    <img src={img} className="advert__img" />
+                </Link>
 
                 <div className="advert__desc">
                     <div className="advert__column">
@@ -37,7 +39,7 @@ const UserAdevrt = ({id, title, cost, address, img, date}) => {
                             <p className="info-text">{date}</p>
                     </div>
                 </div>
-            </Link>
+            </div>
         </>
     );
 }

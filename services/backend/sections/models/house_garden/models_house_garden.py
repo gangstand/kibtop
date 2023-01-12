@@ -7,9 +7,9 @@ from .for_house_garden import *
 
 
 class HouseGardenFull(BaseModelFull):
-    sub_category_en = models.CharField(choices=HOUSE_GARDEN_CATEGORY_EN, max_length=255)
-    sub_category_ru = models.CharField(choices=HOUSE_GARDEN_CATEGORY_RU, max_length=255)
-    sub_category_tr = models.CharField(choices=HOUSE_GARDEN_CATEGORY_TR, max_length=255)
+    sub_category_en = models.CharField(choices=HOUSE_GARDEN_CATEGORY_EN, max_length=255, blank=True, null=True)
+    sub_category_ru = models.CharField(choices=HOUSE_GARDEN_CATEGORY_RU, max_length=255, blank=True, null=True)
+    sub_category_tr = models.CharField(choices=HOUSE_GARDEN_CATEGORY_TR, max_length=255, blank=True, null=True)
 
 
 class HouseGardenFullViewsUser(models.Model):

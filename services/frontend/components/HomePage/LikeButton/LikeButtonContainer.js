@@ -1,13 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setFavoritesWarnOpen } from "../../../store/slices/FavoritesSlice";
+import { dislikeAdvertThunk, likeAdvertThunk, setFavoritesWarnOpen } from "../../../store/slices/FavoritesSlice";
 import LikeButton from "./LikeButton";
 
-const LikeButtonContainer = ({mobile}) => {
-    const {isAuthed} = useSelector(state => state.auth)
+const LikeButtonContainer = ({className, id, category}) => {
+    const {isAuthed, userId} = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const openFavoritesWarning = () => dispatch(setFavoritesWarnOpen(true))
 
-    return <LikeButton {...{mobile, isAuthed, openFavoritesWarning}} />;
+    const {favorites} = useSelector(state => state.favorites)
+
+
+    const userFavorite = favorites.find(favorite => favorite.advertId === id && favorite.category === category) || null
+
+    const onLikeClick = () => dispatch(likeAdvertThunk(id, category, userId))
+
+    const onDislikeClick = () => 
+        !!userFavorite ? dispatch(dislikeAdvertThunk(userFavorite.favouriteId, userFavorite.category, userFavorite.userId)) : null
+
+    return <LikeButton {...{isAuthed, openFavoritesWarning, className, userFavorite, onLikeClick, onDislikeClick}} />;
 }
 
 export default LikeButtonContainer;

@@ -44,6 +44,12 @@
     }
 }
 
+.add-greeting--modal {
+    padding-top: 0;
+    height: 100%;
+    justify-content: center;
+}
+
 .add-greeting--modal svg {
     width: 163px;
     height: 173px;
@@ -68,8 +74,10 @@
     }
 }
 
+
 .close-line--top {
     position: absolute;
     top: 8px;
     left: calc(50vw - 49px/2);
 }
+

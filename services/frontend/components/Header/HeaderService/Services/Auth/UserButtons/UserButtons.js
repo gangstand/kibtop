@@ -75,7 +75,7 @@ const UserButtons = ({isAuthed, checkedVal}) => {
                             </svg>
 
                         </Link>
-                        <Link href={'/auth/registration'} className="user-btns__item">
+                        <Link href={'/auth/registration'} className="user-btns__item user-btns__item--profile">
                             <svg viewBox="0 0 40 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 26.6584 36.7462 32.5569 31.742 36.1921C30.5971 30.7553 25.776 26.6731 20 26.6667C14.224 26.6731 9.40296 30.7553 8.25798 36.192C3.25375 32.5568 0 26.6584 0 20ZM20 24C24.4183 24 28 20.4183 28 16C28 11.5817 24.4183 8 20 8C15.5817 8 12 11.5817 12 16C12 20.4183 15.5817 24 20 24Z" fill="#414042" fillOpacity="0.4"/>
                             </svg>

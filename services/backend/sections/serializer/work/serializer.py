@@ -22,7 +22,7 @@ class WorkFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 
 class WorkFullSerializerDetail(serializers.ModelSerializer):
-    realty_full_upload = WorkFullUploadSerializer(many=True)
+    work_full_upload = WorkFullUploadSerializer(many=True, required=False)
 
     class Meta:
         model = WorkFull
@@ -32,21 +32,21 @@ class WorkFullSerializerDetail(serializers.ModelSerializer):
 class WorkFullSerializerEN(serializers.ModelSerializer):
     class Meta:
         model = WorkFull
-        fields = ('id', 'title_en', 'created_at', 'updated_at', 'address',
+        fields = ('id', 'title_en','description_en', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'sub_category_en', 'for_work_type_en', 'employment_en', 'category_en', 'recommend', 'publisher')
 
 
 class WorkFullSerializerRU(serializers.ModelSerializer):
     class Meta:
         model = WorkFull
-        fields = ('id', 'title_ru', 'created_at', 'updated_at', 'address',
+        fields = ('id', 'title_ru', 'description_ru','created_at', 'updated_at', 'address',
                   'price', 'upload', 'sub_category_ru', 'for_work_type_ru', 'employment_ru', 'category_ru', 'recommend', 'publisher')
 
 
 class WorkFullSerializerTR(serializers.ModelSerializer):
     class Meta:
         model = WorkFull
-        fields = ('id', 'title_tr', 'created_at', 'updated_at', 'address',
+        fields = ('id', 'title_tr','description_tr', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'sub_category_tr', 'for_work_type_tr', 'employment_tr', 'category_tr', 'recommend', 'publisher')
 
 

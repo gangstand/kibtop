@@ -8,7 +8,6 @@ const SettingsNav = ({title, onClick}) => {
 
     const back = backPath(pathname)
 
-    
     return (
         <>
             <div className="container">
