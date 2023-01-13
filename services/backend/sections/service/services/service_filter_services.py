@@ -18,18 +18,18 @@ class FilterServices(django_filters.FilterSet):
 
 
 class FilterServicesViews(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    services_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = ServicesFullViewsUser
-        fields = ['avto_full', 'user']
+        fields = ['services_full', 'user']
 
 
 class FilterServicesFavourites(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    services_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = ServicesFullFavouritesUser
-        fields = ['avto_full', 'user']
+        fields = ['services_full', 'user']

@@ -13,16 +13,16 @@ class ChildrenFull(BaseModelFull):
 
 
 class ChildrenFullViewsUser(models.Model):
-    avto_full = models.ForeignKey(ChildrenFull, default=None, on_delete=models.CASCADE)
+    children_full = models.ForeignKey(ChildrenFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 
 class ChildrenFullFavouritesUser(models.Model):
-    avto_full = models.ForeignKey(ChildrenFull, default=None, on_delete=models.CASCADE)
+    children_full = models.ForeignKey(ChildrenFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
 
 
 class ChildrenFullUpload(models.Model):
-    children_full_upload = models.ForeignKey(ChildrenFull, default=None, on_delete=models.CASCADE)
+    children_full_upload = models.ForeignKey(ChildrenFull, default=None, on_delete=models.CASCADE, related_name='children_full_upload')
     uploads = models.FileField(upload_to='')

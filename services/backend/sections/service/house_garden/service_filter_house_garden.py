@@ -18,18 +18,18 @@ class FilterHouseGarden(django_filters.FilterSet):
 
 
 class FilterHouseGardenViews(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    house_garden_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = HouseGardenFullViewsUser
-        fields = ['avto_full', 'user']
+        fields = ['house_garden_full', 'user']
 
 
 class FilterHouseGardenFavourites(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    house_garden_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = HouseGardenFullFavouritesUser
-        fields = ['avto_full', 'user']
+        fields = ['house_garden_full', 'user']

@@ -13,16 +13,16 @@ class ElectronicsFull(BaseModelFull):
 
 
 class ElectronicsFullViewsUser(models.Model):
-    avto_full = models.ForeignKey(ElectronicsFull, default=None, on_delete=models.CASCADE)
+    electronics_full = models.ForeignKey(ElectronicsFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 
 class ElectronicsFullFavouritesUser(models.Model):
-    avto_full = models.ForeignKey(ElectronicsFull, default=None, on_delete=models.CASCADE)
+    electronics_full = models.ForeignKey(ElectronicsFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
 
 
 class ElectronicsFullUpload(models.Model):
-    electronics_full_upload = models.ForeignKey(ElectronicsFull, default=None, on_delete=models.CASCADE)
+    electronics_full_upload = models.ForeignKey(ElectronicsFull, default=None, on_delete=models.CASCADE, related_name='electronics_full_upload')
     uploads = models.FileField(upload_to='')

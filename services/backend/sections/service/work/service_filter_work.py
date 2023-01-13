@@ -30,18 +30,18 @@ class FilterWork(django_filters.FilterSet):
 
 
 class FilterWorkViews(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    work_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = WorkFullViewsUser
-        fields = ['avto_full', 'user']
+        fields = ['work_full', 'user']
 
 
 class FilterWorkFavourites(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    work_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = WorkFullFavouritesUser
-        fields = ['avto_full', 'user']
+        fields = ['work_full', 'user']

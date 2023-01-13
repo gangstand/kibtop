@@ -27,5 +27,5 @@ class AvtoFullFavouritesUser(models.Model):
 
 
 class AvtoFullUpload(models.Model):
-    avto_full_upload = models.ForeignKey(AvtoFull, default=None, on_delete=models.CASCADE)
+    avto_full_upload = models.ForeignKey(AvtoFull, default=None, on_delete=models.CASCADE, related_name='avto_full_upload')
     uploads = models.FileField(upload_to='')

@@ -35,18 +35,18 @@ class FilterRealty(django_filters.FilterSet):
 
 
 class FilterRealtyViews(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    realty_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = RealtyFullViewsUser
-        fields = ['avto_full', 'user']
+        fields = ['realty_full', 'user']
 
 
 class FilterRealtyFavourites(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    realty_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = RealtyFullFavouritesUser
-        fields = ['avto_full', 'user']
+        fields = ['realty_full', 'user']

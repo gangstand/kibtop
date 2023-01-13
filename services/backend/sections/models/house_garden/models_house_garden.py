@@ -13,15 +13,15 @@ class HouseGardenFull(BaseModelFull):
 
 
 class HouseGardenFullViewsUser(models.Model):
-    avto_full = models.ForeignKey(HouseGardenFull, default=None, on_delete=models.CASCADE)
+    house_garden_full = models.ForeignKey(HouseGardenFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 
 class HouseGardenFullFavouritesUser(models.Model):
-    avto_full = models.ForeignKey(HouseGardenFull, default=None, on_delete=models.CASCADE)
+    house_garden_full = models.ForeignKey(HouseGardenFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
 
 class HouseGardenFullUpload(models.Model):
-    house_garden_full_upload = models.ForeignKey(HouseGardenFull, default=None, on_delete=models.CASCADE)
+    house_garden_full_upload = models.ForeignKey(HouseGardenFull, default=None, on_delete=models.CASCADE, related_name='house_garden_full_upload')
     uploads = models.FileField(upload_to='')

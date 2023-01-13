@@ -16,20 +16,21 @@ class RealtyFull(BaseModelFull):
     number_rooms_en = models.CharField(choices=NUMBER_ROOMS_EN, max_length=255, blank=True, null=True, default=None)
     number_rooms_ru = models.CharField(choices=NUMBER_ROOMS_RU, max_length=255, blank=True, null=True, default=None)
     number_rooms_tr = models.CharField(choices=NUMBER_ROOMS_TR, max_length=255, blank=True, null=True, default=None)
+    type_sell = models.BooleanField(blank=True, null=True, default=None)
+    square = models.FloatField(blank=True, null=True, default=None)
 
 
 class RealtyFullViewsUser(models.Model):
-    avto_full = models.ForeignKey(RealtyFull, default=None, on_delete=models.CASCADE)
+    realty_full = models.ForeignKey(RealtyFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 
 class RealtyFullFavouritesUser(models.Model):
-    avto_full = models.ForeignKey(RealtyFull, default=None, on_delete=models.CASCADE)
+    realty_full = models.ForeignKey(RealtyFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
 
 
 class RealtyFullUpload(models.Model):
-    realty_full_upload = models.ForeignKey(RealtyFull, default=None, on_delete=models.CASCADE,
-                                           related_name='realty_full_upload')
+    realty_full_upload = models.ForeignKey(RealtyFull, default=None, on_delete=models.CASCADE, related_name='realty_full_upload')
     uploads = models.FileField(upload_to='')

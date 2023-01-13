@@ -17,18 +17,18 @@ class FilterChildren(django_filters.FilterSet):
 
 
 class FilterChildrenViews(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    children_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = ChildrenFullViewsUser
-        fields = ['avto_full', 'user']
+        fields = ['children_full', 'user']
 
 
 class FilterChildrenFavourites(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    children_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = ChildrenFullFavouritesUser
-        fields = ['avto_full', 'user']
+        fields = ['children_full', 'user']

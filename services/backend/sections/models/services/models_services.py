@@ -13,16 +13,16 @@ class ServicesFull(BaseModelFull):
 
 
 class ServicesFullViewsUser(models.Model):
-    avto_full = models.ForeignKey(ServicesFull, default=None, on_delete=models.CASCADE)
+    services_full = models.ForeignKey(ServicesFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 
 class ServicesFullFavouritesUser(models.Model):
-    avto_full = models.ForeignKey(ServicesFull, default=None, on_delete=models.CASCADE)
+    services_full = models.ForeignKey(ServicesFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
 
 
 class ServicesFullUpload(models.Model):
-    services_full_upload = models.ForeignKey(ServicesFull, default=None, on_delete=models.CASCADE)
+    services_full_upload = models.ForeignKey(ServicesFull, default=None, on_delete=models.CASCADE, related_name='services_full_upload')
     uploads = models.FileField(upload_to='')

@@ -19,16 +19,16 @@ class WorkFull(BaseModelFull):
 
 
 class WorkFullViewsUser(models.Model):
-    avto_full = models.ForeignKey(WorkFull, default=None, on_delete=models.CASCADE)
+    work_full = models.ForeignKey(WorkFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 
 class WorkFullFavouritesUser(models.Model):
-    avto_full = models.ForeignKey(WorkFull, default=None, on_delete=models.CASCADE)
+    work_full = models.ForeignKey(WorkFull, default=None, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
 
 
 class WorkFullUpload(models.Model):
-    work_full_upload = models.ForeignKey(WorkFull, default=None, on_delete=models.CASCADE)
+    work_full_upload = models.ForeignKey(WorkFull, default=None, on_delete=models.CASCADE, related_name='work_full_upload')
     uploads = models.FileField(upload_to='')

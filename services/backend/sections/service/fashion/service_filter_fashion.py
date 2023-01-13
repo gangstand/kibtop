@@ -19,18 +19,18 @@ class FilterFashion(django_filters.FilterSet):
 
 
 class FilterFashionViews(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    fashion_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = FashionFullViewsUser
-        fields = ['avto_full', 'user']
+        fields = ['fashion_full', 'user']
 
 
 class FilterFashionFavourites(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    fashion_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = FashionFullFavouritesUser
-        fields = ['avto_full', 'user']
+        fields = ['fashion_full', 'user']

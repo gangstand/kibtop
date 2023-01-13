@@ -18,18 +18,18 @@ class FilterElectronics(django_filters.FilterSet):
 
 
 class FilterElectronicsViews(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    electronics_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = ElectronicsFullViewsUser
-        fields = ['avto_full', 'user']
+        fields = ['electronics_full', 'user']
 
 
 class FilterElectronicsFavourites(django_filters.FilterSet):
-    avto_full = django_filters.NumberFilter()
+    electronics_full = django_filters.NumberFilter()
     user = django_filters.NumberFilter()
 
     class Meta:
         model = ElectronicsFullFavouritesUser
-        fields = ['avto_full', 'user']
+        fields = ['electronics_full', 'user']
