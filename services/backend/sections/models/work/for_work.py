@@ -1,26 +1,53 @@
-from sections.utils.translate.utils_translate import transl_for
-
 WORK_CATEGORY_EN = [
-    ('Retail / Sales / Procurement', 'Retail / Sales / Procurement'),
-    ('Logistics / Warehouse / Delivery', 'Logistics / Warehouse / Delivery'),
-    ('Construction / finishing works', 'Construction / finishing works'),
-    ('Construction / finishing works', 'Construction / finishing works'),
-    ('Administrative staff / HR / Secretariat', 'Administrative staff / HR / Secretariat'),
-    ('Security / security', 'Security / security'),
-    ('Cleaning / Home staff', 'Cleaning / Home staff'),
+    ('Retail | Sales | Procurement', 'Retail | Sales | Procurement'),
+    ('Logistics | Warehouse | Delivery', 'Logistics | Warehouse | Delivery'),
+    ('Construction | finishing works', 'Construction | finishing works'),
+    ('Construction | finishing works', 'Construction | finishing works'),
+    ('Administrative staff | HR | Secretariat', 'Administrative staff | HR | Secretariat'),
+    ('Security | security', 'Security | security'),
+    ('Cleaning | Home staff', 'Cleaning | Home staff'),
 ]
-WORK_CATEGORY_RU = (transl_for(WORK_CATEGORY_EN, "Русский"))
-WORK_CATEGORY_TR = (transl_for(WORK_CATEGORY_EN, "Türk"))
+WORK_CATEGORY_RU = [
+    ('Розничная торговля | Продажи | Приобретение', 'Розничная торговля | Продажи | Приобретение'),
+    ('Логистика | Склад | Доставка', 'Логистика | Склад | Доставка'),
+    ('Строительство | отделочные работы', 'Строительство | отделочные работы'),
+    ('Строительство | отделочные работы', 'Строительство | отделочные работы'),
+    ('Административный персонал | HR | Секретариат', 'Административный персонал | HR | Секретариат'),
+    ('Безопасность | безопасность', 'Безопасность | безопасность'),
+    ('Очистка | Домашний персонал', 'Очистка | Домашний персонал')
+]
+WORK_CATEGORY_TR = [
+    ('Perakende | Satış | Tedarik', 'Perakende | Satış | Tedarik'),
+    ('Lojistik | depo | Teslimat', 'Lojistik | depo | Teslimat'),
+    ('İnşaat | İşleri bitirmek', 'İnşaat | İşleri bitirmek'),
+    ('İnşaat | İşleri bitirmek', 'İnşaat | İşleri bitirmek'),
+    ('İdari personel | İK | Sekreterlik', 'İdari personel | İK | Sekreterlik'),
+    ('Güvenlik | güvenlik', 'Güvenlik | güvenlik'),
+    ('Temizlik | ev personeli', 'Temizlik | ev personeli')
+]
 FOR_WORK_EN = [
-    ('To work', 'To work'),
-    ('To employee', 'To employee'),
+    ('For work', 'For work'),
+    ('For an employee', 'For an employee'),
 ]
-FOR_WORK_RU = (transl_for(FOR_WORK_EN, "Русский"))
-FOR_WORK_TR = (transl_for(FOR_WORK_EN, "Türk"))
+FOR_WORK_RU = [
+    ('Для работы', 'Для работы'),
+    ('Для сотрудника', 'Для сотрудника')
+]
+FOR_WORK_TR = [
+    ('İş için', 'İş için'),
+    ('bir çalışan için', 'bir çalışan için')
+]
 EMPLOYMENT_EN = [
     ('Full time', 'Full time'),
     ('Partial', 'Partial'),
     ('Remote', 'Remote'),
 ]
-EMPLOYMENT_RU = (transl_for(EMPLOYMENT_EN, "Русский"))
-EMPLOYMENT_TR = (transl_for(EMPLOYMENT_EN, "Türk"))
+EMPLOYMENT_RU = [
+    ('На постоянной основе', 'На постоянной основе'),
+    ('Частичный', 'Частичный'),
+    ('Дистанционный пульт', 'Дистанционный пульт')
+]
+EMPLOYMENT_TR = [
+    ('Tam zamanlı', 'Tam zamanlı'),
+    ('Kısmi', 'Kısmi'), ('Uzak', 'Uzak')
+]
