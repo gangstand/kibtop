@@ -16,13 +16,22 @@ export const AuthApi = {
                 Cookies.setCookie('access', access)
 
                 return {userId: user_id}
-            }, () => null).catch(err => console.log(err))
+            }, () => null).catch(err => null)
     },
 
-    async registration(email, password1, password2, name, city, file) {
+    async getAccess(refresh) {
+        return await instance.post('auth/jwt/refresh/',
+            {
+                "refresh": refresh || 'refresh'
+            }).then(res => {
+                return res.data.access
+            })
+    },
+
+    async registration(email, password1, password2, names, city, file) {
+        const [name, surname] = names.trim().split(' ')
         const formData = !!file ? FormDataCreator({
-            "phone": '',
-            "first_name": '',
+            "first_name": surname,
             "last_name": '',
             "username": email.replace('@', '_'),
             "email": email,
@@ -32,8 +41,7 @@ export const AuthApi = {
             "addres": city || '',
             "upload_user": file || ''
         }) : {
-            "phone": '',
-            "first_name": '',
+            "first_name": surname,
             "last_name": '',
             "username": email.replace('@', '_'),
             "email": email,

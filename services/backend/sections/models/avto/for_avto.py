@@ -1,10 +1,9 @@
+from sections.utils.translate.utils_translate import transl_for
+
 AVTO_CATEGORY_EN = [
-    ('Cars', 'Cars'),
-    ('Other technique', 'Other technique'),
+    ('Car', 'Car'),
+    ('Other equipment', 'Other equipment'),
 ]
-AVTO_CATEGORY_RU = [
-    ('Arabalar', 'Arabalar'), ('Diğer teknik', 'Diğer teknik')
-]
-AVTO_CATEGORY_TR = [
-    ('Arabalar', 'Arabalar'), ('Diğer teknik', 'Diğer teknik')
-]
+
+AVTO_CATEGORY_RU = (transl_for(AVTO_CATEGORY_EN, "Русский"))
+AVTO_CATEGORY_TR = (transl_for(AVTO_CATEGORY_EN, "Türk"))

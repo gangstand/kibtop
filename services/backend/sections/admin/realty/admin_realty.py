@@ -1,14 +1,5 @@
-from modeltranslation.translator import TranslationOptions, translator
-
 from sections.models import RealtyFullUpload, RealtyFull
 from django.contrib import admin
-
-
-class RealtyTranslationOptions(TranslationOptions):
-    fields = ('title',)
-
-
-translator.register(RealtyFull, RealtyTranslationOptions)
 
 
 class RealtyFullImageAdmin(admin.StackedInline):
@@ -21,4 +12,3 @@ class RUAdmin(admin.ModelAdmin):
 
     class Meta:
         model = RealtyFull
-

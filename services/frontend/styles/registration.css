@@ -952,6 +952,27 @@
     letter-spacing: normal;
 }
 
+.file-img {
+    width: 115px;
+    height: 115px;
+
+    border-radius: 20px;
+    border-image-width:  0 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+
+    object-fit: cover;
+    object-position: center center;
+}
+
+.file-img--mob {
+    border-radius: 50%;
+}
+
 .form__file-field {
     display: grid;
     height: 143px;
@@ -997,6 +1018,11 @@
     background: #F6F6F6;
     border: 2px dashed #EDEDED;
     border-radius: 20px;
+
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+
 }
 
 .label-file input {
@@ -1027,7 +1053,7 @@
 }
 
 .form__file-field--selected .label-file {
-    border: 2px solid var(--color-opacity-black);
+    border: none;
     background: #EDEDED;
 }
 
@@ -1303,6 +1329,12 @@
     width: 20px;
     height: 20px;
     margin-left: 0;
+
+    fill: #BDBDBD;
+}
+
+.reg-btn--confirm {
+    
 }
 
 .reg-btn--confirm:disabled {

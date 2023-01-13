@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery  } from '@reduxjs/toolkit/query/react'
 import { serializeGoods, serializeSlider } from './IndexApi'
 import { BASE_URL } from './Instance'
+import { serializeAdverts } from './tools/serializers/AdvertsSerializers'
 
 export const HomePageApi = createApi({
     reducerPath: 'homePageApiApi',
-    baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}/` }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}/api/v1/` }),
     tagTypes: ['Slides', 'Recommends', 'News'],
     endpoints: builder => ({
         getSlides: builder.query({
@@ -24,8 +25,7 @@ export const HomePageApi = createApi({
                 url: `recommend/?limit=8&offset=1&lang=${lang}`
             }),
             transformResponse: (data, meta, lang) => {
-                const res = data.results[lang]   
-                return serializeGoods(res, lang)
+                return serializeAdverts(data, lang).slice(0, 8)
             },
             providesTags: result => ['Recommends']
         }),
@@ -33,11 +33,10 @@ export const HomePageApi = createApi({
 
         getNewGoods: builder.query({
             query: lang => ({
-                url: `recommend/?limit=8&offset=1&lang=${lang}`
+                url: `new/?limit=8&offset=1&lang=${lang}`
             }),
             transformResponse: (data, meta, lang) => {
-                const res = data.results[lang]
-                return serializeGoods(res, lang).reverse()
+                return serializeAdverts(data, lang).slice(0, 8)
             },
             providesTags: result => ['News']
         }),

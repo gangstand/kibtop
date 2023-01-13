@@ -1,4 +1,3 @@
-
 from pathlib import Path
 import environ
 
@@ -27,10 +26,10 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'djoser',
-    'django_messages_drf',
     'drf_yasg',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
+    'messages_drf.apps.MessagesDrfConfig',
 ]
 
 SITE_ID = 1
@@ -75,23 +74,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'settings.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env("POSTGRES_DB"),
-        'USER': env("POSTGRES_USER"),
-        'PASSWORD': env("POSTGRES_PASSWORD"),
-        'HOST': env("POSTGRES_HOST"),
-        'PORT': env("POSTGRES_PORT")
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env("POSTGRES_DB"),
+#         'USER': env("POSTGRES_USER"),
+#         'PASSWORD': env("POSTGRES_PASSWORD"),
+#         'HOST': env("POSTGRES_HOST"),
+#         'PORT': env("POSTGRES_PORT")
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -161,10 +160,15 @@ DJOSER = {
     'TOKEN_MODEL': None,  # We use only JWT
     'ACTIVATION_URL': 'auth/confirm/{uid}/{token}/',
     'PASSWORD_RESET_CONFIRM_URL': '/auth/recovery/{uid}/{token}',
+    'HIDE_USERS': True,
+    'PERMISSIONS': {
+        'user': ['rest_framework.permissions.AllowAny'],
+    },
     'SERIALIZERS': {
         "user_create": 'accounts.serializer.UserRegistrationSerializer',
-        "user": "accounts.serializer.UserAPISerializer",
+        "user": 'accounts.serializer.UserAPISerializer',
         'user_create_password_retype': 'accounts.serializer.UserAPICreatePasswordRetypeSerializer',
+        'current_user': 'accounts.serializer.UserAPISerializer',
     }
 }
 

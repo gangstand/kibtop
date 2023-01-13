@@ -11,7 +11,7 @@ class UserRegistrationSerializer(UserCreateSerializer):
 class UserAPISerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
         fields = (
-            'username', 'email', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user'
+            'id', 'username', 'email', 'first_name', 'last_name', 'middle_name', 'addres', 'upload_user'
         )
 
 

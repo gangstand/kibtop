@@ -4,7 +4,7 @@
     --color-white: #ffffff;
     --color-opacity-black: rgba(65, 64, 66, .6);
     --color-grey: rgba(65, 64, 66, 0.4);
-    --color-blue: #65A4FE;
+    --color-blue: #7AB1FF;
     --color-yellow: #FFC11E;
     --color-green: #35D073;
 }
@@ -116,7 +116,6 @@ input,  input:hover, input:focus {
 }
 
 .title {
-    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -258,8 +257,16 @@ input,  input:hover, input:focus {
 .main {
     min-height: calc(100vh - 120px);
     max-height: max-content;
+    box-sizing: border-box;
 
-    background-color: #fff;
+    overflow-x: hidden;
+
+    background-color: transparent;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .modal-screen {
@@ -275,10 +282,18 @@ input,  input:hover, input:focus {
     left: calc(50vw - 760px / 2);
 
 
-    z-index: 3;
+    z-index: 30;
 }
 
+.like-icon {
+    width: 21px;
+    height: 19px;
+}
 
-
-
+@media (max-width: 600px) {
+    .like-icon {
+        width: 16px;
+        height: 15px;
+    }
+}
 

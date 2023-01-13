@@ -28,14 +28,14 @@ class RecommendFullAPIList(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         query = self.request.query_params
         filters = {
-            'avto': AvtoFull.objects.filter(recommend=True),
-            'children': ChildrenFull.objects.filter(recommend=True),
-            'electronics': ElectronicsFull.objects.filter(recommend=True),
-            'fashion': FashionFull.objects.filter(recommend=True),
-            'house_garden': HouseGardenFull.objects.filter(recommend=True),
-            'realty': RealtyFull.objects.filter(recommend=True),
-            'services': ServicesFull.objects.filter(recommend=True),
-            'work': WorkFull.objects.filter(recommend=True),
+            'avto': AvtoFull.objects.filter(recommend=True, publisher=True,),
+            'children': ChildrenFull.objects.filter(recommend=True, publisher=True,),
+            'electronics': ElectronicsFull.objects.filter(recommend=True, publisher=True,),
+            'fashion': FashionFull.objects.filter(recommend=True, publisher=True,),
+            'house_garden': HouseGardenFull.objects.filter(recommend=True, publisher=True,),
+            'realty': RealtyFull.objects.filter(recommend=True, publisher=True,),
+            'services': ServicesFull.objects.filter(recommend=True, publisher=True,),
+            'work': WorkFull.objects.filter(recommend=True, publisher=True,),
         }
         serializer_en = CategoryFullSerializerEN(filters)
         serializer_ru = CategoryFullSerializerRU(filters)

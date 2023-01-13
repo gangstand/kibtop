@@ -1,5 +1,11 @@
 export const Cookies = {
     getCookies(cookieName) {
+        try {
+            if(!document) return
+        } catch(err) {
+            return
+        }
+
         const cookies = document.cookie.split('; ').map(cookString => cookString.split('='))
         let data = {}
         cookies.forEach((cookie) => {
@@ -14,6 +20,12 @@ export const Cookies = {
     },
 
     setCookie(cookieName, cookieVal) {
+        try {
+            if(!document) return
+        } catch(err) {
+            return
+        }
+
         const DateNow = new Date()
 
         let Day = DateNow.getDate()
@@ -26,6 +38,12 @@ export const Cookies = {
     },
 
     delCookie(cookieName) {
+        try {
+            if(!document) return
+        } catch(err) {
+            return
+        }
+
 
         const expires = new Date().toUTCString()
         
@@ -33,3 +51,17 @@ export const Cookies = {
         document.cookie = `${cookieName}=${null}; domain=localhost; expires=${expires}; path=/;`
     }
 }
+
+export const getServerSideCookies = (cookies, cookieName) => {
+    const cookiesArr = cookies.split('; ').map(cookString => cookString.split('='))
+    let data = {}
+    cookiesArr.forEach((cookie) => {
+        data = {...data, ...{[cookie[0]]: cookie[1]} }
+    })
+
+    if(!!cookieName) {
+        return data[cookieName]
+    }
+}
+
+export const getStringCookies = req => req.rawHeaders[req.rawHeaders.findIndex(value =>  value === 'Cookie')+1]

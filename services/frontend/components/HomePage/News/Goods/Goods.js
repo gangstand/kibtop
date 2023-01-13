@@ -6,7 +6,7 @@ const Goods = ({goods}) => {
             <div className="container">
                 <div className="goods__list">
                     {
-                        goods?.map(good => <Good key={good.id} {...good} />)
+                        goods?.map(good => <Good key={`${good.category}_${good.id}`} {...good} />)
                     }
                 </div>
             </div>

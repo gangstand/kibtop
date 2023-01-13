@@ -8,7 +8,7 @@ const LocationSelect = ({closeLocationSelect}) => {
     const [touchStart, setTouchStart] = useState(null)
     const [touchEnd, setTouchEnd] = useState(null)
     
-    const minSwipeDistance = 50
+    const minSwipeDistance = 30
     
     const onTouchStart = (e) => {
       setTouchEnd(null) 
@@ -41,7 +41,7 @@ const LocationSelect = ({closeLocationSelect}) => {
         <>
             <div className="modal-screen modal-screen--location">
                 <div className="location-select" ref={locationSelectElem} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-                    <div className="close-line" />
+                    <div className="close-line" onClick={closeLocationSelect} />
 
                     <h5 className="title title--loc"><Text content="Location" /></h5>
 
