@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from accounts.models import CustomUser
-from sections.utils.translate.utils_translate import transl_for
 
 CATEGORY_EN = [
     ('Real estate', 'Real estate'),
@@ -13,9 +12,26 @@ CATEGORY_EN = [
     ('House and garden', 'House and garden'),
     ('Fashion and style', 'Fashion and style')
 ]
-CATEGORY_RU = (transl_for(CATEGORY_EN, "Русский"))
-CATEGORY_TR = (transl_for(CATEGORY_EN, "Türk"))
-
+CATEGORY_RU = [
+    ('Недвижимость', 'Недвижимость'),
+    ('Авто', 'Авто'),
+    ('Работа', 'Работа'),
+    ('Услуги', 'Услуги'),
+    ('Для детей', 'Для детей'),
+    ('Электроника', 'Электроника'),
+    ('Дом и сад', 'Дом и сад'),
+    ('Мода и стиль', 'Мода и стиль')
+]
+CATEGORY_TR = [
+    ('Emlak', 'Emlak'),
+    ('Oto', 'Oto'),
+    ('İş', 'İş'),
+    ('Hizmetler', 'Hizmetler'),
+    ('Çocuklar için', 'Çocuklar için'),
+    ('Elektronik', 'Elektronik'),
+    ('Ev ve bahçe', 'Ev ve bahçe'),
+    ('Moda ve stil', 'Moda ve stil')
+]
 CITY_EN = [
     ('Nicosia', 'Nicosia'),
     ('Kyrenia', 'Kyrenia'),
@@ -24,8 +40,22 @@ CITY_EN = [
     ('Guzelyurt', 'Guzelyurt'),
     ('Lefke', 'Lefke'),
 ]
-CITY_RU = (transl_for(CITY_EN, "Русский"))
-CITY_TR = (transl_for(CITY_EN, "Türk"))
+CITY_RU = [
+    ('Никосия', 'Никосия'),
+    ('Кирения', 'Кирения'),
+    ('Фамагуста', 'Фамагуста'),
+    ('Док', 'Док'),
+    ('Гюзельюрт', 'Гюзельюрт'),
+    ('Лефке', 'Лефке')
+]
+CITY_TR = [
+    ('Lefkoşa', 'Lefkoşa'),
+    ('Girne', 'Girne'),
+    ('Gazimağusa', 'Gazimağusa'),
+    ('Iskele', 'Iskele'),
+    ('Güzelyurt', 'Güzelyurt'),
+    ('Lefke', 'Lefke')
+]
 
 
 class City(models.Model):
