@@ -21,7 +21,7 @@ export const AdvertApi = {
         return await instance.get(`${category}/`)
             .then(({data}) => {
                 
-                return serializeCategory(data.results, lang, category)
+                return serializeCategory(data.results, lang, category).slice(0, 8)
             }).catch(err => null)
     }
 }

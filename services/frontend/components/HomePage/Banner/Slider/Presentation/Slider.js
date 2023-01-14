@@ -39,13 +39,13 @@ const Slider = ({switchToBefore, switchToNext, transition, slideList, offset}) =
         }
     }
 
-    // const onBefore = () => {
-    //     sliderLineEl.current.style.transitionDuration = `${transition}ms`
-    //     sliderLineEl.current.style.left = '0'
 
-    //     switchSlider(switchToBefore)
-    // }
+    useEffect(() => {
+        setTimeout(() => {
+            if(!!sliderLineEl.current) onNext()
+        }, transition*5)
 
+    }, [offset])
 
 
     return (

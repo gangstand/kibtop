@@ -8,7 +8,7 @@ const DetailNav = () => {
     const {query: {category}} = useRouter()
     const isSquare = category === 'realty'
 
-    const {title, advertId} = useSelector(state => state.advert)
+    const {title, advertId, square} = useSelector(state => state.advert)
 
     return (
         <>
@@ -16,7 +16,7 @@ const DetailNav = () => {
                 <nav className="detail-nav">
                     <div className="title title--profile title--detail">
                         <h3 className="exception">{title}
-                            {isSquare && <span className="title square">60,5m²</span>}
+                            {isSquare && <span className="title square">{square} <Text content="m²" /></span>}
                         </h3>
 
                         <LikeButtonContainer {...{id: advertId, category}} className={'detail-like'} />

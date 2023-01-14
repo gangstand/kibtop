@@ -1,9 +1,10 @@
 import { BASE_URL } from "../../Instance"
 
 const convertDate = (dateVal) => {
-    const date = String(new Date(dateVal).toUTCString())
-    const dateString = date.split(', ')[1].split(' ')
-    return `${dateString[0]} ${dateString[1]} ${dateString[2]}`
+    const date = String(new Date(dateVal).toLocaleString())
+    const dateString = date.split(', ')[0]
+    
+    return dateString
 }
 
 const serializeAdvertUploads = uploads => uploads.map(({uploads}) => uploads)
@@ -55,10 +56,10 @@ export const serializeFullAdvertData = (advert, lang, category) => ({
 
 
 export const serializeFavorites = (favorites, category) => favorites
-    .map(({id, avto_full, user}) => ({
-        favouriteId: id, 
-        advertId: avto_full,
-        userId: user,
+    .map(favorite => ({
+        favouriteId: favorite.id, 
+        advertId: favorite[`${category}_full`],
+        userId: favorite.user,
         category,
     }))
 
@@ -82,6 +83,8 @@ export const serializeAdvertDatails = (advert, lang, category) => {
         userId: advert.user,
         advertId: advert.id,
         cost: advert.price,
+        square: advert.square,
+        isMonth: advert.type_sell,
         category
     }
 }

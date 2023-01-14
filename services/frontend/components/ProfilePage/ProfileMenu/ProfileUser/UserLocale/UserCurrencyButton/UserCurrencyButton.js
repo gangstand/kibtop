@@ -5,7 +5,7 @@ const UserCurrencyButton = ({isCurrencyOpen, onProfileCurrencySwitch}) => {
     const currencies = {
         "€": 'EUR',
         "$": 'USD',
-        "₽": 'RUB'
+        "₤": 'TRY'
     }
 
     const isOpenStyle = isCurrencyOpen ? ' user-locale-btn--opened' : ''

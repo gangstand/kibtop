@@ -22,11 +22,16 @@ const FavoritesSlice = createSlice({
         },
 
         setUserFavorites(state, {payload}) {
-            state.favorites = [...payload]
+            
+            state.favorites = payload
         },
 
         setUserFavoriteAdverts(state, {payload}) {
-            state.favoriteAdverts = [...payload]
+            if(!(payload?.length)) {
+                state.favoriteAdverts = null
+                return
+            }
+            state.favoriteAdverts = payload
         }
     }
 })
@@ -59,7 +64,7 @@ export const dislikeAdvertThunk = (favoriteId, category, userId) => async dispat
 
 export const setUserFavoritesThunk = userId => async dispatch => {
     const favorites = await FavoritesApi.getUserFavorites(userId).catch(() => null)
-
+    console.log(favorites);
     if(!!favorites) dispatch(setUserFavorites(favorites))
 }
 

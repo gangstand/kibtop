@@ -9,7 +9,7 @@ export const CurrencyProvider = props => {
     const currencies = {
         "$": '$',
         "€": '€',
-        "₽": '₽'
+        "₤": '₤'
     }
 
     const [currency, setCurrency] = useState('$');

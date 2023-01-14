@@ -29,20 +29,20 @@ const seller = ({newGoods, user}) => {
     );
 }
 
-export async function getStaticPaths() {
-    return {
-      paths: [
-        {
-            params: { userId: '2' },
-            locale: "en",
-          },
-      ],
-      fallback: true
-    }
-}
+// export async function getStaticPaths() {
+//     return {
+//       paths: [
+//         {
+//             params: { userId: '2' },
+//             locale: "en",
+//           },
+//       ],
+//       fallback: true
+//     }
+// }
 
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const {locale, params: {userId}} = context
     
     const user = await AdvertApi.getAdvertSeller(userId)

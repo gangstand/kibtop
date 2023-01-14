@@ -198,7 +198,7 @@
     width: 280px;
     box-sizing: border-box;
 
-    padding: 20px;
+    padding: 10px;
     border-radius: 20px;
 
     background: #FFFFFF;
@@ -209,6 +209,8 @@
     .detail-card__wrapper {
         width: 360px;
         height: 260px;
+
+        padding: 20px;
     }
 
     .detail-card {
@@ -902,6 +904,12 @@
     max-width: 270px;
 }
 
+@media (max-width: 600px) {
+    .detail-name .detail-title {
+        margin-bottom: 0;
+    }
+}
+
 @media (max-width: 172px) {
     .detail-name .title {
         max-width: 172px;
@@ -1108,8 +1116,14 @@
 @media (min-width: 1150px) {
     .detail-nav__container {
         align-items: flex-end;
-        max-width: calc((80.55vw) - 360px)
+        max-width: calc((80.55vw) - 420px)
 
+    }
+}
+
+@media (min-width: 1440px) {
+    .detail-nav__container { 
+        max-width: calc((1161px) - 400px)
     }
 }
 

@@ -20,6 +20,8 @@ const initialState = {
     userId: null,
     advertId: null,
     cost: null,
+    square: null,
+    isMonth: null,
 
     seller: {
         name: null,
@@ -53,8 +55,11 @@ const AdvertSlice = createSlice({
                 uploads,
                 userId,
                 advertId,
-                cost
+                cost,
+                square,
+                isMonth
             } = payload
+
 
             state.title = title || null
             state.description = description || null
@@ -74,6 +79,9 @@ const AdvertSlice = createSlice({
             state.userId = userId || null
             state.advertId = advertId || null
             state.cost = cost
+            state.square = square,
+            state.isMonth = isMonth
+
         },
 
         setAdvertSellerData(state, {payload}) {

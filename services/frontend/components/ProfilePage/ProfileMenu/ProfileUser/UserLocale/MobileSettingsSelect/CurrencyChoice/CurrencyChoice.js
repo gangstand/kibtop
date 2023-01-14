@@ -10,7 +10,7 @@ const CurrencyChoice = () => {
                 <div className="settings-mobile-select__options">
                     <CurrencyChoiceOption {...{value: '€', text: 'Euro'}} />
                     <CurrencyChoiceOption {...{value: '$', text: 'Dollar'}} />
-                    <CurrencyChoiceOption {...{value: '₽', text: 'Ruble'}} />
+                    <CurrencyChoiceOption {...{value: '₤', text: 'Lira'}} />
                 </div>
             </div>
         </>

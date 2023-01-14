@@ -1,3 +1,4 @@
+import Link from "next/link";
 import LikeButtonContainer from "../../../../../HomePage/LikeButton/LikeButtonContainer";
 
 const RealtyAdvert = ({advertId, category, title, cost, address, img, date, uploads}) => {
@@ -5,7 +6,7 @@ const RealtyAdvert = ({advertId, category, title, cost, address, img, date, uplo
         <>
             <div className="mobile-realty-advert">
                 <div className="mobile-realty-advert__slider">
-                    <div className="mobile-realty-advert__line">
+                    <Link href={`/advert/${category}/${advertId}`} className="mobile-realty-advert__line">
 
                         {
                             !!(uploads.length) ? <>
@@ -21,7 +22,7 @@ const RealtyAdvert = ({advertId, category, title, cost, address, img, date, uplo
                         }
                         
 
-                    </div>
+                    </Link>
                 </div>
 
                 <div className="mobile-realty-advert__desc">
