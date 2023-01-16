@@ -31,24 +31,30 @@ class ServicesFullSerializerDetail(serializers.ModelSerializer):
 
 
 class ServicesFullSerializerEN(serializers.ModelSerializer):
+    services_full_upload = ServicesFullUploadSerializer(many=True, required=False)
+
     class Meta:
         model = ServicesFull
         fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_category_en', 'category_en', 'recommend', 'publisher')
+                  'price', 'upload', 'services_full_upload', 'sub_category_en', 'category_en', 'recommend', 'publisher')
 
 
 class ServicesFullSerializerRU(serializers.ModelSerializer):
+    services_full_upload = ServicesFullUploadSerializer(many=True, required=False)
+
     class Meta:
         model = ServicesFull
-        fields = ('id', 'title_ru', 'description_ru','created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_category_ru', 'category_ru', 'recommend', 'publisher')
+        fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'services_full_upload', 'sub_category_ru', 'category_ru', 'recommend', 'publisher')
 
 
 class ServicesFullSerializerTR(serializers.ModelSerializer):
+    services_full_upload = ServicesFullUploadSerializer(many=True, required=False)
+
     class Meta:
         model = ServicesFull
-        fields = ('id', 'title_tr','description_tr', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_category_tr', 'category_tr', 'recommend', 'publisher')
+        fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'services_full_upload', 'sub_category_tr', 'category_tr', 'recommend', 'publisher')
 
 
 class ServicesFullSerializer(serializers.Serializer):
