@@ -24,32 +24,39 @@ class AvtoFullFavouritesUserSerializer(serializers.ModelSerializer):
 
 class AvtoFullSerializerDetail(serializers.ModelSerializer):
     avto_full_upload = AvtoFullUploadSerializer(many=True, required=False)
+
     class Meta:
         model = AvtoFull
         fields = '__all__'
 
 
 class AvtoFullSerializerEN(serializers.ModelSerializer):
+    avto_full_upload = AvtoFullUploadSerializer(many=True, required=False)
     class Meta:
         model = AvtoFull
         fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_category_en', 'brand', 'mileage', 'year', 'category_en', 'recommend',
+                  'price', 'upload', 'avto_full_upload', 'sub_category_en', 'brand', 'mileage', 'year', 'category_en',
+                  'recommend',
                   'publisher')
 
 
 class AvtoFullSerializerRU(serializers.ModelSerializer):
+    avto_full_upload = AvtoFullUploadSerializer(many=True, required=False)
     class Meta:
         model = AvtoFull
-        fields = ('id', 'title_ru', 'description_ru',  'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_category_ru', 'brand', 'mileage', 'year', 'category_ru', 'recommend',
+        fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'avto_full_upload', 'sub_category_ru', 'brand', 'mileage', 'year', 'category_ru',
+                  'recommend',
                   'publisher')
 
 
 class AvtoFullSerializerTR(serializers.ModelSerializer):
+    avto_full_upload = AvtoFullUploadSerializer(many=True, required=False)
     class Meta:
         model = AvtoFull
-        fields = ('id', 'title_tr', 'description_tr',  'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_category_tr', 'brand', 'mileage', 'year', 'category_tr', 'recommend',
+        fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'avto_full_upload', 'sub_category_tr', 'brand', 'mileage', 'year', 'category_tr',
+                  'recommend',
                   'publisher')
 
 
