@@ -5,7 +5,7 @@ import { ProfileApi } from "../../services/ProfileApi";
 import { getServerSideCookies, getStringCookies } from "../../services/tools/CookieController";
 import { getServerSideUser } from "../../services/tools/getServerSideUser/getServerSideUser";
 
-const profile = ({user, adverts}) => {
+const Profile = ({user, adverts}) => {
     useAuthRedirect(user)
     return (
         <>
@@ -33,4 +33,4 @@ export async function getServerSideProps({req, res, locale}) {
     }
 }
 
-export default profile;
+export default Profile;

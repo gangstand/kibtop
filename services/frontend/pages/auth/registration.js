@@ -1,7 +1,7 @@
 import Header from "../../components/Header/Header";
 import RegistrationPage from "../../components/RegistrationPage/RegistrationPage";
 
-const registration = () => {
+const Registration = () => {
     return (
         <>
             <Header />
@@ -10,4 +10,4 @@ const registration = () => {
     );
 }
 
-export default registration;
+export default Registration;

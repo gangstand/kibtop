@@ -64,7 +64,6 @@ export const dislikeAdvertThunk = (favoriteId, category, userId) => async dispat
 
 export const setUserFavoritesThunk = userId => async dispatch => {
     const favorites = await FavoritesApi.getUserFavorites(userId).catch(() => null)
-    console.log(favorites);
     if(!!favorites) dispatch(setUserFavorites(favorites))
 }
 

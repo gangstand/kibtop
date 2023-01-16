@@ -2,7 +2,7 @@ import LoginPage from "../../components/LoginPage/LoginPage";
 import Header from "../../components/Header/Header";
 
 
-const login = () => {
+const Login = () => {
     return (
         <>
             <Header />
@@ -11,4 +11,4 @@ const login = () => {
     );
 }
 
-export default login;
+export default Login;

@@ -5,7 +5,7 @@ import HeaderService from "../../components/Header/HeaderService/HeaderService";
 import HeaderSettings from "../../components/Header/HeaderSettings/HeaderSettings";
 import SettingsNav from "../../components/SettingsPage/SettingsNav";
 
-const archive = () => {
+const Archive = () => {
 
     return (
         <>
@@ -20,4 +20,4 @@ const archive = () => {
     );
 }
 
-export default archive;
+export default Archive;

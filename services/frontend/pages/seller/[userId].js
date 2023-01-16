@@ -13,7 +13,7 @@ import SellerPage from "../../components/SellerPage/SellerPage";
 import { AdvertApi } from "../../services/AdvertApi";
 import { GoodsApi } from "../../services/IndexApi";
 
-const seller = ({newGoods, user}) => {
+const Seller = ({newGoods, user}) => {
     // const {push} = useRouter()
     // useEffect(() => {
     //     if(!user) push('/')
@@ -54,4 +54,4 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default seller;
+export default Seller;

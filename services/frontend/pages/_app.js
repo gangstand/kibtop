@@ -12,7 +12,7 @@ import '../styles/edit_profile.css'
 import '../styles/archive.css'
 import '../styles/favorites.css'
 import '../styles/detail.css'
-
+import '../styles/add_advert.css'
 
 
 

@@ -5,7 +5,7 @@ import Settings from "../../../components/SettingsPage/Settings";
 import { getServerSideCookies, getStringCookies } from "../../../services/tools/CookieController";
 import { getServerSideUser } from "../../../services/tools/getServerSideUser/getServerSideUser";
 
-const settings = ({user}) => {
+const Settings = ({user}) => {
     useAuthRedirect(user)
 
     return (
@@ -27,4 +27,4 @@ export async function getServerSideProps({req, res}) {
     }
 }
 
-export default settings;
+export default Settings;
