@@ -61,11 +61,15 @@ button {
     background-color: transparent;
 }
 
-input,  input:hover, input:focus {
+input {
     border: none;
     outline: none;
 
     color: var(--color-black);
+}
+
+textarea {
+    outline: none;
 }
 
 .mb-15 {

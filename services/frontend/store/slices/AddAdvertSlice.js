@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    formStep: 1
+    formStep: 1,
+    category: null
 }
 
 const AddAdvertSlice = createSlice({
@@ -10,11 +11,14 @@ const AddAdvertSlice = createSlice({
     reducers: {
         setAddAdvertFormStep(state, {payload}) {
             state.formStep = payload
+        },
+        setAddAdvertCategory(state, {payload}) {
+            state.category = payload
         }
     }
 })
 
-export const {setAddAdvertFormStep} = AddAdvertSlice.actions
+export const {setAddAdvertFormStep, setAddAdvertCategory} = AddAdvertSlice.actions
 
 
 export const AddAdvertReducer = AddAdvertSlice.reducer
