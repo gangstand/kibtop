@@ -37,7 +37,7 @@ class HouseGardenFullSerializerEN(serializers.ModelSerializer):
         model = HouseGardenFull
         fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'house_garden_full_upload', 'sub_category_en', 'category_en', 'recommend',
-                  'publisher')
+                  'publisher', 'city', 'geocode')
 
 
 class HouseGardenFullSerializerRU(serializers.ModelSerializer):
@@ -46,7 +46,7 @@ class HouseGardenFullSerializerRU(serializers.ModelSerializer):
     class Meta:
         model = HouseGardenFull
         fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'house_garden_full_upload', 'sub_category_ru', 'category_ru', 'recommend', 'publisher')
+                  'price', 'upload', 'house_garden_full_upload', 'sub_category_ru', 'category_ru', 'recommend', 'publisher', 'city', 'geocode')
 
 
 class HouseGardenFullSerializerTR(serializers.ModelSerializer):
@@ -55,7 +55,7 @@ class HouseGardenFullSerializerTR(serializers.ModelSerializer):
     class Meta:
         model = HouseGardenFull
         fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'house_garden_full_upload', 'sub_category_tr', 'category_tr', 'recommend', 'publisher')
+                  'price', 'upload', 'house_garden_full_upload', 'sub_category_tr', 'category_tr', 'recommend', 'publisher', 'city', 'geocode')
 
 
 class HouseGardenFullSerializer(serializers.Serializer):
