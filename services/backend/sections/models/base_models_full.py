@@ -94,6 +94,8 @@ class BaseModelFull(models.Model):
     category_tr = models.CharField(choices=CATEGORY_TR, max_length=255, blank=True, null=True, default=None)
     recommend = models.BooleanField()
     publisher = models.BooleanField()
+    city = models.CharField(max_length=255, blank=True, null=True)
+    geocode = models.CharField(max_length=255, blank=True, null=True)
 
     def updated_at(self):
         self.published_date = timezone.now()
