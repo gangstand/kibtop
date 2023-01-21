@@ -33,24 +33,33 @@ class ElectronicsFullSerializerDetail(serializers.ModelSerializer):
 
 
 class ElectronicsFullSerializerEN(serializers.ModelSerializer):
+    electronics_full_upload = ElectronicsFullUploadSerializer(many=True, required=False)
+
     class Meta:
         model = ElectronicsFull
-        fields = ('id', 'title_en','description_en', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_category_en', 'category_en', 'recommend', 'publisher')
+        fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'electronics_full_upload', 'sub_category_en', 'category_en', 'recommend',
+                  'publisher', 'city', 'geocode')
 
 
 class ElectronicsFullSerializerRU(serializers.ModelSerializer):
+    electronics_full_upload = ElectronicsFullUploadSerializer(many=True, required=False)
+
     class Meta:
         model = ElectronicsFull
-        fields = ('id', 'title_ru', 'description_ru','created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_category_ru', 'category_ru', 'recommend', 'publisher')
+        fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'electronics_full_upload', 'sub_category_ru', 'category_ru', 'recommend',
+                  'publisher', 'city', 'geocode')
 
 
 class ElectronicsFullSerializerTR(serializers.ModelSerializer):
+    electronics_full_upload = ElectronicsFullUploadSerializer(many=True, required=False)
+
     class Meta:
         model = ElectronicsFull
-        fields = ('id', 'title_tr','description_tr', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'sub_category_tr', 'category_tr', 'recommend', 'publisher')
+        fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
+                  'price', 'upload', 'electronics_full_upload', 'sub_category_tr', 'category_tr', 'recommend',
+                  'publisher', 'city', 'geocode')
 
 
 class ElectronicsFullSerializer(serializers.Serializer):
