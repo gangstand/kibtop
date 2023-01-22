@@ -11,10 +11,11 @@ class FilterElectronics(django_filters.FilterSet):
     sub_category_en = django_filters.CharFilter()
     sub_category_ru = django_filters.CharFilter()
     sub_category_tr = django_filters.CharFilter()
+    currency = django_filters.CharFilter()
 
     class Meta:
         model = ElectronicsFull
-        fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr']
+        fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr', 'currency']
 
 
 class FilterElectronicsViews(django_filters.FilterSet):

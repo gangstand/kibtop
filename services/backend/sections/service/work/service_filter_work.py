@@ -20,12 +20,13 @@ class FilterWork(django_filters.FilterSet):
     employment_en = django_filters.CharFilter()
     employment_ru = django_filters.CharFilter()
     employment_tr = django_filters.CharFilter()
+    currency = django_filters.CharFilter()
 
     class Meta:
         model = WorkFull
         fields = [
             'price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr', 'for_work_type_en',
-            'for_work_type_ru', 'for_work_type_tr', 'employment_en', 'employment_ru', 'employment_tr',
+            'for_work_type_ru', 'for_work_type_tr', 'employment_en', 'employment_ru', 'employment_tr', 'currency'
         ]
 
 

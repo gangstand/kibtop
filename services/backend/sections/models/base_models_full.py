@@ -57,6 +57,12 @@ CITY_TR = [
     ('Lefke', 'Lefke')
 ]
 
+CURRENCY = [
+    ('₽', '₽'),
+    ('$', '$'),
+    ('₤', '₤'),
+]
+
 
 class City(models.Model):
     city_name_en = models.CharField(max_length=255)
@@ -96,6 +102,7 @@ class BaseModelFull(models.Model):
     publisher = models.BooleanField()
     city = models.CharField(max_length=255, blank=True, null=True)
     geocode = models.CharField(max_length=255, blank=True, null=True)
+    currency = models.CharField(choices=CURRENCY, max_length=1, blank=True, null=True)
 
     def updated_at(self):
         self.published_date = timezone.now()

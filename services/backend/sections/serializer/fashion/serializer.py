@@ -37,7 +37,8 @@ class FashionFullSerializerEN(serializers.ModelSerializer):
     class Meta:
         model = FashionFull
         fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'fashion_full_upload', 'sub_category_en', 'category_en', 'recommend', 'publisher', 'city', 'geocode')
+                  'price', 'upload', 'fashion_full_upload', 'sub_category_en', 'category_en', 'recommend', 'publisher',
+                  'city', 'geocode', 'currency')
 
 
 class FashionFullSerializerRU(serializers.ModelSerializer):
@@ -46,7 +47,8 @@ class FashionFullSerializerRU(serializers.ModelSerializer):
     class Meta:
         model = FashionFull
         fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'fashion_full_upload', 'sub_category_ru', 'category_ru', 'recommend', 'publisher', 'city', 'geocode')
+                  'price', 'upload', 'fashion_full_upload', 'sub_category_ru', 'category_ru', 'recommend', 'publisher',
+                  'city', 'geocode', 'currency')
 
 
 class FashionFullSerializerTR(serializers.ModelSerializer):
@@ -55,7 +57,8 @@ class FashionFullSerializerTR(serializers.ModelSerializer):
     class Meta:
         model = FashionFull
         fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'fashion_full_upload', 'sub_category_tr', 'category_tr', 'recommend', 'publisher', 'city', 'geocode')
+                  'price', 'upload', 'fashion_full_upload', 'sub_category_tr', 'category_tr', 'recommend', 'publisher',
+                  'city', 'geocode', 'currency')
 
 
 class FashionFullSerializer(serializers.Serializer):
