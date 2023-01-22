@@ -20,7 +20,6 @@ export default NextAuth({
           // Persist the OAuth access_token to the token right after signin
 
           const { token, user, account } = data
-        //   console.log(data);
         
           if (account) {
             token.id_token = account.id_token;

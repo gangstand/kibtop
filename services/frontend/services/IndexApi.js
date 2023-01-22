@@ -37,7 +37,7 @@ export const GoodsApi = {
                     const goods = serializeAdverts(data, lang)
                     
                     return goods.splice(0, 8)
-                }).catch(err => console.log(err))
+                }).catch(err => null)
     },
 
     async getSlider(lang) {

@@ -15,7 +15,7 @@ const Profile = ({user, adverts}) => {
 }
 
 export async function getServerSideProps({req, res, locale}) {
-    
+
     const cookies = getStringCookies(req)
 
     const access = getServerSideCookies(cookies, 'access')

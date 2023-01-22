@@ -13,8 +13,6 @@ const ArchiveContainer = ({serverAds}) => {
     const {archive} = useSelector(state => state.archive)
     const dispatch = useDispatch()
 
-    console.log(archive);
-
     useEffect(() => {
         dispatch(setUserArchiveThunk(userId, locale))
     }, [archive.length, userId, locale])

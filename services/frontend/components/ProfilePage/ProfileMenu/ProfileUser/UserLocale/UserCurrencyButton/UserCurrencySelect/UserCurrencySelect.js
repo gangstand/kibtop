@@ -13,7 +13,7 @@ const UserCurrencySelect = () => {
                         <div className="profile-select profile-select--currency">
                             <UserCurrencyOption {...{value: '€', text: 'Euro'}} />
                             <UserCurrencyOption {...{value: '$', text: 'Dollar'}} />
-                            <UserCurrencyOption {...{value: '₽', text: 'Ruble'}} />
+                            <UserCurrencyOption {...{value: '₤', text: 'Lira'}} />
                         </div>
                         <MobileSettingsSelect />
                     </>

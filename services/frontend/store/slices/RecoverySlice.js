@@ -48,7 +48,6 @@ export const sendRecoveryLinkThunk = email => async dispatch => {
             dispatch(setRecoveryisUserFail(false))
             dispatch(setRecoverySend(true))
         }).catch(err => {
-            console.log(err)
             dispatch(setRecoveryLoading(false))
             dispatch(setRecoveryisUserFail(true))
         })
@@ -58,12 +57,10 @@ export const confirmRecoveryThunk = ( {new_password, re_new_password, uid, token
     dispatch(setRecoveryLoading(true))
     await RecoveryApi.confirmReset(new_password, re_new_password, uid, token)
         .then(data => {
-            console.log(data);
             dispatch(setRecoverySuccess(true))
             dispatch(setRecoveryLoading(false))
             dispatch(setRecoveryError(false))
         }).catch(err => {
-            console.log(err)
             dispatch(setRecoveryLoading(false))
             dispatch(setRecoveryError(true))
         })
@@ -73,10 +70,9 @@ export const activateEmailThunk = ({uid, token}) => async dispatch => {
     await RecoveryApi.confirmEmail(uid, token)
         .then(() => {
             const {email, password} = getUserData()
-            console.log(email, password)
             clearUserData()
             dispatch(loginThunk(email, password))
-        }).catch(err => console.log(err))
+        }).catch(err => null)
 }
 
 

@@ -2,7 +2,6 @@ import FavoriteAdvert from "./FavoriteAdvert/FavoriteAdvert";
 import FavoritesEmpty from "./FavoritesEmpty/FavoritesEmpty";
 
 const Favorites = ({adverts}) => {
-    console.log(adverts.length);
     return (
         <>
             {

@@ -9,11 +9,9 @@ const DetailBanner = ({switchToNext, transition, slideList, dots, offset, setOff
 
     const multiplySlide = (slide, mult) => {
         if(+slide) return mult * (+slide)
-        console.log
         const slideNum = +slide.slice(0, slide.length-2)
         const slideVal = slide.slice(slide.length-2)
 
-        console.log(slideNum, slideVal);
 
         return `${slideNum*mult}${slideVal}`
     }

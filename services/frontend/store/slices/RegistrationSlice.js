@@ -93,7 +93,6 @@ export const resendEmailThunk = email => async dispatch => {
         })
         .catch((err) => {
             dispatch(setResendingLoad({bool: false}))
-            console.log(err)
         })
 }
 

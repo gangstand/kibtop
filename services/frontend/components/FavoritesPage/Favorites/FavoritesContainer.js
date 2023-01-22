@@ -15,7 +15,6 @@ const FavoritesContainer = ({adverts}) => {
     }, [userId, isAuthed])
 
     const data = !!(favoriteAdverts.length) ? favoriteAdverts : adverts
-    console.log(favoriteAdverts);
     return <Favorites adverts={data} />;
 }
 

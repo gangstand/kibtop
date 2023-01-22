@@ -90,7 +90,7 @@ export const loginThunk = (email, password) => async dispatch => {
             dispatch(setAuthThunk())
             dispatch(setLoginLoading({bool: false}))
         }).catch(err => {
-            console.log(err);
+            
             dispatch(setLoginError({bool: true}))
             dispatch(setLoginLoading({bool: false}))
         })
