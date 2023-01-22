@@ -25,6 +25,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         null=False, default=AUTH_PROVIDERS.get('email'))
 
     is_verified = models.BooleanField('verified', default=False)
+    deals = models.IntegerField(default=0)
 
     objects = UserManager()
 
