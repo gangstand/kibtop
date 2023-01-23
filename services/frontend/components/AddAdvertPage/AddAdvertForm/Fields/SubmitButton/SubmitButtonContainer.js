@@ -1,9 +1,22 @@
 import { useFormContext } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { setAddAdvertPhoneOpen } from "../../../../../store/slices/AddAdvertSlice";
 import SubmitButton from "./SubmitButton";
 
 const SubmitButtonContainer = () => {
     const {onSubmitClick, isValid} = useFormContext()
-    return <SubmitButton {...{onSubmitClick, isValid}} />;
+
+    const {phone} = useSelector(state => state.profile)
+    const dispatch = useDispatch()
+
+    const openAddPhoneModal = e => {
+        console.log(e);
+        
+        e.preventDefault()
+        dispatch(setAddAdvertPhoneOpen(true))
+    }
+
+    return <SubmitButton {...{onSubmitClick, isValid, isPhoneNull: !phone, openAddPhoneModal}} />;
 }
 
 export default SubmitButtonContainer;

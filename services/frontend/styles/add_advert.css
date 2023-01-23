@@ -788,3 +788,43 @@
     left: 0;
     bottom: -15px;
 }
+
+.modal-phone {
+    display: flex;
+    flex-direction: column;
+    
+    height: 360px;
+    padding: 30px;
+
+    background-color: #fff;
+}
+
+.phone-form {
+    width: 100%;
+    max-width: 400px;
+
+    
+}
+
+.submit-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-title {
+    max-width: 75%;
+
+    margin-bottom: 10px;
+}
+
+.modal-text {
+    max-width: 75%;
+
+    margin-bottom: 20px;
+}
+
+@media (min-width: 800px){
+    .modal-screen--favorites {
+        left: calc(50vw - 760px / 2);
+    }
+}

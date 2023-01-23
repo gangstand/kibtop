@@ -1,46 +1,17 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
+import { useSwipe } from "../../../AppHooks/useSwipe"
 import Text from "../../../Elementes/Text/Text"
 
 const FavoritesWarning = ({isWarnOpen, closeFavoritesWarning}) => {
-    const [touchStart, setTouchStart] = useState(null)
-    const [touchEnd, setTouchEnd] = useState(null)
-    
-    const minSwipeDistance = 30
-    
-    const onTouchStart = (e) => {
-      setTouchEnd(null) 
-      setTouchStart(e.targetTouches[0].clientY)
-    }
-    
-    const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientY)
-    
-    const onTouchEnd = () => {
-      if (!touchStart || !touchEnd) return
-
-      const distance = touchEnd - touchStart
-      const isSwipe = distance > minSwipeDistance
-      if(isSwipe && window.innerWidth < 600) {
-            favoritesWarnElem.current.style.bottom = '-100%'
-
-            setTimeout(closeFavoritesWarning, 500)
-        }
-    }
-
-    const favoritesWarnElem = useRef(null)
-    useEffect(() => {
-        if(favoritesWarnElem.current && window.innerWidth < 600) {
-            favoritesWarnElem.current.style.bottom = '0'
-            favoritesWarnElem.current.style.transition = 'bottom 500ms'
-        }
-    }, [favoritesWarnElem.current])
+    const {swipe, handleClose} = useSwipe({onClose: closeFavoritesWarning})
 
 
     return (
         <>
             {
                 !!isWarnOpen && <>
-                    <div className="modal-screen modal-screen--favorites" ref={favoritesWarnElem} {...{onTouchMove, onTouchEnd, onTouchStart}}>
+                    <div className="modal-screen modal-screen--favorites" {...swipe}>
                         <div className="favorites-warn">
 
                             <div className="add-greeting add-greeting--modal">
@@ -64,11 +35,7 @@ const FavoritesWarning = ({isWarnOpen, closeFavoritesWarning}) => {
                                 </Link>
                             </div>
 
-                            <div className="close-line close-line--top" onClick={() => {
-                                favoritesWarnElem.current.style.bottom = '-100%'
-
-                                setTimeout(closeFavoritesWarning, 500)
-                            }} />
+                            <div className="close-line close-line--top" onClick={handleClose} />
 
                             <button className="close-location" onClick={closeFavoritesWarning}>
                                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">

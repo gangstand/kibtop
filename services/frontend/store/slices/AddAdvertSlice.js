@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     formStep: 1,
-    category: null
+    category: null,
+
+    isPhoneOpen: false,
+    isPhoneError: false,
+    isPhoneSuccess: false
 }
 
 const AddAdvertSlice = createSlice({
@@ -14,11 +18,23 @@ const AddAdvertSlice = createSlice({
         },
         setAddAdvertCategory(state, {payload}) {
             state.category = payload
-        }
+        },
+
+        setAddAdvertPhoneOpen(state, {payload}) {
+            state.isPhoneOpen = payload
+        },
+        setAddAdvertPhoneError(state, {payload}) {
+            state.isPhoneError = payload
+        },
+        setAddAdvertPhoneSuccess(state, {payload}) {
+            state.isPhoneSuccess = payload
+        },
     }
 })
 
-export const {setAddAdvertFormStep, setAddAdvertCategory} = AddAdvertSlice.actions
+export const {  setAddAdvertFormStep, setAddAdvertCategory, 
+                setAddAdvertPhoneOpen, setAddAdvertPhoneError, 
+                setAddAdvertPhoneSuccess    } = AddAdvertSlice.actions
 
 
 export const AddAdvertReducer = AddAdvertSlice.reducer

@@ -1,3 +1,5 @@
+const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN
+
 export const Cookies = {
     getCookies(cookieName) {
         try {
@@ -34,7 +36,7 @@ export const Cookies = {
 
         const expires = new Date(Year, Month, Day+10).toUTCString()
 
-        document.cookie = `${cookieName}=${cookieVal}; domain=localhost; expires=${expires}; path=/;`
+        document.cookie = `${cookieName}=${cookieVal}; domain=${DOMAIN}; expires=${expires}; path=/;`
     },
 
     delCookie(cookieName) {
