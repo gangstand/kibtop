@@ -1,14 +1,17 @@
+import { useEffect, useState } from "react"
 import { useFormContext } from "react-hook-form"
 import { useLanguage } from "../../../../../../locales/hooks/useLanguage"
 import Text from "../../../../../Elementes/Text/Text"
 
 const MobFileField = () => {
+    const [valueSrc, setValueSrc] = useState(null)
     const {t} = useLanguage()
     const {register, formState, getFieldState, watch} = useFormContext()
-    
     const {isDirty, error} = getFieldState('file', formState)
-
     const isError = isDirty  && error 
+
+    const value = watch('file')
+
 
     const fileFormValid = (filelist) => {
         if(!filelist || filelist.length === 0) return true
@@ -27,6 +30,24 @@ const MobFileField = () => {
 
         return true
     }
+
+    useEffect(() => {
+        if(!value?.length || !FileReader) {
+            setValueSrc(null)
+            return
+        }
+
+        if(!fileFormValid(value)) return
+
+        const fileReader = new FileReader()
+
+        fileReader.onload = () => {
+            setValueSrc(fileReader.result)
+        }
+
+        fileReader.readAsDataURL(value[0])
+
+    }, [value])
 
     const isSelectedStyle = (!!watch('file')?.length) ? ' form__file-field--selected' : ''
 
@@ -52,6 +73,8 @@ const MobFileField = () => {
                                     </clipPath>
                                 </defs>
                             </svg>
+                        <img src={valueSrc} className="file-img file-img--mob" style={{opacity: valueSrc ? 1 : 0}} />
+                        
                 </label>
 
                 <label htmlFor="ava" className="form__text form__text--mob"><Text content="Add photo" /></label>

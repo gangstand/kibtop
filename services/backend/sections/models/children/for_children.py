@@ -1,21 +1,20 @@
 CHILDREN_CATEGORY_EN = [
-    ("Children's clothing", "Children's clothing"),
-    ("Children's shoes", "Children's shoes"),
-    ("Baby strollers / Transport", "Baby strollers / Transport"),
-    ("Children's toys / Furniture", "Children's toys / Furniture"),
-    ("Other goods for children", "Other goods for children"),
+    ("Baby clothing", "Baby clothing"),
+    ("Baby shoes", "Baby shoes"),
+    ("Baby stroller", "Baby stroller"),
+    ("Baby toys | Furniture", "Baby toys | Furniture"),
+    ("Other baby products", "Other baby products"),
 ]
 CHILDREN_CATEGORY_RU = [
-    ("Детская одежда", "детская одежда"),
-    ("Детская обувь", "детская обувь"),
-    ("Детские коляски / Транспорт", "детские коляски / Транспорт"),
-    ("Детские игрушки / мебель", "детские игрушки / Мебель"),
-    ("Другие хорошие вещи для детей", "Другие хорошие вещи для детей"),
-]
+    ('Детская одежда', 'Детская одежда'),
+    ('Детская обувь', 'Детская обувь'),
+    ('Детская коляска', 'Детская коляска'),
+    ('Детские игрушки | Мебель', 'Детские игрушки | Мебель'),
+    ('Другие детские товары', 'Другие детские товары')]
 CHILDREN_CATEGORY_TR = [
-    ("Çocuk giyim", "çocuk giyim"),
-    ("Çocuk ayakkabıları", "çocuk ayakkabıları"),
-    ("Bebek arabası / Taşıma", "bebek arabası / Taşıma"),
-    ("Çocuk oyuncakları / Mobilyaları", "çocuk oyuncakları / Mobilyaları"),
-    ("Çocuklar için diğer iyi şeyler", "Çocuklar için diğer iyi şeyler"),
+    ('Bebek kıyafeti', 'Bebek kıyafeti'),
+    ('Bebek ayakkabıları', 'Bebek ayakkabıları'),
+    ('Bebek arabası', 'Bebek arabası'),
+    ('Bebek oyuncakları | Mobilya', 'Bebek oyuncakları | Mobilya'),
+    ('Diğer bebek ürünleri', 'Diğer bebek ürünleri')
 ]

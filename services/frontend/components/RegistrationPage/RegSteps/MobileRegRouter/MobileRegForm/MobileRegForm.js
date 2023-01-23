@@ -29,7 +29,10 @@ const MobileRegForm = ({mobileStep, seriealizeErrors, isLoading,
             <form className="form reg-form--mob">
                 <FormProvider {...RegistrationForm}>
                     <div className="form__head">
-                        <h2 className="reg-title"><Text content="Create new account" /></h2>
+                        <h1 className="reg-title">
+                            <span className="reg-title__line"><Text content="Create new" /></span>
+                            <span className="reg-title__line"><Text content="account" /></span>
+                        </h1>
                     </div>
                     {
                         mobileStep === 1 && <MobStep1 {...{...seriealizeErrors(errors), errors, 

@@ -1,15 +1,20 @@
 
+import { useState } from "react"
+import { useEffect } from "react"
 import { useFormContext } from "react-hook-form"
 import { useLanguage } from "../../../../../../locales/hooks/useLanguage"
 import Text from "../../../../../Elementes/Text/Text"
 
 const FileField = () => {
     const {t} = useLanguage()
+    const [valueSrc, setValueSrc] = useState(null)
     const {register, formState, getFieldState, watch} = useFormContext()
     
     const {isDirty, error} = getFieldState('file', formState)
 
     const isError = isDirty  && error 
+
+    const value = watch('file')
 
     const fileFormValid = (filelist) => {
         if(!filelist || filelist.length === 0) return true
@@ -29,7 +34,25 @@ const FileField = () => {
         return true
     }
 
-    const isSelectedStyle = (!!watch('file')?.length) ? ' form__file-field--selected' : ''
+    useEffect(() => {
+        if(!value?.length || !FileReader) {
+            setValueSrc(null)
+            return
+        }
+
+        if(!fileFormValid(value)) return
+
+        const fileReader = new FileReader()
+
+        fileReader.onload = () => {
+            setValueSrc(fileReader.result)
+        }
+
+        fileReader.readAsDataURL(value[0])
+
+    }, [value])
+
+    const isSelectedStyle = (!!value?.length) ? ' form__file-field--selected' : ''
 
     return (
         <>
@@ -55,6 +78,8 @@ const FileField = () => {
                                     </clipPath>
                                 </defs>
                             </svg>
+
+                            <img src={valueSrc} className="file-img" style={{opacity: valueSrc ? 1 : 0}} />
                 </label>
 
                 <div className="form__help">

@@ -25,7 +25,7 @@ const MobStep1 = ({errors, dirtyFields, name, message, touchedFields}) => {
 
                 <AltReg />
 
-                <p className="to-login"><Text content="Already have an account" />? <Link href="/login"><Text content="Login" /></Link></p>
+                <p className="to-login"><Text content="Already have an account" />? <Link href="/auth/login"><Text content="Login" /></Link></p>
             </div>
         </>
     );

@@ -12,18 +12,26 @@ CATEGORY_EN = [
     ('House and garden', 'House and garden'),
     ('Fashion and style', 'Fashion and style')
 ]
-
 CATEGORY_RU = [
-    ('Недвижимость', 'Недвижимость'), ('Авто', 'Авто'), ('Работа', 'Работа'), ('Услуги', 'Услуги'),
-    ('Для детей', 'Для детей'), ('Электроника', 'Электроника'), ('Дом и сад', 'Дом и сад'),
+    ('Недвижимость', 'Недвижимость'),
+    ('Авто', 'Авто'),
+    ('Работа', 'Работа'),
+    ('Услуги', 'Услуги'),
+    ('Для детей', 'Для детей'),
+    ('Электроника', 'Электроника'),
+    ('Дом и сад', 'Дом и сад'),
     ('Мода и стиль', 'Мода и стиль')
 ]
 CATEGORY_TR = [
-    ('Emlak', 'Emlak'), ('Oto', 'Oto'), ('İş', 'İş'), ('Hizmetler', 'Hizmetler'),
-    ('Çocuklar için', 'Çocuklar için'), ('Elektronik', 'Elektronik'), ('Ev ve bahçe', 'Ev ve bahçe'),
+    ('Emlak', 'Emlak'),
+    ('Oto', 'Oto'),
+    ('İş', 'İş'),
+    ('Hizmetler', 'Hizmetler'),
+    ('Çocuklar için', 'Çocuklar için'),
+    ('Elektronik', 'Elektronik'),
+    ('Ev ve bahçe', 'Ev ve bahçe'),
     ('Moda ve stil', 'Moda ve stil')
 ]
-
 CITY_EN = [
     ('Nicosia', 'Nicosia'),
     ('Kyrenia', 'Kyrenia'),
@@ -32,14 +40,27 @@ CITY_EN = [
     ('Guzelyurt', 'Guzelyurt'),
     ('Lefke', 'Lefke'),
 ]
-
 CITY_RU = [
-    ('Никосия', 'Никосия'), ('Сувенир', 'Сувенир'), ('FAMAG S TA', 'FAMAG S TA'), ('Док', 'Док'),
-    ('Guzelyurt', 'Guzelyurt'), ('Лефке', 'Лефке')
+    ('Никосия', 'Никосия'),
+    ('Кирения', 'Кирения'),
+    ('Фамагуста', 'Фамагуста'),
+    ('Док', 'Док'),
+    ('Гюзельюрт', 'Гюзельюрт'),
+    ('Лефке', 'Лефке')
 ]
 CITY_TR = [
-    ('Güzellik', 'Güzellik'), ('Hediyelik eşya', 'Hediyelik eşya'), ('FAMAG S TA', 'FAMAG S TA'),
-    ('Iskele', 'Iskele'), ('Guzelist', 'Guzelist'), ('Lefke', 'Lefke')
+    ('Lefkoşa', 'Lefkoşa'),
+    ('Girne', 'Girne'),
+    ('Gazimağusa', 'Gazimağusa'),
+    ('Iskele', 'Iskele'),
+    ('Güzelyurt', 'Güzelyurt'),
+    ('Lefke', 'Lefke')
+]
+
+CURRENCY = [
+    ('₽', '₽'),
+    ('$', '$'),
+    ('₤', '₤'),
 ]
 
 
@@ -62,7 +83,12 @@ class Money(models.Model):
 
 
 class BaseModelFull(models.Model):
-    title = models.CharField(verbose_name='Product name', max_length=255)
+    title_en = models.CharField(max_length=255, blank=True, null=True)
+    title_ru = models.CharField(max_length=255, blank=True, null=True)
+    title_tr = models.CharField(max_length=255, blank=True, null=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_ru = models.TextField(blank=True, null=True)
+    description_tr = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(blank=True, null=True)
     user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.CASCADE)
@@ -73,13 +99,17 @@ class BaseModelFull(models.Model):
     category_ru = models.CharField(choices=CATEGORY_RU, max_length=255, blank=True, null=True, default=None)
     category_tr = models.CharField(choices=CATEGORY_TR, max_length=255, blank=True, null=True, default=None)
     recommend = models.BooleanField()
+    publisher = models.BooleanField()
+    city = models.CharField(max_length=255, blank=True, null=True)
+    geocode = models.CharField(max_length=255, blank=True, null=True)
+    currency = models.CharField(choices=CURRENCY, max_length=1, blank=True, null=True)
 
     def updated_at(self):
         self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
-        return f'{self.title} {self.user} {self.address}'
+        return f'{self.title_en} {self.user} {self.address}'
 
     class Meta:
         abstract = True

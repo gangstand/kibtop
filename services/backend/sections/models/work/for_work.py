@@ -1,41 +1,41 @@
 WORK_CATEGORY_EN = [
-    ('Retail / sales /purchasing', 'Retail / sales /purchasing'),
-    ('Logistics / Warehouse / Delivery', 'Logistics / Warehouse / Delivery'),
-    ('Construction / finishing works', 'Construction / finishing works'),
-    ('Construction / finishing works', 'Construction / finishing works'),
-    ('Administrative staff / HR / Secretariat', 'Administrative staff / HR / Secretariat'),
-    ('Security / security', 'Security / security'),
-    ('Cleaning / Home staff', 'Cleaning / Home staff'),
+    ('Retail | Sales | Procurement', 'Retail | Sales | Procurement'),
+    ('Logistics | Warehouse | Delivery', 'Logistics | Warehouse | Delivery'),
+    ('Construction | finishing works', 'Construction | finishing works'),
+    ('Construction | finishing works', 'Construction | finishing works'),
+    ('Administrative staff | HR | Secretariat', 'Administrative staff | HR | Secretariat'),
+    ('Security | security', 'Security | security'),
+    ('Cleaning | Home staff', 'Cleaning | Home staff'),
 ]
 WORK_CATEGORY_RU = [
-    ('Розничная торговля / продажи /закупки', 'Розничная торговля / продажи /закупки'),
-    ('Логистика / Склад / Доставка', 'Логистика / Склад / Доставка'),
-    ("Строительные / отделочные работы", "Строительные / отделочные работы"),
-    ("Строительные / отделочные работы", "Строительные / отделочные работы"),
-    ("Административный персонал / Отдел кадров / Секретариат", "Административный персонал / отдел кадров / Секретариат"),
-    ('Охрана / охранный', 'Охрана / охраняемость'),
-    ('Уборка / Домашний персонал', 'Уборка / Домашний персонал'),
+    ('Розничная торговля | Продажи | Приобретение', 'Розничная торговля | Продажи | Приобретение'),
+    ('Логистика | Склад | Доставка', 'Логистика | Склад | Доставка'),
+    ('Строительство | отделочные работы', 'Строительство | отделочные работы'),
+    ('Строительство | отделочные работы', 'Строительство | отделочные работы'),
+    ('Административный персонал | HR | Секретариат', 'Административный персонал | HR | Секретариат'),
+    ('Безопасность | безопасность', 'Безопасность | безопасность'),
+    ('Очистка | Домашний персонал', 'Очистка | Домашний персонал')
 ]
 WORK_CATEGORY_TR = [
-    ('Perakende / satış / satın alma', 'Perakende / satış / satın alma'),
-    ('Lojistik / Depo / Teslimat', 'Lojistik / Depo / Teslimat'),
-    ('İnşaat / bitirme işleri', 'İnşaat / bitirme işleri'),
-    ('İnşaat / bitirme işleri', 'İnşaat / bitirme işleri'),
-    ('İdari personel / İK / Sekreterlik', 'İdari personel / İK / Sekreterlik'),
-    ('Güvenlik / güvenlik', 'Güvenlik / güvenlik'),
-    ('Temizlik / Ev personeli', 'Temizlik / Ev personeli'),
+    ('Perakende | Satış | Tedarik', 'Perakende | Satış | Tedarik'),
+    ('Lojistik | depo | Teslimat', 'Lojistik | depo | Teslimat'),
+    ('İnşaat | İşleri bitirmek', 'İnşaat | İşleri bitirmek'),
+    ('İnşaat | İşleri bitirmek', 'İnşaat | İşleri bitirmek'),
+    ('İdari personel | İK | Sekreterlik', 'İdari personel | İK | Sekreterlik'),
+    ('Güvenlik | güvenlik', 'Güvenlik | güvenlik'),
+    ('Temizlik | ev personeli', 'Temizlik | ev personeli')
 ]
 FOR_WORK_EN = [
-    ('for work', 'for work'),
-    ('for an employee', 'for an employee'),
+    ('For work', 'For work'),
+    ('For an employee', 'For an employee'),
 ]
 FOR_WORK_RU = [
-    ('для работы', 'для работы'),
-    ('для сотрудника', 'для служащего'),
+    ('Для работы', 'Для работы'),
+    ('Для сотрудника', 'Для сотрудника')
 ]
 FOR_WORK_TR = [
-    ('iş için', 'iş için'),
-    ('bir çalışan için', 'bir çalışan için'),
+    ('İş için', 'İş için'),
+    ('bir çalışan için', 'bir çalışan için')
 ]
 EMPLOYMENT_EN = [
     ('Full time', 'Full time'),
@@ -43,12 +43,11 @@ EMPLOYMENT_EN = [
     ('Remote', 'Remote'),
 ]
 EMPLOYMENT_RU = [
-    ('Полный рабочий день', 'Полный рабочий день'),
+    ('На постоянной основе', 'На постоянной основе'),
     ('Частичный', 'Частичный'),
-    ('Удаленный', 'Remote'),
+    ('Дистанционный пульт', 'Дистанционный пульт')
 ]
 EMPLOYMENT_TR = [
     ('Tam zamanlı', 'Tam zamanlı'),
-    ('Kısmi', 'Kısmi'),
-    ('Uzak', 'Uzak'),
+    ('Kısmi', 'Kısmi'), ('Uzak', 'Uzak')
 ]

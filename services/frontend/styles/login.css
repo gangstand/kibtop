@@ -1,14 +1,43 @@
+
+
+
+@media (max-width: 600px) {
+    .section--login {
+        padding-top: 84px;
+    }
+}
+
+.login-locale {
+    position: absolute;
+    top: 26px;
+    right: 12px;
+}
+
 .logo-icon--login {
-    font-size: 45px;
-    line-height: 30px;
+    font-size: 33px;
+    line-height: 25px;
+}
+
+@media (min-width: 600px) {
+    .logo-icon--login {
+        font-size: 45px;
+        line-height: 30px;
+    }
 }
 
 .reg-title--login {
     margin-bottom: 40px;
+    max-width: 100%;
 }
 
 .form--login .form__field--password {
     margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .form--login .form__field {
+        margin-bottom: 13px;
+    }
 }
 
 .submit {
@@ -17,26 +46,58 @@
 
 
     display: flex;
-    justify-content: space-between;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+}
+
+@media (min-width: 600px) {
+    .submit {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 .submit__column {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row-reverse;
+    align-items: flex-start;
     justify-content: space-between;
 
-    height: 40px;
+    height: 37px;
+}
+
+@media (min-width: 600px) {
+    .submit__column {
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        height: 40px;
+    }
 }
 
 .link-opacity {
     font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 14px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 10px;
     color: #BDBDBD;
 }
 
+@media (min-width: 600px) {
+    .link-opacity {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 14px;
+    }
+}
+
 .to-login .bigger {
-    font-size: 16px;
+    font-size: 14px;
+}
+
+@media (min-width: 600px) {
+    .to-login .bigger {
+        font-size: 16px;
+    }
 }

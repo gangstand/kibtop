@@ -7,6 +7,12 @@ import { LocaleReducer } from "./slices/LocaleSlice";
 import { MobileReducer } from "./slices/MobileSlice";
 import { RegistrationRducer } from "./slices/RegistrationSlice";
 import { LoginReducer } from "./slices/LoginSlice";
+import { RecoveryReducer } from "./slices/RecoverySlice";
+import { ProfileReducer } from "./slices/ProfileSlice";
+import { ArchiveReducer } from "./slices/ArchiveSlice";
+import { FavoritesReducer } from "./slices/FavoritesSlice";
+import { AdvertReducer } from "./slices/AdvertSlice";
+import { AddAdvertReducer } from "./slices/AddAdvertSlice";
 
 const reducer = {
     auth: authReducer,
@@ -16,6 +22,12 @@ const reducer = {
     mobile: MobileReducer,
     registration: RegistrationRducer,
     login: LoginReducer,
+    recovery: RecoveryReducer,
+    profile: ProfileReducer,
+    archive: ArchiveReducer,
+    favorites: FavoritesReducer,
+    advert: AdvertReducer,
+    addAdvert: AddAdvertReducer,
     [HomePageApi.reducerPath]: HomePageApi.reducer
 }
 

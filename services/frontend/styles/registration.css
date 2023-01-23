@@ -485,6 +485,10 @@
     max-width: 234px;
 }
 
+.reg-title * {
+    font-family: 'SF Pro Text';
+}
+
 @media (min-width: 600px) {
     .reg-title {
         font-family: 'Open Sans', sans-serif;
@@ -493,6 +497,10 @@
         line-height: 53px;
 
         max-width: 325px;
+    }
+
+    .reg-title * {
+        font-family: 'Open Sans', sans-serif;
     }
 }
 
@@ -567,6 +575,7 @@
     box-sizing: border-box;
 
     width: 100%;
+    height: 100%;
 
     font-style: normal;
     font-weight: 600;
@@ -598,8 +607,6 @@
 .form__field--password {
     margin-bottom: 10px;
 
-    padding: 7px 0;
-
     overflow: hidden;
 }
 
@@ -608,18 +615,21 @@
 }
 
 .form__field--password input {
-   font-family: 'passwords';
+   font-family: 'password';
 
-    font-size: 38px;
-    letter-spacing: 2px;
+   box-sizing: border-box;
+
+    font-size: 13px;
+    letter-spacing: 5px;
+
+    padding-top: 2px;
     margin-left: 38px;
-
-    padding-top: 1px;
+    text-indent: 1px
 }
 
 .form__field--password input::placeholder {
     position: relative;
-    bottom: 6.5px;
+    top: 1px;
 }
 
 .form__field--shown {
@@ -632,8 +642,9 @@
     font-family: 'Open Sans', sans-serif;
 
     height: 100%;
+    box-sizing: border-box;
+
     margin-left: 38px;
-    padding-top: 0;
 
 }
 
@@ -711,7 +722,7 @@
     .reg-btn {
         width: max-content;
 
-        font-weight: 700;
+        font-weight: 600;
     }
 }
 
@@ -746,11 +757,16 @@
 .warn {
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
-    line-height: 10px;
+    font-size: 9px;
+    line-height: 9px;
     color: #FF5A5A;
+}
 
-    
+@media (max-width: 600px) {
+    .warn {
+        font-size: 10px;
+        line-height: 10px;
+    }
 }
 
 .warn--high {
@@ -788,7 +804,7 @@
     padding-top: 14px;
 
     border: none;
-    border-top: 1px solid var(--color-black);
+    border-top: 1px solid var(--color-grey);
     text-align: center;
 }
 
@@ -807,7 +823,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 11px;
-    color: var(--color-black);
+    color: var(--color-grey);
 }
 
 @media (min-width: 400px) {
@@ -936,6 +952,27 @@
     letter-spacing: normal;
 }
 
+.file-img {
+    width: 115px;
+    height: 115px;
+
+    border-radius: 20px;
+    border-image-width:  0 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+
+    object-fit: cover;
+    object-position: center center;
+}
+
+.file-img--mob {
+    border-radius: 50%;
+}
+
 .form__file-field {
     display: grid;
     height: 143px;
@@ -981,6 +1018,11 @@
     background: #F6F6F6;
     border: 2px dashed #EDEDED;
     border-radius: 20px;
+
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+
 }
 
 .label-file input {
@@ -1011,7 +1053,7 @@
 }
 
 .form__file-field--selected .label-file {
-    border: 2px solid var(--color-opacity-black);
+    border: none;
     background: #EDEDED;
 }
 
@@ -1287,4 +1329,14 @@
     width: 20px;
     height: 20px;
     margin-left: 0;
+
+    fill: #BDBDBD;
+}
+
+.reg-btn--confirm {
+    
+}
+
+.reg-btn--confirm:disabled {
+    opacity: .7;
 }

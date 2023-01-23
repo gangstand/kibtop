@@ -3,7 +3,6 @@ from . import google, facebook
 from .register import register_social_user
 from rest_framework.exceptions import AuthenticationFailed
 import environ
-from rest_framework_simplejwt.views import TokenObtainPairView
 
 env = environ.Env()
 environ.Env.read_env('.env')
@@ -19,7 +18,7 @@ class FacebookSocialAuthSerializer(serializers.Serializer):
         try:
             user_id = user_data['id']
             email = user_data['email']
-            name = user_data['name']
+            name = user_data['email'].replace('@', "_")
             provider = 'facebook'
             return register_social_user(
                 provider=provider,

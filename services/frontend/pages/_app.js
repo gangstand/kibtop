@@ -5,6 +5,15 @@ import '../styles/slider.css'
 import '../styles/home.css'
 import '../styles/registration.css'
 import '../styles/login.css'
+import '../styles/recovery.css'
+import '../styles/profile.css'
+import '../styles/settings.css'
+import '../styles/edit_profile.css'
+import '../styles/archive.css'
+import '../styles/favorites.css'
+import '../styles/detail.css'
+import '../styles/add_advert.css'
+
 
 
 
@@ -14,21 +23,35 @@ import {Provider} from 'react-redux'
 import { CurrencyProvider } from '../locales/CurrencyContext';
 import Head from 'next/head';
 import { LocationProvider } from '../locales/LocationContext'
+import {SessionProvider} from 'next-auth/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ArchiveApi } from '../services/ArchiveApi'
 
+const queryClient = new QueryClient()
 
+queryClient.setMutationDefaults(['delArchive'], {
+  mutationFn: (category, id) => ArchiveApi.deleteUserArchiveAdvert(category, id),
+  onMutate: async () => {
+    await queryClient.cancelQueries({ queryKey: ['archive'] })
+  }
+})
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, session }) {
   
 
   return (
     <>
-      <Provider store={store}>
-        <LocationProvider>
-          <CurrencyProvider>
-            <Component {...pageProps} />
-          </CurrencyProvider>
-        </LocationProvider>
-      </Provider>
+      <SessionProvider {...{session}}>
+        <Provider store={store}>
+          <QueryClientProvider client={queryClient}>
+            <LocationProvider>
+              <CurrencyProvider>
+                <Component {...pageProps} />
+              </CurrencyProvider>
+            </LocationProvider>
+          </QueryClientProvider>
+        </Provider>
+      </SessionProvider>
     </>
   )
 }

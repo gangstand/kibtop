@@ -1,18 +1,18 @@
 ELECTRONICS_CATEGORY_EN = [
-    ('Phones and accessories', 'Phones and accessories'),
-    ('Computers / Tablets / Games', 'Computers / Tablets / Games'),
-    ('TV / Photo / Video / Audio', 'TV / Photo / Video / Audio'),
-    ('Other technique', 'Other technique'),
+    ('Phones | Accessories', 'Phones | Accessories'),
+    ('Computers | Games', 'Computers | Games'),
+    ('Video | Audio | TV | Photo', 'Video | Audio | TV | Photo'),
+    ('Other equipment', 'Other equipment'),
 ]
 ELECTRONICS_CATEGORY_RU = [
-    ("Телефоны и аксессуары", "Телефоны и аксессуары"),
-    ("Компьютеры / планшеты / игры", "Компьютеры / планшеты / игры"),
-    ("ТВ / Фото / видео / Аудио", "ТВ / Фото / видео / Аудио"),
-    ("Другая техника", "Другая техника"),
+    ('Телефоны | Аксессуары', 'Телефоны | Аксессуары'),
+    ('Компьютеры | Игры', 'Компьютеры | Игры'),
+    ('Видео | Аудио | ТВ | Фото', 'Видео | Аудио | ТВ | Фото'),
+    ('Другое оборудование', 'Другое оборудование')
 ]
 ELECTRONICS_CATEGORY_TR = [
-    ('Telefonlar ve aksesuarlar', 'Telefonlar ve aksesuarlar'),
-    ('Bilgisayarlar / Tabletler / Oyunlar', 'Bilgisayarlar / Tabletler / Oyunlar'),
-    ('TV / Fotoğraf / Video / Ses', 'TV / Fotoğraf / Video / Ses'),
-    ('Diğer teknik', 'Diğer teknik'),
+    ('Telefonlar | Aksesuarlar', 'Telefonlar | Aksesuarlar'),
+    ('Bilgisayarlar | Oyunlar', 'Bilgisayarlar | Oyunlar'),
+    ('Video | Ses | televizyon | Fotoğraf', 'Video | Ses | televizyon | Fotoğraf'),
+    ('Diğer ekipman', 'Diğer ekipman')
 ]

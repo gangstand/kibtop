@@ -1,7 +1,7 @@
-const RegGoogleButton = () => {
+const RegGoogleButton = ({onSigInClick}) => {
     return (
         <>
-            <a className="alt-reg__btn alt-reg__btn--google">
+            <a className="alt-reg__btn alt-reg__btn--google" onClick={onSigInClick}>
                 <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_508_4324)">
                         <path fillRule="evenodd" clipRule="evenodd" d="M29.4 15.3409C29.4 14.2773 29.3045 13.2546 29.1273 12.2727H15V18.075H23.0727C22.725 19.95 21.6682 21.5387 20.0795 22.6023V26.3659H24.9273C27.7636 23.7546 29.4 19.9091 29.4 15.3409Z" fill="#4285F4"/>

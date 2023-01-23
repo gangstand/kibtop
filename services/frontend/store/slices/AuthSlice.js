@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AuthApi } from "../../services/AuthApi";
 import { serializeLoginErrors, serializeRegistrationErrors } from "../../services/tools/ApiFormsSerializers";
-import { setLoginError } from "./LoginSlice";
-import { setDeskStep, setMobileStep, setRegistrationConfirm, setRegistrationError, setRegistrationLoading, setRegistrationStatus } from "./RegistrationSlice";
+import { setHashedUserData } from "../../services/tools/crypto";
+import { setLoginError, setLoginLoading } from "./LoginSlice";
+import { setDeskStep, setMobileStep, setRegistrationConfirm, setRegistrationError, setRegistrationLoading, setRegistrationStatus, setResendEmail } from "./RegistrationSlice";
 
 
 const initialState = {
@@ -15,11 +16,11 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         setAuth(state, action) {
-            const {userId} = action.payload;
+            const {userId, isAuthed} = action.payload;
 
 
             state.userId = userId;
-            state.isAuthed = true;
+            state.isAuthed = isAuthed;
         }
     }
 });
@@ -30,55 +31,74 @@ export const {setAuth} = authSlice.actions
 
 export const setAuthThunk = () => async dispatch => {
     const user = await AuthApi.auth()
-    if(!!user) dispatch(setAuth(user))
+    if(!!user) dispatch(setAuth({...user, isAuthed: true}))
 }
 
 export const registrationThunk = (email, password1, password2, name, city, file) => async dispatch => {
-    dispatch(setRegistrationLoading({bool: true}))
+    dispatch(setRegistrationLoading({bool: true})) // Loader switch on
     await AuthApi.registration(email, password1, password2, name, city, file)
         .then(data => {
-            dispatch(setRegistrationStatus({bool: true}))
+            dispatch(setResendEmail({email: data.email})) // Set email fo resending account activation letter
+            dispatch(setRegistrationStatus({bool: true})) // Switch to wainting for activation page
 
-            dispatch(setDeskStep({step: 1}))
-            dispatch(setMobileStep({step: 1}))
+            dispatch(setDeskStep({step: 1})) // Reseting registration steps to start
+            dispatch(setMobileStep({step: 1})) // Reseting registration steps to start
 
-            dispatch(setRegistrationLoading({bool: false}))
+            dispatch(setRegistrationLoading({bool: false})) // Loader switch off
 
+            setHashedUserData({email, password: password1})
             
-            const checkAuthId = setInterval(() => {
-                AuthApi.login(email, password1)
-                    .then(data => {
-                        clearInterval(checkAuthId)
+            const checkAuthId = setInterval(async () => { // Start checking account activation every 4s
+                if(!localStorage.getItem('activation')) {
+                    clearInterval(checkAuthId)
 
-                        dispatch(setRegistrationConfirm({bool: true}))
-                        dispatch(setAuthThunk())
+                    dispatch(setRegistrationConfirm({bool: true})) // Switch to welcome page
+                    dispatch(setAuthThunk()) // Send auth
+                    dispatch(setResendEmail({email: null})) // Default resendEmail
 
-                    }).catch(err => {
+                    return
+                }
+                await AuthApi.login(email, password1)
+                    .then(data => { // If successfuly activated
+                        clearInterval(checkAuthId) // Stop checking
+
+                        dispatch(setRegistrationConfirm({bool: true})) // Switch to welcome page
+                        dispatch(setAuthThunk()) // Send auth
+                        dispatch(setResendEmail({email: null})) // Default resendEmail
+                    }).catch(err => { // Else pass...
                         // console.log(err);
                     })
             }, 4000)
 
         }).catch(err => {
             // console.log(err)
-            const error = err.response.data
+            const error = err.response?.data
 
             const {name, message, deskStep, mobileStep} = serializeRegistrationErrors(error)
             // console.log(name, ':', message)
 
             dispatch(setRegistrationError({name, message, deskStep, mobileStep}))
+            dispatch(setRegistrationLoading({bool: false}))
         })
 }
 
 export const loginThunk = (email, password) => async dispatch => {
+    dispatch(setLoginLoading({bool: true}))
+
     await AuthApi.login(email, password)
         .then(data => {
-
             dispatch(setAuthThunk())
+            dispatch(setLoginLoading({bool: false}))
         }).catch(err => {
-            const error = err.response.data
-
-            const {name, message} = serializeLoginErrors(error)
-
-            dispatch(setLoginError({name, message}))
+            
+            dispatch(setLoginError({bool: true}))
+            dispatch(setLoginLoading({bool: false}))
         })
+}
+
+export const googleLoginThunk = auth_token => async dispatch => {
+    await AuthApi.googleLogin(auth_token)
+        .then(data => {
+            dispatch(setAuthThunk())
+        }).catch(err => null)
 }

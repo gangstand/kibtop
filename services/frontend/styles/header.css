@@ -105,6 +105,7 @@
 
     background-color: var(--color-white);
     box-shadow: none;
+    z-index: 3;
 }
 
 @media (min-width: 800px) {
@@ -197,6 +198,8 @@
 
     display: flex;
     align-items: center;
+
+    z-index: 30;
 }
 
 .locales__icon {
@@ -226,7 +229,7 @@
     border-radius: 20px;
     padding: 15px 15px;
 
-    z-index: 2;
+    z-index: 30;
     background-color: #fff;
 
     position: initial;
@@ -282,7 +285,7 @@
 
 .screen-dimmer {
     display: none;
-    z-index: 1;
+    z-index: 10;
     background-color: rgba(0, 0, 0, 0.3);;
     cursor: pointer;
     
@@ -314,16 +317,22 @@
     width: 100%;
 
     padding-bottom: 15px;
-    margin-bottom: 15px;
     padding-top: 23px;
+    margin-bottom: 12px;
+    margin-right: 7px;
     border-bottom: 1px solid #EDEDED;
 }
 
 @media (min-width: 800px) {
     .logo-title {
         justify-content: center;
-        max-width: 280px;
         border-bottom: none;
+    }
+}
+
+@media (min-width: 800px) {
+    .logo-title {
+        max-width: 260px;
     }
 }
 
@@ -336,7 +345,7 @@
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1380px) {
     .logo-title {
         max-width: 312px;
     }
@@ -563,7 +572,9 @@
     padding: 10px 9px;
     margin-right: 10px;
     border-radius: 10px;
+
     border: 2px solid #65A4FE;
+    background-color: var(--color-blue);
 
     white-space: nowrap;
 
@@ -586,6 +597,7 @@
     padding-right: 11px;
 
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -603,6 +615,10 @@
 
 .user-btns__item--authed svg {
     fill: var(--color-black);
+}
+
+.user-btns__item--checked {
+    
 }
 
 .wrapper {
@@ -644,7 +660,7 @@
     border-radius: 0 0 20px 20px;
 
     background-color: #fff;
-    z-index: 3;
+    z-index: 20;
 
     position: fixed;
     top: 0;
@@ -713,7 +729,7 @@
     left: -100%;
 
 
-    z-index: 3;
+    z-index: 20;
     background-color: #fff;
 
     display: flex;
@@ -782,6 +798,17 @@
     border-radius: 50%;
 
     background-color: var(--color-blue);
+}
+
+@media (min-width: 390px) {
+    .user-menu__ava img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .user-menu__head {
+        height: 175px;
+    }
 }
 
 .user-menu__ava p {
@@ -980,4 +1007,21 @@
     .search__field--product input {
         padding-left: 9px;
     }
+}
+
+.user-btns__item svg {
+    fill: var(--color-black);
+}
+
+.user-btns__item--selected svg {
+    fill: var(--color-black);
+}
+
+.user-btns__item--close svg {
+    fill: var(--color-grey);
+}
+
+.user-btns__item--profile svg {
+    height: 36px;
+    width: 36px;
 }

@@ -2,29 +2,29 @@ SERVICES_CATEGORY_EN = [
     ('Cleaning', 'Cleaning'),
     ('Business', 'Business'),
     ('Domestic services', 'Domestic services'),
-    ('Beauty / Health', 'Beauty / Health'),
+    ('Beauty | Health', 'Beauty | Health'),
     ('Education', 'Education'),
     ('Transport', 'Transport'),
-    ('Construction / Repair', 'Construction / Repair'),
+    ('Construction | Repair', 'Construction | Repair'),
     ('Other', 'Other'),
 ]
 SERVICES_CATEGORY_RU = [
-    ('Уборка', 'Очищение'),
-    ('Бизнес', 'Business'),
+    ('Уборка', 'Уборка'),
+    ('Бизнес', 'Бизнес'),
     ('Бытовые услуги', 'Бытовые услуги'),
-    ('Красота / здоровье', 'Красота / Здоровье'),
-    ('Образование', 'Education'),
-    ('Транспорт', 'Транспортировка'),
-    ('Строительство / ремонт', 'Строительство / ремонт'),
-    ('Другое', 'Прочее'),
+    ('Красота | Здоровье', 'Красота | Здоровье'),
+    ('Образование', 'Образование'),
+    ('Транспорт', 'Транспорт'),
+    ('Строительство | Ремонт', 'Строительство | Ремонт'),
+    ('Другой', 'Другой')
 ]
 SERVICES_CATEGORY_TR = [
     ('Temizlik', 'Temizlik'),
-    ('İş', 'iş'),
-    ('Yurt içi hizmetler', 'Yurt içi hizmetler'),
-    ('Güzellik / Sağlık', 'Güzellik / Sağlık'),
+    ('İşletme', 'İşletme'),
+    ('Ev hizmetleri', 'Ev hizmetleri'),
+    ('Güzellik | Sağlık', 'Güzellik | Sağlık'),
     ('Eğitim', 'Eğitim'),
     ('Ulaşım', 'Ulaşım'),
-    ('İnşaat / Onarım', 'İnşaat / Onarım'),
-    ('Diğer', 'Diğer'),
+    ('İnşaat | Tamirat', 'İnşaat | Tamirat'),
+    ('Diğer', 'Diğer')
 ]

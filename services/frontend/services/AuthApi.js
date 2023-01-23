@@ -8,7 +8,7 @@ export const AuthApi = {
         const { refresh } = Cookies.getCookies();
         return await instance.post('auth/jwt/refresh/',
             {
-                "refresh": refresh
+                "refresh": refresh || 'refresh'
             }).then(res => {
                 const access = res.data.access
 
@@ -16,15 +16,24 @@ export const AuthApi = {
                 Cookies.setCookie('access', access)
 
                 return {userId: user_id}
-            }, () => null).catch(err => console.log(err))
+            }, () => null).catch(err => null)
     },
 
-    async registration(email, password1, password2, name, city, file) {
+    async getAccess(refresh) {
+        return await instance.post('auth/jwt/refresh/',
+            {
+                "refresh": refresh || 'refresh'
+            }).then(res => {
+                return res.data.access
+            })
+    },
+
+    async registration(email, password1, password2, names, city, file) {
+        const [name, surname] = names.trim().split(' ')
         const formData = !!file ? FormDataCreator({
-            "phone": '',
-            "first_name": '',
+            "first_name": surname,
             "last_name": '',
-            "username": email.split('@')[0]+((+new Date()).toString(16)),
+            "username": email.replace('@', '_'),
             "email": email,
             "password": password1,
             "re_password": password2,
@@ -32,10 +41,9 @@ export const AuthApi = {
             "addres": city || '',
             "upload_user": file || ''
         }) : {
-            "phone": '',
-            "first_name": '',
+            "first_name": surname,
             "last_name": '',
-            "username": email.split('@')[0]+((+new Date()).toString(16)),
+            "username": email.replace('@', '_'),
             "email": email,
             "password": password1,
             "re_password": password2,
@@ -61,8 +69,22 @@ export const AuthApi = {
         return await instance.post('auth/jwt/create/', body)
             .then(({data}) => {
 
-                console.log(data);
+                const {access, refresh} = data
 
+                Cookies.setCookie('access', access)
+                Cookies.setCookie('refresh', refresh)
+
+                return data
+            })
+    },
+
+    async resendEmail(email) {
+        return await instance.post('auth/users/resend_activation/', {email})
+    },
+
+    async googleLogin(auth_token) {
+        return await instance.post('social_auth/google/', {auth_token})
+            .then(({data}) => {
                 const {access, refresh} = data
 
                 Cookies.setCookie('access', access)

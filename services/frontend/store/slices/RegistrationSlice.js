@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { AuthApi } from "../../services/AuthApi"
 
 const initialState = {
     deskStep: 1,
@@ -6,6 +7,11 @@ const initialState = {
     isRegistered: false,
     isConfirmed: false,
     isLoading: false,
+    resend: {
+        resendEmail: null,
+        isResending: false,
+        isDisabled: false
+    },
     error: {
         mobileStep: null,
         deskStep: null,
@@ -58,9 +64,37 @@ const RegistrationSlice = createSlice({
 
         setRegistrationLoading(state, {payload}) {
             state.isLoading = payload.bool
+        },
+
+
+        setResendEmail(state, {payload}) {
+            state.resend.resendEmail = payload.email
+        },
+        setResendingLoad(state, {payload}) {
+            state.resend.isResending = payload.bool
+        },
+        setResendingDisable(state, {payload}) {
+            state.resend.isDisabled = payload.bool
         }
+
     }
 })
+
+export const resendEmailThunk = email => async dispatch => {
+    dispatch(setResendingLoad({bool: true}))
+    await AuthApi.resendEmail(email)
+        .then(() => {
+            dispatch(setResendingLoad({bool: false}))
+            dispatch(setResendingDisable({bool: true}))
+
+            setTimeout(() => {
+                dispatch(setResendingDisable({bool: false}))
+            }, 20000)
+        })
+        .catch((err) => {
+            dispatch(setResendingLoad({bool: false}))
+        })
+}
 
 export const {
         deskStepIncrement, 
@@ -72,7 +106,10 @@ export const {
         setRegistrationError,
         setRegistrationStatus,
         setRegistrationConfirm,
-        setRegistrationLoading
+        setRegistrationLoading,
+        setResendEmail,
+        setResendingLoad,
+        setResendingDisable
 
     } = RegistrationSlice.actions
 

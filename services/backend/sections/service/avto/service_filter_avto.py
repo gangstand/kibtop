@@ -1,4 +1,4 @@
-from sections.models import AvtoFull
+from sections.models import AvtoFull, AvtoFullViewsUser, AvtoFullFavouritesUser
 
 import django_filters
 
@@ -16,7 +16,26 @@ class FilterAvto(django_filters.FilterSet):
     year = django_filters.NumberFilter()
     year__gt = django_filters.NumberFilter(field_name='year', lookup_expr='gt')
     year__lt = django_filters.NumberFilter(field_name='year', lookup_expr='lt')
+    currency = django_filters.CharFilter()
 
     class Meta:
         model = AvtoFull
-        fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr', 'mileage', 'year', ]
+        fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr', 'mileage', 'year', 'currency']
+
+
+class FilterAvtoViews(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = AvtoFullViewsUser
+        fields = ['avto_full', 'user']
+
+
+class FilterAvtoFavourites(django_filters.FilterSet):
+    avto_full = django_filters.NumberFilter()
+    user = django_filters.NumberFilter()
+
+    class Meta:
+        model = AvtoFullFavouritesUser
+        fields = ['avto_full', 'user']

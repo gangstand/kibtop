@@ -50,7 +50,7 @@ export const Cookies = {
         const expires = new Date().toUTCString()
         
 
-        document.cookie = `${cookieName}=${null}; domain=${DOMAIN}; expires=${expires}; path=/`;
+        document.cookie = `${cookieName}=${null}; domain=domain=${DOMAIN}; expires=${expires}; path=/`;
     }
 }
 

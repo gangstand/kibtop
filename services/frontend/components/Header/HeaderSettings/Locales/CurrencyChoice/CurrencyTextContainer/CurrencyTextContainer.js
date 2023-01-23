@@ -7,7 +7,7 @@ const CurrencyTextContainer = () => {
     const currencies = {
         "€": t('Euro'),
         "$": t('Dollar'),
-        "₽": t('Ruble')
+        "₤": t('Lira')
     }
 
     const {currency} = useCurrency();
