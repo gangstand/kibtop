@@ -7,7 +7,7 @@ environ.Env.read_env('.env')
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'api.kibtop.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -26,10 +26,10 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'djoser',
-    'django_messages_drf',
     'drf_yasg',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
+    'messages_drf.apps.MessagesDrfConfig',
 ]
 
 SITE_ID = 1
@@ -45,13 +45,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3030',
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://api.kibtop.com'
 ]
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    'http://localhost:3030',
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
 ]
 
 ROOT_URLCONF = 'settings.urls'
@@ -74,23 +75,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'settings.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env("POSTGRES_DB"),
-        'USER': env("POSTGRES_USER"),
-        'PASSWORD': env("POSTGRES_PASSWORD"),
-        'HOST': env("POSTGRES_HOST"),
-        'PORT': env("POSTGRES_PORT")
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env("POSTGRES_DB"),
+#         'USER': env("POSTGRES_USER"),
+#         'PASSWORD': env("POSTGRES_PASSWORD"),
+#         'HOST': env("POSTGRES_HOST"),
+#         'PORT': env("POSTGRES_PORT")
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -141,6 +142,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+
     ),
     'DEFAULT_FILTER_BACKEND': (
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -151,18 +153,24 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
+
 DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
     'SEND_ACTIVATION_EMAIL': True,
     'SET_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'TOKEN_MODEL': None,  # We use only JWT
-    'ACTIVATION_URL': 'api/v1/auth/verify/{uid}/{token}/',
-    'PASSWORD_RESET_CONFIRM_URL': 'api/v1/auth/password/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'auth/confirm/{uid}/{token}/',
+    'PASSWORD_RESET_CONFIRM_URL': '/auth/recovery/{uid}/{token}',
+    'HIDE_USERS': True,
+    'PERMISSIONS': {
+        'user': ['rest_framework.permissions.AllowAny'],
+    },
     'SERIALIZERS': {
         "user_create": 'accounts.serializer.UserRegistrationSerializer',
-        "user": "accounts.serializer.UserAPISerializer",
+        "user": 'accounts.serializer.UserAPISerializer',
         'user_create_password_retype': 'accounts.serializer.UserAPICreatePasswordRetypeSerializer',
+        'current_user': 'accounts.serializer.UserAPISerializer',
     }
 }
 
