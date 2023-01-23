@@ -8,7 +8,7 @@ import SettingsNav from "../../../components/SettingsPage/SettingsNav";
 import { getStringCookies } from "../../../services/tools/CookieController";
 import { getServerSideUser } from "../../../services/tools/getServerSideUser/getServerSideUser";
 
-const locale = ({user}) => {
+const Locale = ({user}) => {
     const {pathname, push} = useRouter()
     const back = backPath(pathname)
 
@@ -39,4 +39,4 @@ export async function getServerSideProps({req, res}) {
     }
 }
 
-export default locale;
+export default Locale;

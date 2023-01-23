@@ -1,9 +1,14 @@
 FROM node:18-alpine
 
-WORKDIR /app/frontend
+WORKDIR /app
 
-COPY package.json ./
+COPY package*.json .
 
 RUN npm i
 
 COPY . .
+
+RUN npm run build
+EXPOSE 3000
+
+CMD "npm" "start"

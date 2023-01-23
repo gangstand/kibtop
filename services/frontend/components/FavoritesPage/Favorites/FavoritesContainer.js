@@ -12,10 +12,9 @@ const FavoritesContainer = ({adverts}) => {
 
     useEffect(() => {
         if(isAuthed) dispatch(setUserFavoriteAdvertsThunk(userId, locale))
-    }, [userId, isAuthed, favorites?.length])
+    }, [userId, isAuthed])
 
-    const data = !!(favoriteAdverts?.length) ? favoriteAdverts : adverts
-
+    const data = !!(favoriteAdverts.length) ? favoriteAdverts : adverts
     return <Favorites adverts={data} />;
 }
 

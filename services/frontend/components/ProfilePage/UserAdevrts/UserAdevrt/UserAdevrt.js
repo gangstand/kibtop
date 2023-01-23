@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import { BASE_URL } from "../../../../services/Instance";
+import LikeButtonContainer from "../../../HomePage/LikeButton/LikeButtonContainer";
 import EditAdvertButtonContainer from "./EditAdvertButton/EditAdvertButtonContainer";
 
 const UserAdevrt = ({id, title, cost, address, img, date, category}) => {
@@ -24,7 +25,7 @@ const UserAdevrt = ({id, title, cost, address, img, date, category}) => {
                     </div>
 
                     <div className="advert__column advert__column--right">
-                        <EditAdvertButtonContainer /> 
+                        <LikeButtonContainer {...{id, category}} /> 
 
                         <p className="advert-cost advert-cost--mob">{currency} {cost}</p>
 

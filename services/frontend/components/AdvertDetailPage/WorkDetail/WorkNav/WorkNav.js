@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Text from "../../../Elementes/Text/Text";
 import LikeButtonContainer from "../../../HomePage/LikeButton/LikeButtonContainer";
 
-const WorkNav = ({title, workType}) => {
+const WorkNav = ({title, advertId, workType}) => {
     const workTitle = (workType == "To work") ? 'Vacancy' : 'Candidate'
+
+    const {query: {category}} = useRouter()
     return (
         <>
             <div className="container container--detail-nav">
@@ -12,7 +15,7 @@ const WorkNav = ({title, workType}) => {
                         <div className="title title--profile title--detail">
                             <h3 className="exception">{title}</h3>
 
-                            <LikeButtonContainer className={'detail-like'} />
+                            <LikeButtonContainer {...{id: advertId, category}} className={'detail-like'} />
                         </div>
 
 

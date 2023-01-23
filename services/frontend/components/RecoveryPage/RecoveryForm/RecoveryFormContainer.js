@@ -8,7 +8,6 @@ const RecoveryFormContainer = () => {
 
     const onRecoverySubmit = data => {
         const {email} = data
-        console.log(email);
         dispatch(sendRecoveryLinkThunk(email))
     }
 

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     isOpen: false,
-    menu: 'language'
+    menu: 'currency'
 }
 
 const LocaleSlice = createSlice({
@@ -11,6 +11,7 @@ const LocaleSlice = createSlice({
     reducers: {
         setLocaleOpen(state, {payload}) {
             state.isOpen = !!payload.bool
+            state.menu = 'currency'
         },
         setLocaleMenuType(state, {payload}) {
             state.menu = payload.menu

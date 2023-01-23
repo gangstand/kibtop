@@ -2,13 +2,12 @@ import { useRouter } from "next/router";
 import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import Text from "../../../Elementes/Text/Text";
 
-const DetailCard = ({cost}) => {
+const DetailCard = ({cost, isMonth}) => {
     const {currency} = useCurrency()
     const {query: {category}} = useRouter()
 
-    const isMounthed = (category === 'work') || (
-        category === 'realty'
-    )
+    const isMounthed = (category === 'work') || (category === 'realty' && isMonth)
+
 
     return (
         <>
@@ -18,7 +17,7 @@ const DetailCard = ({cost}) => {
                         {currency}{cost}
                         {' '}
                         {
-                            isMounthed && <span className="detail-tag-text"><Text content="per month" /></span>
+                            !!isMounthed && <span className="detail-tag-text"><Text content="per month" /></span>
                         }
                     </p>
 

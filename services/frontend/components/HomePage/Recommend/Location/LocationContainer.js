@@ -13,11 +13,6 @@ const LocationContainer = () => {
     
     const closeLocationSelect = () => dispatch(setLocationOpen({bool: false}))
     const openLocationSelect = () => dispatch(setLocationOpen({bool: true}))
-
-    useEffect(() => {
-        dispatch(getCitiesThunk(locale))
-    }, [locale])
-
     
     return <Location {...{isOpen, location, closeLocationSelect, openLocationSelect}} />;
 }

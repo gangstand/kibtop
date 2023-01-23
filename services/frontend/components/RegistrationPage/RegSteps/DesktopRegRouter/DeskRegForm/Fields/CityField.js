@@ -15,7 +15,6 @@ const CityField = () => {
     const {location} = useLocation()
 
     const setCityInputLocation = () => {
-        console.log(location);
         setValue('city', location)
     }
 

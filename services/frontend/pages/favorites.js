@@ -5,7 +5,7 @@ import { FavoritesApi } from "../services/FavoritesApi";
 import { getStringCookies } from "../services/tools/CookieController";
 import { getServerSideUser } from "../services/tools/getServerSideUser/getServerSideUser";
 
-const favorites = ({user, favoriteAdverts}) => {
+const Favorites = ({user, favoriteAdverts}) => {
     return (
         <>
             <Header />
@@ -28,4 +28,4 @@ export async function getServerSideProps({req, res, locale}) {
     }
 }
 
-export default favorites;
+export default Favorites;

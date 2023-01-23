@@ -1,4 +1,6 @@
 import Text from "../../../Elementes/Text/Text";
+import Map from "./Map/Map";
+import MapContainer from "./Map/MapContainer";
 
 const DetailMaps = ({address}) => {
     return (
@@ -37,7 +39,7 @@ const DetailMaps = ({address}) => {
                 </div>
 
                 <div className="detail-maps__map">
-                    <img src="/img/goods/map.png" />
+                    <MapContainer />
                 </div>
             </article>
         </>

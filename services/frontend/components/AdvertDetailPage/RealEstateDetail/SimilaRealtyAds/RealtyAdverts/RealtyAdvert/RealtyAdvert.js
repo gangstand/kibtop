@@ -1,11 +1,14 @@
+import Link from "next/link";
+import { useCurrency } from "../../../../../../locales/hooks/useCurrency";
 import LikeButtonContainer from "../../../../../HomePage/LikeButton/LikeButtonContainer";
 
 const RealtyAdvert = ({advertId, category, title, cost, address, img, date, uploads}) => {
+    const {currency} = useCurrency()
     return (
         <>
             <div className="mobile-realty-advert">
                 <div className="mobile-realty-advert__slider">
-                    <div className="mobile-realty-advert__line">
+                    <Link href={`/advert/${category}/${advertId}`} className="mobile-realty-advert__line">
 
                         {
                             !!(uploads.length) ? <>
@@ -21,21 +24,21 @@ const RealtyAdvert = ({advertId, category, title, cost, address, img, date, uplo
                         }
                         
 
-                    </div>
+                    </Link>
                 </div>
 
                 <div className="mobile-realty-advert__desc">
                     <p className="mobile-realty-advert__title">
-                        3-room apartment <span className="title square">60,5m²</span>
+                        {title} <span className="title square">60,5m²</span>
                     </p>
 
                     <p className="advert-cost mobile-realty-advert__cost">
-                        €405000
+                        {currency}{cost}
                     </p>
 
                     <div className="mobile-realty-advert__info">
-                        <p className="info-text">seller's address</p>
-                        <p className="info-text">announcement date</p>
+                        <p className="info-text">{address}</p>
+                        <p className="info-text">{date}</p>
                     </div>
 
                     <div className="mobile-realty-advert__like">

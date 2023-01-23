@@ -11,7 +11,7 @@ const CurrencySelect = ({closeCurrencySelect, onChangeCurrency, currency}) => {
                                              value: '$', symbol: '$', text: 'Dollar'}} />
 
                 <CurrencySelectOption {...{onChangeCurrency, currency,
-                                             value: '₽', symbol: '₽', text: 'Ruble'}} />
+                                             value: '₤', symbol: '₤', text: 'Lira'}} />
            </div>
            <div className="screen-dimmer" onClick={closeCurrencySelect} />
         </>

@@ -8,6 +8,7 @@ import DetailMapsContainer from "../OtherDetail/DetailMaps/DetailMapsContainer";
 import DetailNav from "../OtherDetail/DetailNav/DetailNav";
 import DetailProfileContainer from "../OtherDetail/DetailProfile/DetailProfileContainer";
 import SimilarAds from "../OtherDetail/SimilarAds/SimilarAds";
+import WorkDataContainer from "./WorkData/WorkDataContainer";
 import WorkNav from "./WorkNav/WorkNav";
 import WorkNavContainer from "./WorkNav/WorkNavContainer";
 import WorkParameterContainer from "./WorkParameter/WorkParameterContainer";
@@ -24,7 +25,7 @@ const WorkDetail = () => {
 
             <div className="container container-brad">
                 <div className="detail-wrapper">
-                    <DetailDataContainer />
+                    <WorkDataContainer />
 
                     <DetailMapsContainer />
 

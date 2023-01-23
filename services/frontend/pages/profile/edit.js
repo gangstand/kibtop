@@ -7,7 +7,7 @@ import { ProfileApi } from "../../services/ProfileApi";
 import { getServerSideCookies, getStringCookies } from "../../services/tools/CookieController";
 import { getServerSideUser } from "../../services/tools/getServerSideUser/getServerSideUser";
 
-const edit = ({user}) => {
+const Edit = ({user}) => {
     useAuthRedirect(user)
     
     return (
@@ -35,4 +35,4 @@ export async function getServerSideProps({req, res}) {
       props: {user},
     }
   }
-export default edit;
+export default Edit;

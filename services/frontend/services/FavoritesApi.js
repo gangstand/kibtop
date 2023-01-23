@@ -4,7 +4,7 @@ import { serializeFavorites, serializeFullAdvertData } from "./tools/serializers
 export const FavoritesApi = {
     async addFavoriteAdvert(id, category, userId) {
         return await instance.post(`${category}/favourites/`, {
-            avto_full: id,
+            [`${category}_full`]: id,
             user: userId
         }, {
             headers: await createHeaders()

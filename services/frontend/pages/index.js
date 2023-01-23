@@ -3,7 +3,7 @@ import HomePage from "../components/HomePage/HomePage";
 import { GoodsApi } from "../services/IndexApi";
 
 
-const index = ({slides, recommendGoods, newGoods}) => {
+const Index = ({slides, recommendGoods, newGoods}) => {
     return (
         <>
             <Header />
@@ -27,4 +27,4 @@ export async function getStaticProps(context) {
     }
 }
 
-export default index;
+export default Index;

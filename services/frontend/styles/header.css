@@ -198,6 +198,8 @@
 
     display: flex;
     align-items: center;
+
+    z-index: 30;
 }
 
 .locales__icon {
@@ -227,7 +229,7 @@
     border-radius: 20px;
     padding: 15px 15px;
 
-    z-index: 2;
+    z-index: 30;
     background-color: #fff;
 
     position: initial;
@@ -802,6 +804,10 @@
     .user-menu__ava img {
         width: 70px;
         height: 70px;
+    }
+
+    .user-menu__head {
+        height: 175px;
     }
 }
 

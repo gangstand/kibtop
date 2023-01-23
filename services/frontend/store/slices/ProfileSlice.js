@@ -112,7 +112,6 @@ export const editUserDataThunk = ({email, name, city, avatar}) => async dispatch
             }, 3000)
 
         }).catch(err => {
-            console.log(err);
             dispatch(setProfileEditingLoading(false))
         })
 
@@ -134,7 +133,6 @@ export const deleteUserAccountThunk = password => async dispatch => {
             dispatch(setAuth({userId: null, isAuthed: false}))
             dispatch(setDeletingLoading(false))
         }).catch(err => {
-            console.log(err)
             dispatch(setDeletingLoading(false))
         })
 }

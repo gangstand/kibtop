@@ -1,7 +1,7 @@
 import Header from "../../../components/Header/Header";
 import RecoveryPage from "../../../components/RecoveryPage/RecoveryPage";
 
-const recovery = () => {
+const Recovery = () => {
     
 
     return (
@@ -12,4 +12,4 @@ const recovery = () => {
     );
 }
 
-export default recovery;
+export default Recovery;

@@ -8,7 +8,7 @@ const Favorites = ({adverts}) => {
                 !!(adverts?.length) ? <>
                     <div className="adverts">
                         {
-                            adverts.map(advert => <FavoriteAdvert key={`${advert.category}_${advert.id}`} 
+                            adverts?.map(advert => <FavoriteAdvert key={`${advert.category}_${advert.id}`} 
                                                                     {...advert} />)
                         }
                     </div>

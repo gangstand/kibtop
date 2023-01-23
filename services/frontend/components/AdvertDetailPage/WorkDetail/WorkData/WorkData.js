@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import Text from "../../../Elementes/Text/Text";
 
@@ -10,7 +11,6 @@ const WorkData = ({title, cost, description, workType}) => {
         category === 'realty'
     )
 
-    console.log(isMounthed);
 
     return (
         <>

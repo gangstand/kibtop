@@ -4,7 +4,7 @@ const LikeButton = ({isAuthed, openFavoritesWarning, className, userFavorite, on
         <>
             {
                 !!isAuthed ? <>
-                    <button className={className || 'like-btn like-btn--mobile'} {...{onClick}}>
+                    <button className={className || 'advert__btn'} {...{onClick}}>
                         {
                             !!userFavorite ? <>
                                 <svg className={"like-icon"} viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
