@@ -2,7 +2,7 @@
 FROM python:3.10-alpine
 
 # set work directory
-WORKDIR /app
+WORKDIR /app/backend
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
