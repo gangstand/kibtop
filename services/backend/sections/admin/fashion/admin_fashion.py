@@ -1,6 +1,8 @@
 from sections.models import FashionFullUpload, FashionFull
 from django.contrib import admin
 
+from sections.models.fashion.models_fashion import FashionFullViewsUser
+
 
 class FashionFullImageAdmin(admin.StackedInline):
     model = FashionFullUpload
@@ -13,3 +15,5 @@ class FUAdmin(admin.ModelAdmin):
     class Meta:
         model = FashionFull
 
+
+admin.site.register(FashionFullViewsUser)

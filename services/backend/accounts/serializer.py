@@ -18,5 +18,5 @@ class UserAPISerializer(UserSerializer):
 class UserAPICreatePasswordRetypeSerializer(UserCreatePasswordRetypeSerializer):
     class Meta(UserCreatePasswordRetypeSerializer.Meta):
         fields = (
-            'username', 'email', 'phone', 'first_name', 'addres', 'upload_user', 'deals', 'password'
+            'username', 'email', 'phone', 'first_name', 'addres', 'upload_user', 'password'
         )

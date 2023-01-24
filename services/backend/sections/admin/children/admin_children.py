@@ -1,6 +1,8 @@
 from sections.models import ChildrenFullUpload, ChildrenFull
 from django.contrib import admin
 
+from sections.models.children.models_children import ChildrenFullViewsUser
+
 
 class ChildrenFullImageAdmin(admin.StackedInline):
     model = ChildrenFullUpload
@@ -13,3 +15,4 @@ class CUAdmin(admin.ModelAdmin):
     class Meta:
         model = ChildrenFull
 
+admin.site.register(ChildrenFullViewsUser)
