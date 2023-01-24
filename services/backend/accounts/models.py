@@ -1,5 +1,3 @@
-import uuid
-
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
@@ -11,7 +9,7 @@ AUTH_PROVIDERS = {'facebook': 'facebook', 'google': 'google',
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(default=uuid.uuid4, editable=False, max_length=255, unique=True)
+    username = models.CharField('username', max_length=255, unique=True)
     email = models.EmailField('email address', unique=True)
     phone = models.CharField('phone number', max_length=30, null=True, blank=True)
     date_joined = models.DateTimeField('date joined', default=timezone.now)
@@ -26,11 +24,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
-
-    def get_username(self):
-        return self.email
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     class Meta:
         verbose_name = 'user'
