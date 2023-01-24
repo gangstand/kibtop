@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useCurrency } from "../../../locales/hooks/useCurrency";
 import LikeButtonContainer from "../../HomePage/LikeButton/LikeButtonContainer";
+import Image from "next/image"
+
 
 const Advert = ({advertId, category, title, cost, address, img, date}) => {
     const {currency} = useCurrency()
@@ -8,7 +10,7 @@ const Advert = ({advertId, category, title, cost, address, img, date}) => {
         <>
             <div className="advert advert--table">
                 <Link href={`/advert/${category}/${advertId}`}>
-                    <img src={img} className="advert__img" />
+                    <img width={100} height={100} alt={''} src={img} className="advert__img" />
                 </Link>
 
                 <div className="advert__desc">
@@ -23,7 +25,7 @@ const Advert = ({advertId, category, title, cost, address, img, date}) => {
                     </div>
 
                     <div className="advert__column advert__column--right">
-                         <LikeButtonContainer {...{id: advertId, category}} />
+                        <LikeButtonContainer {...{id: advertId, category}} />
 
                         <p className="advert-cost advert-cost--mob advert-cost--profile">{currency} {cost}</p>
 

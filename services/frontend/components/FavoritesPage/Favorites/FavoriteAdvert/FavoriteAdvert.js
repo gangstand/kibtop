@@ -1,12 +1,13 @@
 import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import LikeButtonContainer from "../../../HomePage/LikeButton/LikeButtonContainer";
+import Image from "next/image"
 
 const FavoriteAdvert = ({id, category, index, title, cost, address, img, date}) => {
     const {currency} = useCurrency()
     return (
         <>
             <div href={'/adverts/'+id} className="advert advert--full">
-                <img src={img} className="advert__img" />
+                <img width={100} height={100} alt={''} src={img} className="advert__img" />
 
                 <div className="advert__desc">
                     <div className="advert__column">

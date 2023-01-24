@@ -2,7 +2,6 @@ import Link from "next/link";
 import Text from "../Elementes/Text/Text";
 import Header from "../Header/Header";
 import HeaderService from "../Header/HeaderService/HeaderService";
-import { useAuthRedirect } from "../PageHooks/useAuthRedirect";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 import UserAdevrtsContainer from "./UserAdevrts/UserAdevrtsContainer";
 

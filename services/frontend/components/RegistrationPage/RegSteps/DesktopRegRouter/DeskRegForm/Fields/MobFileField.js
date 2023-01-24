@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useFormContext } from "react-hook-form"
 import { useLanguage } from "../../../../../../locales/hooks/useLanguage"
 import Text from "../../../../../Elementes/Text/Text"
+import Image from "next/image"
+
 
 const MobFileField = () => {
     const [valueSrc, setValueSrc] = useState(null)
@@ -73,7 +75,7 @@ const MobFileField = () => {
                                     </clipPath>
                                 </defs>
                             </svg>
-                        <img src={valueSrc} className="file-img file-img--mob" style={{opacity: valueSrc ? 1 : 0}} />
+                        <img width={100} height={100} alt={''} src={valueSrc} className="file-img file-img--mob" style={{opacity: valueSrc ? 1 : 0}} />
                         
                 </label>
 

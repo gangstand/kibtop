@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Text from "../../../../Elementes/Text/Text";
+import Image from "next/image"
+
 
 const Event = ({id, isDark, img, title, desc, background}) => {
     return (
         <>
             <div style={{backgroundImage: `url(${background})`}} className={'event' + (isDark ? '' : ' event--light')}>
                 <div className="event__img">
-                    { !!img && <img src={img} alt="Event" />}
+                    { !!img && <img width={100} height={100} alt={''} src={img}  />}
                 </div>
                                             
                 <article className="event__article">

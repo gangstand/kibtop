@@ -7,7 +7,7 @@ const LikeButtonContainer = ({className, id, category}) => {
     const dispatch = useDispatch()
     const openFavoritesWarning = () => dispatch(setFavoritesWarnOpen(true))
 
-    const {favorites} = useSelector(state => state.favorites)
+    const {favorites, isLoading} = useSelector(state => state.favorites)
 
 
     const userFavorite = favorites.find(favorite => favorite.advertId === id && favorite.category === category) || null
@@ -17,7 +17,7 @@ const LikeButtonContainer = ({className, id, category}) => {
     const onDislikeClick = () => 
         !!userFavorite ? dispatch(dislikeAdvertThunk(userFavorite.favouriteId, userFavorite.category, userFavorite.userId)) : null
 
-    return <LikeButton {...{isAuthed, openFavoritesWarning, className, userFavorite, onLikeClick, onDislikeClick}} />;
+    return <LikeButton {...{isAuthed, openFavoritesWarning, isLoading, className, userFavorite, onLikeClick, onDislikeClick}} />;
 }
 
 export default LikeButtonContainer;

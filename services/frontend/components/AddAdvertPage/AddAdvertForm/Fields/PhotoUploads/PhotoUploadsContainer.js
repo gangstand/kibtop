@@ -3,7 +3,7 @@ import { useFormContext } from "react-hook-form";
 import PhotoUploads from "./PhotoUploads";
 
 const PhotoUploadsContainer = () => {
-    const {watch} = useFormContext()
+    const {watch, setValue} = useFormContext()
     const {photos} = watch()
 
     const [uploads, setUploads] = useState([])
@@ -29,7 +29,8 @@ const PhotoUploadsContainer = () => {
     }, [photos])
 
     const deleteUpload = (index) => {
-        setUploads(uploads => uploads.filter((upload, uploadIndex) => uploadIndex !== index))
+        setValue('photos', uploads.filter((upload, uploadIndex) => uploadIndex !== index))
+        setUploads(uploads => uploads.filter((upload, uploadIndex) => uploadIndex !== index))        
     }
 
     return <PhotoUploads {...{uploads, deleteUpload}} />;

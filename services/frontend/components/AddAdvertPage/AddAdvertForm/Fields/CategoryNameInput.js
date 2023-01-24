@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useFormContext } from "react-hook-form"
 import { useDispatch } from "react-redux"
 import { setAddAdvertCategory, setAddAdvertFormStep } from "../../../../store/slices/AddAdvertSlice"
@@ -17,8 +18,9 @@ const CategoryNameInput = ({value, text, category}) => {
 
     return (
         <>
+            
             <a className="category-name" onClick={onCategoryClick}>
-                <img src={`/img/add_advert/${category}.png`} className="category-name__img" />
+                <img width={100} height={100} alt={''} src={`/img/add_advert/${category}.png`} className="category-name__img" />
                 <Text content={text} />
             </a>
         </>

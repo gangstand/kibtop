@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Text from "../../../Elementes/Text/Text";
+import Image from "next/image"
+
 
 const DetailProfile = ({name, avatar, userId}) => {
     const {query: {category}} = useRouter()
@@ -10,7 +12,7 @@ const DetailProfile = ({name, avatar, userId}) => {
             <div className="detail-profile">
                 <div className="detail-profile__user">
                     {
-                        !!avatar ? <img src={avatar} className="detail-profile__ava" />
+                        !!avatar ? <img width={100} height={100} alt={''} src={avatar} className="detail-profile__ava" />
                                  : <div className="detail-profile__ava" />
                     }
                     

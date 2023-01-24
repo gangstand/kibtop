@@ -19,9 +19,17 @@ const Favorites = ({user, favoriteAdverts}) => {
 export async function getServerSideProps({req, res, locale}) {
 
     const cookies = getStringCookies(req)
+    
     const user = await getServerSideUser(cookies)
 
-    const favoriteAdverts = await FavoritesApi.getUserFavoritesAdverts(user.userId, locale).catch(() => null)
+    if(!user) {
+        return {
+            props: {user, favoriteAdverts: []},
+        }
+    }
+
+    const favoriteAdverts = await FavoritesApi.getUserFavoritesAdverts(user.userId, locale)
+            .catch((err) => null)
     
     return {
       props: {user, favoriteAdverts},

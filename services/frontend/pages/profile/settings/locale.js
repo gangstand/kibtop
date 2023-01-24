@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import Header from "../../../components/Header/Header";
 import HeaderService from "../../../components/Header/HeaderService/HeaderService";
-import { useAuthRedirect } from "../../../components/PageHooks/useAuthRedirect";
 import MobileSettingsSelect from "../../../components/ProfilePage/ProfileMenu/ProfileUser/UserLocale/MobileSettingsSelect/MobileSettingsSelect";
 import { backPath } from "../../../components/SettingsPage/backPath";
 import SettingsNav from "../../../components/SettingsPage/SettingsNav";
@@ -14,7 +13,6 @@ const Locale = ({user}) => {
 
     const onBack = () => push(back)
 
-    useAuthRedirect(user)
 
     return (
         <>
@@ -33,6 +31,15 @@ export async function getServerSideProps({req, res}) {
 
     const cookies = getStringCookies(req)
     const user = await getServerSideUser(cookies)
+
+    if(!user) {
+        return {
+            redirect: {
+              destination: '/auth/login/',
+              permanent: false,
+            },
+        }
+    }
 
     return {
       props: {user},

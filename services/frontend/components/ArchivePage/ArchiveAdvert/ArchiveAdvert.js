@@ -2,13 +2,15 @@ import Link from "next/link";
 import { useCurrency } from "../../../locales/hooks/useCurrency";
 import { BASE_URL } from "../../../services/Instance";
 import DeleteAdvertButtonContainer from "./DeleteAdvertButton/DeleteAdvertButtonContainer";
+import Image from "next/image"
+
 
 const ArchiveAdvert = ({id, category, index, title, cost, address, img, date}) => {
     const {currency} = useCurrency()
     return (
         <>
             <div href={'/adverts/'+id} className="advert advert--full advert--del">
-                <img src={img} className="advert__img" />
+                <img width={100} height={100} alt={''} src={img} className="advert__img" />
                 <div className="adver-dimmer advert__img" />
 
                 <div className="advert__desc">

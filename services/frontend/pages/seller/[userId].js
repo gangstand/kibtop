@@ -12,6 +12,7 @@ import UserAdevrtsContainer from "../../components/ProfilePage/UserAdevrts/UserA
 import SellerPage from "../../components/SellerPage/SellerPage";
 import { AdvertApi } from "../../services/AdvertApi";
 import { GoodsApi } from "../../services/IndexApi";
+import { ProfileApi } from "../../services/ProfileApi";
 
 const Seller = ({newGoods, user}) => {
     // const {push} = useRouter()
@@ -29,25 +30,13 @@ const Seller = ({newGoods, user}) => {
     );
 }
 
-// export async function getStaticPaths() {
-//     return {
-//       paths: [
-//         {
-//             params: { userId: '2' },
-//             locale: "en",
-//           },
-//       ],
-//       fallback: true
-//     }
-// }
-
 
 export async function getServerSideProps(context) {
     const {locale, params: {userId}} = context
     
     const user = await AdvertApi.getAdvertSeller(userId)
     
-    const newGoods = await GoodsApi.getNews(locale) || null
+    const newGoods = await ProfileApi.getUserAdverts(userId, locale) || null
 
     return {
         props: {newGoods, user}

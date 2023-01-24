@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useCurrency } from "../../../../../../locales/hooks/useCurrency";
 import LikeButtonContainer from "../../../../../HomePage/LikeButton/LikeButtonContainer";
+import Image from "next/image"
+
 
 const RealtyAdvert = ({advertId, category, title, cost, address, img, date, uploads}) => {
     const {currency} = useCurrency()
@@ -13,7 +15,7 @@ const RealtyAdvert = ({advertId, category, title, cost, address, img, date, uplo
                         {
                             !!(uploads.length) ? <>
                                 {
-                                    uploads?.map((img, index) => <img src={img} key={index} className="mobile-realty-advert__item" />)
+                                    uploads?.map((img, index) => <img width={100} height={100} alt={''} src={img} key={index} className="mobile-realty-advert__item" />)
 
                                 }
                             </> : <>
