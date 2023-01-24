@@ -14,11 +14,11 @@ class AuthBackend(object):
         except CustomUser.DoesNotExist:
             return None
 
-    def authenticate(self, request, username, password):
+    def authenticate(self, request, email, password):
 
         try:
             user = CustomUser.objects.get(
-                Q(username=username) | Q(email=username) | Q(phone=username)
+                Q(email=email)
             )
 
         except CustomUser.DoesNotExist:

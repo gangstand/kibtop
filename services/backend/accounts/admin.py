@@ -10,7 +10,7 @@ class CustomUserAdmin(UserAdmin):
     list_display = ['email', 'auth_provider', 'first_name', 'is_superuser', 'is_active', ]
     fieldsets = (
         (None, {
-            'fields': ('email', 'phone', 'password', 'first_name', 'addres', 'upload_user', 'auth_provider',
+            'fields': ('username', 'email', 'phone', 'password', 'first_name', 'addres', 'upload_user', 'auth_provider',
                        'is_superuser', 'is_active',)
         }),
     )
