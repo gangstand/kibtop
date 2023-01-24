@@ -1,6 +1,8 @@
 from sections.models import AvtoFullUpload, AvtoFull
 from django.contrib import admin
 
+from sections.models.avto.models_avto import AvtoFullViewsUser
+
 
 class AvtoFullImageAdmin(admin.StackedInline):
     model = AvtoFullUpload
@@ -12,3 +14,6 @@ class AUAdmin(admin.ModelAdmin):
 
     class Meta:
         model = AvtoFull
+
+
+admin.site.register(AvtoFullViewsUser)

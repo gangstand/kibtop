@@ -1,6 +1,8 @@
 from sections.models import ServicesFullUpload, ServicesFull
 from django.contrib import admin
 
+from sections.models.services.models_services import ServicesFullViewsUser
+
 
 class ServicesFullImageAdmin(admin.StackedInline):
     model = ServicesFullUpload
@@ -12,3 +14,6 @@ class SUAdmin(admin.ModelAdmin):
 
     class Meta:
         model = ServicesFull
+
+
+admin.site.register(ServicesFullViewsUser)
