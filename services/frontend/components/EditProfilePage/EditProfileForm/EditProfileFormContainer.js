@@ -5,7 +5,7 @@ import { editUserDataThunk, setProfileDataThunk, setProfileEditingActivated, set
 import EditProfileForm from "./EditProfileForm";
 
 const EditProfileFormContainer = ({user}) => {
-    const {email, name, city, avatar, surname, isSuccess, isLoading, isActivated} = useSelector(state => state.profile)
+    const {email, name, city, avatar, isSuccess, isLoading, isActivated} = useSelector(state => state.profile)
     const {push} = useRouter()
     const dispatch = useDispatch()
 
@@ -15,8 +15,8 @@ const EditProfileFormContainer = ({user}) => {
             dispatch(setProfileEditingSuccess(false))
             push('/profile')
         }
-        if(!email || !name || !city || !avatar || !surname) dispatch(setProfileDataThunk())
-    }, [email, name, city, avatar, surname, isActivated])
+        if(!email || !name || !city || !avatar) dispatch(setProfileDataThunk())
+    }, [email, name, city, avatar, isActivated])
 
     const onEditProfileSubmit = data => {
         
@@ -24,7 +24,7 @@ const EditProfileFormContainer = ({user}) => {
         dispatch(editUserDataThunk({email, name, city, avatar: file[0]}))
     }
 
-    const userData = user || { email, name, city, avatar, surname }
+    const userData = user || { email, name, city, avatar }
 
 
     return <EditProfileForm {...{onEditProfileSubmit, isLoading, isSuccess, ...userData}} />;

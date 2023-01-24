@@ -9,7 +9,6 @@ const SubmitButtonContainer = () => {
     const {phone} = useSelector(state => state.profile)
     const dispatch = useDispatch()
 
-    console.log(phone);
 
     const openAddPhoneModal = e => {        
         e.preventDefault()

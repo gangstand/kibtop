@@ -6,10 +6,10 @@ import FileField from "./Fields/FileField";
 import NameField from "./Fields/NameField";
 import ResendEmailButtonContainer from "./ResendEmailButton/ResendEmailButtonContainer";
 
-const EditProfileForm = ({onEditProfileSubmit, email, name, city, avatar, surname, isLoading, isSuccess}) => {
+const EditProfileForm = ({onEditProfileSubmit, email, name, city, avatar, isLoading, isSuccess}) => {
     
     const EditProfileForm = useForm({mode: 'onChange', defaultValues: {
-        name: `${name || ''} ${surname || ''}`, city, email
+        name: name, city, email
     }})
     const {handleSubmit, setError, formState: {isValid, errors}} = EditProfileForm
 

@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 import { useCurrency } from "../../../../../locales/hooks/useCurrency";
 import Text from "../../../../Elementes/Text/Text";
+import EnableSubmitButtonContainer from "../EnableSubmitButton/EnableSubmitButtonContainer";
+import EnableGroupContainer from "./EnableGroupContainer";
 import ServiceSetsCheck from "./ServiceSetsCheck";
 
 const ServiceSetsGroup = ({setLiftValue, setTopValue, setVipValue, fullPrice, addFullPrice}) => {
@@ -24,9 +26,7 @@ const ServiceSetsGroup = ({setLiftValue, setTopValue, setVipValue, fullPrice, ad
                 <div className="width-line" />
 
                 <div className="flex">
-                    <button className="reg-btn reg-btn--price" onClick={e => e.preventDefault()}>
-                        <Text content="Enable" />
-                    </button>
+                    <EnableGroupContainer {...{servicePrice: fullPrice}} />
 
                     <p className="promote-card__cost">
                         <Text content="total" />: {currency}{countCurrencyPrice(fullPrice, '$')}

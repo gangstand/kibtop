@@ -5,7 +5,7 @@ const SubmitButton = ({onSubmitClick, isValid, isPhoneNull, openAddPhoneModal}) 
         <>
             {
                 isPhoneNull ? <>
-                    <button onClick={openAddPhoneModal} className="reg-btn reg-btn--add reg-btn--grey">
+                    <button disabled={!isValid} onClick={openAddPhoneModal} className="reg-btn reg-btn--add reg-btn--grey">
                         <Text content="Publish without promotion" />
                     </button>
                 </> : <>

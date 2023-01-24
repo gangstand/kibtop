@@ -15,20 +15,15 @@ export const ProfileApi = {
             })
     },
 
-    async editUserData (email, names, city, avatar) {
-        const [name, surname] = names.split(' ')
+    async editUserData (email, name, city, avatar) {
         const formData = !!avatar ? FormDataCreator({
-            "first_name": surname,
-            "last_name": '',
+            "first_name": name,
             "email": email,
-            "middle_name": name,
             "addres": city || '',
             "upload_user": avatar || ''
         }) : {
-            "first_name": surname,
-            "last_name": '',
+            "first_name": name,
             "email": email,
-            "middle_name": name,
             "addres": city || '',
             "upload_user": undefined
         }

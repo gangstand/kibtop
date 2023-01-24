@@ -5,6 +5,7 @@ import { setProfileDataThunk } from "./ProfileSlice"
 const initialState = {
     formStep: 1,
     category: null,
+    subCategoryText: null,
 
     isPhoneOpen: false,
     isPhoneError: false,
@@ -21,6 +22,9 @@ const AddAdvertSlice = createSlice({
         },
         setAddAdvertCategory(state, {payload}) {
             state.category = payload
+        },
+        setAddAdvertSubCategoryText(state, {payload}) {
+            state.subCategoryText = payload
         },
 
         setAddAdvertPhoneOpen(state, {payload}) {
@@ -40,7 +44,8 @@ const AddAdvertSlice = createSlice({
 
 export const {  setAddAdvertFormStep, setAddAdvertCategory, 
                 setAddAdvertPhoneOpen, setAddAdvertPhoneError, 
-                setAddAdvertPhoneSuccess, setAddAdvertPhoneLoading    } = AddAdvertSlice.actions
+                setAddAdvertPhoneSuccess, setAddAdvertPhoneLoading,
+                setAddAdvertSubCategoryText    } = AddAdvertSlice.actions
 
 export const addUserPhoneThunk = phone => async dispatch => {
     dispatch(setAddAdvertPhoneLoading(true))

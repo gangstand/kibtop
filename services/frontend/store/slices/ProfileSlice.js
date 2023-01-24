@@ -11,7 +11,6 @@ const initialState = {
     name: null,
     city: null,
     avatar: null,
-    surname: null,
     phone: null,
 
     resendEmail: null,
@@ -40,13 +39,12 @@ const ProfileSlice = createSlice({
         },
 
         setProfileData(state, {payload}) {
-            const {email, name, city, avatar, surname, phone} = payload
+            const {email, name, city, avatar, phone} = payload
 
             state.email = email,
             state.name = name,
             state.city = city,
             state.avatar = avatar
-            state.surname = surname
             state.phone = phone
         },
 

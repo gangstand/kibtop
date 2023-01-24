@@ -28,26 +28,21 @@ export const AuthApi = {
             })
     },
 
-    async registration(email, password1, password2, names, city, file) {
-        const [name, surname] = names.trim().split(' ')
+    async registration(email, password1, password2, name, city, file) {
         const formData = !!file ? FormDataCreator({
-            "first_name": surname,
-            "last_name": '',
+            "first_name": name,
             "username": email.replace('@', '_'),
             "email": email,
             "password": password1,
             "re_password": password2,
-            "middle_name": name,
             "addres": city || '',
             "upload_user": file || ''
         }) : {
-            "first_name": surname,
-            "last_name": '',
+            "first_name": name,
             "username": email.replace('@', '_'),
             "email": email,
             "password": password1,
             "re_password": password2,
-            "middle_name": name,
             "addres": city || '',
             "upload_user": undefined
         }
