@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { ProfileApi } from "../../services/ProfileApi"
+import { setProfileDataThunk } from "./ProfileSlice"
 
 const initialState = {
     formStep: 1,
@@ -6,7 +8,8 @@ const initialState = {
 
     isPhoneOpen: false,
     isPhoneError: false,
-    isPhoneSuccess: false
+    isPhoneSuccess: false,
+    isPhoneLoading: false,
 }
 
 const AddAdvertSlice = createSlice({
@@ -29,12 +32,28 @@ const AddAdvertSlice = createSlice({
         setAddAdvertPhoneSuccess(state, {payload}) {
             state.isPhoneSuccess = payload
         },
+        setAddAdvertPhoneLoading(state, {payload}) {
+            state.isPhoneLoading = payload
+        }
     }
 })
 
 export const {  setAddAdvertFormStep, setAddAdvertCategory, 
                 setAddAdvertPhoneOpen, setAddAdvertPhoneError, 
-                setAddAdvertPhoneSuccess    } = AddAdvertSlice.actions
+                setAddAdvertPhoneSuccess, setAddAdvertPhoneLoading    } = AddAdvertSlice.actions
+
+export const addUserPhoneThunk = phone => async dispatch => {
+    dispatch(setAddAdvertPhoneLoading(true))
+    await ProfileApi.addUserPhone(phone)
+        .then(() => {
+            dispatch(setAddAdvertPhoneSuccess(true))
+            dispatch(setAddAdvertPhoneLoading(false))
+            dispatch(setProfileDataThunk())
+        }).catch(() => {
+            dispatch(setAddAdvertPhoneError(true))
+            dispatch(setAddAdvertPhoneLoading(false))
+        })
+}
 
 
 export const AddAdvertReducer = AddAdvertSlice.reducer

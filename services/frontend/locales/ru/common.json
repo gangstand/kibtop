@@ -262,7 +262,9 @@
     "4+1 and more": "4+1 and more",
     "Studio": "Студия",
     
+    "Phone number": "Номер телефона",
     "invalid phone number": "неверный номер телефона",
-    "Add Phone": "Добавить телефон"
+    "Add Phone": "Добавить телефон",
+    "Ready": "Готово"
 
 }

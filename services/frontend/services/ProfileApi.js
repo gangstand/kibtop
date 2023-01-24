@@ -38,6 +38,12 @@ export const ProfileApi = {
         })
     },
 
+    async addUserPhone(phone) {
+        return await instance.put('auth/users/me/', {phone}, {
+            headers: await createHeaders()
+        })
+    },
+
     async getUserAdverts(userId, lang) {
         if(!userId) return null
 

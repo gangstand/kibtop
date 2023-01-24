@@ -2,8 +2,9 @@ import Link from "next/link";
 import { useSwipe } from "../../AppHooks/useSwipe";
 import Text from "../../Elementes/Text/Text";
 import AddPhoneFormContainer from "./AddPhoneForm/AddPhoneFormContainer";
+import AddPhoneSucces from "./AddPhoneForm/AddPhoneSucces";
 
-const AddPhone = ({isOpen, closeAddPhoneModal}) => {
+const AddPhone = ({isOpen, closeAddPhoneModal, isSuccess}) => {
     const {swipe, handleClose} =  useSwipe({onClose: closeAddPhoneModal})
 
     return (
@@ -20,10 +21,17 @@ const AddPhone = ({isOpen, closeAddPhoneModal}) => {
                             </button>
                             <div className="close-line close-line--top" onClick={handleClose} />
 
-                            <h4 className="title modal-title">Add your phone number</h4>
-                            <p className="greeting__text modal-text">In order for customers to contact you, we need your phone number</p>
+                            {
+                                isSuccess ? <AddPhoneSucces {...{onLoad: () => {
+                                    handleClose()
+                                    closeAddPhoneModal()
+                                }}} /> :<>
+                                    <h4 className="title modal-title">Add your phone number</h4>
+                                    <p className="greeting__text modal-text">In order for customers to contact you, we need your phone number</p>
 
-                            <AddPhoneFormContainer />
+                                    <AddPhoneFormContainer />
+                                </>
+                            }
                         </div>
                     </div>
 

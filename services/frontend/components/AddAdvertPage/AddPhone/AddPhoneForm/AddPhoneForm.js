@@ -4,25 +4,20 @@ import { seriealizeErrors } from "../../../../services/tools/ApiFormsSerializers
 import Text from "../../../Elementes/Text/Text";
 import ClearButton from "../../../RegistrationPage/RegSteps/DesktopRegRouter/DeskRegForm/Fields/ClearButton";
 
-const AddPhoneForm = ({onPhoneSubmit}) => {
+const AddPhoneForm = ({onPhoneSubmit, isLoading}) => {
     const {t} = useLanguage()
-    const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onChange'})
+    const {register, handleSubmit, formState: {errors, isValid, touchedFields}} = useForm({mode: 'onChange'})
 
     const {name, message} = seriealizeErrors(errors)
 
+    const isError = !!message && name in touchedFields
+
     return (
         <>
-            <form className="phone-form">
-                <div className={"form__field" + (!!message ? ' form__field--error' : '')} style={{overflow: 'initial'}}>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clipPath="url(#clip0_508_6260)">
-                            <path d="M10.5 0C8.24657 0.00242591 6.08613 0.879395 4.49263 2.43852C2.89913 3.99765 2.0027 6.11161 2 8.31665C2 10.4583 3.69472 13.81 7.03732 18.2783C7.43525 18.8117 7.95626 19.2457 8.55797 19.5449C9.15968 19.8441 9.82507 20 10.5 20C11.1749 20 11.8403 19.8441 12.442 19.5449C13.0437 19.2457 13.5648 18.8117 13.9627 18.2783C17.3053 13.81 19 10.4583 19 8.31665C18.9973 6.11161 18.1009 3.99765 16.5074 2.43852C14.9139 0.879395 12.7534 0.00242591 10.5 0ZM10.5 11.6316C9.82626 11.6316 9.16766 11.4362 8.60747 11.0699C8.04727 10.7036 7.61066 10.183 7.35283 9.57393C7.095 8.96484 7.02754 8.29462 7.15898 7.64802C7.29042 7.00142 7.61486 6.40748 8.09126 5.9413C8.56766 5.47513 9.17464 5.15766 9.83543 5.02904C10.4962 4.90042 11.1811 4.96643 11.8036 5.21873C12.4261 5.47102 12.9581 5.89826 13.3324 6.44642C13.7067 6.99459 13.9065 7.63905 13.9065 8.29832C13.9065 9.18237 13.5476 10.0302 12.9087 10.6553C12.2699 11.2805 11.4035 11.6316 10.5 11.6316Z" fill="#414042" fillOpacity="0.4"/>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_508_6260">
-                                <rect width="20" height="20" fill="white"/>
-                            </clipPath>
-                        </defs>
+            <div className="phone-form">
+                <div className={"form__field" + (isError ? ' form__field--error' : '')} style={{overflow: 'initial'}}>
+                    <svg height="20px" width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.00589 4.54166C1.905 3.11236 3.11531 2 4.54522 2H7.60606C8.34006 2 9.00207 2.44226 9.28438 3.1212L10.5643 6.19946C10.8761 6.94932 10.6548 7.81544 10.0218 8.32292L9.22394 8.96254C8.86788 9.24798 8.74683 9.74018 8.95794 10.1448C10.0429 12.2241 11.6464 13.9888 13.5964 15.2667C14.008 15.5364 14.5517 15.4291 14.8588 15.0445L15.6902 14.003C16.1966 13.3687 17.0609 13.147 17.8092 13.4594L20.8811 14.742C21.5587 15.0249 22 15.6883 22 16.4238V19.5C22 20.9329 20.8489 22.0955 19.4226 21.9941C10.3021 21.3452 2.65247 13.7017 2.00589 4.54166Z" fill="#BDBDBD"/>
                     </svg>
                     <ClearButton name='phone' />
 
@@ -30,20 +25,20 @@ const AddPhoneForm = ({onPhoneSubmit}) => {
                     <input {...register('phone', {
                             required: 'field is required',
                             pattern: {
-                                value: /^\+?[1-9][0-9]{11,14}$/,
+                                value: /^\+?[0-9]{11,14}$/,
                                 message: 'invalid phone number'
                             }
-                    })} type="text" placeholder={t("City or region")} />
+                    })} type="text" placeholder={t("Phone number")} />
                 </div>
 
                 <div className="submit-row">
-                    <button className="reg-btn">
+                    <button disabled={!isValid || isLoading} className="reg-btn" onClick={handleSubmit(onPhoneSubmit)}>
                         <Text content="Add Phone" />
                     </button>
 
-                    {!!message && <p className="warn"><Text content={message} /></p>}
+                    {isError && <p className="warn"><Text content={message} /></p>}
                 </div>
-            </form>
+            </div>
         </>
     );
 }
