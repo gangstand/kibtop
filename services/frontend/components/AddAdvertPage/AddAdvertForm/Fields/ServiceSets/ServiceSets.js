@@ -1,5 +1,6 @@
 import { useCurrency } from "../../../../../locales/hooks/useCurrency";
 import Text from "../../../../Elementes/Text/Text";
+import EnableSubmitButtonContainer from "../EnableSubmitButton/EnableSubmitButtonContainer";
 
 const ServiceSets = () => {
     const {currency, countCurrencyPrice} = useCurrency()
@@ -21,9 +22,7 @@ const ServiceSets = () => {
 
 
                     <div className="promote-card__submit">
-                        <button className="reg-btn">
-                            <Text content="Enable" />
-                        </button>
+                        <EnableSubmitButtonContainer {...{lifts: 0, top: 3, vip: 0, servicePrice: 4.9}} />
 
                         <p className="promote-card__cost">
                             <Text content="for" /> {currency}{countCurrencyPrice(4.9, '$')}
@@ -54,12 +53,10 @@ const ServiceSets = () => {
 
 
                     <div className="promote-card__submit">
-                        <button className="reg-btn">
-                            <Text content="Enable" />
-                        </button>
+                        <EnableSubmitButtonContainer {...{lifts: 3, top: 7, vip: 0, servicePrice: 8.9}} />
 
                         <p className="promote-card__cost">
-                            <Text content="for" /> {currency}{countCurrencyPrice(4.9, '$')}
+                            <Text content="for" /> {currency}{countCurrencyPrice(8.9, '$')}
                         </p>
                     </div>
                 </div>
@@ -95,12 +92,10 @@ const ServiceSets = () => {
 
 
                     <div className="promote-card__submit">
-                        <button className="reg-btn">
-                            <Text content="Enable" />
-                        </button>
+                        <EnableSubmitButtonContainer {...{lifts: 9, top: 7, vip: 7, servicePrice: 30.9}} />
 
                         <p className="promote-card__cost">
-                            <Text content="for" /> {currency}{countCurrencyPrice(4.9, '$')}
+                            <Text content="for" /> {currency}{countCurrencyPrice(30.9, '$')}
                         </p>
                     </div>
                 </div>

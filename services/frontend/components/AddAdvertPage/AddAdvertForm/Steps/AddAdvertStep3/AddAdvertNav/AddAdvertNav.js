@@ -1,11 +1,12 @@
 import { useFormContext } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAddAdvertFormStep } from "../../../../../../store/slices/AddAdvertSlice";
 import Text from "../../../../../Elementes/Text/Text";
 
 const AddAdvertNav = () => {
     const {watch}  = useFormContext()
-    const {categoryName, subCategory} = watch()
+    const {categoryName} = watch()
+    const {subCategoryText} = useSelector(state => state.addAdvert)
 
     const dispatch = useDispatch()
 
@@ -32,9 +33,9 @@ const AddAdvertNav = () => {
                     </a>
 
                     <h4 className="title title--add">
-                        <Text content={'Real estate'} />
+                        <Text content={categoryName} />
                         <span className="advert-nav__subcategory">
-                            <Text content={'Apartment'} />
+                            <Text content={subCategoryText} />
                         </span>
                     </h4>
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const NameData = ({avatar, name, surname}) => {
+const NameData = ({avatar, name, phone}) => {
     return (
         <>
             <div className="user__wrapper name-data">
@@ -12,7 +12,7 @@ const NameData = ({avatar, name, surname}) => {
 
                 <div className="user__data">
                     <p className="user__name">{name}</p>
-                    <p className="user__name">{surname}</p>
+                    {!!phone && <p className="user__name">{phone}</p>}
                 </div>
             </div>
 

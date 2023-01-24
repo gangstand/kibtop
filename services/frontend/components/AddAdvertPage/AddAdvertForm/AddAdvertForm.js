@@ -1,5 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useCurrency } from "../../../locales/hooks/useCurrency";
+import AddPhoneContainer from "../AddPhone/AddPhoneContainer";
 import AddAdvertStep1 from "./Steps/AddAdvertStep1/AddAdvertStep1";
 import AddAdvertStep2 from "./Steps/AddAdvertStep2/AddAdvertStep2";
 import AddAdvertStep3 from "./Steps/AddAdvertStep3/AddAdvertStep3";
@@ -29,6 +30,7 @@ const AddAdvertForm = ({formStep, onAddAdvertSubmit}) => {
                             {
                                 formStep === 3 && <AddAdvertStep3 />
                             }
+                            <AddPhoneContainer />
                         </FormProvider>
                     </div>
                 </div>

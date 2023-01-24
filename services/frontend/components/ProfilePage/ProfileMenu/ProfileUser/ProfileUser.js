@@ -3,11 +3,11 @@ import NameData from "./NameData/NameData";
 import UserLocale from "./UserLocale/UserLocale";
 import UserStatistic from "./UserStatistic/UserStatistic";
 
-const ProfileUser = ({email, name, surname, city, avatar}) => {
+const ProfileUser = ({email, name, city, avatar}) => {
     return (
         <>
             <div className="user">
-                <NameData {...{avatar, name, surname}} />
+                <NameData {...{avatar, name}} />
                 <UserStatistic {...{deals: 0, city}} />
                 <UserLocale />
                 <EditProfileButton />

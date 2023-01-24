@@ -1,6 +1,8 @@
 from sections.models import RealtyFullUpload, RealtyFull
 from django.contrib import admin
 
+from sections.models.realty.models_realty import RealtyFullViewsUser
+
 
 class RealtyFullImageAdmin(admin.StackedInline):
     model = RealtyFullUpload
@@ -12,3 +14,6 @@ class RUAdmin(admin.ModelAdmin):
 
     class Meta:
         model = RealtyFull
+
+
+admin.site.register(RealtyFullViewsUser)
