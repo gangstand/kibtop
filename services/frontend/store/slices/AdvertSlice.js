@@ -15,6 +15,8 @@ const initialState = {
     workType: null,
     date: null,
     address: null,
+    city: null,
+    geocode: null,
     img: null,
     uploads: [],
     userId: null,
@@ -51,6 +53,8 @@ const AdvertSlice = createSlice({
                 workType,
                 date,
                 address,
+                city,
+                geocode,
                 img,
                 uploads,
                 userId,
@@ -74,13 +78,15 @@ const AdvertSlice = createSlice({
             state.workType = workType || null
             state.date = date || null
             state.address = address || null
+            state.city = city || null
+            state.geocode = geocode || null
             state.img = img || null
             state.uploads = uploads || []
             state.userId = userId || null
             state.advertId = advertId || null
-            state.cost = cost
-            state.square = square,
-            state.isMonth = isMonth
+            state.cost = cost || null
+            state.square = square || null
+            state.isMonth = isMonth || null
 
         },
 

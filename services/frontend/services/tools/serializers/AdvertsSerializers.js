@@ -78,6 +78,8 @@ export const serializeAdvertDatails = (advert, lang, category) => {
         workType: advert[`for_work_type_en`],
         date: convertDate(advert.created_at),
         address: advert.address,
+        city: advert.city,
+        geocode: advert.geocode,
         img: advert.upload,
         uploads: !!(advert[`${category}_full_upload`]?.length) ? serializeAdvertUploads(advert[`${category}_full_upload`]) : [advert.upload, advert.upload ,advert.upload],
         userId: advert.user,

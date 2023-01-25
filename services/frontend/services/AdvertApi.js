@@ -6,6 +6,7 @@ export const AdvertApi = {
     async getAdvertDatails(advertId, category, lang) {
         return await instance.get(`${category}/${advertId}/`)
             .then(({data}) => {
+                console.log(data);
                 return serializeAdvertDatails(data, lang, category)
             }).catch(err => null)
     },

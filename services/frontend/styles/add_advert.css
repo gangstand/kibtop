@@ -474,7 +474,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
-    line-height: 11px;
+    line-height: 16px;
     background: #F6F6F6;
 }
 
@@ -487,7 +487,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
-    line-height: 11px;
+    line-height: 16px;
     color: #BDBDBD;
 }
 
@@ -526,11 +526,19 @@
 
 .search__field {
     width: 100%;
+    height: 100%;
 }
 
 .search__field input {
     width: 100%;
     height: 100%;
+
+    line-height: 16px;
+}
+
+.search__field input::placeholder {
+    line-height: 16px;
+
 }
 
 .address-select {

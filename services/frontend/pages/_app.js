@@ -26,6 +26,7 @@ import { LocationProvider } from '../locales/LocationContext'
 import {SessionProvider} from 'next-auth/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ArchiveApi } from '../services/ArchiveApi'
+import { CoogleMapProvider } from '../locales/MapContext'
 
 const queryClient = new QueryClient()
 
@@ -43,13 +44,15 @@ function MyApp({ Component, pageProps, session }) {
     <>
       <SessionProvider {...{session}}>
         <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            <LocationProvider>
-              <CurrencyProvider>
-                <Component {...pageProps} />
-              </CurrencyProvider>
-            </LocationProvider>
-          </QueryClientProvider>
+          <CoogleMapProvider>
+            <QueryClientProvider client={queryClient}>
+              <LocationProvider>
+                <CurrencyProvider>
+                  <Component {...pageProps} />
+                </CurrencyProvider>
+              </LocationProvider>
+            </QueryClientProvider>
+          </CoogleMapProvider>
         </Provider>
       </SessionProvider>
     </>

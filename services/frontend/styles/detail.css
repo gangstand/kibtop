@@ -498,12 +498,15 @@
 
 .detail-maps__string {
     display: flex;
+    align-items: center;
+}
 
+.detail-maps__place {
     margin-bottom: 20px;
 }
 
 @media (max-width: 600px) {
-    .detail-maps__string {
+    .detail-maps__place {
         margin-bottom: 12px;
     }
 }
@@ -523,7 +526,7 @@
 }
 
 .detail-maps__address {
-    max-width: 160px;
+    max-width: max-content;
 }
 
 @media (max-width: 600px) {
@@ -533,7 +536,7 @@
 }
 
 .detail-maps__distance {
-    max-width: 81px;
+    max-width: 90px;
 }
 
 @media (max-width: 600px) {
@@ -1171,4 +1174,9 @@
     .user--seller {
         height: 200px;
     }
+}
+
+
+.detail-maps__place .detail-text--low {
+    margin-left: 36px;
 }
