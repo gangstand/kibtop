@@ -6,6 +6,7 @@ import AddressField from "../../../../Fields/AddressField/AddressField";
 import AddressFieldContainer from "../../../../Fields/AddressField/AddressFieldContainer";
 import CostField from "../../../../Fields/CostField";
 import DescriptionInput from "../../../../Fields/DescriptionInput";
+import NextButtonContainer from "../../../../Fields/NextButton/NextButtonContainer";
 import PhotosInput from "../../../../Fields/PhotosInput";
 import PhotoUploadsContainer from "../../../../Fields/PhotoUploads/PhotoUploadsContainer";
 import RadioGroup from "../../../../Fields/RadioGroup/RadioGroup";
@@ -14,14 +15,15 @@ import ServiceSetsGroupContainer from "../../../../Fields/ServiceSetsGroup/Servi
 import SubmitButtonContainer from "../../../../Fields/SubmitButton/SubmitButtonContainer";
 
 const AddRealty = () => {
-    const {setValue} = useFormContext()
+    const {setValue, getValues, formState: {errors}} = useFormContext()
     const {currency} = useCurrency()
 
     useEffect(() => {
-        setValue('isMonth', 'true')
-        setValue('condition', 'Old')
-        setValue('rooms', 'Studio')
-        setValue('currency', currency)
+        setValue('isMonth', 'true', {shouldTouch: true, shouldValidate: true})
+        setValue('condition', 'Old', {shouldTouch: true, shouldValidate: true})
+        setValue('rooms', 'Studio', {shouldTouch: true, shouldValidate: true})
+        setValue('currency', currency, {shouldTouch: true, shouldValidate: true})
+
     }, [])
     return (
         <>
@@ -81,7 +83,7 @@ const AddRealty = () => {
                 <AddressFieldContainer />
             </div>
 
-            <div className="advert-form__field">
+            <div className="advert-form__field advert-form__field---address">
                 <label className="advert-form__label">
                     <Text content="photo" />
                 </label>
@@ -102,11 +104,11 @@ const AddRealty = () => {
                 </div>
             </div>
 
-            <h4 className="title promote-title">
+            <h4 className="title promote-title mob-hide">
                 <Text content="Promote your products" />
             </h4>
 
-            <div className="advert-form__field advert-form__field--mt">
+            <div className="advert-form__field advert-form__field--mt mob-hide">
                 <label className="advert-form__label">
                     <Text content="Service sets" />
                 </label>
@@ -114,7 +116,7 @@ const AddRealty = () => {
                 <ServiceSets />
             </div>
 
-            <div className="advert-form__field advert-form__field--mt">
+            <div className="advert-form__field advert-form__field--mt mob-hide">
                 <label className="advert-form__label">
                     <Text content="Service sets" />
                 </label>
@@ -122,9 +124,25 @@ const AddRealty = () => {
                 <ServiceSetsGroupContainer />
             </div>
 
-
-
             <SubmitButtonContainer />
+
+            <NextButtonContainer    requiredFields={['address', 
+                                                    'categoryName', 
+                                                    'condition',
+                                                    'city', 
+                                                    'geocode', 
+                                                    'cost', 
+                                                    'description', 
+                                                    'currency', 
+                                                    'isMonth',
+                                                    'photos',
+                                                    'rooms',
+                                                    'subCategory',
+                                                    ]} />
+
+            <p className="step-text">
+                <Text content="step" /> 2 <Text content="of" /> 3
+            </p>
         </>
     );
 }

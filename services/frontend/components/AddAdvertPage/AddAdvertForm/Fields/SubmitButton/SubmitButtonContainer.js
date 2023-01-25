@@ -4,7 +4,7 @@ import { setAddAdvertPhoneOpen } from "../../../../../store/slices/AddAdvertSlic
 import SubmitButton from "./SubmitButton";
 
 const SubmitButtonContainer = () => {
-    const {onSubmitClick, isValid} = useFormContext()
+    const {onSubmitClick, formState: {isValid}} = useFormContext()
 
     const {phone} = useSelector(state => state.profile)
     const dispatch = useDispatch()

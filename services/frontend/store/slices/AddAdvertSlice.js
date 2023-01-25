@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { AddAdvertApi } from "../../services/AddAdvertApi"
 import { ProfileApi } from "../../services/ProfileApi"
 import { setProfileDataThunk } from "./ProfileSlice"
 
@@ -58,6 +59,10 @@ export const addUserPhoneThunk = phone => async dispatch => {
             dispatch(setAddAdvertPhoneError(true))
             dispatch(setAddAdvertPhoneLoading(false))
         })
+}
+
+export const addAdvertThunk = (data, category, lang) => async dispatch => {
+    await AddAdvertApi.createAdvert(data, category, lang)
 }
 
 

@@ -17,3 +17,17 @@ export const fileFormValid = (filelist) => {
 }
 
 export const serializeUploads = files => files.map((src, index) => ({id: index, src}))
+
+export const validateStepFields = (requiredFields, {errors, fields}) => {
+    const isError = requiredFields.some(field => field in errors)    
+
+    const requiredFieldValues = Object.entries(fields)
+                                    .filter(([fieldName, fieldValue]) => requiredFields.includes(fieldName))
+                                    .map(([fieldName, fieldValue]) => fieldValue)
+
+
+    const isSomeNull = Object.values(requiredFieldValues).some(field => !field || field.length === 0)
+
+
+    return isSomeNull || isError
+}

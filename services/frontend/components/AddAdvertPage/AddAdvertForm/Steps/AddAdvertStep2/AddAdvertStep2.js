@@ -30,7 +30,7 @@ const AddAdvertStep2 = () => {
                 </Link>
             </div>
 
-            <div className="categories-choice">
+            <div className="categories-choice categories-choice--height">
                 <h5 className="detail-title detail-title--padding">
                     <Text content={
                             category === 'realty' ? "Property types" :
@@ -50,13 +50,13 @@ const AddAdvertStep2 = () => {
                         <SubCategoryInput {...{text: 'Apartment', value: 'Apartments', categoryName: 'Real estate', category: 'realty'}} />
                         <SubCategoryInput {...{text: 'House', value: 'House', categoryName: 'Real estate', category: 'realty'}} />
                         <SubCategoryInput {...{text: 'land', value: 'Land', categoryName: 'Real estate', category: 'realty'}} />
-                        <SubCategoryInput {...{text: 'Other', value: 'Other', categoryName: 'Real estate', category: 'realty'}} />
+                        <SubCategoryInput {...{text: 'Other', value: 'Other', categoryName: 'Real estate', category: 'realty'}} style={{borderBottom: 'none'}} />
                     </>
                 }
                 {
                     category === 'avto' && <>
                         <SubCategoryInput {...{text: 'Cars', value: 'Car', categoryName: 'Auto', category: 'avto'}} />
-                        <SubCategoryInput {...{text: 'Other technique', value: 'Other equipment', categoryName: 'Auto', category: 'avto'}} />
+                        <SubCategoryInput {...{text: 'Other technique', value: 'Other equipment', categoryName: 'Auto', category: 'avto'}} style={{borderBottom: 'none'}} />
                     </>
                 }
                 {
@@ -81,7 +81,7 @@ const AddAdvertStep2 = () => {
                         <SubCategoryInput {...{text: 'Hotel and restaurant business / Tourism', value: 'Hotel and restaurant business / Tourism', categoryName: 'Job', category: 'work'}} />
                         <SubCategoryInput {...{text: 'Service stations / Car washes', value: 'Service stations / Car washes', categoryName: 'Job', category: 'work'}} />
                         <SubCategoryInput {...{text: 'Part-time employment', value: 'Part-time employment', categoryName: 'Job', category: 'work'}} />
-                        <SubCategoryInput {...{text: 'Other occupations', value: 'Other occupations', categoryName: 'Job', category: 'work'}} />
+                        <SubCategoryInput {...{text: 'Other occupations', value: 'Other occupations', categoryName: 'Job', category: 'work'}} style={{borderBottom: 'none'}} />
                     </>
                 }
                 {
@@ -93,7 +93,7 @@ const AddAdvertStep2 = () => {
                         <SubCategoryInput {...{text: 'Education', value: 'Education', categoryName: 'Services', category: 'services'}} />
                         <SubCategoryInput {...{text: 'Transport', value: 'Transport', categoryName: 'Services', category: 'services'}} />
                         <SubCategoryInput {...{text: 'Construction / Repair', value: 'Construction | Repair', categoryName: 'Services', category: 'services'}} />
-                        <SubCategoryInput {...{text: 'Other', value: 'Other', categoryName: 'Services', category: 'services'}} />
+                        <SubCategoryInput {...{text: 'Other', value: 'Other', categoryName: 'Services', category: 'services'}} style={{borderBottom: 'none'}} />
                     </>
                 }
                 {
@@ -102,7 +102,7 @@ const AddAdvertStep2 = () => {
                         <SubCategoryInput {...{text: "Children's shoes", value: "Baby shoes", categoryName: 'For kids', category: 'children'}} />
                         <SubCategoryInput {...{text: "Baby strollers / Transport", value: "Baby stroller", categoryName: 'For kids', category: 'children'}} />
                         <SubCategoryInput {...{text: "Children's toys / Furniture", value: "Baby toys | Furniture", categoryName: 'For kids', category: 'children'}} />
-                        <SubCategoryInput {...{text: "Other goods for children", value: "Other baby products", categoryName: 'For kids', category: 'children'}} />
+                        <SubCategoryInput {...{text: "Other goods for children", value: "Other baby products", categoryName: 'For kids', category: 'children'}} style={{borderBottom: 'none'}} />
                     </>
                 }
                 {
@@ -110,7 +110,7 @@ const AddAdvertStep2 = () => {
                         <SubCategoryInput {...{text: "Phones and accessories", value: "Phones | Accessories", categoryName: 'Electronics', category: 'electronics'}} />
                         <SubCategoryInput {...{text: "Computers / Tablets / Games", value: "Computers | Games", categoryName: 'Electronics', category: 'electronics'}} />
                         <SubCategoryInput {...{text: "TV / Photo / Video / Audio", value: "Video | Audio | TV | Photo", categoryName: 'Electronics', category: 'electronics'}} />
-                        <SubCategoryInput {...{text: "Other technique", value: "Other equipment", categoryName: 'Electronics', category: 'electronics'}} />
+                        <SubCategoryInput {...{text: "Other technique", value: "Other equipment", categoryName: 'Electronics', category: 'electronics'}} style={{borderBottom: 'none'}} />
                     </>
                 }
                 {
@@ -120,7 +120,7 @@ const AddAdvertStep2 = () => {
                         <SubCategoryInput {...{text: "Garden", value: "Garden", categoryName: 'House and garden', category: 'house_garden'}} />
                         <SubCategoryInput {...{text: "Interior items", value: "Interior items", categoryName: 'House and garden', category: 'house_garden'}} />
                         <SubCategoryInput {...{text: "Construction / Renovation", value: "Construction | Renovation", categoryName: 'House and garden', category: 'house_garden'}} />
-                        <SubCategoryInput {...{text: "Other household goods", value: "Other household goods", categoryName: 'House and garden', category: 'house_garden'}} />
+                        <SubCategoryInput {...{text: "Other household goods", value: "Other household goods", categoryName: 'House and garden', category: 'house_garden'}} style={{borderBottom: 'none'}} />
                     </>
                 }
                 {
@@ -129,9 +129,12 @@ const AddAdvertStep2 = () => {
                         <SubCategoryInput {...{text: "Women's shoes", value: "Women's shoes", categoryName: 'Fashion and style', category: 'fashion'}} />
                         <SubCategoryInput {...{text: "Children's clothes", value: "Children's clothes", categoryName: 'Fashion and style', category: 'fashion'}} />
                         <SubCategoryInput {...{text: "Men's clothing", value: "Men's clothing", categoryName: 'Fashion and style', category: 'fashion'}} />
-                        <SubCategoryInput {...{text: "Accessories", value: "Accessories", categoryName: 'Fashion and style', category: 'fashion'}} />
+                        <SubCategoryInput {...{text: "Accessories", value: "Accessories", categoryName: 'Fashion and style', category: 'fashion'}} style={{borderBottom: 'none'}} />
                     </>
                 }
+                <p className="step-text step-text--bottom">
+                    <Text content="step" /> 2 <Text content="of" /> 3
+                </p>
             </div>
         </>
     );

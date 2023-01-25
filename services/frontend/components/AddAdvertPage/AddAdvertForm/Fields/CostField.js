@@ -12,7 +12,7 @@ const CostField = () => {
     const {currency} = useCurrency()
 
     useEffect(() => {
-        setValue('currency', currency)
+        setValue('currency', currency, {shouldTouch: true, shouldValidate: true})
     }, [currency])
 
     const currencyList = ['$', '€', '₤']
@@ -38,11 +38,11 @@ const CostField = () => {
                 })}
                     type="text" 
                     placeholder={t('Full amount')} 
-                    className={"empty-field" + (!!error ? ' field--error': '')} />
+                    className={"empty-field" + ((!!error && isTouched) ? ' field--error': '')} />
 
                 
                 <a onClick={onCurrencyClick} className="currency-input">{data.currency}</a>
-                { (isTouched && error) && <p className="warn warn--absolute">{error.message}</p> }
+                { (isTouched && !!error) && <p className="warn warn--absolute">{error.message}</p> }
             </div>
             
         </>

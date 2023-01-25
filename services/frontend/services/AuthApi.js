@@ -20,14 +20,11 @@ export const AuthApi = {
             }, () => null).catch(err => null)
     },
 
-    async getAccess(refresh) {
-        console.log('refresh ', refresh)
-        
+    async getAccess(refresh) {        
         return await instance.post('auth/jwt/refresh/',
             {
                 refresh
             }).then(res => {
-                console.log(res, 'res');
                 return res.data.access
             })
     },

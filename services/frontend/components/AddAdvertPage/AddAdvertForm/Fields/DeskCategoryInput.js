@@ -11,8 +11,8 @@ const DeskCategoryInput = ({text, value, categoryName, category}) => {
     const switchFormStep = step => dispatch(setAddAdvertFormStep(step))
 
     const onCategoryClick = () => {
-        setValue('categoryName', categoryName)
-        setValue('subCategory', value)
+        setValue('categoryName', categoryName, {shouldTouch: true, shouldValidate: true})
+        setValue('subCategory', value, {shouldTouch: true, shouldValidate: true})
 
         setSubCategoryForm(text)
         setCategoryForm(category)

@@ -14,15 +14,12 @@ const EnableGroupContainer = ({servicePrice}) => {
     const openAddPhoneModal = e => {        
         e.preventDefault()
 
-        setValue('servicePrice', `${countCurrencyPrice(servicePrice, '$')} ${currency}`)
-
         dispatch(setAddAdvertPhoneOpen(true))
         
-        console.log(getValues());
     }
     
     const onSummitEnableClick = () => {
-        setValue('servicePrice', `${countCurrencyPrice(servicePrice, '$')} ${currency}`)
+        setValue('servicePrice', `${countCurrencyPrice(servicePrice, '$')} ${currency}`, {shouldTouch: true, shouldValidate: true})
         
         onSubmitClick()
     }
