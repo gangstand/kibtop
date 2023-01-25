@@ -6,7 +6,7 @@ environ.Env.read_env('.env')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1', 'api.kibtop.com']
 
 INSTALLED_APPS = [
