@@ -12,7 +12,7 @@ class CustomUserAdmin(UserAdmin):
         (None, {
             'fields': (
             'username', 'email', 'phone', 'password', 'first_name', 'addres', 'upload_user',
-            'auth_provider', 'is_superuser', 'is_active', 'deals')
+            'auth_provider', 'is_superuser', 'is_active',)
         }),
     )
 

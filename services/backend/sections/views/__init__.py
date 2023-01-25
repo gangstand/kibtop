@@ -44,6 +44,8 @@ from .house_garden.views_house_garden import (
     HouseGardenFullFavouritesUserAPIUpdateDestroy, HouseGardenFullArchiveUserAPIDestroy
 )
 
+from .favourites.views_favourites import FullFavouritesUser
+
 __all__ = [
     'RealtyFullAPIList',
     'RealtyFullAPIListCreate',
@@ -55,6 +57,8 @@ __all__ = [
 
     'StockAPIList',
     'StockAPIUpdateDestroy',
+
+    'FullFavouritesUser',
 
     'CategoryFullAPIList',
 

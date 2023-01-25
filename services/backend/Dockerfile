@@ -2,7 +2,7 @@
 FROM python:3.10-alpine
 
 # set work directory
-WORKDIR /app
+WORKDIR /app/backend
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -14,8 +14,7 @@ RUN apk add gcc libc-dev libffi-dev jpeg-dev zlib-dev libjpeg
 RUN apk add postgresql-dev
 # install python dependencies
 RUN pip install --upgrade pip
-COPY ./requirements.txt ./
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 # copy project
-COPY . ./
-
+COPY . .
