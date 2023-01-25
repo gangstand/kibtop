@@ -478,6 +478,10 @@
     background: #F6F6F6;
 }
 
+.empty-field--full {
+    width: 340px;
+}
+
 
 .empty-field::placeholder {
     font-style: normal;

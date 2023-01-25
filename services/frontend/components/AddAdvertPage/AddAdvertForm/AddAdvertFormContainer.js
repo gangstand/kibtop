@@ -9,11 +9,14 @@ const libraries = ['places']
 const AddAdvertFormContainer = () => {
     const {formStep, category} = useSelector(state => state.addAdvert)
     const {userId} = useSelector(state => state.auth)
+    const {phone} = useSelector(state => state.profile)
+
+
     const {locale} = useRouter()
     const dispatch = useDispatch()
 
     const onAddAdvertSubmit = data => {
-        dispatch(addAdvertThunk({...data, userId}, category, locale))
+        dispatch(addAdvertThunk({...data, userId, phone}, category, locale))
     }
 
 

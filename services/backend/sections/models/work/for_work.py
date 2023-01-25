@@ -49,5 +49,6 @@ EMPLOYMENT_RU = [
 ]
 EMPLOYMENT_TR = [
     ('Tam zamanlı', 'Tam zamanlı'),
-    ('Kısmi', 'Kısmi'), ('Uzak', 'Uzak')
+    ('Kısmi', 'Kısmi'),
+    ('Uzak', 'Uzak')
 ]

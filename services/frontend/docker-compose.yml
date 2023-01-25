@@ -1,67 +1,12 @@
 version: "3.9"
 
 services:
-  # postgresql:
-  #   build: 
-  #     context: ../backend
-  #     dockerfile: Dockerfile
-  #   img: postgres:12.0-alpine
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data/
-  #   container_name: postgres
-  #   environment:
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=password
-  #     - POSTGRES_DB=postgres
-  #   ports:
-  #     - "5432:5432"
-  #   networks:
-  #     - dev
-
-  # backend:
-  #   container_name: api
-  #   build: 
-  #     context: ../backend
-  #     dockerfile: Dockerfile
-  #   command: >
-  #     sh -c " cd ../server
-  #             ls
-  #             python manage.py makemigrations &&
-  #             python manage.py migrate &&
-  #             python manage.py collectstatic --noinput &&
-  #             gunicorn settings.wsgi:application --bind 0.0.0.0:8000  --log-level debug --workers=15 --worker-class=gevent --worker-connections=500"
-  #   depends_on:
-  #     - postgresql
-  #   ports:
-  #     - "8000:8000"
-  #   volumes:
-  #     - .:/server/
-  #   networks:
-  #     - dev
-
-  nextjs:
+  react:
     container_name: react
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    # depends_on:
-    #   - backend
+    build: .
     ports:
       - "3000:3000"
+    command: >
+      sh -c "npm run dev"
     volumes:
       - .:/app
-      - /app/node_modules
-      - /app/.next
-    env_file:
-      - .env
-    networks:
-      - dev
-networks:
-  dev:
-    external: true
-volumes:
-  postgres_data:
-
-
-
-  

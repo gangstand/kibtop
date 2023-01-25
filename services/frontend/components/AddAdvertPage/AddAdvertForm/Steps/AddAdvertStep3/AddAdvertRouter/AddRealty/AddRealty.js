@@ -13,6 +13,7 @@ import RadioGroup from "../../../../Fields/RadioGroup/RadioGroup";
 import ServiceSets from "../../../../Fields/ServiceSets/ServiceSets";
 import ServiceSetsGroupContainer from "../../../../Fields/ServiceSetsGroup/ServiceSetsGroupContainer";
 import SubmitButtonContainer from "../../../../Fields/SubmitButton/SubmitButtonContainer";
+import TitleField from "../../../../Fields/TitleField";
 
 const AddRealty = () => {
     const {setValue, getValues, formState: {errors}} = useFormContext()
@@ -27,6 +28,14 @@ const AddRealty = () => {
     }, [])
     return (
         <>
+            <div className="advert-form__field">
+                <label className="advert-form__label">
+                    <Text content="transaction type" />
+                </label>
+
+                <TitleField />
+            </div>
+
             <div className="advert-form__field">
                 <label className="advert-form__label">
                     <Text content="transaction type" />
@@ -126,7 +135,8 @@ const AddRealty = () => {
 
             <SubmitButtonContainer />
 
-            <NextButtonContainer    requiredFields={['address', 
+            <NextButtonContainer    requiredFields={['title', 
+                                                    'address',
                                                     'categoryName', 
                                                     'condition',
                                                     'city', 

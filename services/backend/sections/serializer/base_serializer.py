@@ -9,6 +9,12 @@ from sections.serializer import (
     AvtoFullSerializerTR, ChildrenFullSerializerTR, ElectronicsFullSerializerTR, FashionFullSerializerTR,
     HouseGardenFullSerializerTR, RealtyFullSerializerTR, ServicesFullSerializerTR, WorkFullSerializerTR,
 )
+from sections.serializer import (
+    AvtoFullFavouritesUserSerializer, ChildrenFullFavouritesUserSerializer,
+    ElectronicsFullFavouritesUserSerializer, FashionFullFavouritesUserSerializer,
+    HouseGardenFullFavouritesUserSerializer, RealtyFullFavouritesUserSerializer,
+    ServicesFullFavouritesUserSerializer, WorkFullFavouritesUserSerializer
+)
 
 
 class MoneySerializer(serializers.ModelSerializer):
@@ -60,3 +66,14 @@ class CategoryFullSerializer(serializers.Serializer):
     en = CategoryFullSerializerEN(many=True)
     ru = CategoryFullSerializerRU(many=True)
     tr = CategoryFullSerializerTR(many=True)
+
+
+class FullFavouritesUserSerializer(serializers.Serializer):
+    avto = AvtoFullFavouritesUserSerializer(many=True)
+    children = ChildrenFullFavouritesUserSerializer(many=True)
+    electronics = ElectronicsFullFavouritesUserSerializer(many=True)
+    fashion = FashionFullFavouritesUserSerializer(many=True)
+    house_garden = HouseGardenFullFavouritesUserSerializer(many=True)
+    realty = RealtyFullFavouritesUserSerializer(many=True)
+    services = ServicesFullFavouritesUserSerializer(many=True)
+    work = WorkFullFavouritesUserSerializer(many=True)

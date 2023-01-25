@@ -1,11 +1,11 @@
 from django.urls import path, include
 
-from sections.views import MoneyAPIList, CityAPIList, MoneyAPIUpdateDestroy
+from sections.views import MoneyAPIList, CityAPIList, MoneyAPIUpdateDestroy, FullFavouritesUser
 
 urlpatterns = [
     path('city/', CityAPIList.as_view()),
     path('money/', MoneyAPIList.as_view()),
-    path('money/<int:pk>', MoneyAPIUpdateDestroy.as_view()),
+    path('money/<int:pk>/', MoneyAPIUpdateDestroy.as_view()),
     path('', include('sections.urls.recommend.urls_recommend')),
     path('', include('sections.urls.new.urls_new')),
     path('', include('sections.urls.my_ads.my_ads_urls')),
@@ -20,4 +20,5 @@ urlpatterns = [
     path('', include('sections.urls.electronics.urls_electronics')),
     path('', include('sections.urls.fashion.urls_fashion')),
     path('', include('sections.urls.house_garden.urls_house_garden')),
+    path('favourites/all/', FullFavouritesUser.as_view()),
 ]

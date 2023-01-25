@@ -35,7 +35,7 @@ from .fashion.serializer import (
 )
 from .base_serializer import (
     CitySerializer, MoneySerializer, CategoryFullSerializerEN, CategoryFullSerializerRU,
-    CategoryFullSerializerTR, CategoryFullSerializer
+    CategoryFullSerializerTR, CategoryFullSerializer, FullFavouritesUserSerializer
 )
 
 __all__ = [
@@ -51,6 +51,7 @@ __all__ = [
     'RealtyFullViewsUserSerializer',
     'RealtyFullFavouritesUserSerializer',
 
+    'FullFavouritesUserSerializer',
     'CitySerializer',
     'MoneySerializer',
     'StockSerializer',
