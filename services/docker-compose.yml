@@ -44,14 +44,6 @@ services:
     ports:
       - "8000:8000"
 
-  frontend:
-    build: ./frontend
-    container_name: frontend
-#    depends_on:
-#      - postgresql
-    ports:
-      - "3000:3000"
-
 volumes:
   media_volume:
   static_volume:
