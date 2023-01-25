@@ -1,6 +1,5 @@
 import Header from "../Header/Header";
 import HeaderService from "../Header/HeaderService/HeaderService";
-import { useAuthRedirect } from "../PageHooks/useAuthRedirect";
 import SettingsNav from "../SettingsPage/SettingsNav";
 import EditProfileFormContainer from "./EditProfileForm/EditProfileFormContainer";
 

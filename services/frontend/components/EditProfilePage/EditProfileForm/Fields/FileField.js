@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useFormContext } from "react-hook-form"
 import { useLanguage } from "../../../../locales/hooks/useLanguage"
 import Text from "../../../Elementes/Text/Text"
+import Image from "next/image"
+
 
 
 const FileField = ({file}) => {
@@ -83,7 +85,7 @@ const FileField = ({file}) => {
                                 )
                             }
                                 
-                            <img src={valueSrc || file} className="file-img file-img--edit" style={{opacity: (valueSrc || file) && !error ? 1 : 0}} />
+                            <img width={100} height={100} alt={''} src={valueSrc || file} className="file-img file-img--edit" style={{opacity: (valueSrc || file) && !error ? 1 : 0}} />
                 </label>
                 {
                     isError ? (

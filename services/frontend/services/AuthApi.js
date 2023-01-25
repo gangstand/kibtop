@@ -1,3 +1,4 @@
+import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { instance } from "./Instance"
 import { Cookies } from "./tools/CookieController";
@@ -20,10 +21,13 @@ export const AuthApi = {
     },
 
     async getAccess(refresh) {
+        console.log('refresh ', refresh)
+        
         return await instance.post('auth/jwt/refresh/',
             {
-                "refresh": refresh || 'refresh'
+                refresh
             }).then(res => {
+                console.log(res, 'res');
                 return res.data.access
             })
     },

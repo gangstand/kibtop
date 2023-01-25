@@ -1,3 +1,4 @@
+import axios from "axios";
 import Header from "../components/Header/Header";
 import HomePage from "../components/HomePage/HomePage";
 import { GoodsApi } from "../services/IndexApi";
@@ -13,14 +14,14 @@ const Index = ({slides, recommendGoods, newGoods}) => {
 }
 
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const {locale} = context
-    const slides = await GoodsApi.getSlider(locale) || null
+    const slides = await GoodsApi.getSlider(locale)
 
 
-    const recommendGoods = await GoodsApi.getRecommends(locale) || null
+    const recommendGoods = await GoodsApi.getRecommends(locale)
     
-    const newGoods = await GoodsApi.getNews(locale) || null
+    const newGoods = await GoodsApi.getNews(locale)
 
     return {
         props: {slides, recommendGoods, newGoods}

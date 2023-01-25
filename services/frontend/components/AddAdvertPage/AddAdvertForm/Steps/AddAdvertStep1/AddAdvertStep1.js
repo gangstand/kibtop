@@ -4,6 +4,7 @@ import { setAddAdvertCategory, setAddAdvertFormStep } from "../../../../../store
 import Text from "../../../../Elementes/Text/Text";
 import CategoryNameInput from "../../Fields/CategoryNameInput";
 import DeskCategoryInput from "../../Fields/DeskCategoryInput";
+import Image from "next/image"
 
 const AddAdvertStep1 = () => {
     const {formStep} = useSelector(state => state.addAdvert)
@@ -38,7 +39,7 @@ const AddAdvertStep1 = () => {
             <div className="categories-choice categories-choice--desk">
                 <div className="category-wrapper">
                     <div className="category-line">
-                        <img src="/img/add_advert/realty.png" className="advert-form__icon" />
+                        <img width={100} height={100} alt={''} src="/img/add_advert/realty.png" className="advert-form__icon" />
 
                         <label className="category-title">
                             <Text content="Real estate" />
@@ -56,7 +57,7 @@ const AddAdvertStep1 = () => {
 
                 <div className="category-wrapper">
                     <div className="category-line">
-                        <img src="/img/add_advert/avto.png" className="advert-form__icon" />
+                        <img width={100} height={100} alt={''} src="/img/add_advert/avto.png" className="advert-form__icon" />
 
                         <label className="category-title">
                             <Text content="Auto" />
@@ -71,7 +72,7 @@ const AddAdvertStep1 = () => {
 
                 <div className="category-wrapper">
                     <div className="category-line">
-                        <img src="/img/add_advert/work.png" className="advert-form__icon" />
+                        <img width={100} height={100} alt={''} src="/img/add_advert/work.png" className="advert-form__icon" />
 
                         <label className="category-title">
                             <Text content="Job" />
@@ -105,7 +106,7 @@ const AddAdvertStep1 = () => {
 
                 <div className="category-wrapper">
                     <div className="category-line">
-                        <img src="/img/add_advert/services.png" className="advert-form__icon" />
+                        <img width={100} height={100} alt={''} src="/img/add_advert/services.png" className="advert-form__icon" />
 
                         <label className="category-title">
                             <Text content="Services" />
@@ -127,7 +128,7 @@ const AddAdvertStep1 = () => {
 
                 <div className="category-wrapper">
                     <div className="category-line">
-                        <img src="/img/add_advert/children.png" className="advert-form__icon" />
+                        <img width={100} height={100} alt={''} src="/img/add_advert/children.png" className="advert-form__icon" />
 
                         <label className="category-title">
                             <Text content="For kids" />
@@ -145,7 +146,7 @@ const AddAdvertStep1 = () => {
 
                 <div className="category-wrapper">
                     <div className="category-line">
-                        <img src="/img/add_advert/electronics.png" className="advert-form__icon" />
+                        <img width={100} height={100} alt={''} src="/img/add_advert/electronics.png" className="advert-form__icon" />
 
                         <label className="category-title">
                             <Text content="Electronics" />
@@ -162,7 +163,7 @@ const AddAdvertStep1 = () => {
 
                 <div className="category-wrapper">
                     <div className="category-line">
-                        <img src="/img/add_advert/fashion.png" className="advert-form__icon" />
+                        <img width={100} height={100} alt={''} src="/img/add_advert/fashion.png" className="advert-form__icon" />
 
                         <label className="category-title">
                             <Text content="Fashion and style" />
@@ -180,7 +181,7 @@ const AddAdvertStep1 = () => {
 
                 <div className="category-wrapper">
                     <div className="category-line">
-                        <img src="/img/add_advert/house_garden.png" className="advert-form__icon" />
+                        <img width={100} height={100} alt={''} src="/img/add_advert/house_garden.png" className="advert-form__icon" />
 
                         <label className="category-title">
                             <Text content="House and garden" />

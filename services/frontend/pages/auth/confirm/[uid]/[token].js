@@ -63,4 +63,16 @@ const EmailConfirm = () => {
     );
 }
 
+export async function getServerSideProps(context) {
+    const {params: {uid, token}} = context
+    
+    
+    await RecoveryApi.confirmEmail(uid, token)
+
+
+    return {
+        props: {}
+    }
+}
+
 export default EmailConfirm;

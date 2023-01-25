@@ -6,7 +6,7 @@ import { ArchiveApi } from "../../services/ArchiveApi";
 import { setUserArchive, setUserArchiveThunk } from "../../store/slices/ArchiveSlice";
 import Archive from "./Archive";
 
-const ArchiveContainer = ({serverAds}) => {
+const ArchiveContainer = ({archiveAdverts}) => {
     const {userId} = useSelector(state => state.auth)
     const {locale} = useRouter()
 
@@ -17,7 +17,7 @@ const ArchiveContainer = ({serverAds}) => {
         dispatch(setUserArchiveThunk(userId, locale))
     }, [archive.length, userId, locale])
 
-    const adverts = !!(archive?.length) ? archive : serverAds
+    const adverts = !!(archive?.length) ? archive : archiveAdverts
 
     return <Archive {...{adverts}} />;
 }

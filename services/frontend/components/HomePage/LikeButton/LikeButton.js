@@ -1,10 +1,10 @@
-const LikeButton = ({isAuthed, openFavoritesWarning, className, userFavorite, onDislikeClick, onLikeClick}) => {
+const LikeButton = ({isAuthed, openFavoritesWarning, className, userFavorite, onDislikeClick, onLikeClick, isLoading}) => {
     const onClick = !!userFavorite ? onDislikeClick : onLikeClick 
     return (
         <>
             {
                 !!isAuthed ? <>
-                    <button className={className || 'advert__btn'} {...{onClick}}>
+                    <button disabled={isLoading} className={className || 'advert__btn'} {...{onClick}}>
                         {
                             !!userFavorite ? <>
                                 <svg className={"like-icon"} viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">

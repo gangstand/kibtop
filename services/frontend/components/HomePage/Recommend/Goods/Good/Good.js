@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useCurrency } from "../../../../../locales/hooks/useCurrency";
 import LikeButtonContainer from "../../../LikeButton/LikeButtonContainer";
+import Image from "next/image"
+
 
 const Good = ({id, img, title, cost, address, date, category}) => {
     const {currency} = useCurrency()
@@ -8,7 +10,7 @@ const Good = ({id, img, title, cost, address, date, category}) => {
         <>
             <div className="goods__item">
                 <Link href={`/advert/${category}/${id}`} className="goods__img">
-                    <img src={img} alt={title} />
+                    <img width={100} height={100} alt={''} src={img} />
                 </Link>
 
                 <div className="goods__article">

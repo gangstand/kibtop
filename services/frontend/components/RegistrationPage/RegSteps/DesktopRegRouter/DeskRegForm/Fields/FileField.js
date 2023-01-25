@@ -4,6 +4,8 @@ import { useEffect } from "react"
 import { useFormContext } from "react-hook-form"
 import { useLanguage } from "../../../../../../locales/hooks/useLanguage"
 import Text from "../../../../../Elementes/Text/Text"
+import Image from "next/image"
+
 
 const FileField = () => {
     const {t} = useLanguage()
@@ -79,7 +81,7 @@ const FileField = () => {
                                 </defs>
                             </svg>
 
-                            <img src={valueSrc} className="file-img" style={{opacity: valueSrc ? 1 : 0}} />
+                            {!!valueSrc && <img width={100} height={100} alt={''} src={valueSrc} className="file-img" style={{opacity: valueSrc ? 1 : 0}} />}
                 </label>
 
                 <div className="form__help">

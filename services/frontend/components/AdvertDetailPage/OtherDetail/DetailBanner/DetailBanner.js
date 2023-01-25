@@ -1,4 +1,6 @@
 import { useRef, useState } from "react"
+import Image from "next/image"
+
 
 const DetailBanner = ({switchToNext, transition, slideList, dots, offset, setOffset}) => {
     const sliderLineEl = useRef(null)
@@ -64,7 +66,7 @@ const DetailBanner = ({switchToNext, transition, slideList, dots, offset, setOff
                 <div className="detail-slider__line"  ref={sliderLineEl}>
                         {
                             slideList.map((src, index) =>    <div key={index} className="detail-slider__item">
-                                                        <img src={src} className="detail-slider__img" />
+                                                        <img width={100} height={100} alt={''} src={src} className="detail-slider__img" />
                                                     </div>)
                         }
                 </div>

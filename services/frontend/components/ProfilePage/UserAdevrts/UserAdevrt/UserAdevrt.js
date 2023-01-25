@@ -3,6 +3,8 @@ import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import { BASE_URL } from "../../../../services/Instance";
 import LikeButtonContainer from "../../../HomePage/LikeButton/LikeButtonContainer";
 import EditAdvertButtonContainer from "./EditAdvertButton/EditAdvertButtonContainer";
+import Image from "next/image"
+
 
 const UserAdevrt = ({id, title, cost, address, img, date, category}) => {
     const {currency} = useCurrency()
@@ -10,7 +12,7 @@ const UserAdevrt = ({id, title, cost, address, img, date, category}) => {
         <>
             <div className="advert">
                 <Link href={`/advert/${category}/${id}`}>
-                    <img src={img} className="advert__img" />
+                    <img width={100} height={100} alt={''} src={img} className="advert__img" />
                 </Link>
 
                 <div className="advert__desc">
