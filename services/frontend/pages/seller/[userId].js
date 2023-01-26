@@ -15,10 +15,7 @@ import { GoodsApi } from "../../services/IndexApi";
 import { ProfileApi } from "../../services/ProfileApi";
 
 const Seller = ({newGoods, user}) => {
-    // const {push} = useRouter()
-    // useEffect(() => {
-    //     if(!user) push('/')
-    // })
+    
     return (
         <>
             <Header />

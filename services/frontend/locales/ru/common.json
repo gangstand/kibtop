@@ -246,8 +246,6 @@
     "Old": "Старое",
     "New": "Новое",
     "Describe the car in detail": "Опишите автомобиль в деталях",
-    "Describe the apartment in detail": "Опишите квартиру в деталях",
-    "Describe the house in detail": "Опишите дом в деталях",
     "Post your resume": "Опубликовать резюме",
     "Place a vacancy ad": "Разместить вакансию",
     "Full time": "Полная", 
@@ -266,7 +264,18 @@
     "invalid phone number": "неверный номер телефона",
     "Add Phone": "Добавить телефон",
     "Ready": "Готово",
-    "step": "шаг"
+    "step": "шаг",
+    "Square": "Площадь",
+    "Job Title": "Название работы",
+    "title": "Название",
+    "Describe the job in detail": "Опишите работу в деталях",
+    "Describe the apartment in detail": "Опишите квартиру в деталях",
+    "Describe the house in detail": "Опишите дом в деталях",
+    "Describe the product in detail": "Опишите товар в деталях",
+    "Publishing": "Публикуем",
+    "Add your phone number": "Добавьте ваш номер телефона",
+    "In order for customers to contact you, we need your phone number": "Для того чтобы клиенты могли связаться с вами, нам нужен ваш номер телефона"
+
 
 
 }

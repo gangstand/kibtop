@@ -247,8 +247,7 @@
     "Old": "Yaş",
     "New": "Yeni",
     "Describe the car in detail": "Arabayı ayrıntılı olarak açıklayın",
-    "Describe the apartment in detail": "Daireyi ayrıntılı olarak açıklayın",
-    "Describe the house in detail": "Evi ayrıntılı olarak açıklayın",
+    
     "Post your resume": "Özgeçmişinizi gönderin",
     "Place a vacancy ad": "Boşluk ilanı verin",
     "Full time": "Tam zamanlı", 
@@ -267,7 +266,17 @@
     "invalid phone number": "geçersiz telefon numarası",
     "Add Phone": "Telefon Ekle",
     "Ready": "Hazır",
-    "step": "adım"
+    "step": "adım",
+    "Square": "Alan",
+    "Job Title": "İşin adı",
+    "title": "başlık",
+    "Describe the job in detail": "İşi ayrıntılı olarak açıklayın",
+    "Describe the apartment in detail": "Daireyi ayrıntılı olarak açıklayın",
+    "Describe the house in detail": "Evi ayrıntılı olarak açıklayın",
+    "Describe the product in detail": "Ürünü ayrıntılı olarak açıklayın",
+    "Publishing": "Yayımlanan",
+    "Add your phone number": "Telefon numaranızı ekleyin",
+    "In order for customers to contact you, we need your phone number": "Müşterilerin sizinle iletişim kurabilmesi için telefon numaranıza ihtiyacımız var"
 
 
 }

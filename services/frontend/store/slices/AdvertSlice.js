@@ -27,7 +27,8 @@ const initialState = {
 
     seller: {
         name: null,
-        avatar: null
+        avatar: null,
+        phone: null
     },
 
     similarAdverts: []
@@ -94,6 +95,7 @@ const AdvertSlice = createSlice({
             
             state.seller.name = payload.name
             state.seller.avatar = payload.avatar
+            state.seller.phone = payload.phone
         },
 
         setSimilarAdverts(state, {payload}) {

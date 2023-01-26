@@ -8,6 +8,13 @@ const initialState = {
     category: null,
     subCategoryText: null,
 
+    isLoading: false,
+    
+    newAdvert: {
+        advertId: null,
+        advertCategory: null
+    },
+
     isPhoneOpen: false,
     isPhoneError: false,
     isPhoneSuccess: false,
@@ -39,6 +46,14 @@ const AddAdvertSlice = createSlice({
         },
         setAddAdvertPhoneLoading(state, {payload}) {
             state.isPhoneLoading = payload
+        },
+
+        setAddAdvertLoading(state, {payload}) {
+            state.isLoading = payload
+        },
+        setNewAdvertData(state, {payload}) {
+            state.newAdvert.advertId = payload.id
+            state.newAdvert.advertCategory = payload.category
         }
     }
 })
@@ -46,7 +61,7 @@ const AddAdvertSlice = createSlice({
 export const {  setAddAdvertFormStep, setAddAdvertCategory, 
                 setAddAdvertPhoneOpen, setAddAdvertPhoneError, 
                 setAddAdvertPhoneSuccess, setAddAdvertPhoneLoading,
-                setAddAdvertSubCategoryText    } = AddAdvertSlice.actions
+                setAddAdvertSubCategoryText, setAddAdvertLoading, setNewAdvertData    } = AddAdvertSlice.actions
 
 export const addUserPhoneThunk = phone => async dispatch => {
     dispatch(setAddAdvertPhoneLoading(true))
@@ -62,7 +77,12 @@ export const addUserPhoneThunk = phone => async dispatch => {
 }
 
 export const addAdvertThunk = (data, category, lang) => async dispatch => {
+    dispatch(setAddAdvertLoading(true))
     await AddAdvertApi.createAdvert(data, category, lang)
+        .then(advert => {
+            dispatch(setAddAdvertLoading(false))
+            dispatch(setNewAdvertData(advert))
+        }).catch(err => dispatch(setAddAdvertLoading(false)))
 }
 
 

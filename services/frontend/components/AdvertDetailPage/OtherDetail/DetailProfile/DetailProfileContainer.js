@@ -7,9 +7,7 @@ const DetailProfileContainer = () => {
     const {seller, userId} = useSelector(state => state.advert)
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        if(!!userId) dispatch(setAdvertSellerThunk(userId))
-    }, [userId])
+    
 
     return <DetailProfile {...{...seller, userId}} />;
 }

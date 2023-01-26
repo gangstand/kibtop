@@ -45,12 +45,21 @@
     top: 2px;
 }
 
+
+
 .detail-like .like-icon {
     width: 26px;
     height: 25px;
 
     margin-bottom: 0;
     margin-left: 26px;
+}
+
+@media (max-width: 700px) {
+    .detail-like .like-icon {
+        margin-left: 5px;
+        margin-right: 10px;
+    }
 }
 
 .detail-slider {
@@ -849,6 +858,7 @@
 
     .detail-like .like-icon {
         margin-left: 0;
+        margin-right: 0;
 
         fill: #fff;
 
@@ -1034,9 +1044,11 @@
     padding: 0px 8px;
     margin-left: 8px;
     border-left: 1px solid #EDEDED;
+
+    white-space: nowrap;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
     .square {
         margin-left: 16px;
         padding: 0 19px;
@@ -1140,6 +1152,10 @@
 }
 
 .seller-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     width: 100%;
     height: 40px;
 

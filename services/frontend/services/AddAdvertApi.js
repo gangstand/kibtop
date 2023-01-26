@@ -9,6 +9,6 @@ export const AddAdvertApi = {
         return await instance.post(`${category}/create/`, body, {
             headers: await createHeaders()
         })
-            .then(res => console.log(res))
+            .then(({id}) => {id, category})
     }
 }

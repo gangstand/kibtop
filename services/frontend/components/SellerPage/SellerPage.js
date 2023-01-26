@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Text from "../Elementes/Text/Text";
 import NameData from "../ProfilePage/ProfileMenu/ProfileUser/NameData/NameData";
 import UserLocale from "../ProfilePage/ProfileMenu/ProfileUser/UserLocale/UserLocale";
@@ -6,6 +7,9 @@ import UserStatistic from "../ProfilePage/ProfileMenu/ProfileUser/UserStatistic/
 import UserAdevrtsContainer from "../ProfilePage/UserAdevrts/UserAdevrtsContainer";
 
 const SellerPage = ({newGoods, user}) => {
+    const {locale, pathname, query} = useRouter()
+    const {phone} = user
+
     return (
         <>
                 <div className="container container--profile">
@@ -30,20 +34,20 @@ const SellerPage = ({newGoods, user}) => {
                     <aside className="profile__menu">
                         <div className="user user--seller">
                             <NameData {...user} />
-                            <UserStatistic {...{...user, deals: 0}} />
+                            <UserStatistic {...user} />
                             <UserLocale />
 
-                            <button className="seller-contact contact-btn--green">
+                            <Link href={!!phone ? `https://api.whatsapp.com/send/?phone=${phone}` : {pathname, query}} className="seller-contact contact-btn--green">
                                 <Text content={'Write to WhatsApp'} />
-                            </button>
+                            </Link>
 
-                            <button className="seller-contact contact-btn--blue">
+                            <Link href={{pathname, query}} className="seller-contact contact-btn--blue">
                                 <Text content={'Write in chat'} />
-                            </button>
+                            </Link>
                         </div>
                     </aside>
 
-                    <UserAdevrtsContainer {...{serverAds: newGoods}} />
+                    <UserAdevrtsContainer {...{serverAds: newGoods, user}} />
                 </div>
         </>
     );

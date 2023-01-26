@@ -2,14 +2,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const UserLanguageOption = ({value, text}) => {
-    const {locale} = useRouter()
+    const {locale, pathname, query} = useRouter()
 
     const isSelected = value == locale
     const isSelectedStyle = isSelected ? ' profile-select__option--selected' : ''
 
     return (
         <>
-            <Link href="" locale={value} className={'profile-select__option' + isSelectedStyle}>
+            <Link href={{pathname, query}} locale={value} className={'profile-select__option' + isSelectedStyle}>
                 <p>{text}</p>
 
                 {isSelected && (

@@ -25,7 +25,7 @@ export const serializeCreateAdvertData = (data, category, lang) => {
         user: data.userId,
         price: data.cost,
         currency: data.currency,
-        square: '60',
+        square: data.square,
         type_sell: data.isMonth,
         "recommend": true,
         "publisher": true,

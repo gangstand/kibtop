@@ -12,6 +12,7 @@ import PhotoUploadsContainer from "../../../../Fields/PhotoUploads/PhotoUploadsC
 import RadioGroup from "../../../../Fields/RadioGroup/RadioGroup";
 import ServiceSets from "../../../../Fields/ServiceSets/ServiceSets";
 import ServiceSetsGroupContainer from "../../../../Fields/ServiceSetsGroup/ServiceSetsGroupContainer";
+import SquareField from "../../../../Fields/SquareField";
 import SubmitButtonContainer from "../../../../Fields/SubmitButton/SubmitButtonContainer";
 import TitleField from "../../../../Fields/TitleField";
 
@@ -30,7 +31,7 @@ const AddRealty = () => {
         <>
             <div className="advert-form__field">
                 <label className="advert-form__label">
-                    <Text content="transaction type" />
+                    <Text content="title" />
                 </label>
 
                 <TitleField />
@@ -78,6 +79,14 @@ const AddRealty = () => {
 
             <div className="advert-form__field">
                 <label className="advert-form__label">
+                    <Text content="Square" />
+                </label>
+
+                <SquareField />
+            </div>
+
+            <div className="advert-form__field">
+                <label className="advert-form__label">
                     <Text content="price" />
                 </label>
 
@@ -109,7 +118,7 @@ const AddRealty = () => {
                 </label>
 
                 <div className="advert-form__files">
-                    <DescriptionInput placeholderName="apartment" />
+                    <DescriptionInput placeholderName={"apartment"} />
                 </div>
             </div>
 
@@ -133,7 +142,21 @@ const AddRealty = () => {
                 <ServiceSetsGroupContainer />
             </div>
 
-            <SubmitButtonContainer />
+            <SubmitButtonContainer requiredFields={['title', 
+                                                    'address',
+                                                    'categoryName', 
+                                                    'condition',
+                                                    'city', 
+                                                    'geocode', 
+                                                    'cost', 
+                                                    'description', 
+                                                    'currency', 
+                                                    'isMonth',
+                                                    'photos',
+                                                    'rooms',
+                                                    'subCategory',
+                                                    'square'
+                                                    ]} />
 
             <NextButtonContainer    requiredFields={['title', 
                                                     'address',
@@ -147,7 +170,8 @@ const AddRealty = () => {
                                                     'isMonth',
                                                     'photos',
                                                     'rooms',
-                                                    'subCategory',
+                                                    'subCategory',,
+                                                    'square'
                                                     ]} />
 
             <p className="step-text">

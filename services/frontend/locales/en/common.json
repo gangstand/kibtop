@@ -243,7 +243,6 @@
     "Old": "Old",
     "New": "New",
     "Describe the car in detail": "Describe the car in detail",
-    "Describe the apartment in detail": "Describe the apartment in detail",
     "Post your resume": "Post your resume",
     "Place a vacancy ad": "Place a vacancy ad",
     "Full time": "Full time", 
@@ -262,6 +261,16 @@
     "invalid phone number": "invalid phone number",
     "Add Phone": "Add Phone",
     "Ready": "Ready",
-    "step": "step"
+    "step": "step",
+    "Square": "Square",
+    "Job Title": "Job Title",
+    "title": "title",
+    "Describe the job in detail": "Describe the job in detail",
+    "Describe the apartment in detail": "Describe the apartment in detail",
+    "Describe the house in detail": "Describe the house in detail",
+    "Describe the product in detail": "Describe the product in detail",
+    "Publishing": "Publishing",
+    "Add your phone number": "Add your phone number",
+    "In order for customers to contact you, we need your phone number": "In order for customers to contact you, we need your phone number"
 
 }
