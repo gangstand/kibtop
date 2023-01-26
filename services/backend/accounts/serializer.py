@@ -9,10 +9,10 @@ class UserRegistrationSerializer(UserCreateSerializer):
         )
 
 
-class UserAPISerializer(UserSerializer, serializers.Serializer):
+class UserAPISerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
         fields = (
-            'id', 'username', 'phone', 'first_name', 'addres', 'upload_user', 'deals'
+            'id', 'email', 'phone', 'first_name', 'addres', 'upload_user', 'deals'
         )
 
 
