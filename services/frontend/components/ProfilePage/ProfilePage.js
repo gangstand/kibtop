@@ -34,7 +34,7 @@ const ProfilePage = ({user, adverts}) => {
                 <div className="profile">
                     <ProfileMenu {...{user}} />
 
-                    <UserAdevrtsContainer {...{serverAds: adverts}} />
+                    <UserAdevrtsContainer {...{serverAds: adverts, user}} />
                 </div>
             </main>
         </>
