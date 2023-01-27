@@ -5,11 +5,11 @@ import DeleteAdvertButtonContainer from "./DeleteAdvertButton/DeleteAdvertButton
 import Image from "next/image"
 
 
-const ArchiveAdvert = ({id, category, index, title, cost, address, img, date}) => {
+const ArchiveAdvert = ({advertId, category, index, title, cost, address, img, date}) => {
     const {currency} = useCurrency()
     return (
         <>
-            <div href={'/adverts/'+id} className="advert advert--full advert--del">
+            <div href={`/advert/${category}/${advertId}`} className="advert advert--full advert--del">
                 <img width={100} height={100} alt={''} src={img} className="advert__img" />
                 <div className="adver-dimmer advert__img" />
 
@@ -25,7 +25,7 @@ const ArchiveAdvert = ({id, category, index, title, cost, address, img, date}) =
                     </div>
 
                     <div className="advert__column advert__column--right">
-                         <DeleteAdvertButtonContainer {...{category, id, index}} />
+                         <DeleteAdvertButtonContainer {...{category, id: advertId, index}} />
 
                         <p className="advert-cost advert-cost--mob advert-cost--profile">{currency} {cost}</p>
 

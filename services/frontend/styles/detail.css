@@ -1196,3 +1196,9 @@
 .detail-maps__place .detail-text--low {
     margin-left: 36px;
 }
+
+@media (max-width: 600px) {
+    .detail-maps__place .detail-text--low {
+        margin-left: 31px;
+    }
+}

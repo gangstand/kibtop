@@ -1,4 +1,6 @@
 import { createHeaders, instance } from "./Instance"
+import FormDataCreator from "./tools/FormDataCreator"
+import { serializeAdvertDatails } from "./tools/serializers/AdvertsSerializers"
 import { serializeCreateAdvertData } from "./tools/serializers/CreateAdvertSerializers"
 
 export const AddAdvertApi = {
@@ -8,7 +10,23 @@ export const AddAdvertApi = {
         const body = serializeCreateAdvertData(data, category, lang)
         return await instance.post(`${category}/create/`, body, {
             headers: await createHeaders()
-        })
-            .then(({id}) => {id, category})
+        }).then(async (res) => {
+            const {advertId} = serializeAdvertDatails(res.data, lang, category)
+            const {photos} = data
+            console.log(photos);
+            await photos.forEach(async img => {
+                const formData = FormDataCreator({
+                    [`${category}_full_upload`]: advertId,
+                    uploads: img
+                })
+
+                await instance.post(`${category}/full_uploads/`, formData, {
+                    headers: await createHeaders()
+                })
+            });
+            
+
+            return {id: advertId, category}
+        }).then(advert => advert)
     }
 }

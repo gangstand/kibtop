@@ -31,10 +31,10 @@ export const serializeAdverts = (adverts, lang) => {
 
 
     advertsFull = advertsFull.map(advert => ({
-        id: advert.id,
+        advertId: advert.id,
         title: advert[`title_${lang}`],
         cost: advert.price,
-        address: advert.address,
+        address: advert.city,
         img: BASE_URL+advert.upload,
         date: convertDate(advert.created_at),
         category: advert.category
@@ -48,7 +48,7 @@ export const serializeFullAdvertData = (advert, lang, category) => ({
     category,
     id: advert.id,
     title: advert[`title_${lang}`],
-    address: advert.address,
+    address: advert.city,
     cost: advert.price,
     img: advert.upload,
     date: convertDate(advert.created_at)
@@ -65,28 +65,28 @@ export const serializeFavorites = (favorites, category) => favorites
 
 export const serializeAdvertDatails = (advert, lang, category) => {
     return {
-        title: advert[`title_${lang}`],
-        description: advert[`description_${lang}`],
-        categoryName: advert[`category_${lang}`],
-        subCategoryName: advert[`sub_category_${lang}`],
+        title: advert[`title_${lang}`] || null,
+        description: advert[`description_${lang}`] || null,
+        categoryName: advert[`category_${lang}`] || null,
+        subCategoryName: advert[`sub_category_${lang}`] || null,
         condition: advert[`all_old_new_${lang}`],
-        brand: advert.brand,
-        mileage: advert.mileage,
-        year: advert.year,
-        rooms: advert[`number_rooms_${lang}`],
-        employment: advert.employment,
-        workType: advert[`for_work_type_en`],
-        date: convertDate(advert.created_at),
-        address: advert.address,
-        city: advert.city,
-        geocode: advert.geocode,
-        img: advert.upload,
+        brand: advert.brand || null,
+        mileage: advert.mileage || null,
+        year: advert.year || null,
+        rooms: advert[`number_rooms_${lang}`] || null,
+        employment: advert.employment || null,
+        workType: advert[`for_work_type_en`] || null,
+        date: convertDate(advert.created_at) || null,
+        address: advert.city || null,
+        city: advert.city || null,
+        geocode: advert.geocode || null,
+        img: advert.upload || null,
         uploads: !!(advert[`${category}_full_upload`]?.length) ? serializeAdvertUploads(advert[`${category}_full_upload`]) : [advert.upload, advert.upload ,advert.upload],
-        userId: advert.user,
-        advertId: advert.id,
-        cost: advert.price,
-        square: advert.square,
-        isMonth: advert.type_sell,
+        userId: advert.user || null,
+        advertId: advert.id || null,
+        cost: advert.price || null,
+        square: advert.square || null,
+        isMonth: advert.type_sell || null,
         category
     }
 }

@@ -10,7 +10,7 @@ const UserAdevrts = ({adverts}) => {
                     <div className="profile__adverts">
                         {
                             adverts?.map(advert => <UserAdevrt 
-                                        key={`${advert.category}_${advert.id}`}
+                                        key={`${advert.category}_${advert.advertId}`}
                                         {...advert} 
                                     />)
                         }

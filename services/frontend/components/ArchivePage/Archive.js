@@ -10,7 +10,7 @@ const Archive = ({adverts}) => {
                         <div className="adverts">
                             {
                                 adverts?.map((advert, index) => <ArchiveAdvert 
-                                        key={`${advert.category}_${advert.id}`} 
+                                        key={`${advert.category}_${advert.advertId}`} 
                                         index = {index}
                                         {...advert}
                                     />)

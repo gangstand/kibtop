@@ -21,7 +21,7 @@ export const serializeCreateAdvertData = (data, category, lang) => {
         city: data.city,
         geocode: data.geocode,
         upload: data.photos[0],
-        [`${category}_full_upload`]: data.photos[0],
+        [`${category}_full_upload`]: [],
         user: data.userId,
         price: data.cost,
         currency: data.currency,
@@ -34,9 +34,7 @@ export const serializeCreateAdvertData = (data, category, lang) => {
     const formData = new FormData()
 
     for (const key in newAdvertData) {
-        
         if(!!newAdvertData[key]) formData.append(key, newAdvertData[key])
-
     }
 
     return formData

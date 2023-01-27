@@ -6,12 +6,12 @@ import EditAdvertButtonContainer from "./EditAdvertButton/EditAdvertButtonContai
 import Image from "next/image"
 
 
-const UserAdevrt = ({id, title, cost, address, img, date, category}) => {
+const UserAdevrt = ({advertId, title, cost, address, img, date, category}) => {
     const {currency} = useCurrency()
     return (
         <>
             <div className="advert">
-                <Link href={`/advert/${category}/${id}`}>
+                <Link href={`/advert/${category}/${advertId}`}>
                     <img width={100} height={100} alt={''} src={img} className="advert__img" />
                 </Link>
 
@@ -27,7 +27,7 @@ const UserAdevrt = ({id, title, cost, address, img, date, category}) => {
                     </div>
 
                     <div className="advert__column advert__column--right">
-                        <LikeButtonContainer {...{id, category}} /> 
+                        <LikeButtonContainer {...{id: advertId, category}} /> 
 
                         <p className="advert-cost advert-cost--mob">{currency} {cost}</p>
 

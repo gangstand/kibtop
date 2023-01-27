@@ -39,7 +39,11 @@ const AddressField = ({isLoaded}) => {
 
 
         form.setValue('address', main_text, {shouldTouch: true, shouldValidate: true})
-        form.setValue('city', terms[terms.length - 2].value, {shouldTouch: true, shouldValidate: true})
+
+        const city = terms.length > 2 ? terms[terms.length - 2].value 
+                                        : terms[terms.length - 1].value 
+
+        form.setValue('city',  terms[terms.length - 2].value, {shouldTouch: true, shouldValidate: true})
 
         getGeocode({ address: description })
             .then((results) => {

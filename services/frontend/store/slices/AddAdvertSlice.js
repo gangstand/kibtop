@@ -81,6 +81,7 @@ export const addAdvertThunk = (data, category, lang) => async dispatch => {
     await AddAdvertApi.createAdvert(data, category, lang)
         .then(advert => {
             dispatch(setAddAdvertLoading(false))
+            console.log(advert);
             dispatch(setNewAdvertData(advert))
         }).catch(err => dispatch(setAddAdvertLoading(false)))
 }

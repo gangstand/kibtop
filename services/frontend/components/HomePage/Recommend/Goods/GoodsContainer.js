@@ -3,13 +3,16 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetRecommendGoodsQuery } from "../../../../services/HomePageApi";
 import { setUserFavoritesThunk } from "../../../../store/slices/FavoritesSlice";
+import Adverts from "../../../Adverts/Adverts";
 import Goods from "./Goods";
 
 const GoodsContainer = ({recommendGoods}) => {
     const {locale} = useRouter()
     const {data, isLoading} = useGetRecommendGoodsQuery(locale)
+
+    console.log(recommendGoods);
     
-    return <Goods {...{goods: (data || recommendGoods)}} />;
+    return <Adverts {...{adverts: (data || recommendGoods)}} />;
 }
 
 export default GoodsContainer;

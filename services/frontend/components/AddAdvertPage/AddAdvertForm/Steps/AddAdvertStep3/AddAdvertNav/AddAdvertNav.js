@@ -33,7 +33,9 @@ const AddAdvertNav = () => {
                     </a>
 
                     <h4 className="title title--add">
-                        <Text content={categoryName} />
+                        <span className="advert-nav__category">
+                            <Text content={categoryName} />
+                        </span>
                         <span className="advert-nav__subcategory">
                             <Text content={subCategoryText} />
                         </span>

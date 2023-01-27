@@ -11,12 +11,13 @@ const API_KEY = process.env.NEXT_PUBLIC_MAP_API_KEY
 export const CoogleMapProvider = ({children}) => {
     const {locale} = useRouter()
 
-    const [lang] = useState(locale)
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: process.env.NEXT_PUBLIC_MAP_API_KEY,
-        libraries
+        libraries,
+        language: 'ALl',
+        region: 'CY'
       })
     
     return (

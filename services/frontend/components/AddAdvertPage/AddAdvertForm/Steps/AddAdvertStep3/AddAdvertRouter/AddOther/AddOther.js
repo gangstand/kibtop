@@ -16,7 +16,7 @@ import SquareField from "../../../../Fields/SquareField";
 import SubmitButtonContainer from "../../../../Fields/SubmitButton/SubmitButtonContainer";
 import TitleField from "../../../../Fields/TitleField";
 
-const AddRealty = () => {
+const AddOther = () => {
     const {setValue, getValues, formState: {errors}} = useFormContext()
     const {currency} = useCurrency()
 
@@ -35,54 +35,6 @@ const AddRealty = () => {
                 </label>
 
                 <TitleField />
-            </div>
-
-            <div className="advert-form__field">
-                <label className="advert-form__label">
-                    <Text content="transaction type" />
-                </label>
-
-                <RadioGroup name={'isMonth'} inputs={[
-                    {label: 'Rent out', value: true},
-                    {label: 'Sell', value: false},
-
-                ]} />
-            </div>
-
-
-            <div className="advert-form__field">
-                <label className="advert-form__label">
-                    <Text content="condition" />
-                </label>
-
-                <RadioGroup name={'condition'} inputs={[
-                    {label: 'Old', value: 'Old'},
-                    {label: 'New', value: 'New'},
-
-                ]} />
-            </div>
-
-            <div className="advert-form__field">
-                <label className="advert-form__label">
-                    <Text content="rooms" />
-                </label>
-
-                <RadioGroup name={'rooms'} inputs={[
-                    {label: 'Studio', value: 'Studio'},
-                    {label: '1+1', value: '1+1'},
-                    {label: '2+1', value: '2+1'},
-                    {label: '2+2', value: '2+2'},
-                    {label: '3+1', value: '3+1'},
-                    {label: '4+1 and more', value: '4+1 and more'},
-                ]} />
-            </div>
-
-            <div className="advert-form__field">
-                <label className="advert-form__label">
-                    <Text content="Square" />
-                </label>
-
-                <SquareField />
             </div>
 
             <div className="advert-form__field">
@@ -131,20 +83,17 @@ const AddRealty = () => {
                     <Text content="Service sets" />
                 </label>
 
-                <ServiceSets requiredFields={['title', 
-                                                    'address',
-                                                    'categoryName', 
-                                                    'condition',
-                                                    'city', 
-                                                    'geocode', 
-                                                    'cost', 
-                                                    'description', 
-                                                    'currency', 
-                                                    'isMonth',
-                                                    'photos',
-                                                    'rooms',
-                                                    'subCategory',
-                                                    'square'
+                <ServiceSets requiredFields={[
+                                                'title', 
+                                                'address',
+                                                'categoryName', 
+                                                'city', 
+                                                'geocode', 
+                                                'cost', 
+                                                'description', 
+                                                'currency', 
+                                                'photos',
+                                                'subCategory',
                                                     ]} />
             </div>
 
@@ -156,36 +105,30 @@ const AddRealty = () => {
                 <ServiceSetsGroupContainer />
             </div>
 
-            <SubmitButtonContainer requiredFields={['title', 
+            <SubmitButtonContainer requiredFields={[
+                                                    'title', 
                                                     'address',
                                                     'categoryName', 
-                                                    'condition',
                                                     'city', 
                                                     'geocode', 
                                                     'cost', 
                                                     'description', 
                                                     'currency', 
-                                                    'isMonth',
                                                     'photos',
-                                                    'rooms',
                                                     'subCategory',
-                                                    'square'
                                                     ]} />
 
-            <NextButtonContainer    requiredFields={['title', 
+            <NextButtonContainer    requiredFields={[
+                                                    'title', 
                                                     'address',
                                                     'categoryName', 
-                                                    'condition',
                                                     'city', 
                                                     'geocode', 
                                                     'cost', 
                                                     'description', 
                                                     'currency', 
-                                                    'isMonth',
                                                     'photos',
-                                                    'rooms',
-                                                    'subCategory',,
-                                                    'square'
+                                                    'subCategory',
                                                     ]} />
 
             <p className="step-text">
@@ -195,4 +138,4 @@ const AddRealty = () => {
     );
 }
 
-export default AddRealty;
+export default AddOther;

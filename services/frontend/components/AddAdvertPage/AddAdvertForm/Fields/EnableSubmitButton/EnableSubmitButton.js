@@ -1,15 +1,15 @@
 import Text from "../../../../Elementes/Text/Text";
 
-const EnableSubmitButton = ({onSubmitClick, isValid, isPhoneNull, openAddPhoneModal}) => {
+const EnableSubmitButton = ({onSubmitClick, isDisabled, isPhoneNull, openAddPhoneModal}) => {
     return (
         <>
             {
                 isPhoneNull ? <>
-                    <button disabled={false} onClick={openAddPhoneModal} className="reg-btn reg-btn--max-content">
+                    <button disabled={isDisabled} onClick={openAddPhoneModal} className="reg-btn reg-btn--max-content">
                         <Text content="Enable" />
                     </button>
                 </> : <>
-                    <button disabled={!isValid} onClick={onSubmitClick} className="reg-btn reg-btn--max-content">
+                    <button disabled={isDisabled} onClick={onSubmitClick} className="reg-btn reg-btn--max-content">
                         <Text content="Enable" />
                     </button>
                 </>

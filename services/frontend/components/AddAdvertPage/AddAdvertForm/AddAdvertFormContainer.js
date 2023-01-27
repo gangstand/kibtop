@@ -11,6 +11,7 @@ const AddAdvertFormContainer = () => {
     const {userId} = useSelector(state => state.auth)
     const {phone} = useSelector(state => state.profile)
 
+    console.log(advertId, advertCategory);
 
     const {locale, push} = useRouter()
     const dispatch = useDispatch()
@@ -21,13 +22,7 @@ const AddAdvertFormContainer = () => {
 
     useEffect(() => {
         if(!!advertId && !!advertCategory) {
-            push({
-                pathname: '/advert/',
-                query: {
-                    category: advertCategory,
-                    advertId
-                }
-            })
+            push(`/advert/${advertCategory}/${advertId}`)
         }
     }, [advertId, advertCategory])
 

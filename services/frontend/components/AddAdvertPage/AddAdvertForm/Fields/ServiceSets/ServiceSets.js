@@ -2,7 +2,7 @@ import { useCurrency } from "../../../../../locales/hooks/useCurrency";
 import Text from "../../../../Elementes/Text/Text";
 import EnableSubmitButtonContainer from "../EnableSubmitButton/EnableSubmitButtonContainer";
 
-const ServiceSets = () => {
+const ServiceSets = ({requiredFields}) => {
     const {currency, countCurrencyPrice} = useCurrency()
     return (
         <>
@@ -22,7 +22,9 @@ const ServiceSets = () => {
 
 
                     <div className="promote-card__submit">
-                        <EnableSubmitButtonContainer {...{lifts: 0, top: 3, vip: 0, servicePrice: 4.9}} />
+                        <EnableSubmitButtonContainer {...{lifts: 0, top: 3, vip: 0, servicePrice: 4.9,
+                                                            requiredFields
+                                                            }} />
 
                         <p className="promote-card__cost">
                             <Text content="for" /> {currency}{countCurrencyPrice(4.9, '$')}
@@ -53,7 +55,8 @@ const ServiceSets = () => {
 
 
                     <div className="promote-card__submit">
-                        <EnableSubmitButtonContainer {...{lifts: 3, top: 7, vip: 0, servicePrice: 8.9}} />
+                        <EnableSubmitButtonContainer {...{lifts: 3, top: 7, vip: 0, servicePrice: 8.9,
+                                                            requiredFields}} />
 
                         <p className="promote-card__cost">
                             <Text content="for" /> {currency}{countCurrencyPrice(8.9, '$')}
@@ -92,7 +95,8 @@ const ServiceSets = () => {
 
 
                     <div className="promote-card__submit">
-                        <EnableSubmitButtonContainer {...{lifts: 9, top: 7, vip: 7, servicePrice: 30.9}} />
+                        <EnableSubmitButtonContainer {...{lifts: 9, top: 7, vip: 7, servicePrice: 30.9,
+                                                            requiredFields}} />
 
                         <p className="promote-card__cost">
                             <Text content="for" /> {currency}{countCurrencyPrice(30.9, '$')}

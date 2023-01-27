@@ -55,7 +55,7 @@ const AddAdvertStep4 = () => {
                         <Text content="Service sets" />
                     </label>
 
-                    <ServiceSets />
+                    <ServiceSets requiredFields={[]} />
                 </div>
 
                 <div className="total">
