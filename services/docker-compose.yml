@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  backend:
+    container_name: api
+    build: backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - static_volume:/app/backend/staticfiles
+      - media_volume:/app/backend/media
