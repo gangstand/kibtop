@@ -7,11 +7,12 @@ from rest_framework.response import Response
 from translatepy import Translator
 
 from sections.models import (
-    ElectronicsFull, ElectronicsFullFavouritesUser, ElectronicsFullViewsUser
+    ElectronicsFull, ElectronicsFullFavouritesUser, ElectronicsFullViewsUser, ElectronicsFullUpload
 )
 from sections.serializer import (
     ElectronicsFullSerializer, ElectronicsFullSerializerEN, ElectronicsFullSerializerRU, ElectronicsFullSerializerTR,
-    ElectronicsFullSerializerDetail, ElectronicsFullFavouritesUserSerializer, ElectronicsFullViewsUserSerializer
+    ElectronicsFullSerializerDetail, ElectronicsFullFavouritesUserSerializer, ElectronicsFullViewsUserSerializer,
+    ElectronicsFullUploadSerializer
 )
 from sections.service import (
     FilterElectronics, FilterElectronicsViews, FilterElectronicsFavourites,
@@ -182,7 +183,20 @@ class ElectronicsFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
     serializer_class = ElectronicsFullFavouritesUserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
+
 class ElectronicsFullArchiveUserAPIDestroy(generics.DestroyAPIView):
     queryset = ElectronicsFull.objects.all()
     serializer_class = ElectronicsFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ElectronicsFullUploadsAPIList(generics.ListCreateAPIView):
+    queryset = ElectronicsFullUpload.objects.all()
+    serializer_class = ElectronicsFullUploadSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ElectronicsFullUploadsAPIUpdateList(generics.UpdateAPIView):
+    queryset = ElectronicsFullUpload.objects.all()
+    serializer_class = ElectronicsFullUploadSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

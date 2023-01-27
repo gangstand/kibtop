@@ -6,25 +6,37 @@ import AddressField from "../../../../Fields/AddressField/AddressField";
 import AddressFieldContainer from "../../../../Fields/AddressField/AddressFieldContainer";
 import CostField from "../../../../Fields/CostField";
 import DescriptionInput from "../../../../Fields/DescriptionInput";
+import NextButtonContainer from "../../../../Fields/NextButton/NextButtonContainer";
 import PhotosInput from "../../../../Fields/PhotosInput";
 import PhotoUploadsContainer from "../../../../Fields/PhotoUploads/PhotoUploadsContainer";
 import RadioGroup from "../../../../Fields/RadioGroup/RadioGroup";
 import ServiceSets from "../../../../Fields/ServiceSets/ServiceSets";
 import ServiceSetsGroupContainer from "../../../../Fields/ServiceSetsGroup/ServiceSetsGroupContainer";
+import SquareField from "../../../../Fields/SquareField";
 import SubmitButtonContainer from "../../../../Fields/SubmitButton/SubmitButtonContainer";
+import TitleField from "../../../../Fields/TitleField";
 
 const AddRealty = () => {
-    const {setValue} = useFormContext()
+    const {setValue, getValues, formState: {errors}} = useFormContext()
     const {currency} = useCurrency()
 
     useEffect(() => {
-        setValue('isMonth', 'true')
-        setValue('condition', 'Old')
-        setValue('rooms', 'Studio')
-        setValue('currency', currency)
+        setValue('isMonth', 'true', {shouldTouch: true, shouldValidate: true})
+        setValue('condition', 'Old', {shouldTouch: true, shouldValidate: true})
+        setValue('rooms', 'Studio', {shouldTouch: true, shouldValidate: true})
+        setValue('currency', currency, {shouldTouch: true, shouldValidate: true})
+
     }, [])
     return (
         <>
+            <div className="advert-form__field">
+                <label className="advert-form__label">
+                    <Text content="title" />
+                </label>
+
+                <TitleField />
+            </div>
+
             <div className="advert-form__field">
                 <label className="advert-form__label">
                     <Text content="transaction type" />
@@ -67,6 +79,14 @@ const AddRealty = () => {
 
             <div className="advert-form__field">
                 <label className="advert-form__label">
+                    <Text content="Square" />
+                </label>
+
+                <SquareField />
+            </div>
+
+            <div className="advert-form__field">
+                <label className="advert-form__label">
                     <Text content="price" />
                 </label>
 
@@ -81,7 +101,7 @@ const AddRealty = () => {
                 <AddressFieldContainer />
             </div>
 
-            <div className="advert-form__field">
+            <div className="advert-form__field advert-form__field---address">
                 <label className="advert-form__label">
                     <Text content="photo" />
                 </label>
@@ -98,15 +118,15 @@ const AddRealty = () => {
                 </label>
 
                 <div className="advert-form__files">
-                    <DescriptionInput placeholderName="apartment" />
+                    <DescriptionInput placeholderName={"apartment"} />
                 </div>
             </div>
 
-            <h4 className="title promote-title">
+            <h4 className="title promote-title mob-hide">
                 <Text content="Promote your products" />
             </h4>
 
-            <div className="advert-form__field advert-form__field--mt">
+            <div className="advert-form__field advert-form__field--mt mob-hide">
                 <label className="advert-form__label">
                     <Text content="Service sets" />
                 </label>
@@ -114,7 +134,7 @@ const AddRealty = () => {
                 <ServiceSets />
             </div>
 
-            <div className="advert-form__field advert-form__field--mt">
+            <div className="advert-form__field advert-form__field--mt mob-hide">
                 <label className="advert-form__label">
                     <Text content="Service sets" />
                 </label>
@@ -122,9 +142,41 @@ const AddRealty = () => {
                 <ServiceSetsGroupContainer />
             </div>
 
+            <SubmitButtonContainer requiredFields={['title', 
+                                                    'address',
+                                                    'categoryName', 
+                                                    'condition',
+                                                    'city', 
+                                                    'geocode', 
+                                                    'cost', 
+                                                    'description', 
+                                                    'currency', 
+                                                    'isMonth',
+                                                    'photos',
+                                                    'rooms',
+                                                    'subCategory',
+                                                    'square'
+                                                    ]} />
 
+            <NextButtonContainer    requiredFields={['title', 
+                                                    'address',
+                                                    'categoryName', 
+                                                    'condition',
+                                                    'city', 
+                                                    'geocode', 
+                                                    'cost', 
+                                                    'description', 
+                                                    'currency', 
+                                                    'isMonth',
+                                                    'photos',
+                                                    'rooms',
+                                                    'subCategory',,
+                                                    'square'
+                                                    ]} />
 
-            <SubmitButtonContainer />
+            <p className="step-text">
+                <Text content="step" /> 2 <Text content="of" /> 3
+            </p>
         </>
     );
 }

@@ -4,5 +4,6 @@ export const serializeUserData = user => ({
     email: user.email,
     city: user.addres,
     avatar: user.upload_user,
-    phone: user.phone
+    phone: user.phone,
+    deals: user.deals
 })

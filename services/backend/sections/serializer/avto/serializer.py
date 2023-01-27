@@ -7,7 +7,7 @@ from sections.models import (
 class AvtoFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = AvtoFullUpload
-        fields = ('uploads',)
+        fields = '__all__'
 
 
 class AvtoFullViewsUserSerializer(serializers.ModelSerializer):

@@ -1,7 +1,8 @@
 from django.urls import path
 from sections.views import (
     WorkFullAPIUpdateDestroy, WorkFullAPIListCreate, WorkFullAPIList, WorkFullViewsUserAPIList,
-    WorkFullFavouritesUserAPIList, WorkFullFavouritesUserAPIUpdateDestroy, WorkFullArchiveUserAPIDestroy
+    WorkFullFavouritesUserAPIList, WorkFullFavouritesUserAPIUpdateDestroy, WorkFullArchiveUserAPIDestroy,
+    WorkFullUploadsAPIList, WorkFullUploadsAPIUpdateList
 )
 
 urlpatterns = [
@@ -12,5 +13,6 @@ urlpatterns = [
     path('work/favourites/<int:pk>/', WorkFullFavouritesUserAPIUpdateDestroy.as_view()),
     path('work/<int:pk>/', WorkFullAPIUpdateDestroy.as_view()),
     path('work/archive/<int:pk>/', WorkFullArchiveUserAPIDestroy.as_view()),
-
+    path('work/full_uploads/', WorkFullUploadsAPIList.as_view()),
+    path('work/full_uploads/<int:pk>/', WorkFullUploadsAPIUpdateList.as_view()),
 ]

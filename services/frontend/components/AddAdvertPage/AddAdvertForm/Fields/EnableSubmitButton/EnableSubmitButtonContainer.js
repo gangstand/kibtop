@@ -21,7 +21,6 @@ const EnableSubmitButtonContainer = ({lifts, top, vip, servicePrice}) => {
 
         dispatch(setAddAdvertPhoneOpen(true))
         
-        console.log(getValues());
     }
     
     const onSummitEnableClick = () => {

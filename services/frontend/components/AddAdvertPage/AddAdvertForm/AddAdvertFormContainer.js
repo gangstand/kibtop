@@ -1,17 +1,35 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAddAdvertCategory, setAddAdvertFormStep } from "../../../store/slices/AddAdvertSlice";
+import { addAdvertThunk, setAddAdvertCategory, setAddAdvertFormStep } from "../../../store/slices/AddAdvertSlice";
 import AddAdvertForm from "./AddAdvertForm";
 
-const libraries = ['places']
 
 
 const AddAdvertFormContainer = () => {
-    const {formStep} = useSelector(state => state.addAdvert)
+    const {formStep, category, newAdvert: {advertId, advertCategory}} = useSelector(state => state.addAdvert)
+    const {userId} = useSelector(state => state.auth)
+    const {phone} = useSelector(state => state.profile)
+
+
+    const {locale, push} = useRouter()
     const dispatch = useDispatch()
 
     const onAddAdvertSubmit = data => {
-        console.log(data);
+        dispatch(addAdvertThunk({...data, userId, phone}, category, locale))
     }
+
+    useEffect(() => {
+        if(!!advertId && !!advertCategory) {
+            push({
+                pathname: '/advert/',
+                query: {
+                    category: advertCategory,
+                    advertId
+                }
+            })
+        }
+    }, [advertId, advertCategory])
 
 
     return <AddAdvertForm {...{formStep, onAddAdvertSubmit}} />;

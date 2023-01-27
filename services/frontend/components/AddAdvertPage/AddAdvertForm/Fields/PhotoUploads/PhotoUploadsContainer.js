@@ -29,8 +29,7 @@ const PhotoUploadsContainer = () => {
     }, [photos])
 
     const deleteUpload = (index) => {
-        setValue('photos', uploads.filter((upload, uploadIndex) => uploadIndex !== index))
-        setUploads(uploads => uploads.filter((upload, uploadIndex) => uploadIndex !== index))        
+        setValue('photos', photos.filter((upload, uploadIndex) => uploadIndex !== index), {shouldTouch: true, shouldValidate: true})
     }
 
     return <PhotoUploads {...{uploads, deleteUpload}} />;

@@ -1,6 +1,5 @@
 import { useFormContext } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { CoogleMapProvider, MapProvider } from "../../../../../../locales/MapContext";
 import AddRealty from "./AddRealty/AddRealty";
 
 const AddAdvertRouter = () => {
@@ -8,7 +7,6 @@ const AddAdvertRouter = () => {
     
     return (
         <>
-            <CoogleMapProvider>
                 {
                     category === 'realty' ? <AddRealty /> :
                     category === 'avto' ? "Auto" :
@@ -19,7 +17,6 @@ const AddAdvertRouter = () => {
                     category === 'house_garden' ? "Fashion and style" :
                     category === 'fashion' ? "House and garden" : ''
                 }
-            </CoogleMapProvider>
         </>
     );
 }

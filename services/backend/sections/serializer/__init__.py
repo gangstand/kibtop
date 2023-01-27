@@ -1,41 +1,46 @@
 from .realry.serializer import (
     RealtyFullSerializerEN, RealtyFullSerializerDetail, RealtyFullSerializerRU, RealtyFullSerializerTR,
-    RealtyFullSerializer, RealtyFullViewsUserSerializer, RealtyFullFavouritesUserSerializer
+    RealtyFullSerializer, RealtyFullViewsUserSerializer, RealtyFullFavouritesUserSerializer,
+    RealtyFullUploadSerializer
 )
 from .stock.serializer import StockSerializerEN, StockSerializerRU, StockSerializerTR, StockSerializer
 from .avto.serializer import (
     AvtoFullSerializer, AvtoFullSerializerDetail, AvtoFullSerializerEN, AvtoFullSerializerRU,
-    AvtoFullSerializerTR, AvtoFullViewsUserSerializer, AvtoFullFavouritesUserSerializer
+    AvtoFullSerializerTR, AvtoFullViewsUserSerializer, AvtoFullFavouritesUserSerializer, AvtoFullUploadSerializer
 )
 from .work.serializer import (
     WorkFullSerializer, WorkFullSerializerDetail, WorkFullSerializerEN, WorkFullSerializerRU,
-    WorkFullSerializerTR, WorkFullViewsUserSerializer, WorkFullFavouritesUserSerializer
+    WorkFullSerializerTR, WorkFullViewsUserSerializer, WorkFullFavouritesUserSerializer,
+    WorkFullUploadSerializer
 )
 from .services.serializer import (
     ServicesFullSerializer, ServicesFullSerializerDetail, ServicesFullSerializerEN, ServicesFullSerializerRU,
-    ServicesFullSerializerTR, ServicesFullViewsUserSerializer, ServicesFullFavouritesUserSerializer
+    ServicesFullSerializerTR, ServicesFullViewsUserSerializer, ServicesFullFavouritesUserSerializer,
+    ServicesFullUploadSerializer
 )
 from .children.serializer import (
     ChildrenFullSerializer, ChildrenFullSerializerDetail, ChildrenFullSerializerEN, ChildrenFullSerializerRU,
-    ChildrenFullSerializerTR, ChildrenFullViewsUserSerializer, ChildrenFullFavouritesUserSerializer
+    ChildrenFullSerializerTR, ChildrenFullViewsUserSerializer, ChildrenFullFavouritesUserSerializer,
+    ChildrenFullUploadSerializer
 )
 from .electronics.serializer import (
     ElectronicsFullSerializer, ElectronicsFullSerializerDetail, ElectronicsFullSerializerEN,
     ElectronicsFullSerializerRU, ElectronicsFullSerializerTR, ElectronicsFullViewsUserSerializer,
-    ElectronicsFullFavouritesUserSerializer
+    ElectronicsFullFavouritesUserSerializer, ElectronicsFullUploadSerializer
 )
 from .house_garden.serializer import (
     HouseGardenFullSerializer, HouseGardenFullSerializerDetail, HouseGardenFullSerializerEN,
     HouseGardenFullSerializerRU, HouseGardenFullSerializerTR, HouseGardenFullViewsUserSerializer,
-    HouseGardenFullFavouritesUserSerializer
+    HouseGardenFullFavouritesUserSerializer, HouseGardenFullUploadSerializer
 )
 from .fashion.serializer import (
     FashionFullSerializer, FashionFullSerializerDetail, FashionFullSerializerEN, FashionFullSerializerRU,
-    FashionFullSerializerTR, FashionFullFavouritesUserSerializer, FashionFullViewsUserSerializer
+    FashionFullSerializerTR, FashionFullFavouritesUserSerializer, FashionFullViewsUserSerializer,
+    FashionFullUploadSerializer
 )
 from .base_serializer import (
     CitySerializer, MoneySerializer, CategoryFullSerializerEN, CategoryFullSerializerRU,
-    CategoryFullSerializerTR, CategoryFullSerializer
+    CategoryFullSerializerTR, CategoryFullSerializer, FullFavouritesUserSerializer
 )
 
 __all__ = [
@@ -50,7 +55,9 @@ __all__ = [
     'RealtyFullSerializer',
     'RealtyFullViewsUserSerializer',
     'RealtyFullFavouritesUserSerializer',
+    'RealtyFullUploadSerializer',
 
+    'FullFavouritesUserSerializer',
     'CitySerializer',
     'MoneySerializer',
     'StockSerializer',
@@ -62,6 +69,7 @@ __all__ = [
     'AvtoFullSerializerTR',
     'AvtoFullViewsUserSerializer',
     'AvtoFullFavouritesUserSerializer',
+    'AvtoFullUploadSerializer',
 
     'WorkFullSerializer',
     'WorkFullSerializerDetail',
@@ -70,6 +78,7 @@ __all__ = [
     'WorkFullSerializerTR',
     'WorkFullViewsUserSerializer',
     'WorkFullFavouritesUserSerializer',
+    'WorkFullUploadSerializer',
 
     'ServicesFullSerializer',
     'ServicesFullSerializerDetail',
@@ -78,6 +87,7 @@ __all__ = [
     'ServicesFullSerializerTR',
     'ServicesFullViewsUserSerializer',
     'ServicesFullFavouritesUserSerializer',
+    'ServicesFullUploadSerializer',
 
     'ChildrenFullSerializer',
     'ChildrenFullSerializerDetail',
@@ -86,6 +96,7 @@ __all__ = [
     'ChildrenFullSerializerTR',
     'ChildrenFullViewsUserSerializer',
     'ChildrenFullFavouritesUserSerializer',
+    'ChildrenFullUploadSerializer',
 
     'ElectronicsFullSerializer',
     'ElectronicsFullSerializerDetail',
@@ -94,6 +105,7 @@ __all__ = [
     'ElectronicsFullSerializerTR',
     'ElectronicsFullViewsUserSerializer',
     'ElectronicsFullFavouritesUserSerializer',
+    'ElectronicsFullUploadSerializer',
 
     'HouseGardenFullSerializer',
     'HouseGardenFullSerializerDetail',
@@ -102,6 +114,7 @@ __all__ = [
     'HouseGardenFullSerializerTR',
     'HouseGardenFullViewsUserSerializer',
     'HouseGardenFullFavouritesUserSerializer',
+    'HouseGardenFullUploadSerializer',
 
     'FashionFullSerializer',
     'FashionFullSerializerDetail',
@@ -110,6 +123,7 @@ __all__ = [
     'FashionFullSerializerTR',
     'FashionFullViewsUserSerializer',
     'FashionFullFavouritesUserSerializer',
+    'FashionFullUploadSerializer',
 
     'CategoryFullSerializerEN',
     'CategoryFullSerializerRU',

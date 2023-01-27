@@ -11,7 +11,7 @@ from django.conf.urls.static import static
 class BothHttpAndHttpsSchemaGenerator(OpenAPISchemaGenerator):
     def get_schema(self, request=None, public=False):
         schema = super().get_schema(request, public)
-        schema.schemes = ["https"]
+        schema.schemes = ["http", "https"]
         return schema
 
 
@@ -36,7 +36,6 @@ urlpatterns = [
                       path('docs/', include([
                           path('', schema_view.with_ui('swagger', cache_timeout=0), name="swagger-schema"),
                           path('api.json/', schema_view.without_ui(cache_timeout=0), name='schema-swagger-ui'),
-                          path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
                       ])),
                   ]))
               ] + static(

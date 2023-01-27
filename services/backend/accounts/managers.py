@@ -4,10 +4,10 @@ from django.contrib.auth.base_user import BaseUserManager
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, username=None, email=None, phone=None, password=None, **extra_fields):
+    def _create_user(self, username=None, email=None, password=None, **extra_fields):
         if not username:
-            if not email and not phone:
-                raise ValueError('The given email/phone must be set')
+            if not email:
+                raise ValueError('The given email/username must be set')
 
         if email:
             email = self.normalize_email(email)
@@ -21,18 +21,9 @@ class UserManager(BaseUserManager):
                 **extra_fields
             )
 
-        if phone:
-            if not username:
-                username = phone
-
-            user = self.model(
-                username=username,
-                phone=phone,
-                **extra_fields
-            )
-
         if extra_fields.get('is_superuser'):
             user = self.model(
+                email=email,
                 username=username,
                 **extra_fields
             )
@@ -50,7 +41,7 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_active', True)
         return self._create_user(username=username, email=email, password=password, **extra_fields)
 
-    def create_superuser(self, username, password, **extra_fields):
+    def create_superuser(self, username, email, password, **extra_fields):
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_active', True)
@@ -60,6 +51,7 @@ class UserManager(BaseUserManager):
 
         return self._create_user(
             username=username,
+            email=email,
             password=password,
             **extra_fields
         )

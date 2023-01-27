@@ -8,7 +8,7 @@ from sections.models import (
 class ChildrenFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChildrenFullUpload
-        fields = ('uploads',)
+        fields = '__all__'
 
 
 class ChildrenFullViewsUserSerializer(serializers.ModelSerializer):

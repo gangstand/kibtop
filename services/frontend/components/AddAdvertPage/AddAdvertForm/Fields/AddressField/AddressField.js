@@ -5,6 +5,7 @@ import AddressSelectContainer from "./AddressSelect/AddressSelectContainer";
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
+    
   } from "use-places-autocomplete";
   import useOnclickOutside from "react-cool-onclickoutside";
 import { useEffect } from "react";
@@ -22,7 +23,13 @@ const AddressField = ({isLoaded}) => {
         clearSuggestions();
       });
     
-    const handleInput = (e) => setValue(e.target.value)
+    const handleInput = (e) => {
+        setValue(e.target.value)
+
+        form.setValue('geocode', null)
+        form.setValue('address', null)
+        form.setValue('city', null)
+    }
     
     const handleSelect = (place) => () => {
         const {description, structured_formatting: {main_text}, terms} = place
@@ -31,13 +38,13 @@ const AddressField = ({isLoaded}) => {
         setValue(description, false);
 
 
-        form.setValue('address', main_text)
-        form.setValue('city', terms[terms.length - 2].value)
+        form.setValue('address', main_text, {shouldTouch: true, shouldValidate: true})
+        form.setValue('city', terms[terms.length - 2].value, {shouldTouch: true, shouldValidate: true})
 
         getGeocode({ address: description })
             .then((results) => {
                 const { lat, lng } = getLatLng(results[0]);
-                form.setValue('geocode', `${lat} ${lng}`)
+                form.setValue('geocode', `${lat} ${lng}`, {shouldTouch: true, shouldValidate: true})
                 console.log("📍 Coordinates: ", { lat, lng });
             });
     };
@@ -53,8 +60,15 @@ const AddressField = ({isLoaded}) => {
     return (
         <>
             <input {...register('geocode', {
-                required: t('field is required')
-            })} type="text" hidden={true} />
+                    required: t('field is required')
+                })} type="text" hidden={true} />
+            <input {...register('address', {
+                    required: t('field is required')
+                })} type="text" hidden={true} />
+            <input {...register('city', {
+                    required: t('field is required')
+                })} type="text" hidden={true} />
+
             <div className="radio-group" ref={ref}>
                 <div className={"search search--location search--address" + (!!error ? ' field--error': '')}>
                     <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -22,6 +22,7 @@ export async function getServerSideProps({req, res, locale}) {
     
     const user = await getServerSideUser(cookies)
 
+
     if(!user) {
         return {
             props: {user, favoriteAdverts: []},

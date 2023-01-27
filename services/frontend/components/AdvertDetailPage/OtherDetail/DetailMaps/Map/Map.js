@@ -1,4 +1,4 @@
-import { GoogleMap } from "@react-google-maps/api";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useRef } from "react";
 import { useCallback } from "react";
 import { defaultTheme } from "./MapTheme";
@@ -11,7 +11,7 @@ const containerStyle = {
 
 const defaultOptions = {
     panControl: true,
-    zoomControl: true,
+    zoomControl: false,
     mapTypeControl: false,
     scaleControl: false,
     streetViewControl: false,
@@ -48,7 +48,9 @@ const Map = ({center}) => {
                 options={defaultOptions}
             >
                 { /* Child components, such as markers, info windows, etc. */ }
-                <></>
+                <>
+                    <Marker position={center} icon={{url: '/img/goods/marker.svg'}} />
+                </>
             </GoogleMap>
         </>
     );

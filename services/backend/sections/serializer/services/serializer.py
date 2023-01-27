@@ -7,7 +7,7 @@ from sections.models import (
 class ServicesFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServicesFullUpload
-        fields = ('uploads',)
+        fields = '__all__'
 
 
 class ServicesFullViewsUserSerializer(serializers.ModelSerializer):

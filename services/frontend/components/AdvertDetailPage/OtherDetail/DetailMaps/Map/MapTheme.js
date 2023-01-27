@@ -22,7 +22,7 @@ export const defaultTheme = [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
@@ -31,7 +31,7 @@ export const defaultTheme = [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
@@ -52,7 +52,7 @@ export const defaultTheme = [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
@@ -61,7 +61,26 @@ export const defaultTheme = [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "weight": "1",
+                "visibility": "on"
+            },
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#F5E3A5",
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#EDCB76",
             }
         ]
     },
@@ -70,7 +89,7 @@ export const defaultTheme = [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },

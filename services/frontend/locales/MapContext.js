@@ -6,6 +6,8 @@ export const CoogleMapContext = createContext(null)
 
 const libraries = ['places']
 
+const API_KEY = process.env.NEXT_PUBLIC_MAP_API_KEY
+
 export const CoogleMapProvider = ({children}) => {
     const {locale} = useRouter()
 
@@ -14,8 +16,7 @@ export const CoogleMapProvider = ({children}) => {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: process.env.NEXT_PUBLIC_MAP_API_KEY,
-        libraries,
-        language: lang
+        libraries
       })
     
     return (

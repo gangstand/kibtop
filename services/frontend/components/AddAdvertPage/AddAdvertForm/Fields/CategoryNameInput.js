@@ -11,7 +11,7 @@ const CategoryNameInput = ({value, text, category}) => {
     const switchFormStep = step => dispatch(setAddAdvertFormStep(step))
 
     const onCategoryClick = () => {
-        setValue('categoryName', value)
+        setValue('categoryName', value, {shouldTouch: true, shouldValidate: true})
         setCategoryForm(category)
         switchFormStep(2)
     }

@@ -1,20 +1,23 @@
 import Text from "../../../../Elementes/Text/Text";
 
-const SubmitButton = ({onSubmitClick, isValid, isPhoneNull, openAddPhoneModal}) => {
+const SubmitButton = ({onSubmitClick, isDisabled, isLoading, isPhoneNull, openAddPhoneModal}) => {
     return (
         <>
             {
                 isPhoneNull ? <>
-                    <button disabled={!isValid} onClick={openAddPhoneModal} className="reg-btn reg-btn--add reg-btn--grey">
+                    <button disabled={isDisabled || isLoading} onClick={openAddPhoneModal} className="reg-btn reg-btn--add reg-btn--grey">
                         <Text content="Publish without promotion" />
                     </button>
                 </> : <>
                     <button 
                         onClick={onSubmitClick}
-                        disabled={!isValid}
+                        disabled={isDisabled || isLoading}
                         className="reg-btn reg-btn--add reg-btn--grey"
                     >
-                        <Text content="Publish without promotion" />
+                        {
+                            isLoading ? <><Text content="Publishing" />...</> : <Text content="Publish without promotion" />
+                        }
+                        
                     </button>
                 </>
             }

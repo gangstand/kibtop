@@ -45,12 +45,21 @@
     top: 2px;
 }
 
+
+
 .detail-like .like-icon {
     width: 26px;
     height: 25px;
 
     margin-bottom: 0;
     margin-left: 26px;
+}
+
+@media (max-width: 700px) {
+    .detail-like .like-icon {
+        margin-left: 5px;
+        margin-right: 10px;
+    }
 }
 
 .detail-slider {
@@ -498,12 +507,15 @@
 
 .detail-maps__string {
     display: flex;
+    align-items: center;
+}
 
+.detail-maps__place {
     margin-bottom: 20px;
 }
 
 @media (max-width: 600px) {
-    .detail-maps__string {
+    .detail-maps__place {
         margin-bottom: 12px;
     }
 }
@@ -523,7 +535,7 @@
 }
 
 .detail-maps__address {
-    max-width: 160px;
+    max-width: max-content;
 }
 
 @media (max-width: 600px) {
@@ -533,7 +545,7 @@
 }
 
 .detail-maps__distance {
-    max-width: 81px;
+    max-width: 90px;
 }
 
 @media (max-width: 600px) {
@@ -846,6 +858,7 @@
 
     .detail-like .like-icon {
         margin-left: 0;
+        margin-right: 0;
 
         fill: #fff;
 
@@ -1031,9 +1044,11 @@
     padding: 0px 8px;
     margin-left: 8px;
     border-left: 1px solid #EDEDED;
+
+    white-space: nowrap;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
     .square {
         margin-left: 16px;
         padding: 0 19px;
@@ -1137,6 +1152,10 @@
 }
 
 .seller-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     width: 100%;
     height: 40px;
 
@@ -1171,4 +1190,9 @@
     .user--seller {
         height: 200px;
     }
+}
+
+
+.detail-maps__place .detail-text--low {
+    margin-left: 36px;
 }

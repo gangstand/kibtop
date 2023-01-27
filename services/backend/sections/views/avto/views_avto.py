@@ -6,11 +6,11 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from translatepy import Translator
 from sections.models import (
-    AvtoFull, AvtoFullFavouritesUser, AvtoFullViewsUser
+    AvtoFull, AvtoFullFavouritesUser, AvtoFullViewsUser, AvtoFullUpload
 )
 from sections.serializer import (
     AvtoFullSerializer, AvtoFullSerializerEN, AvtoFullSerializerRU, AvtoFullSerializerTR,
-    AvtoFullSerializerDetail, AvtoFullViewsUserSerializer, AvtoFullFavouritesUserSerializer
+    AvtoFullSerializerDetail, AvtoFullViewsUserSerializer, AvtoFullFavouritesUserSerializer, AvtoFullUploadSerializer
 )
 from sections.service import (
     FilterAvto, FilterAvtoViews, FilterAvtoFavourites)
@@ -165,6 +165,18 @@ class AvtoFullViewsUserAPIList(generics.ListCreateAPIView):
     filterset_class = FilterAvtoViews
     queryset = AvtoFullViewsUser.objects.all()
     serializer_class = AvtoFullViewsUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class AvtoFullUploadsAPIList(generics.ListCreateAPIView):
+    queryset = AvtoFullUpload.objects.all()
+    serializer_class = AvtoFullUploadSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class AvtoFullUploadsAPIUpdateList(generics.UpdateAPIView):
+    queryset = AvtoFullUpload.objects.all()
+    serializer_class = AvtoFullUploadSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
 

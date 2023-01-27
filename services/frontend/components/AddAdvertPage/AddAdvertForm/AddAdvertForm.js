@@ -4,6 +4,7 @@ import AddPhoneContainer from "../AddPhone/AddPhoneContainer";
 import AddAdvertStep1 from "./Steps/AddAdvertStep1/AddAdvertStep1";
 import AddAdvertStep2 from "./Steps/AddAdvertStep2/AddAdvertStep2";
 import AddAdvertStep3 from "./Steps/AddAdvertStep3/AddAdvertStep3";
+import AddAdvertStep4 from "./Steps/AddAdvertStep4/AddAdvertStep4";
 
 const AddAdvertForm = ({formStep, onAddAdvertSubmit}) => {
     
@@ -29,6 +30,9 @@ const AddAdvertForm = ({formStep, onAddAdvertSubmit}) => {
                             }
                             {
                                 formStep === 3 && <AddAdvertStep3 />
+                            }
+                            {
+                                formStep === 4 && <AddAdvertStep4 />
                             }
                             <AddPhoneContainer />
                         </FormProvider>

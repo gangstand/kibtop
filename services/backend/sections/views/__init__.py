@@ -7,42 +7,51 @@ from .user_archive.user_archive_views import UserArchiveAPIList
 
 from .realty.views_realty import (
     RealtyFullAPIList, RealtyFullAPIListCreate, RealtyFullAPIUpdateDestroy, RealtyFullViewsUserAPIList,
-    RealtyFullFavouritesUserAPIList, RealtyFullFavouritesUserAPIUpdateDestroy, RealtyFullArchiveUserAPIDestroy
+    RealtyFullFavouritesUserAPIList, RealtyFullFavouritesUserAPIUpdateDestroy, RealtyFullArchiveUserAPIDestroy,
+    RealtyFullUploadsAPIUpdateList, RealtyFullUploadsAPIList,
 )
 from .views_base import (
     CityAPIList, MoneyAPIList, MoneyAPIUpdateDestroy
 )
 from .avto.views_avto import (
     AvtoFullAPIList, AvtoFullAPIListCreate, AvtoFullAPIUpdateDestroy, AvtoFullViewsUserAPIList,
-    AvtoFullFavouritesUserAPIList, AvtoFullFavouritesUserAPIUpdateDestroy, AvtoFullArchiveUserAPIDestroy
+    AvtoFullFavouritesUserAPIList, AvtoFullFavouritesUserAPIUpdateDestroy, AvtoFullArchiveUserAPIDestroy,
+    AvtoFullUploadsAPIList, AvtoFullUploadsAPIUpdateList
 )
 from .work.views_work import (
     WorkFullAPIList, WorkFullAPIListCreate, WorkFullAPIUpdateDestroy, WorkFullViewsUserAPIList,
-    WorkFullFavouritesUserAPIList, WorkFullFavouritesUserAPIUpdateDestroy, WorkFullArchiveUserAPIDestroy
+    WorkFullFavouritesUserAPIList, WorkFullFavouritesUserAPIUpdateDestroy, WorkFullArchiveUserAPIDestroy,
+    WorkFullUploadsAPIUpdateList, WorkFullUploadsAPIList
 )
 from .services.views_services import (
     ServicesFullAPIList, ServicesFullAPIListCreate, ServicesFullAPIUpdateDestroy, ServicesFullViewsUserAPIList,
-    ServicesFullFavouritesUserAPIList, ServicesFullFavouritesUserAPIUpdateDestroy, ServicesFullArchiveUserAPIDestroy
+    ServicesFullFavouritesUserAPIList, ServicesFullFavouritesUserAPIUpdateDestroy, ServicesFullArchiveUserAPIDestroy,
+    ServicesFullUploadsAPIUpdateList, ServicesFullUploadsAPIList,
 )
 from .children.views_children import (
     ChildrenFullAPIList, ChildrenFullAPIListCreate, ChildrenFullAPIUpdateDestroy,
     ChildrenFullViewsUserAPIList, ChildrenFullFavouritesUserAPIList, ChildrenFullFavouritesUserAPIUpdateDestroy,
-    ChildrenFullArchiveUserAPIDestroy
+    ChildrenFullArchiveUserAPIDestroy, ChildrenFullUploadsAPIUpdateList, ChildrenFullUploadsAPIList,
 )
 from .fashion.views_fashion import (
     FashionFullAPIList, FashionFullAPIListCreate, FashionFullAPIUpdateDestroy, FashionFullViewsUserAPIList,
-    FashionFullFavouritesUserAPIList, FashionFullFavouritesUserAPIUpdateDestroy, FashionFullArchiveUserAPIDestroy
+    FashionFullFavouritesUserAPIList, FashionFullFavouritesUserAPIUpdateDestroy, FashionFullArchiveUserAPIDestroy,
+    FashionFullUploadsAPIUpdateList, FashionFullUploadsAPIList,
 )
 from .electronics.views_electronics import (
     ElectronicsFullAPIList, ElectronicsFullAPIListCreate,
     ElectronicsFullAPIUpdateDestroy, ElectronicsFullViewsUserAPIList, ElectronicsFullFavouritesUserAPIList,
-    ElectronicsFullFavouritesUserAPIUpdateDestroy, ElectronicsFullArchiveUserAPIDestroy
+    ElectronicsFullFavouritesUserAPIUpdateDestroy, ElectronicsFullArchiveUserAPIDestroy,
+    ElectronicsFullUploadsAPIUpdateList, ElectronicsFullUploadsAPIList,
 )
 from .house_garden.views_house_garden import (
     HouseGardenFullAPIUpdateDestroy, HouseGardenFullAPIList,
     HouseGardenFullAPIListCreate, HouseGardenFullViewsUserAPIList, HouseGardenFullFavouritesUserAPIList,
-    HouseGardenFullFavouritesUserAPIUpdateDestroy, HouseGardenFullArchiveUserAPIDestroy
+    HouseGardenFullFavouritesUserAPIUpdateDestroy, HouseGardenFullArchiveUserAPIDestroy,
+    HouseGardenFullUploadsAPIUpdateList, HouseGardenFullUploadsAPIList,
 )
+
+from .favourites.views_favourites import FullFavouritesUser
 
 __all__ = [
     'RealtyFullAPIList',
@@ -52,9 +61,13 @@ __all__ = [
     'RealtyFullFavouritesUserAPIList',
     'RealtyFullFavouritesUserAPIUpdateDestroy',
     'RealtyFullArchiveUserAPIDestroy',
+    'RealtyFullUploadsAPIList',
+    'RealtyFullUploadsAPIUpdateList',
 
     'StockAPIList',
     'StockAPIUpdateDestroy',
+
+    'FullFavouritesUser',
 
     'CategoryFullAPIList',
 
@@ -76,6 +89,8 @@ __all__ = [
     'AvtoFullFavouritesUserAPIList',
     'AvtoFullFavouritesUserAPIUpdateDestroy',
     'AvtoFullArchiveUserAPIDestroy',
+    'AvtoFullUploadsAPIList',
+    'AvtoFullUploadsAPIUpdateList',
 
     'WorkFullAPIList',
     'WorkFullAPIListCreate',
@@ -84,6 +99,8 @@ __all__ = [
     'WorkFullFavouritesUserAPIList',
     'WorkFullFavouritesUserAPIUpdateDestroy',
     'WorkFullArchiveUserAPIDestroy',
+    'WorkFullUploadsAPIList',
+    'WorkFullUploadsAPIUpdateList',
 
     'ServicesFullAPIList',
     'ServicesFullAPIListCreate',
@@ -92,6 +109,8 @@ __all__ = [
     'ServicesFullFavouritesUserAPIList',
     'ServicesFullFavouritesUserAPIUpdateDestroy',
     'ServicesFullArchiveUserAPIDestroy',
+    'ServicesFullUploadsAPIList',
+    'ServicesFullUploadsAPIUpdateList',
 
     'ChildrenFullAPIList',
     'ChildrenFullAPIListCreate',
@@ -100,6 +119,8 @@ __all__ = [
     'ChildrenFullFavouritesUserAPIList',
     'ChildrenFullFavouritesUserAPIUpdateDestroy',
     'ChildrenFullArchiveUserAPIDestroy',
+    'ChildrenFullUploadsAPIList',
+    'ChildrenFullUploadsAPIUpdateList',
 
     'ElectronicsFullAPIList',
     'ElectronicsFullAPIListCreate',
@@ -108,6 +129,8 @@ __all__ = [
     'ElectronicsFullFavouritesUserAPIList',
     'ElectronicsFullFavouritesUserAPIUpdateDestroy',
     'ElectronicsFullArchiveUserAPIDestroy',
+    'ElectronicsFullUploadsAPIList',
+    'ElectronicsFullUploadsAPIUpdateList',
 
     'FashionFullAPIList',
     'FashionFullAPIListCreate',
@@ -116,6 +139,8 @@ __all__ = [
     'FashionFullFavouritesUserAPIList',
     'FashionFullFavouritesUserAPIUpdateDestroy',
     'FashionFullArchiveUserAPIDestroy',
+    'FashionFullUploadsAPIList',
+    'FashionFullUploadsAPIUpdateList',
 
     'HouseGardenFullAPIUpdateDestroy',
     'HouseGardenFullAPIList',
@@ -124,4 +149,6 @@ __all__ = [
     'HouseGardenFullFavouritesUserAPIList',
     'HouseGardenFullFavouritesUserAPIUpdateDestroy',
     'HouseGardenFullArchiveUserAPIDestroy',
+    'HouseGardenFullUploadsAPIList',
+    'HouseGardenFullUploadsAPIUpdateList'
 ]

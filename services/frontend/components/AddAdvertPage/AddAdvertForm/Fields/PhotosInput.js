@@ -20,13 +20,15 @@ const PhotosInput = () => {
     const onPhotosChange = e => {
         const {photos} = getValues()
 
-        setValue('photos', [...photos, ...e.target.files])
+        setValue('photos', [...photos, ...e.target.files], {shouldTouch: true, shouldValidate: true})
+        setValue('file', null, {shouldTouch: true, shouldValidate: true})
     }
 
     return (
         <>
             <div style={{display: 'flex'}}>
-                <label htmlFor="avatar" className={"label-file label-file--edit" + isSelectedStyle}>
+                <label  htmlFor="avatar" 
+                        className={"label-file label-file--edit label-file--add" + isSelectedStyle}>
                     <input {...register('file', {
                                 validate: {
                                     format: val => fileFormValid(val) || t('invalid format'),
@@ -55,13 +57,6 @@ const PhotosInput = () => {
                     }
                                 
                 </label>
-                {
-                    isError ? (
-                        <p className="warn warn--mobile-hide">{error.message}</p>
-                    ) : (
-                        <p className="form__text form__text--mobile-hide"><Text content="Add photo" /></p>
-                    )
-                }
                 
                 <input {...register('photos')} type="file" hidden={true} />
             </div>
