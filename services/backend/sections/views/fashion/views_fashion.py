@@ -7,11 +7,12 @@ from rest_framework.response import Response
 from translatepy import Translator
 
 from sections.models import (
-    FashionFull, FashionFullViewsUser, FashionFullFavouritesUser
+    FashionFull, FashionFullViewsUser, FashionFullFavouritesUser, FashionFullUpload
 )
 from sections.serializer import (
     FashionFullSerializer, FashionFullSerializerEN, FashionFullSerializerRU, FashionFullSerializerTR,
-    FashionFullSerializerDetail, FashionFullFavouritesUserSerializer, FashionFullViewsUserSerializer
+    FashionFullSerializerDetail, FashionFullFavouritesUserSerializer, FashionFullViewsUserSerializer,
+    FashionFullUploadSerializer
 )
 from sections.service import (
     FilterFashion, FilterFashionViews, FilterFashionFavourites
@@ -186,4 +187,16 @@ class FashionFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
 class FashionFullArchiveUserAPIDestroy(generics.DestroyAPIView):
     queryset = FashionFull.objects.all()
     serializer_class = FashionFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class FashionFullUploadsAPIList(generics.ListCreateAPIView):
+    queryset = FashionFullUpload.objects.all()
+    serializer_class = FashionFullUploadSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class FashionFullUploadsAPIUpdateList(generics.UpdateAPIView):
+    queryset = FashionFullUpload.objects.all()
+    serializer_class = FashionFullUploadSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

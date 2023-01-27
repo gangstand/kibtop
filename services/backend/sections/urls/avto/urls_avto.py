@@ -1,7 +1,8 @@
 from django.urls import path
 from sections.views import (
     AvtoFullAPIUpdateDestroy, AvtoFullAPIListCreate, AvtoFullAPIList, AvtoFullViewsUserAPIList,
-    AvtoFullFavouritesUserAPIList, AvtoFullFavouritesUserAPIUpdateDestroy, AvtoFullArchiveUserAPIDestroy
+    AvtoFullFavouritesUserAPIList, AvtoFullFavouritesUserAPIUpdateDestroy, AvtoFullArchiveUserAPIDestroy,
+    AvtoFullUploadsAPIList, AvtoFullUploadsAPIUpdateList
 )
 
 urlpatterns = [
@@ -12,4 +13,6 @@ urlpatterns = [
     path('avto/favourites/<int:pk>/', AvtoFullFavouritesUserAPIUpdateDestroy.as_view()),
     path('avto/<int:pk>/', AvtoFullAPIUpdateDestroy.as_view()),
     path('avto/archive/<int:pk>/', AvtoFullArchiveUserAPIDestroy.as_view()),
+    path('avto/full_uploads/', AvtoFullUploadsAPIList.as_view()),
+    path('avto/full_uploads/<int:pk>/', AvtoFullUploadsAPIUpdateList.as_view()),
 ]

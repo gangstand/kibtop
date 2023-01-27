@@ -7,10 +7,10 @@ from rest_framework.response import Response
 from translatepy import Translator
 
 from sections.models import (
-    RealtyFull, RealtyFullFavouritesUser, RealtyFullViewsUser
+    RealtyFull, RealtyFullFavouritesUser, RealtyFullViewsUser, RealtyFullUpload
 )
 from sections.serializer import (
-    RealtyFullSerializerDetail, RealtyFullSerializerEN, RealtyFullSerializerRU,
+    RealtyFullSerializerDetail, RealtyFullSerializerEN, RealtyFullSerializerRU, RealtyFullUploadSerializer,
     RealtyFullSerializerTR, RealtyFullSerializer, RealtyFullViewsUserSerializer, RealtyFullFavouritesUserSerializer
 )
 from sections.service import (
@@ -198,4 +198,16 @@ class RealtyFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
 class RealtyFullArchiveUserAPIDestroy(generics.DestroyAPIView):
     queryset = RealtyFull.objects.all()
     serializer_class = RealtyFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class RealtyFullUploadsAPIList(generics.ListCreateAPIView):
+    queryset = RealtyFullUpload.objects.all()
+    serializer_class = RealtyFullUploadSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class RealtyFullUploadsAPIUpdateList(generics.UpdateAPIView):
+    queryset = RealtyFullUpload.objects.all()
+    serializer_class = RealtyFullUploadSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

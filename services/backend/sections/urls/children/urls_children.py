@@ -2,7 +2,8 @@ from django.urls import path
 from sections.views import (
     ChildrenFullAPIUpdateDestroy, ChildrenFullAPIListCreate, ChildrenFullAPIList,
     ChildrenFullFavouritesUserAPIUpdateDestroy, ChildrenFullViewsUserAPIList,
-    ChildrenFullFavouritesUserAPIList, ChildrenFullArchiveUserAPIDestroy
+    ChildrenFullFavouritesUserAPIList, ChildrenFullArchiveUserAPIDestroy, ChildrenFullUploadsAPIList,
+    ChildrenFullUploadsAPIUpdateList
 )
 
 urlpatterns = [
@@ -13,4 +14,6 @@ urlpatterns = [
     path('children/favourites/<int:pk>/', ChildrenFullFavouritesUserAPIUpdateDestroy.as_view()),
     path('children/<int:pk>/', ChildrenFullAPIUpdateDestroy.as_view()),
     path('children/archive/<int:pk>/', ChildrenFullArchiveUserAPIDestroy.as_view()),
+    path('children/full_uploads/', ChildrenFullUploadsAPIList.as_view()),
+    path('children/full_uploads/<int:pk>/', ChildrenFullUploadsAPIUpdateList.as_view()),
 ]

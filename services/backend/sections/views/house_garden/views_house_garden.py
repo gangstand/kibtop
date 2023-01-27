@@ -7,11 +7,12 @@ from rest_framework.response import Response
 from translatepy import Translator
 
 from sections.models import (
-    HouseGardenFull, HouseGardenFullViewsUser, HouseGardenFullFavouritesUser
+    HouseGardenFull, HouseGardenFullViewsUser, HouseGardenFullFavouritesUser, HouseGardenFullUpload
 )
 from sections.serializer import (
     HouseGardenFullSerializer, HouseGardenFullSerializerEN, HouseGardenFullSerializerRU, HouseGardenFullSerializerTR,
-    HouseGardenFullSerializerDetail, HouseGardenFullViewsUserSerializer, HouseGardenFullFavouritesUserSerializer
+    HouseGardenFullSerializerDetail, HouseGardenFullViewsUserSerializer, HouseGardenFullFavouritesUserSerializer,
+    HouseGardenFullUploadSerializer
 )
 from sections.service import (
     FilterHouseGarden, FilterHouseGardenViews, FilterHouseGardenFavourites
@@ -186,4 +187,16 @@ class HouseGardenFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
 class HouseGardenFullArchiveUserAPIDestroy(generics.DestroyAPIView):
     queryset = HouseGardenFull.objects.all()
     serializer_class = HouseGardenFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class HouseGardenFullUploadsAPIList(generics.ListCreateAPIView):
+    queryset = HouseGardenFullUpload.objects.all()
+    serializer_class = HouseGardenFullUploadSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class HouseGardenFullUploadsAPIUpdateList(generics.UpdateAPIView):
+    queryset = HouseGardenFullUpload.objects.all()
+    serializer_class = HouseGardenFullUploadSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

@@ -2,7 +2,8 @@ from django.urls import path
 
 from sections.views import (
     RealtyFullAPIList, RealtyFullAPIListCreate, RealtyFullAPIUpdateDestroy, RealtyFullViewsUserAPIList,
-    RealtyFullFavouritesUserAPIList, RealtyFullFavouritesUserAPIUpdateDestroy, RealtyFullArchiveUserAPIDestroy
+    RealtyFullFavouritesUserAPIList, RealtyFullFavouritesUserAPIUpdateDestroy, RealtyFullArchiveUserAPIDestroy,
+    RealtyFullUploadsAPIList, RealtyFullUploadsAPIUpdateList
 )
 
 urlpatterns = [
@@ -13,5 +14,6 @@ urlpatterns = [
     path('realty/favourites/<int:pk>/', RealtyFullFavouritesUserAPIUpdateDestroy.as_view()),
     path('realty/<int:pk>/', RealtyFullAPIUpdateDestroy.as_view()),
     path('realty/archive/<int:pk>/', RealtyFullArchiveUserAPIDestroy.as_view()),
-
+    path('realty/full_uploads/', RealtyFullUploadsAPIList.as_view()),
+    path('realty/full_uploads/<int:pk>/', RealtyFullUploadsAPIUpdateList.as_view()),
 ]

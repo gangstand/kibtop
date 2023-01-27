@@ -9,7 +9,7 @@ from sections.models import (
 class ElectronicsFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = ElectronicsFullUpload
-        fields = ('uploads',)
+        fields = '__all__'
 
 
 class ElectronicsFullViewsUserSerializer(serializers.ModelSerializer):

@@ -2,7 +2,8 @@ from django.urls import path
 from sections.views import (
     ElectronicsFullAPIUpdateDestroy, ElectronicsFullAPIListCreate, ElectronicsFullAPIList,
     ElectronicsFullViewsUserAPIList, ElectronicsFullFavouritesUserAPIList,
-    ElectronicsFullFavouritesUserAPIUpdateDestroy, ElectronicsFullArchiveUserAPIDestroy
+    ElectronicsFullFavouritesUserAPIUpdateDestroy, ElectronicsFullArchiveUserAPIDestroy,
+    ElectronicsFullUploadsAPIList, ElectronicsFullUploadsAPIUpdateList
 )
 
 urlpatterns = [
@@ -13,4 +14,6 @@ urlpatterns = [
     path('electronics/favourites/<int:pk>/', ElectronicsFullFavouritesUserAPIUpdateDestroy.as_view()),
     path('electronics/<int:pk>/', ElectronicsFullAPIUpdateDestroy.as_view()),
     path('electronics/archive/<int:pk>/', ElectronicsFullArchiveUserAPIDestroy.as_view()),
+    path('electronics/full_uploads/', ElectronicsFullUploadsAPIList.as_view()),
+    path('electronics/full_uploads/<int:pk>/', ElectronicsFullUploadsAPIUpdateList.as_view()),
 ]

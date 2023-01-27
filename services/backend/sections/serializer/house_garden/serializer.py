@@ -7,7 +7,7 @@ from sections.models import (
 class HouseGardenFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = HouseGardenFullUpload
-        fields = ('uploads',)
+        fields = '__all__'
 
 
 class HouseGardenFullViewsUserSerializer(serializers.ModelSerializer):

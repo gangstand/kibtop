@@ -8,7 +8,7 @@ from sections.models import (
 class RealtyFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = RealtyFullUpload
-        fields = ('uploads',)
+        fields = '__all__'
 
 
 class RealtyFullViewsUserSerializer(serializers.ModelSerializer):

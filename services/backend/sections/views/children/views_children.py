@@ -7,12 +7,12 @@ from rest_framework.response import Response
 from translatepy import Translator
 
 from sections.models import (
-    ChildrenFull, ChildrenFullFavouritesUser, ChildrenFullViewsUser
+    ChildrenFull, ChildrenFullFavouritesUser, ChildrenFullViewsUser, ChildrenFullUpload
 )
 from sections.serializer import (
     ChildrenFullSerializer, ChildrenFullSerializerEN, ChildrenFullSerializerRU,
     ChildrenFullSerializerTR, ChildrenFullSerializerDetail, ChildrenFullFavouritesUserSerializer,
-    ChildrenFullViewsUserSerializer
+    ChildrenFullViewsUserSerializer, ChildrenFullUploadSerializer
 )
 from sections.service import (
     FilterChildren, FilterChildrenViews, FilterChildrenFavourites
@@ -188,4 +188,16 @@ class ChildrenFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
 class ChildrenFullArchiveUserAPIDestroy(generics.DestroyAPIView):
     queryset = ChildrenFull.objects.all()
     serializer_class = ChildrenFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ChildrenFullUploadsAPIList(generics.ListCreateAPIView):
+    queryset = ChildrenFullUpload.objects.all()
+    serializer_class = ChildrenFullUploadSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ChildrenFullUploadsAPIUpdateList(generics.UpdateAPIView):
+    queryset = ChildrenFullUpload.objects.all()
+    serializer_class = ChildrenFullUploadSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

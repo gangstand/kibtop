@@ -7,11 +7,11 @@ from rest_framework.response import Response
 from translatepy import Translator
 
 from sections.models import (
-    WorkFull, WorkFullFavouritesUser, WorkFullViewsUser
+    WorkFull, WorkFullFavouritesUser, WorkFullViewsUser, WorkFullUpload
 )
 from sections.serializer import (
     WorkFullSerializer, WorkFullSerializerEN, WorkFullSerializerRU, WorkFullSerializerTR, WorkFullSerializerDetail,
-    WorkFullViewsUserSerializer, WorkFullFavouritesUserSerializer
+    WorkFullViewsUserSerializer, WorkFullFavouritesUserSerializer, WorkFullUploadSerializer
 )
 from sections.service import (
     FilterWork, FilterWorkFavourites, FilterWorkViews
@@ -186,4 +186,16 @@ class WorkFullFavouritesUserAPIUpdateDestroy(generics.DestroyAPIView):
 class WorkFullArchiveUserAPIDestroy(generics.DestroyAPIView):
     queryset = WorkFull.objects.all()
     serializer_class = WorkFullFavouritesUserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class WorkFullUploadsAPIList(generics.ListCreateAPIView):
+    queryset = WorkFullUpload.objects.all()
+    serializer_class = WorkFullUploadSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class WorkFullUploadsAPIUpdateList(generics.UpdateAPIView):
+    queryset = WorkFullUpload.objects.all()
+    serializer_class = WorkFullUploadSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

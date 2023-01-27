@@ -8,7 +8,7 @@ from sections.models import (
 class FashionFullUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = FashionFullUpload
-        fields = ('uploads',)
+        fields = '__all__'
 
 
 class FashionFullViewsUserSerializer(serializers.ModelSerializer):
