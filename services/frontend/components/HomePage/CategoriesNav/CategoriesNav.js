@@ -5,14 +5,14 @@ import Link from "next/link";
 
 const CategoriesNav = () => {
     const NavLinks = [
-        {id: 0,link: '', text: 'Real estate', backgroundColor: '#4B76F6', img: 'keys.png'},
-        {id: 1,link: '', text: 'Auto', backgroundColor: '#6DE2DB', img: 'car.png'},
-        {id: 2,link: '', text: 'Job', backgroundColor: '#FFF6DC', img: 'bag.png'},
-        {id: 3,link: '', text: 'Services', backgroundColor: '#CDDDFF', img: 'paint.png'},
-        {id: 4,link: '', text: 'For kids', backgroundColor: '#F7D055', img: 'carriage.png'},
-        {id: 5,link: '', text: 'Electronics', backgroundColor: '#F8D8CB', img: 'phone.png'},
-        {id: 7,link: '', text: 'Fashion and style', backgroundColor: '#D1DEFC', img: 'dress.png'},
-        {id: 6,link: '', text: 'House and garden', backgroundColor: '#D2F7F5', img: 'armchair.png'},
+        {id: 0, link: 'adverts/realty', text: 'Real estate', backgroundColor: '#4B76F6', img: 'keys.png'},
+        {id: 1, link: 'adverts/avto', text: 'Auto', backgroundColor: '#6DE2DB', img: 'car.png'},
+        {id: 2, link: 'adverts/work', text: 'Job', backgroundColor: '#FFF6DC', img: 'bag.png'},
+        {id: 3, link: 'adverts/services', text: 'Services', backgroundColor: '#CDDDFF', img: 'paint.png'},
+        {id: 4, link: 'adverts/children', text: 'For kids', backgroundColor: '#F7D055', img: 'carriage.png'},
+        {id: 5, link: 'adverts/electronics', text: 'Electronics', backgroundColor: '#F8D8CB', img: 'phone.png'},
+        {id: 7, link: 'adverts/fashion', text: 'Fashion and style', backgroundColor: '#D1DEFC', img: 'dress.png'},
+        {id: 6, link: 'adverts/house_garden', text: 'House and garden', backgroundColor: '#D2F7F5', img: 'armchair.png'},
 
     ]
 

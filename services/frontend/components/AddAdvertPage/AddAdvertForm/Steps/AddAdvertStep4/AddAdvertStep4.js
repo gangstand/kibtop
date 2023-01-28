@@ -44,7 +44,7 @@ const AddAdvertStep4 = () => {
                             <Text content="Promote your products" />
                         </h4>
                         <p className="service-mob__text">
-                            Sell much faster and more profitably!
+                            <Text content={"Sell much faster and more profitably!"} />
                         </p>
                     </div>
                 </article>

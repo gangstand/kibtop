@@ -1,11 +1,63 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import Text from "../../Elementes/Text/Text";
 
 const CategoryNav = () => {
+    const {query: {category}} = useRouter()
     return (
         <>
-            <div className="container container--profile">
+            <div className="container container--profile nav-category">
                 <div className="category-label">
-                    
+                    {
+                        category === 'realty' ? <>
+                                                <img src="/img/add_advert/realty.png" alt="" className="category-label__img" />
+                                                <h2 className="title">
+                                                    <Text content="Real estate" />
+                                                </h2>                   
+                                        </> :
+                        category === 'avto' ? <>
+                                                <img src="/img/add_advert/avto.png" alt="" className="category-label__img" />
+                                                <h2 className="title">
+                                                    <Text content="Auto" />
+                                                </h2>                   
+                                        </> :
+                        category === 'work' ? <>
+                                                <img src="/img/add_advert/work.png" alt="" className="category-label__img" />
+                                                <h2 className="title">
+                                                    <Text content="Job" />
+                                                </h2>                   
+                                        </> :
+                        category === 'services' ? <>
+                                                <img src="/img/add_advert/services.png" alt="" className="category-label__img" />
+                                                <h2 className="title">
+                                                    <Text content="Services" />
+                                                </h2>                   
+                                        </> :
+                        category === 'children' ? <>
+                                                <img src="/img/add_advert/children.png" alt="" className="category-label__img" />
+                                                <h2 className="title">
+                                                    <Text content="" />
+                                                </h2>                   
+                                        </> :
+                        category === 'electronics' ? <>
+                                                <img src="/img/add_advert/electronics.png" alt="" className="category-label__img" />
+                                                <h2 className="title">
+                                                    <Text content="Electronics" />
+                                                </h2>                   
+                                        </> :
+                        category === 'house_garden' ? <>
+                                                <img src="/img/add_advert/house_garden.png" alt="" className="category-label__img" />
+                                                <h2 className="title">
+                                                    <Text content="Fashion and style" />
+                                                </h2>                   
+                                        </> :
+                        category === 'fashion' ? <>
+                                                <img src="/img/add_advert/fashion.png" alt="" className="category-label__img" />
+                                                <h2 className="title">
+                                                    <Text content="Fashion and style" />
+                                                </h2>                   
+                                        </> : ''
+                    }
                 </div>
                 <Link href="/" className="profile-link">
                     <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

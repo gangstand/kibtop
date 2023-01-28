@@ -13,6 +13,7 @@ import { ArchiveReducer } from "./slices/ArchiveSlice";
 import { FavoritesReducer } from "./slices/FavoritesSlice";
 import { AdvertReducer } from "./slices/AdvertSlice";
 import { AddAdvertReducer } from "./slices/AddAdvertSlice";
+import { CategoryReducer } from "./slices/CategorySlice";
 
 const reducer = {
     auth: authReducer,
@@ -28,6 +29,7 @@ const reducer = {
     favorites: FavoritesReducer,
     advert: AdvertReducer,
     addAdvert: AddAdvertReducer,
+    category: CategoryReducer,
     [HomePageApi.reducerPath]: HomePageApi.reducer
 }
 

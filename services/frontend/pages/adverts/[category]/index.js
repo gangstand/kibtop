@@ -1,7 +1,9 @@
+import CategorySection from "../../../components/CategoryPage/Category";
+
 function Category() {
     return (
         <>
-            Enter
+            <CategorySection />
         </>
     );
 }
