@@ -27,7 +27,9 @@ const EnableSubmitButtonContainer = ({lifts, top, vip, servicePrice, requiredFie
         
     }
     
-    const onSummitEnableClick = () => {
+    const onSummitEnableClick = e => {
+        e.preventDefault()
+
         setValue('lifts', lifts)
         setValue('top', top)
         setValue('vip', vip)

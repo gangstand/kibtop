@@ -253,6 +253,7 @@
     "Full time": "Tam zamanlı", 
     "Partial": "Kısmi",
     "Remote": "Uzak",
+    "Salary": "Maaş",
     "Salary for the month": "Aylık maaş",
 
     "1+1": "1+1",
@@ -276,8 +277,9 @@
     "Describe the product in detail": "Ürünü ayrıntılı olarak açıklayın",
     "Publishing": "Yayımlanan",
     "Add your phone number": "Telefon numaranızı ekleyin",
-    "In order for customers to contact you, we need your phone number": "Müşterilerin sizinle iletişim kurabilmesi için telefon numaranıza ihtiyacımız var"
-
+    "In order for customers to contact you, we need your phone number": "Müşterilerin sizinle iletişim kurabilmesi için telefon numaranıza ihtiyacımız var",
+    "Sell much faster and more profitably!": "Çok daha hızlı ve daha karlı satış yapın!",
+    "purpose": "amaç"
 
 }
 

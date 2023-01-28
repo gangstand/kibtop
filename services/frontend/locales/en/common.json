@@ -248,6 +248,7 @@
     "Full time": "Full time", 
     "Partial": "Partial",
     "Remote": "Remote",
+    "Salary": "Salary",
     "Salary for the month": "Salary for the month",
 
     "1+1": "1+1",
@@ -271,6 +272,7 @@
     "Describe the product in detail": "Describe the product in detail",
     "Publishing": "Publishing",
     "Add your phone number": "Add your phone number",
-    "In order for customers to contact you, we need your phone number": "In order for customers to contact you, we need your phone number"
-
+    "In order for customers to contact you, we need your phone number": "In order for customers to contact you, we need your phone number",
+    "Sell much faster and more profitably!": "Sell much faster and more profitably!",
+    "purpose": "purpose"
 }

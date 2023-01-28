@@ -21,9 +21,6 @@ const AddOther = () => {
     const {currency} = useCurrency()
 
     useEffect(() => {
-        setValue('isMonth', 'true', {shouldTouch: true, shouldValidate: true})
-        setValue('condition', 'Old', {shouldTouch: true, shouldValidate: true})
-        setValue('rooms', 'Studio', {shouldTouch: true, shouldValidate: true})
         setValue('currency', currency, {shouldTouch: true, shouldValidate: true})
 
     }, [])
@@ -70,7 +67,7 @@ const AddOther = () => {
                 </label>
 
                 <div className="advert-form__files">
-                    <DescriptionInput placeholderName={"apartment"} />
+                    <DescriptionInput placeholderName={"product"} />
                 </div>
             </div>
 
@@ -102,7 +99,18 @@ const AddOther = () => {
                     <Text content="Service sets" />
                 </label>
 
-                <ServiceSetsGroupContainer />
+                <ServiceSetsGroupContainer requiredFields={[
+                                                'title', 
+                                                'address',
+                                                'categoryName', 
+                                                'city', 
+                                                'geocode', 
+                                                'cost', 
+                                                'description', 
+                                                'currency', 
+                                                'photos',
+                                                'subCategory',
+                                                    ]} />
             </div>
 
             <SubmitButtonContainer requiredFields={[

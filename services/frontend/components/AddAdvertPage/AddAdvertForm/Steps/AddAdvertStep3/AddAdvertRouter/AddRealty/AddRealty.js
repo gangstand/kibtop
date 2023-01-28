@@ -153,7 +153,21 @@ const AddRealty = () => {
                     <Text content="Service sets" />
                 </label>
 
-                <ServiceSetsGroupContainer />
+                <ServiceSetsGroupContainer requiredFields={['title', 
+                                                    'address',
+                                                    'categoryName', 
+                                                    'condition',
+                                                    'city', 
+                                                    'geocode', 
+                                                    'cost', 
+                                                    'description', 
+                                                    'currency', 
+                                                    'isMonth',
+                                                    'photos',
+                                                    'rooms',
+                                                    'subCategory',
+                                                    'square'
+                                                    ]} />
             </div>
 
             <SubmitButtonContainer requiredFields={['title', 

@@ -5,7 +5,7 @@ import EnableSubmitButtonContainer from "../EnableSubmitButton/EnableSubmitButto
 import EnableGroupContainer from "./EnableGroupContainer";
 import ServiceSetsCheck from "./ServiceSetsCheck";
 
-const ServiceSetsGroup = ({setLiftValue, setTopValue, setVipValue, fullPrice, addFullPrice}) => {
+const ServiceSetsGroup = ({setLiftValue, setTopValue, setVipValue, fullPrice, addFullPrice, requiredFields}) => {
     const {currency, countCurrencyPrice} = useCurrency()
 
     return (
@@ -26,7 +26,7 @@ const ServiceSetsGroup = ({setLiftValue, setTopValue, setVipValue, fullPrice, ad
                 <div className="width-line" />
 
                 <div className="flex">
-                    <EnableGroupContainer {...{servicePrice: fullPrice}} />
+                    <EnableGroupContainer {...{servicePrice: fullPrice, requiredFields}} />
 
                     <p className="promote-card__cost">
                         <Text content="total" />: {currency}{countCurrencyPrice(fullPrice, '$')}

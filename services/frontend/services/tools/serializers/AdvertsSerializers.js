@@ -74,7 +74,7 @@ export const serializeAdvertDatails = (advert, lang, category) => {
         mileage: advert.mileage || null,
         year: advert.year || null,
         rooms: advert[`number_rooms_${lang}`] || null,
-        employment: advert.employment || null,
+        employment: advert[`employment_${lang}`] || null,
         workType: advert[`for_work_type_en`] || null,
         date: convertDate(advert.created_at) || null,
         address: advert.city || null,

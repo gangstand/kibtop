@@ -4,7 +4,7 @@ import { useFormContext } from "react-hook-form";
 import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import { useLanguage } from "../../../../locales/hooks/useLanguage";
 
-const CostField = () => {
+const CostField = ({placeholder='Full amount'}) => {
     const {t} = useLanguage()
     const {register, setValue, watch, formState, getFieldState} = useFormContext()
     const {error, isTouched} = getFieldState('cost', formState)
@@ -37,7 +37,7 @@ const CostField = () => {
                     }
                 })}
                     type="text" 
-                    placeholder={t('Full amount')} 
+                    placeholder={t(placeholder)} 
                     className={"empty-field" + ((!!error && isTouched) ? ' field--error': '')} />
 
                 

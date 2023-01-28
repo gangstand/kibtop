@@ -86,19 +86,20 @@ const AddAdvertStep1 = () => {
                         <DeskCategoryInput {...{text: 'Administrative staff / HR / Secretariat', value: 'Administrative staff | HR | Secretariat', categoryName: 'Job', category: 'work'}} />
                         <DeskCategoryInput {...{text: 'Security/security', value: 'Security | security', categoryName: 'Job', category: 'work'}} />
                         <DeskCategoryInput {...{text: 'Cleaning / Home staff', value: 'Cleaning | Home staff', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'Beauty / Fitness / Sports', value: 'Beauty / Fitness / Sports', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'Education/translation', value: 'Education/translation', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'Culture / Arts / Entertainment', value: 'Culture / Arts / Entertainment', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'Medicine / Pharmacy', value: 'Medicine / Pharmacy', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'IT / computers', value: 'IT / computers', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'Banking /  Finance / Insurance / Jurisprudence', value: 'Banking /  Finance / Insurance / Jurisprudence', categoryName: 'Job', category: 'work'}} />
+
+                        <DeskCategoryInput {...{text: 'Beauty / Fitness / Sports', value: 'Beauty | Fitness | Sports', categoryName: 'Job', category: 'work'}} />
+                        <DeskCategoryInput {...{text: 'Education/translation', value: 'Education | translation', categoryName: 'Job', category: 'work'}} />
+                        <DeskCategoryInput {...{text: 'Culture / Arts / Entertainment', value: 'Culture | Arts | Entertainment', categoryName: 'Job', category: 'work'}} />
+                        <DeskCategoryInput {...{text: 'Medicine / Pharmacy', value: 'Medicine | Pharmacy', categoryName: 'Job', category: 'work'}} />
+                        <DeskCategoryInput {...{text: 'IT / computers', value: 'IT | computers', categoryName: 'Job', category: 'work'}} />
+                        <DeskCategoryInput {...{text: 'Banking /  Finance / Insurance / Jurisprudence', value: 'Banking | Finance | Insurance | Jurisprudence', categoryName: 'Job', category: 'work'}} />
                         <DeskCategoryInput {...{text: 'Real estate', value: 'Real estate', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'Advertising / Design / PR', value: 'Advertising / Design / PR', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'Production / Working specialties', value: 'Production / Working specialties', categoryName: 'Job', category: 'work'}} />
+                        <DeskCategoryInput {...{text: 'Advertising / Design / PR', value: 'Advertising | Design | PR', categoryName: 'Job', category: 'work'}} />
+                        <DeskCategoryInput {...{text: 'Production / Working specialties', value: 'Production | Working specialties', categoryName: 'Job', category: 'work'}} />
                         <DeskCategoryInput {...{text: 'Work abroad', value: 'Work abroad', categoryName: 'Job', category: 'work'}} />
                         <DeskCategoryInput {...{text: 'Accounting', value: 'Accounting', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'Hotel and restaurant business / Tourism', value: 'Hotel and restaurant business / Tourism', categoryName: 'Job', category: 'work'}} />
-                        <DeskCategoryInput {...{text: 'Service stations / Car washes', value: 'Service stations / Car washes', categoryName: 'Job', category: 'work'}} />
+                        <DeskCategoryInput {...{text: 'Hotel and restaurant business / Tourism', value: 'Hotel and restaurant business | Tourism', categoryName: 'Job', category: 'work'}} />
+                        <DeskCategoryInput {...{text: 'Service stations / Car washes', value: 'Service stations | Car washes', categoryName: 'Job', category: 'work'}} />
                         <DeskCategoryInput {...{text: 'Part-time employment', value: 'Part-time employment', categoryName: 'Job', category: 'work'}} />
                         <DeskCategoryInput {...{text: 'Other occupations', value: 'Other occupations', categoryName: 'Job', category: 'work'}} />
                     </div>

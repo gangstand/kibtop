@@ -12,7 +12,6 @@ const DetailCardContainer = () => {
         if(!!userId) dispatch(setAdvertSellerThunk(userId))
     }, [userId])
 
-    console.log(seller);
 
     return <DetailCard {...{...advert, phone: seller.phone}} />;
 }

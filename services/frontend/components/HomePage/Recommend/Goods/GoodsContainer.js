@@ -10,7 +10,6 @@ const GoodsContainer = ({recommendGoods}) => {
     const {locale} = useRouter()
     const {data, isLoading} = useGetRecommendGoodsQuery(locale)
 
-    console.log(recommendGoods);
     
     return <Adverts {...{adverts: (data || recommendGoods)}} />;
 }

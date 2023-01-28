@@ -1,6 +1,6 @@
 import { categoryTrans, subCategoryTrans } from "./dictionary/CategoryLangDict"
 import { conditionTrans, roomsTrans } from "./dictionary/RealtyLangDict"
-import { workTypeTrans } from "./dictionary/WorkLangDict"
+import { employmentTrans, workTypeTrans } from "./dictionary/WorkLangDict"
 
 export const serializeCreateAdvertData = (data, category, lang) => {
 
@@ -15,7 +15,7 @@ export const serializeCreateAdvertData = (data, category, lang) => {
         mileage: data.mileage,
         year: data.year,
         [`number_rooms_${lang}`]: roomsTrans[lang][data.rooms],
-        employment: data.employment,
+        [`employment_${lang}`]: employmentTrans[lang][data.employment],
         [`for_work_type_${lang}`]: workTypeTrans[lang][data.workType],
         address: data.address,
         city: data.city,

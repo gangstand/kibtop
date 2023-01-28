@@ -6,6 +6,7 @@ import Text from "../../../../components/Elementes/Text/Text";
 import Header from "../../../../components/Header/Header";
 import Access from "../../../../components/RegistrationPage/RegSteps/DesktopRegRouter/DeskGreeting/Access/Access";
 import RegDecoration from "../../../../components/RegistrationPage/RegSteps/RegDecoration/RegDecoration";
+import { RecoveryApi } from "../../../../services/RecoveryApi";
 import { clearUserData, getUserData } from "../../../../services/tools/crypto";
 import { loginThunk } from "../../../../store/slices/AuthSlice";
 import { activateEmailThunk } from "../../../../store/slices/RecoverySlice";
@@ -67,7 +68,7 @@ export async function getServerSideProps(context) {
     const {params: {uid, token}} = context
     
     
-    await RecoveryApi.confirmEmail(uid, token)
+    // await RecoveryApi.confirmEmail(uid, token)
 
 
     return {

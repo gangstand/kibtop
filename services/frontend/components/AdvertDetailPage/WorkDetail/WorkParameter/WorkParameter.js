@@ -8,15 +8,15 @@ const WorkParameter = ({categoryName, subCategoryName, employment}) => {
 
                 <div className="detail-parameter__grid">
                     <p className="detail-tag-text">
-                        <Text content="Category" />:<span className="detail-tag-text--black">Electronics</span>
+                        <Text content="Category" />:<span className="detail-tag-text--black">{categoryName}</span>
                     </p>
 
                     <p className="detail-tag-text">
-                        <Text content="Employment" />:<span className="detail-tag-text--black">TV / Photo / Video / Audio</span>
+                        <Text content="Employment" />:<span className="detail-tag-text--black">{employment}</span>
                     </p>
 
                     <p className="detail-tag-text">
-                        <Text content="Profession" />:<span className="detail-tag-text--black">TV / Photo / Video / Audio</span>
+                        <Text content="Profession" />:<span className="detail-tag-text--black">{subCategoryName}</span>
                     </p>
                 </div>
                 

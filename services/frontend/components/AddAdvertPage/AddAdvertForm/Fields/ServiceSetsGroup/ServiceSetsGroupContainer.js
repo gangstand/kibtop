@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import ServiceSetsGroup from "./ServiceSetsGroup";
 
-const ServiceSetsGroupContainer = () => {
+const ServiceSetsGroupContainer = ({requiredFields}) => {
     const {register, setValue, getValues} = useFormContext()
 
     const setLiftValue = addLifts => {
@@ -33,7 +33,7 @@ const ServiceSetsGroupContainer = () => {
             <input {...register('top', {required: false})} type="text" hidden={true} />
             <input {...register('vip', {required: false})} type="text" hidden={true} />
 
-            <ServiceSetsGroup {...{setLiftValue, setTopValue, setVipValue, fullPrice, addFullPrice}} />
+            <ServiceSetsGroup {...{setLiftValue, setTopValue, setVipValue, fullPrice, addFullPrice, requiredFields}} />
         </>
     );
 }

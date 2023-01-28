@@ -1340,3 +1340,7 @@
     margin-left: 111px;
     height: 120px;
 }
+
+.address-select__option--brand {
+    margin-top: 20px;
+}

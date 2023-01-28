@@ -13,7 +13,6 @@ export const AddAdvertApi = {
         }).then(async (res) => {
             const {advertId} = serializeAdvertDatails(res.data, lang, category)
             const {photos} = data
-            console.log(photos);
             await photos.forEach(async img => {
                 const formData = FormDataCreator({
                     [`${category}_full_upload`]: advertId,

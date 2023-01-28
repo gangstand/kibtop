@@ -64,7 +64,7 @@ const AddAdvertStep4 = () => {
                             <Text content="Service sets" />
                         </label>
 
-                        <ServiceSetsGroupContainer />
+                        <ServiceSetsGroupContainer requiredFields={[]} />
                     </div>
                 </div>
                 

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useCurrency } from "../../../locales/hooks/useCurrency";
 import AddPhoneContainer from "../AddPhone/AddPhoneContainer";
@@ -6,16 +7,22 @@ import AddAdvertStep2 from "./Steps/AddAdvertStep2/AddAdvertStep2";
 import AddAdvertStep3 from "./Steps/AddAdvertStep3/AddAdvertStep3";
 import AddAdvertStep4 from "./Steps/AddAdvertStep4/AddAdvertStep4";
 
-const AddAdvertForm = ({formStep, onAddAdvertSubmit}) => {
-    
+const AddAdvertForm = ({formStep, onAddAdvertSubmit, category, switchFormStepToStart}) => {
     const AddAdvertForm = useForm({
         mode: 'onChange', 
         defaultValues: {
             photos: []
         }
     })
-    const {handleSubmit, setError, formState: {isValid, errors}} = AddAdvertForm
+    const {handleSubmit, getValues, watch, setError, formState: {isValid, errors}} = AddAdvertForm
     const onSubmitClick = handleSubmit(onAddAdvertSubmit)
+    
+    const {categoryName, subCategory} = watch()
+    useEffect(() => {
+        if(!category || !categoryName || !subCategory) switchFormStepToStart()
+    }, [category, categoryName, subCategory])
+
+    
     return (
         <>
             <form className="advert-form">
