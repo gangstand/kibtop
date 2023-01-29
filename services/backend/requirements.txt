@@ -66,4 +66,6 @@ urllib3==1.26.13
 wcwidth==0.2.5
 gunicorn
 gevent
-#psycopg2
+psycopg2
+django-graylog
+graypy

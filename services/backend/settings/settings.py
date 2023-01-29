@@ -7,7 +7,7 @@ environ.Env.read_env('.env')
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1', 'api.kibtop.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'kibtop-api.com', '94.250.251.138']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,15 +39,15 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django_graylog.GraylogMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 CSRF_TRUSTED_ORIGINS = [
-    'https://api.kibtop.com'
+    'https://kibtop-api.com'
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -153,7 +153,6 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
-
 DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
     'SEND_ACTIVATION_EMAIL': True,
@@ -185,3 +184,29 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env("EMAIL_HOST_USER")
 SERVER_EMAIL = env("EMAIL_HOST_USER")
+
+GRAYLOG_ENDPOINT = 'http://graylog:12201/gelf'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'gelf': {
+            'class': 'graypy.GELFUDPHandler',
+            'host': 'graylog',
+            'port': 12201,
+        },
+    },
+    'loggers': {
+        'custom_gy_logger': {
+            'handlers': ['gelf'],
+            'level': 'DEBUG',
+            'propagate': True,
+        }
+    }
+}
+
+import logging
+
+logger = logging.getLogger('custom_gy_logger')
+logger.debug('This is funny error')
