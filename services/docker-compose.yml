@@ -18,6 +18,8 @@ services:
   backend:
     container_name: api
     build: ./backend
+    depends_on:
+      - postgresql
     command: >
       sh -c " python manage.py makemigrations &&
               python manage.py migrate &&
@@ -30,6 +32,17 @@ services:
       - static_volume:/app/backend/staticfiles
       - media_volume:/app/backend/media
 
+  postgresql:
+    image: postgres:12.0
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=MTAIDnLu
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+
   mongodb:
     image: "mongo:latest"
     volumes:
@@ -37,7 +50,7 @@ services:
     restart: "on-failure"
 
   opensearch:
-    image: "opensearchproject/opensearch:latest"
+    image: opensearchproject/opensearch:latest
     environment:
       - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
       - "bootstrap.memory_lock=true"
@@ -55,7 +68,7 @@ services:
 
   graylog:
     hostname: "server"
-    image: "${GRAYLOG_IMAGE:-graylog/graylog:5.0}"
+    image: graylog/graylog:5.0
     depends_on:
       opensearch:
         condition: "service_started"
