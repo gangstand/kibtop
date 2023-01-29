@@ -6,14 +6,27 @@ services:
     container_name: nginx
     links:
       - backend
+      - graylog
     depends_on:
       - backend
+      - graylog
     volumes:
       - static_volume:/app/backend/staticfiles
       - media_volume:/app/backend/media
     ports:
       - "80:80"
       - "443:443"
+
+  postgresql:
+    image: postgres:12.0
+    environment:
+      - POSTGRES_USER=manager
+      - POSTGRES_PASSWORD=pvlsazrmhjejwthkvrhlncwxuk
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
 
   backend:
     container_name: api
@@ -31,17 +44,6 @@ services:
     volumes:
       - static_volume:/app/backend/staticfiles
       - media_volume:/app/backend/media
-
-  postgresql:
-    image: postgres:12.0
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=MTAIDnLu
-      - POSTGRES_DB=postgres
-    ports:
-      - "5432:5432"
 
   mongodb:
     image: "mongo:latest"
@@ -84,16 +86,16 @@ services:
       GRAYLOG_ELASTICSEARCH_HOSTS: "http://opensearch:9200"
       GRAYLOG_MONGODB_URI: "mongodb://mongodb:27017/graylog"
     ports:
-    - "5044:5044/tcp"
-    - "5140:5140/udp"
-    - "5140:5140/tcp"
-    - "5555:5555/tcp"
-    - "5555:5555/udp"
-    - "9000:9000/tcp"
-    - "12201:12201/tcp"
-    - "12201:12201/udp"
-    - "13301:13301/tcp"
-    - "13302:13302/tcp"
+      - "5044:5044/tcp"
+      - "5140:5140/udp"
+      - "5140:5140/tcp"
+      - "5555:5555/tcp"
+      - "5555:5555/udp"
+      - "9000:9000/tcp"
+      - "12201:12201/tcp"
+      - "12201:12201/udp"
+      - "13301:13301/tcp"
+      - "13302:13302/tcp"
     volumes:
       - "graylog_data:/usr/share/graylog/data/data"
       - "graylog_journal:/usr/share/graylog/data/journal"
@@ -102,6 +104,7 @@ services:
 volumes:
   media_volume:
   static_volume:
+  postgres_data:
   mongodb_data:
   os_data:
   graylog_data:
