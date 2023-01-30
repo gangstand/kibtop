@@ -3,9 +3,13 @@ import { useSelector } from "react-redux";
 import DetailBanner from "./DetailBanner";
 import DetailBannerState from "./DetailBannerState";
 
-const DetailBannerContainer = () => {
+const DetailBannerContainer = ({serverAdvert}) => {
     const [offset, setOffset] = useState(0);
-    const {uploads} = useSelector(state => state.advert)
+    const storeAdvert = useSelector(state => state.advert)
+
+    const advert = !!storeAdvert.advertId ? storeAdvert : serverAdvert
+
+    const {uploads} = advert
     const items = [
         {id: 1},
         {id: 2},

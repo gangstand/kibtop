@@ -83,7 +83,7 @@ export const serializeAdvertDatails = (advert, lang, category) => {
         city: advert.city || null,
         geocode: advert.geocode || null,
         img: advert.upload || null,
-        uploads: !!(advert[`${category}_full_upload`]?.length) ? serializeAdvertUploads(advert[`${category}_full_upload`]) : [advert.upload, advert.upload ,advert.upload],
+        uploads: !!(advert[`${category}_full_upload`]?.length) ? serializeAdvertUploads(advert[`${category}_full_upload`]) : null,
         userId: advert.user || null,
         advertId: advert.id || null,
         cost: advert.price || null,

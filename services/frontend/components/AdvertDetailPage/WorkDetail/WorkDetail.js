@@ -18,9 +18,9 @@ const WorkDetail = ({serverAdvert}) => {
         <>
             <WorkNavContainer {...{serverAdvert}} />
             <div className="container container--detail">
-                <DetailBannerContainer />
+                <DetailBannerContainer {...{serverAdvert}} />
 
-                <DetailCardContainer />
+                <DetailCardContainer {...{serverAdvert}} />
             </div>
 
             <div className="container container-brad">
