@@ -13,10 +13,10 @@ import WorkNav from "./WorkNav/WorkNav";
 import WorkNavContainer from "./WorkNav/WorkNavContainer";
 import WorkParameterContainer from "./WorkParameter/WorkParameterContainer";
 
-const WorkDetail = () => {
+const WorkDetail = ({serverAdvert}) => {
     return (
         <>
-            <WorkNavContainer />
+            <WorkNavContainer {...{serverAdvert}} />
             <div className="container container--detail">
                 <DetailBannerContainer />
 

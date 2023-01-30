@@ -11,10 +11,10 @@ import DetailParameterContainer from "./DetailParameter/DetailParameterContainer
 import DetailProfileContainer from "./DetailProfile/DetailProfileContainer";
 import SimilarAds from "./SimilarAds/SimilarAds";
 
-const OtherDetail = () => {
+const OtherDetail = ({serverAdvert}) => {
     return (
         <>
-            <DetailNav />
+            <DetailNav {...{serverAdvert}} />
             <div className="container container--detail">
                 <DetailBannerContainer />
 

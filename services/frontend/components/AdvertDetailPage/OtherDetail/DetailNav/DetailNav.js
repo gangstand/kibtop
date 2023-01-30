@@ -4,11 +4,15 @@ import { useSelector } from "react-redux";
 import Text from "../../../Elementes/Text/Text";
 import LikeButtonContainer from "../../../HomePage/LikeButton/LikeButtonContainer";
 
-const DetailNav = () => {
+const DetailNav = ({serverAdvert}) => {
     const {query: {category}} = useRouter()
     const isSquare = category === 'realty'
 
-    const {title, advertId, square} = useSelector(state => state.advert)
+    const storeAdvert = useSelector(state => state.advert)
+
+    const advert = !!storeAdvert.advertId ? storeAdvert : serverAdvert
+
+    const {title, advertId, square} = advert
 
     return (
         <>

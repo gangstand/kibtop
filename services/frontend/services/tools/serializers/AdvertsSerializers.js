@@ -71,7 +71,7 @@ export const serializeAdvertDatails = (advert, lang, category) => {
         description: advert[`description_${lang}`] || null,
         categoryName: advert[`category_${lang}`] || null,
         subCategoryName: advert[`sub_category_${lang}`] || null,
-        condition: advert[`all_old_new_${lang}`],
+        condition: advert[`all_old_new_${lang}`] || null,
         brand: advert.brand || null,
         mileage: advert.mileage || null,
         year: advert.year || null,
@@ -89,7 +89,7 @@ export const serializeAdvertDatails = (advert, lang, category) => {
         cost: advert.price || null,
         square: advert.square || null,
         isMonth: advert.type_sell || null,
-        currency: advert.currency,
+        currency: advert.currency || null,
         category
     }
 }

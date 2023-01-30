@@ -7,7 +7,7 @@ import OtherDetail from "./OtherDetail/OtherDetail";
 import RealEstateDetail from "./RealEstateDetail/RealEstateDetail";
 import WorkDetail from "./WorkDetail/WorkDetail";
 
-const AdvertDetailRouter = ({category}) => {
+const AdvertDetailRouter = ({category, serverAdvert}) => {
     const other = ['children', 'electronics', 'fashion', 'house_garden', 'services']
 
     return (
@@ -18,10 +18,10 @@ const AdvertDetailRouter = ({category}) => {
                 <AdvertDataContainer>
                     {
                         other.some(categoryPath => categoryPath === category) 
-                            ? <OtherDetail /> :
-                            category === 'avto' ? <AvtoDetail /> :
-                            category === 'realty' ? <RealEstateDetail /> :
-                            category === 'work' ? <WorkDetail /> :
+                            ? <OtherDetail {...{serverAdvert}} /> :
+                            category === 'avto' ? <AvtoDetail {...{serverAdvert}} /> :
+                            category === 'realty' ? <RealEstateDetail {...{serverAdvert}} /> :
+                            category === 'work' ? <WorkDetail {...{serverAdvert}} /> :
                             <></>
                     }
                 </AdvertDataContainer>

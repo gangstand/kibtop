@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setAdvertDataThunk } from "../../store/slices/AdvertSlice";
+import { setAdvertData, setAdvertDataThunk } from "../../store/slices/AdvertSlice";
 
 const AdvertDataContainer = ({children}) => {
     const {query: {category, advertId}, locale} = useRouter()
