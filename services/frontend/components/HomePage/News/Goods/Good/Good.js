@@ -4,8 +4,8 @@ import LikeButtonContainer from "../../../LikeButton/LikeButtonContainer";
 import Image from "next/image"
 
 
-const Good = ({id, category, img, title, cost, address, date}) => {
-    const {currency} = useCurrency()
+const Good = ({id, category, img, title, cost, currency, address, date}) => {
+    const cur = useCurrency()
     return (
         <>
             <div className="goods__item">
@@ -16,7 +16,7 @@ const Good = ({id, category, img, title, cost, address, date}) => {
                 <div className="goods__article">
                     <div>
                         <h5 className="goods__title">{title}</h5>
-                        <h5 className="goods__cost">{currency} {cost}</h5>
+                        <h5 className="goods__cost">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</h5>
 
                         <div className="goods__litle-info goods__litle-info--mobile">
                             <p className="goods__text">{address}</p>
@@ -31,7 +31,7 @@ const Good = ({id, category, img, title, cost, address, date}) => {
                         
                     </div>
 
-                    <h5 className="goods__cost goods__cost--mobile">{currency} {cost}</h5>
+                    <h5 className="goods__cost goods__cost--mobile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</h5>
                 </div>
 
                 <LikeButtonContainer className={'like-btn like-btn--mobile'} {...{id, category}} />

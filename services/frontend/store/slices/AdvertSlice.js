@@ -24,6 +24,7 @@ const initialState = {
     cost: null,
     square: null,
     isMonth: null,
+    currency: null,
 
     seller: {
         name: null,
@@ -62,7 +63,8 @@ const AdvertSlice = createSlice({
                 advertId,
                 cost,
                 square,
-                isMonth
+                isMonth,
+                currency
             } = payload
 
 
@@ -88,6 +90,7 @@ const AdvertSlice = createSlice({
             state.cost = cost || null
             state.square = square || null
             state.isMonth = isMonth || null
+            state.currency = currency || null
 
         },
 

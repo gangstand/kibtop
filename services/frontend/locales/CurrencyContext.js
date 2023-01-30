@@ -30,7 +30,7 @@ export const CurrencyProvider = props => {
         const dollarPrice = price / exchange[cur]
         const exchangePrice = dollarPrice * exchange[currency]
 
-        return Math.round(exchangePrice * 10) / 10
+        return Math.round(exchangePrice)
     }
 
     useEffect(() => {

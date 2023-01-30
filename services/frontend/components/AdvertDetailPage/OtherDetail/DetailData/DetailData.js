@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import Text from "../../../Elementes/Text/Text";
 
-const DetailData = ({title, cost, description, square, isMonth}) => {
-    const {currency} = useCurrency()
+const DetailData = ({title, cost, currency, description, square, isMonth}) => {
+    const cur = useCurrency()
     const {query: {category}} = useRouter()
     const isSquare = category === 'realty'
 
@@ -18,7 +18,7 @@ const DetailData = ({title, cost, description, square, isMonth}) => {
                 </h3>
 
                 <p className="detail-cost">
-                    {currency}{cost}
+                    {cur.currency}{cur.countCurrencyPrice(cost, currency)}
                     {' '}
                     {
                         !!isMounthed && <span className="detail-tag-text"><Text content="per month" /></span>

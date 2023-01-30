@@ -2,10 +2,10 @@ import { useRouter } from "next/router";
 import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import Text from "../../../Elementes/Text/Text";
 
-const WorkData = ({title, cost, description, workType}) => {
+const WorkData = ({title, cost, description, currency, workType}) => {
     const workTitle = (workType == "To work") ? 'Vacancy' : 'Candidate'
     const {query: {category}} = useRouter()
-    const {currency} = useCurrency()
+    const cur = useCurrency()
     
     const isMounthed = (category === 'work') || (
         category === 'realty'
@@ -23,7 +23,7 @@ const WorkData = ({title, cost, description, workType}) => {
                 </div>
 
                 <p className="detail-cost">
-                    {currency}{cost}
+                    {cur.currency}{cur.countCurrencyPrice(cost, currency)}
                     {' '}
                     {
                         isMounthed && <span className="detail-tag-text"><Text content="per month" /></span>

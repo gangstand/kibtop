@@ -4,8 +4,8 @@ import LikeButtonContainer from "../../HomePage/LikeButton/LikeButtonContainer";
 import Image from "next/image"
 
 
-const Advert = ({advertId, category, title, cost, address, img, date}) => {
-    const {currency} = useCurrency()
+const Advert = ({advertId, category, title, cost, currency, address, img, date}) => {
+    const cur = useCurrency()
     return (
         <>
             <div className="advert advert--table">
@@ -19,7 +19,7 @@ const Advert = ({advertId, category, title, cost, address, img, date}) => {
                             {title}
                         </h5>
 
-                        <p className="advert-cost advert-cost--desk advert-cost--profile">{currency} {cost}</p>
+                        <p className="advert-cost advert-cost--desk advert-cost--profile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
                     
                         
                     </div>
@@ -27,7 +27,7 @@ const Advert = ({advertId, category, title, cost, address, img, date}) => {
                     <div className="advert__column advert__column--right">
                         <LikeButtonContainer {...{id: advertId, category}} />
 
-                        <p className="advert-cost advert-cost--mob advert-cost--profile">{currency} {cost}</p>
+                        <p className="advert-cost advert-cost--mob advert-cost--profile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
 
                         <div className="advert__info advert__info--desk">
                             <p className="info-text">{address}</p>

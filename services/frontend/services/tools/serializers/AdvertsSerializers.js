@@ -37,7 +37,8 @@ export const serializeAdverts = (adverts, lang) => {
         address: advert.city,
         img: BASE_URL+advert.upload,
         date: convertDate(advert.created_at),
-        category: advert.category
+        category: advert.category,
+        currency: advert.currency
     }))
 
 
@@ -51,7 +52,8 @@ export const serializeFullAdvertData = (advert, lang, category) => ({
     address: advert.city,
     cost: advert.price,
     img: advert.upload,
-    date: convertDate(advert.created_at)
+    date: convertDate(advert.created_at),
+    currency: advert.currency
 })
 
 
@@ -87,6 +89,7 @@ export const serializeAdvertDatails = (advert, lang, category) => {
         cost: advert.price || null,
         square: advert.square || null,
         isMonth: advert.type_sell || null,
+        currency: advert.currency,
         category
     }
 }

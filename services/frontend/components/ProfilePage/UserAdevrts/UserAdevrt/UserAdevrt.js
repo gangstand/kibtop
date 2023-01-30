@@ -6,8 +6,8 @@ import EditAdvertButtonContainer from "./EditAdvertButton/EditAdvertButtonContai
 import Image from "next/image"
 
 
-const UserAdevrt = ({advertId, title, cost, address, img, date, category}) => {
-    const {currency} = useCurrency()
+const UserAdevrt = ({advertId, title, cost, currency, address, img, date, category}) => {
+    const cur = useCurrency()
     return (
         <>
             <div className="advert">
@@ -21,7 +21,7 @@ const UserAdevrt = ({advertId, title, cost, address, img, date, category}) => {
                             {title}
                         </h5>
 
-                        <p className="advert-cost advert-cost--desk">{currency} {cost}</p>
+                        <p className="advert-cost advert-cost--desk">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
                     
                         
                     </div>
@@ -29,7 +29,7 @@ const UserAdevrt = ({advertId, title, cost, address, img, date, category}) => {
                     <div className="advert__column advert__column--right">
                         <LikeButtonContainer {...{id: advertId, category}} /> 
 
-                        <p className="advert-cost advert-cost--mob">{currency} {cost}</p>
+                        <p className="advert-cost advert-cost--mob">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
 
                         <div className="advert__info advert__info--desk">
                             <p className="info-text">{address}</p>

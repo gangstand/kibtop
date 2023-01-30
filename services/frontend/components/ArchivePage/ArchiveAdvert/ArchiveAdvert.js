@@ -5,8 +5,8 @@ import DeleteAdvertButtonContainer from "./DeleteAdvertButton/DeleteAdvertButton
 import Image from "next/image"
 
 
-const ArchiveAdvert = ({advertId, category, index, title, cost, address, img, date}) => {
-    const {currency} = useCurrency()
+const ArchiveAdvert = ({advertId, category, index, title, cost, currency, address, img, date}) => {
+    const cur = useCurrency()
     return (
         <>
             <div href={`/advert/${category}/${advertId}`} className="advert advert--full advert--del">
@@ -19,7 +19,7 @@ const ArchiveAdvert = ({advertId, category, index, title, cost, address, img, da
                             {title}
                         </h5>
 
-                        <p className="advert-cost advert-cost--desk advert-cost--profile">{currency} {cost}</p>
+                        <p className="advert-cost advert-cost--desk advert-cost--profile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
                     
                         
                     </div>
@@ -27,7 +27,7 @@ const ArchiveAdvert = ({advertId, category, index, title, cost, address, img, da
                     <div className="advert__column advert__column--right">
                          <DeleteAdvertButtonContainer {...{category, id: advertId, index}} />
 
-                        <p className="advert-cost advert-cost--mob advert-cost--profile">{currency} {cost}</p>
+                        <p className="advert-cost advert-cost--mob advert-cost--profile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
 
                         <div className="advert__info advert__info--desk">
                             <p className="info-text">{address}</p>

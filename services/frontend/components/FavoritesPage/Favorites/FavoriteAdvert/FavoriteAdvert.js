@@ -2,8 +2,8 @@ import { useCurrency } from "../../../../locales/hooks/useCurrency";
 import LikeButtonContainer from "../../../HomePage/LikeButton/LikeButtonContainer";
 import Image from "next/image"
 
-const FavoriteAdvert = ({id, category, index, title, cost, address, img, date}) => {
-    const {currency} = useCurrency()
+const FavoriteAdvert = ({id, category, index, title, cost, currency, address, img, date}) => {
+    const cur = useCurrency()
     return (
         <>
             <div href={'/adverts/'+id} className="advert advert--full">
@@ -15,7 +15,7 @@ const FavoriteAdvert = ({id, category, index, title, cost, address, img, date}) 
                             {title}
                         </h5>
 
-                        <p className="advert-cost advert-cost--desk advert-cost--profile">{currency} {cost}</p>
+                        <p className="advert-cost advert-cost--desk advert-cost--profile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
                     
                         
                     </div>
@@ -23,7 +23,7 @@ const FavoriteAdvert = ({id, category, index, title, cost, address, img, date}) 
                     <div className="advert__column advert__column--right">
                          <LikeButtonContainer className={'advert__btn'} {...{id, category}} />
 
-                        <p className="advert-cost advert-cost--mob advert-cost--profile">{currency} {cost}</p>
+                        <p className="advert-cost advert-cost--mob advert-cost--profile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
 
                         <div className="advert__info advert__info--desk">
                             <p className="info-text">{address}</p>
