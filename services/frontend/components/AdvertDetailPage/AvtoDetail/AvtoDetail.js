@@ -10,14 +10,14 @@ import DetailProfileContainer from "../OtherDetail/DetailProfile/DetailProfileCo
 import SimilarAds from "../OtherDetail/SimilarAds/SimilarAds";
 import AvtoParameterContainer from "./AvtoParameter/AvtoParameterContainer";
 
-const AvtoDetail = () => {
+const AvtoDetail = ({serverAdvert}) => {
     return (
         <>
-            <DetailNav />
+            <DetailNav {...{serverAdvert}} />
             <div className="container container--detail">
-                <DetailBannerContainer />
+                <DetailBannerContainer {...{serverAdvert}} />
 
-                <DetailCardContainer />
+                <DetailCardContainer {...{serverAdvert}} />
             </div>
 
             <div className="container container-brad">
