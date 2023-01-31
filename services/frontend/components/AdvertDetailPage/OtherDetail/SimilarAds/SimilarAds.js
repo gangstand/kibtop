@@ -16,7 +16,7 @@ const SimilarAds = () => {
 
     useEffect(() => {
         dispatch(getSimilarAdvertsThunk(category, locale))
-    }, [])
+    }, [locale])
 
     return (
         <>

@@ -4,8 +4,8 @@ const useHideMobilePages = () => {
     const {pathname} = useRouter()
     
     const excertedPaths = ['settings', 'archive', 'edit', 'advert']
-
-    const isExcerted = excertedPaths.some(path => pathname.includes(path) )
+    
+    const isExcerted = excertedPaths.some(path => pathname.split('/').includes(path) )
 
     const ExceptionStyle = isExcerted ? ' exception' : ''
     

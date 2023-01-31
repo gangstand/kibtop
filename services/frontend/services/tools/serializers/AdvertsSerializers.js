@@ -9,6 +9,16 @@ const convertDate = (dateVal) => {
 
 const serializeAdvertUploads = uploads => uploads.map(({uploads}) => uploads)
 
+const serializeAdvertsUploadsNull = (categoryUploads, AdvertUpload) => {
+    const uploads = serializeAdvertUploads(categoryUploads)
+
+    return (
+        !!(categoryUploads?.length) && !uploads?.some(upload => !upload)
+         ? uploads 
+         : !!AdvertUpload ? [AdvertUpload, AdvertUpload] : null
+    )
+}
+
 
 export const serializeAdverts = (adverts, lang) => {
     let advertsFull = []
@@ -66,6 +76,7 @@ export const serializeFavorites = (favorites, category) => favorites
     }))
 
 export const serializeAdvertDatails = (advert, lang, category) => {
+    console.log(advert);
     return {
         title: advert[`title_${lang}`] || null,
         description: advert[`description_${lang}`] || null,
@@ -83,7 +94,7 @@ export const serializeAdvertDatails = (advert, lang, category) => {
         city: advert.city || null,
         geocode: advert.geocode || null,
         img: advert.upload || null,
-        uploads: !!(advert[`${category}_full_upload`]?.length) && !serializeAdvertUploads(advert[`${category}_full_upload`]).some(upload => !upload) ? serializeAdvertUploads(advert[`${category}_full_upload`]) : null,
+        uploads: serializeAdvertsUploadsNull(advert[`${category}_full_upload`], advert.upload),
         userId: advert.user || null,
         advertId: advert.id || null,
         cost: advert.price || null,

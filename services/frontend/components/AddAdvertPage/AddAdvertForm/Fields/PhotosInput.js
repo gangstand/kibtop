@@ -34,7 +34,7 @@ const PhotosInput = () => {
                                     format: val => fileFormValid(val) || t('invalid format'),
                                 },
                                 onChange: onPhotosChange
-                        })} id="avatar" type="file" placeholder={t("Your email")} />
+                        })} id="avatar" type="file" accept=".jpg,.jpeg,.png" placeholder={t("Your email")} />
 
                         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_508_6265)">
@@ -58,7 +58,7 @@ const PhotosInput = () => {
                                 
                 </label>
                 
-                <input {...register('photos')} type="file" hidden={true} />
+                <input {...register('photos')} type="file" accept=".jpg,.jpeg,.png" hidden={true} />
             </div>
         </>
     );

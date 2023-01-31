@@ -25,7 +25,7 @@ export const CurrencyProvider = props => {
     }
 
     const countCurrencyPrice = (price, cur) => {
-        if(cur === currency) return price
+        if(cur === currency || !cur) return price
 
         const dollarPrice = price / exchange[cur]
         const exchangePrice = dollarPrice * exchange[currency]

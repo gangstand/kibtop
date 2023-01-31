@@ -2,7 +2,6 @@ import FavoritesPage from "../components/FavoritesPage/FavoritesPage";
 import Header from "../components/Header/Header";
 import HeaderService from "../components/Header/HeaderService/HeaderService";
 import { FavoritesApi } from "../services/FavoritesApi";
-import { getStringCookies } from "../services/tools/CookieController";
 import { getServerSideUser } from "../services/tools/getServerSideUser/getServerSideUser";
 
 const Favorites = ({user, favoriteAdverts}) => {
@@ -18,9 +17,8 @@ const Favorites = ({user, favoriteAdverts}) => {
 
 export async function getServerSideProps({req, res, locale}) {
 
-    const cookies = getStringCookies(req)
     
-    const user = await getServerSideUser(cookies)
+    const user = await getServerSideUser(req.cookies)
 
 
     if(!user) {

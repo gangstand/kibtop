@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import WorkData from "./WorkData";
 
-const WorkDataContainer = () => {
-    const  advert = useSelector(state => state.advert)
+const WorkDataContainer = ({serverAdvert}) => {
+    const storeAdvert = useSelector(state => state.advert)
+    const advert = !!storeAdvert.advertId ? storeAdvert : serverAdvert
+
     return <WorkData {...advert} />;
 }
 

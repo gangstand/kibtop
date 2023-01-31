@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import WorkParameter from "./WorkParameter";
 
-const WorkParameterContainer = () => {
-    const advert = useSelector(state => state.advert)
+const WorkParameterContainer = ({serverAdvert}) => {
+    const storeAdvert = useSelector(state => state.advert)
+    const advert = !!storeAdvert.advertId ? storeAdvert : serverAdvert
 
     return <WorkParameter {...advert} />;
 }

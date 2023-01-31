@@ -4,7 +4,6 @@ import HeaderService from "../../../components/Header/HeaderService/HeaderServic
 import MobileSettingsSelect from "../../../components/ProfilePage/ProfileMenu/ProfileUser/UserLocale/MobileSettingsSelect/MobileSettingsSelect";
 import { backPath } from "../../../components/SettingsPage/backPath";
 import SettingsNav from "../../../components/SettingsPage/SettingsNav";
-import { getStringCookies } from "../../../services/tools/CookieController";
 import { getServerSideUser } from "../../../services/tools/getServerSideUser/getServerSideUser";
 
 const Locale = ({user}) => {
@@ -29,8 +28,7 @@ const Locale = ({user}) => {
 
 export async function getServerSideProps({req, res}) {
 
-    const cookies = getStringCookies(req)
-    const user = await getServerSideUser(cookies)
+    const user = await getServerSideUser(req.cookies)
 
     if(!user) {
         return {

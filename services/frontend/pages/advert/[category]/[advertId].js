@@ -26,5 +26,4 @@ export async function getServerSideProps({req, res, locale, query: {advertId, ca
     }
 }
 
-
 export default AdvertId;

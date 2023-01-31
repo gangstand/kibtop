@@ -17,7 +17,7 @@ const DetailBannerContainer = ({serverAdvert}) => {
         {id: 4},
     ]
 
-    return <DetailBannerState {...{offset, setOffset, items: uploads}} />;
+    return <DetailBannerState {...{offset, setOffset, items: uploads || items}} />;
 }
 
 export default DetailBannerContainer;

@@ -25,20 +25,20 @@ const WorkDetail = ({serverAdvert}) => {
 
             <div className="container container-brad">
                 <div className="detail-wrapper">
-                    <WorkDataContainer />
+                    <WorkDataContainer {...{serverAdvert}} />
 
                     <DetailMapsContainer />
 
-                    <WorkParameterContainer />
+                    <WorkParameterContainer {...{serverAdvert}} />
 
                     <div className="detail-wrapper__container detail-wrapper__container--date">
-                        <DetailDateContainer />
+                        <DetailDateContainer {...{serverAdvert}} />
                     </div>
 
                     <DetailProfileContainer />
 
                     <div className="detail-wrapper__container">
-                        <DetailDateContainer className={'exception'} />
+                        <DetailDateContainer className={'exception'} {...{serverAdvert}} />
 
                         <Link href="/support" className="detail-tag-text detail-tag-text--red">
                             <Text content="Complain about the ad" />

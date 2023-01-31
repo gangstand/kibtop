@@ -11,7 +11,7 @@ const Other = () => {
 
     useEffect(() => {
         dispatch(getCategoryAdvertsThunk(category, locale, page))
-    }, [category])
+    }, [category, locale, page])
 
     
 

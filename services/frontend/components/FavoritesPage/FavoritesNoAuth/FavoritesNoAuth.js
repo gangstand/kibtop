@@ -19,7 +19,7 @@ const FavoritesNoAuth = () => {
                     <Text content="To add ads to Favorites, you need to sign up" />
                 </p>
 
-                <Link href="adverts/create" className="reg-btn reg-btn--warn">
+                <Link href="/auth/registration/" className="reg-btn reg-btn--warn">
                     <Text content="Sign up" />
                 </Link>
             </div>

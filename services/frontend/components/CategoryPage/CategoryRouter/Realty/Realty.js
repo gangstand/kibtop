@@ -12,7 +12,7 @@ const Realty = () => {
 
     useEffect(() => {
         dispatch(getCategoryAdvertsThunk(category, locale, page))
-    }, [category])
+    }, [category, locale, page])
 
 
     return (

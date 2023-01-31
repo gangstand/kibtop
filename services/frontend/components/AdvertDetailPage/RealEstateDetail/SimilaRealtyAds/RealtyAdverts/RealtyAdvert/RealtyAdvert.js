@@ -13,7 +13,7 @@ const RealtyAdvert = ({advertId, category, title, cost, currency, address, img, 
                     <Link href={`/advert/${category}/${advertId}`} className="mobile-realty-advert__line">
 
                         {
-                            !!(uploads.length) ? <>
+                            !!(uploads?.length) ? <>
                                 {
                                     uploads?.map((img, index) => <img width={100} height={100} alt={''} src={img} key={index} className="mobile-realty-advert__item" />)
 

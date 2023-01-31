@@ -71,7 +71,7 @@ const DetailBanner = ({switchToNext, transition, slideList, dots, offset, setOff
                 <div className="detail-slider__line"  ref={sliderLineEl}>
                         {
                             slideList?.map((src, index) =>    <div key={index} className="detail-slider__item">
-                                                        <img width={100} height={100} alt={''} src={src} className="detail-slider__img" />
+                                                        <img  alt={''} src={src} className="detail-slider__img" />
                                                     </div>)
                         }
                 </div>

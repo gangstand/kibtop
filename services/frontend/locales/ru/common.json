@@ -38,7 +38,7 @@
 
     "Sign up": "Регистрация",
     "Guest account": "Гостевой аккаунт",
-    "Favorites": "Отмеченные",
+    "Favorites": "Избранные",
     "Messages": "Сообщения",
     "Cancel": "Отмена",
 
@@ -257,7 +257,7 @@
     "2+1": "2+1",
     "2+2": "2+2",
     "3+1": "3+1",
-    "4+1 and more": "4+1 and more",
+    "4+1 and more": "4+1 и более",
     "Studio": "Студия",
     
     "Phone number": "Номер телефона",
@@ -277,8 +277,14 @@
     "Add your phone number": "Добавьте ваш номер телефона",
     "In order for customers to contact you, we need your phone number": "Для того чтобы клиенты могли связаться с вами, нам нужен ваш номер телефона",
     "Sell much faster and more profitably!": "Продавайте намного быстрее и выгоднее!",
-    "purpose": "цель"
+    "purpose": "цель",
 
-
+    "Home page": "Главная страница",
+    "Seller page": "Страница продавца",
+    "Locale settings": "Homepage",
+    "Recovery": "Homepage",
+    "Reset password": "Homepage",
+    "Confirm account": "Homepage",
+    "page": "page"
 
 }

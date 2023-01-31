@@ -414,6 +414,7 @@
 
 .services-wrapper {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     max-width: 100%;
@@ -603,7 +604,13 @@
 
 
 .user-btns__item:last-child {
-    margin-left: 15px;
+    margin-left: 0;
+}
+
+@media (min-width: 800px) {
+    .user-btns__item:last-child {
+        margin-left: 15px;
+    }
 }
 
 .user-btns__item svg {

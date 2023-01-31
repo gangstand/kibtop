@@ -6,7 +6,6 @@ import HeaderSettings from "../../components/Header/HeaderSettings/HeaderSetting
 import SettingsNav from "../../components/SettingsPage/SettingsNav";
 import { ArchiveApi } from "../../services/ArchiveApi";
 import { ProfileApi } from "../../services/ProfileApi";
-import { getServerSideCookies, getStringCookies } from "../../services/tools/CookieController";
 import { getServerSideUser } from "../../services/tools/getServerSideUser/getServerSideUser";
 
 const Archive = ({archiveAdverts}) => {
@@ -26,15 +25,13 @@ const Archive = ({archiveAdverts}) => {
 
 export async function getServerSideProps({req, res, locale}) {
     
-    const cookies = getStringCookies(req)
 
-
-    const access = getServerSideCookies(cookies, 'access')
+    const {access} = req.cookies
 
     let user = await ProfileApi.getUserData(access)
                     .catch( err => null)
 
-    if(!user) user = await getServerSideUser(cookies)
+    if(!user) user = await getServerSideUser(req.cookies)
 
     if(!user) {
       return {

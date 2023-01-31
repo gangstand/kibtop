@@ -23,7 +23,7 @@ const FavoritesEmpty = () => {
                     {" "}<Text content="on the ad to save it here" />
                 </p>
 
-                <Link href="adverts/create" className="reg-btn reg-btn--free reg-btn--guide">
+                <Link href="/" className="reg-btn reg-btn--free reg-btn--guide">
                     <Text content="Watch ads" />
                 </Link>
             </div>

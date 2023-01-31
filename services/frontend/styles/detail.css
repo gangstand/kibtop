@@ -694,7 +694,6 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    max-width: calc(1161px + var(--margin));
     width: calc(var(--width) + (var(--margin)*2) );
 }
 
@@ -790,7 +789,7 @@
     }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1450px) {
     .adverts-table {
         --margin: 20px;
         max-width: calc(1161px + 40px);
