@@ -707,12 +707,12 @@
     font-size: 20px;
     line-height: 20px;
     letter-spacing: -0.408px;
-    color: var(--color-black);
+    color: var(--color-grey);
 }
 
 
 .locale-menu__btn--active {
-    color: var(--color-grey);
+    color: var(--color-black);
 }
 
 .close {

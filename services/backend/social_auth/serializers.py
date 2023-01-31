@@ -38,6 +38,7 @@ class GoogleSocialAuthSerializer(serializers.Serializer):
 
     def validate_auth_token(self, auth_token):
         user_data = google.Google.validate(auth_token)
+        print(user_data)
         try:
             user_data['sub']
         except:
@@ -50,9 +51,10 @@ class GoogleSocialAuthSerializer(serializers.Serializer):
             raise AuthenticationFailed('oops, who are you?')
 
         user_id = user_data['sub']
+        last_name = user_data['given_name']
         email = user_data['email']
         name = user_data['email'].replace('@', "_")
         provider = 'google'
 
         return register_social_user(
-            provider=provider, user_id=user_id, email=email, name=name)
+            provider=provider, user_id=user_id, email=email, name=name, last_name=last_name)

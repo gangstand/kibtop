@@ -5,7 +5,7 @@ import { getCategoryAdvertsThunk } from "../../../../store/slices/CategorySlice"
 import RealtyAdverts from "../../../AdvertDetailPage/RealEstateDetail/SimilaRealtyAds/RealtyAdverts/RealtyAdverts"
 import Adverts from "../../../Adverts/Adverts"
 
-const Realty = () => {
+const Realty = ({categoryAdverts}) => {
     const {locale, query: {category, page}} = useRouter()
     const {adverts} = useSelector(state => state.category)
     const dispatch = useDispatch()
@@ -14,13 +14,14 @@ const Realty = () => {
         dispatch(getCategoryAdvertsThunk(category, locale, page))
     }, [category, locale, page])
 
+    const data = adverts.length > 0 ? adverts : categoryAdverts
 
     return (
         <>
             <div className="realty-similar">
-                <Adverts adverts={adverts} />
+                <Adverts adverts={data} />
             </div>
-            <RealtyAdverts adverts={adverts} />
+            <RealtyAdverts adverts={data} />
         </>
     );
 }

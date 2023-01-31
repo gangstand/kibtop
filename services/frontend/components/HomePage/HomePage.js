@@ -12,7 +12,6 @@ import Recommend from "./Recommend/Recommend";
 const HomePage = ({slides, recommendGoods, newGoods}) => {
     return (
         <>
-            <HomePageHead />
 
             <HeaderService />
             <CategoriesNav />

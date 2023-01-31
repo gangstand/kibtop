@@ -1,9 +1,15 @@
+import Head from "next/head";
 import AdvertDetailPage from "../../../components/AdvertDetailPage/AdvertDetailPage";
 import { AdvertApi } from "../../../services/AdvertApi";
 
 const AdvertId = ({serverAdvert}) => {
     return (
         <>
+            <Head>
+                <title>
+                    Kibtop - {serverAdvert.title}
+                </title>
+            </Head>
             <AdvertDetailPage {...{serverAdvert}} />
         </>
     );

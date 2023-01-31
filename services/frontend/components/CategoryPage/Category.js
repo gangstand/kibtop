@@ -5,7 +5,7 @@ import CategoryNav from "./CategoryNav/CategoryNav";
 import CategoryRouter from "./CategoryRouter/CategoryRouter";
 import PageNavContainer from "./PageNav/PageNavContainer";
 
-const CategorySection = () => {
+const CategorySection = ({categoryAdverts, pages}) => {
     return (
         <>
             <Header />
@@ -16,8 +16,8 @@ const CategorySection = () => {
                 <div className="container container--end category-settings">
                     <LocationContainer />
                 </div>
-                <CategoryRouter />
-                <PageNavContainer />
+                <CategoryRouter {...{categoryAdverts}} />
+                <PageNavContainer {...{serverPages: pages}} />
             </main>
         </>
     );

@@ -67,13 +67,21 @@ export const serializeFullAdvertData = (advert, lang, category) => ({
 })
 
 
-export const serializeFavorites = (favorites, category) => favorites
-    .map(favorite => ({
-        favouriteId: favorite.id, 
-        advertId: favorite[`${category}_full`],
-        userId: favorite.user,
-        category,
-    }))
+export const serializeFavorites = (favorites) => favorites
+    .map(favorite => {
+        const categories = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
+
+        const advertKey = Object.keys(favorite).find(key => categories.some(category => key.includes(category)))
+
+        const category = advertKey.split('_').slice(0, -1).join('_')
+
+        return {
+            favouriteId: favorite.id, 
+            advertId: favorite[advertKey],
+            userId: favorite.user,
+            category,
+        }
+    })
 
 export const serializeAdvertDatails = (advert, lang, category) => {
     console.log(advert);

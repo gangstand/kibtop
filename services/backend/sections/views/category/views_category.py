@@ -1,55 +1,105 @@
-from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
+import math
+import random
+
+import requests
 from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 
 from sections.models import (
-    AvtoFull, ChildrenFull, FashionFull, RealtyFull, HouseGardenFull, ServicesFull, WorkFull,
-    ElectronicsFull
+    AvtoFull
 )
 from sections.serializer import (
-    CategoryFullSerializerEN, CategoryFullSerializerRU, CategoryFullSerializerTR,
     CategoryFullSerializer
 )
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from sections.service import FilterCategory
+from settings.settings import BASE_URL
 
 
-class CategoryLimitPagination(MultipleModelLimitOffsetPagination):
+class CategoryLimitPagination(PageNumberPagination):
     default_limit = 10
 
 
 class CategoryFullAPIList(generics.ListAPIView):
     serializer_class = CategoryFullSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
-    filterset_class = FilterCategory
+    queryset = AvtoFull
     filter_backends = (DjangoFilterBackend,)
     pagination_class = CategoryLimitPagination
 
     def get(self, request, *args, **kwargs):
         query = self.request.query_params
-        filters = {
-            'avto': AvtoFull.objects.filter(publisher=True),
-            'children': ChildrenFull.objects.filter(publisher=True),
-            'electronics': ElectronicsFull.objects.filter(publisher=True),
-            'fashion': FashionFull.objects.filter(publisher=True),
-            'house_garden': HouseGardenFull.objects.filter(publisher=True),
-            'realty': RealtyFull.objects.filter(publisher=True),
-            'services': ServicesFull.objects.filter(publisher=True),
-            'work': WorkFull.objects.filter(publisher=True),
-        }
-        serializer_en = CategoryFullSerializerEN(filters)
-        serializer_ru = CategoryFullSerializerRU(filters)
-        serializer_tr = CategoryFullSerializerTR(filters)
+        category = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
+        urls = [f'{BASE_URL}/v1/{i}/?lang=en' for i in category]
+        responses = [requests.get(u) for u in urls]
+        res = []
+        for response in responses:
+            res.append(response.json()['results']['en'])
+        res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
+        int_len = len(res)
 
+        limit = int(query['limit'])
+        page = int(query['page'])
+        if limit <= int_len:
+            first = page * limit
+            last = first + limit
+            res = res[first:last]
         try:
             if query['lang'] == 'en':
-                return Response(serializer_en.data, status=HTTP_200_OK)
-            elif query['lang'] == 'ru':
-                return Response(serializer_ru.data, status=HTTP_200_OK)
-            elif query['lang'] == 'tr':
-                return Response(serializer_tr.data, status=HTTP_200_OK)
-            return Response(serializer_en.data, status=HTTP_200_OK)
+
+                urls = [f'{BASE_URL}/v1/{i}/?lang=en' for i in category]
+                responses = [requests.get(u) for u in urls]
+                res = []
+                for response in responses:
+                    res.append(response.json()['results']['en'])
+                res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
+                int_len = len(res)
+
+                limit = int(query['limit'])
+                page = int(query['page'])
+                if limit <= int_len:
+                    first = page * limit
+                    last = first + limit
+                    res = res[first:last]
+                return Response(res, status=HTTP_200_OK)
+            if query['lang'] == 'ru':
+
+                urls = [f'{BASE_URL}/v1/{i}/?lang=ru' for i in category]
+                responses = [requests.get(u) for u in urls]
+                res = []
+                for response in responses:
+                    res.append(response.json()['results']['ru'])
+                res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
+                int_len = len(res)
+
+                limit = int(query['limit'])
+                page = int(query['page'])
+
+                if limit <= int_len:
+                    first = page * limit
+                    last = first + limit
+                    res = res[first:last]
+                return Response(res, status=HTTP_200_OK)
+            if query['lang'] == 'tr':
+
+                urls = [f'{BASE_URL}/v1/{i}/?lang=tr' for i in category]
+                responses = [requests.get(u) for u in urls]
+                res = []
+                for response in responses:
+                    res.append(response.json()['results']['tr'])
+                res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
+                int_len = len(res)
+
+                limit = int(query['limit'])
+                page = int(query['page'])
+
+                if limit <= int_len:
+                    first = page * limit
+                    last = first + limit
+                    res = res[first:last]
+                return Response(res, status=HTTP_200_OK)
+            return Response(res, status=HTTP_200_OK)
         except Exception:
-            return Response(serializer_en.data, status=HTTP_200_OK)
+            return Response(res, status=HTTP_200_OK)

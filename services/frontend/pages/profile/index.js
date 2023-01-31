@@ -1,3 +1,4 @@
+import ProfileHead from "../../components/Heads/ProfileHead";
 import ProfilePage from "../../components/ProfilePage/ProfilePage";
 import { AuthApi } from "../../services/AuthApi";
 import { ProfileApi } from "../../services/ProfileApi";
@@ -6,6 +7,7 @@ import { getServerSideUser } from "../../services/tools/getServerSideUser/getSer
 const Profile = ({user, adverts}) => {
     return (
         <>
+            <ProfileHead />
             <ProfilePage {...{user, adverts}} />
         </>
     );

@@ -19,24 +19,18 @@ export const FavoritesApi = {
 
 
     async getUserFavoritesAdverts(userId, lang) {
-        const categories = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
-        let favorites = []
-
-        for (let i = 0; i < categories.length; i++) {
-            const category = categories[i];
-            await instance.get(`${category}/favourites/?user=${userId}`, {
-                headers: await createHeaders()
-            }).then(({data}) => {
-                const sortedFavorites = serializeFavorites(data, category)
-
-                favorites = [...favorites, ...sortedFavorites] 
+    
+        const favorites = await instance.get(`favourites/all/?user=${userId}`)
+            .then(({data}) => {
+                return serializeFavorites(data)
             })
-        }
+
 
         let favoriteAdverts = []
         
         for (let i = 0; i < favorites.length; i++) {
             const {id, category, advertId, userId} = favorites[i];
+
             await instance.get(`${category}/${advertId}/`)
                 .then(({data}) => {
                     favoriteAdverts = [...favoriteAdverts, serializeFullAdvertData(data, lang, category)]
@@ -47,20 +41,12 @@ export const FavoritesApi = {
     },
 
     async getUserFavorites(userId) {
-        if(!userId) return
-        const categories = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
-        let favorites = []
+        
+        const favorites  = await instance.get(`favourites/all/?user=${userId}`)
+            .then(({data}) => {
+                return serializeFavorites(data)
+            })
 
-        for (let i = 0; i < categories.length; i++) {
-            const category = categories[i];
-            await instance.get(`${category}/favourites/?user=${userId}`, {
-                headers: await createHeaders()
-            }).then(({data}) => {
-                    const sortedFavorites = serializeFavorites(data, category)
-
-                    favorites = [...favorites, ...sortedFavorites] 
-                })
-        }
 
 
         return favorites

@@ -21,14 +21,14 @@ def generate_username(name):
         return generate_username(random_username)
 
 
-def register_social_user(provider, user_id, email, name):
+def register_social_user(provider, user_id, email, name, last_name):
     filtered_user_by_email = CustomUser.objects.filter(email=email)
 
     if filtered_user_by_email.exists():
 
         if provider == filtered_user_by_email[0].auth_provider:
             payload = {'username': name, 'password': env('SOCIAL_SECRET')}
-            response = requests.post(f'{env("URL")}/api/v1/auth/jwt/create', data=payload).json()
+            response = requests.post(f'{env("URL")}/v1/auth/jwt/create', data=payload).json()
             return {"refresh": response['refresh'], "access": response['access']}
         else:
             raise AuthenticationFailed(
@@ -38,6 +38,7 @@ def register_social_user(provider, user_id, email, name):
         user = {
             'username': generate_username(name),
             'email': email,
+            'first_name': last_name,
             'password': env('SOCIAL_SECRET'),
             'auth_provider': provider,
         }

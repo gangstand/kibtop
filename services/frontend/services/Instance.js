@@ -3,7 +3,8 @@ import { AuthApi } from "./AuthApi";
 import { Cookies } from "./tools/CookieController";
 import { getServerSideUser } from "./tools/getServerSideUser/getServerSideUser";
 
-export const BASE_URL = 'https://api.kibtop.com'
+// export const BASE_URL = 'https://kibtop-api.com'
+export const BASE_URL = 'http://127.0.0.1:8000'
 
 
 
@@ -47,11 +48,12 @@ export const createHeaders = async (accessToken) => {
 
 
 export const instance = axios.create({
+    // baseURL: BASE_URL+'/v1/',
     baseURL: BASE_URL+'/v1/',
 
     withCredentials: false,
-    headers: {
-        "Accept-Encoding": "*"
-    }
+    // headers: {
+    //     "Accept-Encoding": "*"
+    // }
 })
 

@@ -1,12 +1,20 @@
+
+import Head from "next/head";
 import Header from "../../../components/Header/Header";
 import HeaderService from "../../../components/Header/HeaderService/HeaderService";
 import Settings from "../../../components/SettingsPage/Settings";
+import { useLanguage } from "../../../locales/hooks/useLanguage";
 import { getServerSideUser } from "../../../services/tools/getServerSideUser/getServerSideUser";
 
 const SettingsPage = ({user}) => {
-
+    const {t} = useLanguage()
     return (
         <>
+            <Head>
+                <title>
+                    Kibtop - {t('Settings')}
+                </title>
+            </Head>
             <Header />
             <HeaderService />
             <Settings />

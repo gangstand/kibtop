@@ -46,11 +46,15 @@ export const Cookies = {
             return
         }
 
-
         const expires = new Date().toUTCString()
         
-
         document.cookie = `${cookieName}=${null}; domain=localhost; expires=${expires}; path=/;`
+    },
+
+    delAllCookie() {
+        const cookieNames = Object.keys(this.getCookies())
+        
+        cookieNames.forEach(cookie => this.delCookie(cookie))
     }
 }
 

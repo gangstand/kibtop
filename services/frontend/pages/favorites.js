@@ -1,12 +1,14 @@
 import FavoritesPage from "../components/FavoritesPage/FavoritesPage";
 import Header from "../components/Header/Header";
 import HeaderService from "../components/Header/HeaderService/HeaderService";
+import FavoritesHead from "../components/Heads/FavoritesHead";
 import { FavoritesApi } from "../services/FavoritesApi";
 import { getServerSideUser } from "../services/tools/getServerSideUser/getServerSideUser";
 
 const Favorites = ({user, favoriteAdverts}) => {
     return (
         <>
+            <FavoritesHead />
             <Header />
             <HeaderService />
             <FavoritesPage {...{user, favoriteAdverts}} />

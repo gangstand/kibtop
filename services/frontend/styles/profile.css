@@ -1238,3 +1238,10 @@
 .reg-btn--resend {
     height: max-content;
 }
+
+.profile-back {
+    margin-right: 9px;
+    
+    display: flex;
+    align-items: center;
+}
