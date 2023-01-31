@@ -7,7 +7,7 @@ environ.Env.read_env('.env')
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1', 'kibtop-api.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'api.kibtop.com', '94.250.251.138']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -47,12 +47,14 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://kibtop-api.com'
+    'https://api.kibtop.com'
+    'http://94.250.251.138:8000'
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'https://kibtop.com',
 ]
 
 ROOT_URLCONF = 'settings.urls'
@@ -174,7 +176,7 @@ DJOSER = {
 }
 
 # EMAIL
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_PORT = env("EMAIL_PORT")
