@@ -1,7 +1,7 @@
 from sections.models import WorkFullUpload, WorkFull
 from django.contrib import admin
 
-from sections.models.work.models_work import WorkFullViewsUser
+from sections.models.work.models_work import WorkFullViewsUser, WorkFullFavouritesUser
 
 
 class WorkFullImageAdmin(admin.StackedInline):
@@ -16,4 +16,4 @@ class WUAdmin(admin.ModelAdmin):
         model = WorkFull
 
 
-admin.site.register(WorkFullViewsUser)
+admin.site.register(WorkFullFavouritesUser)
