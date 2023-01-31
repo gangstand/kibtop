@@ -1,5 +1,6 @@
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 
@@ -23,6 +24,7 @@ class CategoryFullAPIList(generics.ListAPIView):
     serializer_class = CategoryFullSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     filterset_class = FilterCategory
+    filter_backends = (DjangoFilterBackend,)
     pagination_class = CategoryLimitPagination
 
     def get(self, request, *args, **kwargs):

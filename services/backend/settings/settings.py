@@ -6,8 +6,8 @@ environ.Env.read_env('.env')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
-DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'api.kibtop.com']
+DEBUG = False
+ALLOWED_HOSTS = ['127.0.0.1', 'kibtop-api.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,6 +39,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django_graylog.GraylogMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -46,7 +47,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://api.kibtop.com'
+    'https://kibtop-api.com'
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -74,23 +75,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'settings.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': env("POSTGRES_DB"),
-#         'USER': env("POSTGRES_USER"),
-#         'PASSWORD': env("POSTGRES_PASSWORD"),
-#         'HOST': env("POSTGRES_HOST"),
-#         'PORT': env("POSTGRES_PORT")
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env("POSTGRES_DB"),
+        'USER': env("POSTGRES_USER"),
+        'PASSWORD': env("POSTGRES_PASSWORD"),
+        'HOST': env("POSTGRES_HOST"),
+        'PORT': env("POSTGRES_PORT")
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -141,8 +142,6 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication'
 
     ),
     'DEFAULT_FILTER_BACKEND': (
@@ -185,3 +184,29 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env("EMAIL_HOST_USER")
 SERVER_EMAIL = env("EMAIL_HOST_USER")
+
+GRAYLOG_ENDPOINT = 'http://graylog:12201/gelf'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'gelf': {
+            'class': 'graypy.GELFUDPHandler',
+            'host': 'graylog',
+            'port': 12201,
+        },
+    },
+    'loggers': {
+        'custom_gy_logger': {
+            'handlers': ['gelf'],
+            'level': 'DEBUG',
+            'propagate': True,
+        }
+    }
+}
+
+import logging
+
+logger = logging.getLogger('custom_gy_logger')
+logger.debug('This is funny error')

@@ -11,13 +11,13 @@ from django.conf.urls.static import static
 class BothHttpAndHttpsSchemaGenerator(OpenAPISchemaGenerator):
     def get_schema(self, request=None, public=False):
         schema = super().get_schema(request, public)
-        schema.schemes = ["http", "https"]
+        schema.schemes = ["https"]
         return schema
 
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="API",
+        title="KibTop API",
         default_version='v1',
         description="API documentation",
     ),
@@ -28,7 +28,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('api/v1/', include([
+                  path('v1/', include([
                       path('auth/', include('accounts.urls')),
                       path('social_auth/', include(('social_auth.urls', 'social_auth'), namespace="social_auth")),
                       path('messages/', include("messages_drf.urls", namespace="messages")),
