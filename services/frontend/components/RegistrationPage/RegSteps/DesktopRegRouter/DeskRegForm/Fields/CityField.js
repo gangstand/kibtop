@@ -36,7 +36,7 @@ const CityField = () => {
 
                 <input {...register('city', {
                                 pattern: {
-                                    value: /^[А-яA-ZİĞÜŞÖÇа-яa-zğüşöç]+$/,
+                                    value: /^[А-яA-ZİĞÜŞÖÇа-яa-zğüşöç\s\-,]+$/,
                                     message: t('invalid format')
                                 }
                         })} type="text" placeholder={t("City or region")} />

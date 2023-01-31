@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -6,12 +7,14 @@ import Text from "../../../../components/Elementes/Text/Text";
 import Header from "../../../../components/Header/Header";
 import Access from "../../../../components/RegistrationPage/RegSteps/DesktopRegRouter/DeskGreeting/Access/Access";
 import RegDecoration from "../../../../components/RegistrationPage/RegSteps/RegDecoration/RegDecoration";
+import { useLanguage } from "../../../../locales/hooks/useLanguage";
 import { RecoveryApi } from "../../../../services/RecoveryApi";
 import { clearUserData, getUserData } from "../../../../services/tools/crypto";
 import { loginThunk } from "../../../../store/slices/AuthSlice";
 import { activateEmailThunk } from "../../../../store/slices/RecoverySlice";
 
 const EmailConfirm = () => {
+    const {t} = useLanguage()
     const dispatch = useDispatch()
     const {query: {uid, token}, pathname, query, asPath, push} = useRouter()
     const {isAuthed} = useSelector(state => state.auth)
@@ -26,6 +29,11 @@ const EmailConfirm = () => {
 
     return (
         <>
+            <Head>
+                <title>
+                    Kibtop - {t('Confirm account')}
+                </title>
+            </Head>
             <Header/>
             <section className="section section--reg">
                 <div className="container container--reg">

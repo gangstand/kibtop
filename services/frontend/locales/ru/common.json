@@ -281,10 +281,13 @@
 
     "Home page": "Главная страница",
     "Seller page": "Страница продавца",
-    "Locale settings": "Homepage",
-    "Recovery": "Homepage",
-    "Reset password": "Homepage",
-    "Confirm account": "Homepage",
-    "page": "page"
+    "Locale settings": "Локальные настройки",
+    "Recovery": "Восстановление",
+    "Reset password": "Сброс пароля",
+    "Confirm account": "Подтвердить аккаунт",
+    "Page": "Страница",
+    "Exit": "Выйти",
+    "Registration": "Регистрация"
+
 
 }

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCategoryAdvertsThunk } from "../../../../store/slices/CategorySlice";
 import Adverts from "../../../Adverts/Adverts";
 
-const Other = () => {
+const Other = ({categoryAdverts}) => {
     const {locale, query: {category, page}} = useRouter()
     const {adverts} = useSelector(state => state.category)
     const dispatch = useDispatch()
@@ -13,9 +13,9 @@ const Other = () => {
         dispatch(getCategoryAdvertsThunk(category, locale, page))
     }, [category, locale, page])
 
-    
+    const data = adverts.length > 0 ? adverts : categoryAdverts
 
-    return <Adverts adverts={adverts} />;
+    return <Adverts adverts={data} />;
 }
 
 export default Other;

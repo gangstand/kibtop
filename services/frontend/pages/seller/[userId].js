@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Text from "../../components/Elementes/Text/Text";
 import Header from "../../components/Header/Header";
 import HeaderService from "../../components/Header/HeaderService/HeaderService";
+import SellerHead from "../../components/Heads/SellerHead";
 import ProfileMenu from "../../components/ProfilePage/ProfileMenu/ProfileMenu";
 import NameData from "../../components/ProfilePage/ProfileMenu/ProfileUser/NameData/NameData";
 import UserLocale from "../../components/ProfilePage/ProfileMenu/ProfileUser/UserLocale/UserLocale";
@@ -18,6 +19,7 @@ const Seller = ({newGoods, user}) => {
     
     return (
         <>
+            <SellerHead />
             <Header />
             <HeaderService />
             <main className="main main--profile">
@@ -32,6 +34,15 @@ export async function getServerSideProps(context) {
     const {locale, params: {userId}} = context
     
     const user = await AdvertApi.getAdvertSeller(userId)
+
+    if(!user) {
+        return {
+            redirect: {
+                destination: '/auth/login/',
+                permanent: false,
+              },
+        }
+    }
     
     const newGoods = await ProfileApi.getUserAdverts(userId, locale) || null
 

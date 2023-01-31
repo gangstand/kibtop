@@ -2,19 +2,19 @@ import { useRouter } from "next/router";
 import Other from "./Other/Other";
 import Realty from "./Realty/Realty";
 
-const CategoryRouter = () => {
+const CategoryRouter = ({categoryAdverts}) => {
     const {query: {category}} = useRouter()
     return (
         <>
             {
-                category === 'realty' ? <Realty /> :
-                category === 'avto' ? <Other /> :
-                category === 'work' ? <Other /> :
-                category === 'services' ? <Other /> :
-                category === 'children' ? <Other /> :
-                category === 'electronics' ? <Other /> :
-                category === 'house_garden' ? <Other /> :
-                category === 'fashion' ? <Other /> : ''
+                category === 'realty' ? <Realty {...{categoryAdverts}} /> :
+                category === 'avto' ? <Other {...{categoryAdverts}} /> :
+                category === 'work' ? <Other {...{categoryAdverts}} /> :
+                category === 'services' ? <Other {...{categoryAdverts}} /> :
+                category === 'children' ? <Other {...{categoryAdverts}} /> :
+                category === 'electronics' ? <Other {...{categoryAdverts}} /> :
+                category === 'house_garden' ? <Other {...{categoryAdverts}} /> :
+                category === 'fashion' ? <Other {...{categoryAdverts}} /> : ''
             }
         </>
     );

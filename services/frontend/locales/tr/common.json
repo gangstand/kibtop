@@ -279,7 +279,16 @@
     "Add your phone number": "Telefon numaranızı ekleyin",
     "In order for customers to contact you, we need your phone number": "Müşterilerin sizinle iletişim kurabilmesi için telefon numaranıza ihtiyacımız var",
     "Sell much faster and more profitably!": "Çok daha hızlı ve daha karlı satış yapın!",
-    "purpose": "amaç"
+    "purpose": "amaç",
+    "Exit": "Çıkış yap",
 
+    "Home page": "Ana Sayfa",
+    "Seller page": "Satıcı sayfası",
+    "Locale settings": "Yerel ayar ayarları",
+    "Recovery": "Kurtarma",
+    "Reset password": "Şifreyi sıfırla",
+    "Confirm account": "Hesabı onayla",
+    "Page": "Sayfa",
+    "Registration": "Kayıt"
 }
 

@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import EditProfilePage from "../../components/EditProfilePage/EditProfilePage";
+import EditProfileHead from "../../components/Heads/EditProfileHead";
 import { AuthApi } from "../../services/AuthApi";
 import { ProfileApi } from "../../services/ProfileApi";
 import { getServerSideUser } from "../../services/tools/getServerSideUser/getServerSideUser";
@@ -9,6 +10,7 @@ const Edit = ({user}) => {
     
     return (
         <>
+            <EditProfileHead />
             <EditProfilePage {...{user}} />
         </>
     );

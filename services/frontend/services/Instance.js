@@ -49,7 +49,7 @@ export const createHeaders = async (accessToken) => {
 
 export const instance = axios.create({
     // baseURL: BASE_URL+'/v1/',
-    baseURL: BASE_URL+'/api/v1/',
+    baseURL: BASE_URL+'/v1/',
 
     withCredentials: false,
     // headers: {

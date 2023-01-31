@@ -19,7 +19,7 @@ const CityField = () => {
             <input className={"edit-profile__input" + (isError ? ' edit-profile__input--error' : '')}
                 {...register('city', {
                             pattern: {
-                                value: /^[А-яA-ZİĞÜŞÖÇа-яa-zğüşöç\s]+$/,
+                                value: /^[А-яA-ZİĞÜŞÖÇа-яa-zğüşöç\s\-,]+$/,
                                 message: t('invalid format')
                             }
                     })} type="text" placeholder={t("City or region")} />

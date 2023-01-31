@@ -1,17 +1,17 @@
 import Head from "next/head";
 import { useLanguage } from "../../locales/hooks/useLanguage";
 
-const IndexHead = () => {
+const EditProfileHead = () => {
     const {t} = useLanguage()
     return (
         <>
             <Head>
                 <title>
-                    Kibtop - {t('Home page')}
+                    Kibtop - {t('Edit profile')}
                 </title>
             </Head>
         </>
     );
 }
 
-export default IndexHead;
+export default EditProfileHead;
