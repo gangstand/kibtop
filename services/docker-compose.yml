@@ -19,6 +19,7 @@ services:
 
   postgresql:
     image: postgres:12.0
+    container_name: postgres
     environment:
       - POSTGRES_USER=manager
       - POSTGRES_PASSWORD=pvlsazrmhjejwthkvrhlncwxuk
@@ -45,14 +46,26 @@ services:
       - static_volume:/app/backend/staticfiles
       - media_volume:/app/backend/media
 
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/frontend/node_modules
+      - /app/frontend/.next
+      - /app/frontend/.env
+
   mongodb:
     image: "mongo:latest"
+    container_name: mongo
     volumes:
       - "mongodb_data:/data/db"
     restart: "on-failure"
 
   opensearch:
     image: opensearchproject/opensearch:latest
+    container_name: opensearch
     environment:
       - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
       - "bootstrap.memory_lock=true"
@@ -71,6 +84,7 @@ services:
   graylog:
     hostname: "server"
     image: graylog/graylog:5.0
+    container_name: graylog
     depends_on:
       opensearch:
         condition: "service_started"
