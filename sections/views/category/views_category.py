@@ -40,24 +40,40 @@ class CategoryFullAPIList(generics.ListAPIView):
         res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
         int_len = len(res)
 
+        limit = int(query['limit'])
+        page = int(query['page'])
+        if limit <= int_len:
+            first = page * limit
+            last = first + limit
+            res = res[first:last]
         try:
             if query['lang'] == 'en':
 
+                urls = [f'{BASE_URL}/v1/{i}/?lang=en' for i in category]
+                responses = [requests.get(u) for u in urls]
+                res = []
+                for response in responses:
+                    res.append(response.json()['results']['en'])
+                res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
+                int_len = len(res)
+
                 limit = int(query['limit'])
                 page = int(query['page'])
                 if limit <= int_len:
                     first = page * limit
                     last = first + limit
                     res = res[first:last]
-
-                    urls = [f'{BASE_URL}/v1/{i}/?lang=en' for i in category]
-                    responses = [requests.get(u) for u in urls]
-                    res = []
-                    for response in responses:
-                        res = [*response.json()['results']['en']]
-
                 return Response(res, status=HTTP_200_OK)
-            elif query['lang'] == 'ru':
+            if query['lang'] == 'ru':
+
+                urls = [f'{BASE_URL}/v1/{i}/?lang=ru' for i in category]
+                responses = [requests.get(u) for u in urls]
+                res = []
+                for response in responses:
+                    res.append(response.json()['results']['ru'])
+                res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
+                int_len = len(res)
+
                 limit = int(query['limit'])
                 page = int(query['page'])
 
@@ -65,15 +81,17 @@ class CategoryFullAPIList(generics.ListAPIView):
                     first = page * limit
                     last = first + limit
                     res = res[first:last]
-
-                    urls = [f'{BASE_URL}/v1/{i}/?lang=ru' for i in category]
-                    responses = [requests.get(u) for u in urls]
-                    res = []
-                    for response in responses:
-                        res = [*response.json()['results']['ru']]
-
                 return Response(res, status=HTTP_200_OK)
-            elif query['lang'] == 'tr':
+            if query['lang'] == 'tr':
+
+                urls = [f'{BASE_URL}/v1/{i}/?lang=tr' for i in category]
+                responses = [requests.get(u) for u in urls]
+                res = []
+                for response in responses:
+                    res.append(response.json()['results']['tr'])
+                res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
+                int_len = len(res)
+
                 limit = int(query['limit'])
                 page = int(query['page'])
 
@@ -81,13 +99,6 @@ class CategoryFullAPIList(generics.ListAPIView):
                     first = page * limit
                     last = first + limit
                     res = res[first:last]
-
-                    urls = [f'{BASE_URL}/v1/{i}/?lang=tr' for i in category]
-                    responses = [requests.get(u) for u in urls]
-                    res = []
-                    for response in responses:
-                        res = [*response.json()['results']['tr']]
-
                 return Response(res, status=HTTP_200_OK)
             return Response(res, status=HTTP_200_OK)
         except Exception:
