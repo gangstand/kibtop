@@ -7,9 +7,11 @@ services:
     links:
       - backend
       - graylog
+      - frontend
     depends_on:
       - backend
       - graylog
+      - frontend
     volumes:
       - static_volume:/app/backend/staticfiles
       - media_volume:/app/backend/media
