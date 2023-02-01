@@ -3,7 +3,7 @@ import { AuthApi } from "./AuthApi";
 import { Cookies } from "./tools/CookieController";
 import { getServerSideUser } from "./tools/getServerSideUser/getServerSideUser";
 
-export const BASE_URL = 'https://kibtop.com'
+export const BASE_URL = 'https://api.kibtop.com'
 
 
 
