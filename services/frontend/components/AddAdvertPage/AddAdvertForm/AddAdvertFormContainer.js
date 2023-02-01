@@ -24,7 +24,7 @@ const AddAdvertFormContainer = () => {
     useEffect(() => {
         if(!!advertId && !!advertCategory) {
             dispatch(setNewAdvertData({id: null, category: null}))
-            push(`/advert/${advertCategory}/${advertId}`)
+            push(`/profile/`)
         }
 
     }, [advertId, advertCategory])

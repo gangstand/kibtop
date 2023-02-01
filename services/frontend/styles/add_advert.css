@@ -1245,7 +1245,7 @@
     }
 
     .label-file--add .form__text--edit {
-        display: inline-block;
+        display: flex;
 
         bottom: calc(-1 * (7px + 14px));
 

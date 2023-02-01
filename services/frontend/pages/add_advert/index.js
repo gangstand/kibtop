@@ -1,3 +1,4 @@
+import Head from "next/head";
 import AddAdvertPage from "../../components/AddAdvertPage/AddAdvertPage";
 import { useLanguage } from "../../locales/hooks/useLanguage";
 import { getServerSideUser } from "../../services/tools/getServerSideUser/getServerSideUser";
