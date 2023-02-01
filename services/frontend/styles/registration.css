@@ -857,6 +857,12 @@
 
 }
 
+@media (min-width: 335px) {
+    .alt-reg__btn {
+        font-size: 14px;
+    }
+}
+
 @media (min-width: 600px) {
     .alt-reg__btn {
         height: 45px;
@@ -874,7 +880,13 @@
     justify-content: space-between;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 370px) {
+    .alt-reg__btns {
+        padding: 0 5%;
+    }
+}
+
+@media (min-width: 450px) {
     .alt-reg__btns {
         padding: 0 10%;
     }

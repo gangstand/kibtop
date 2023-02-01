@@ -48,7 +48,7 @@ export const Cookies = {
 
         const expires = new Date().toUTCString()
         
-        document.cookie = `${cookieName}=${null}; domain=localhost; expires=${expires}; path=/;`
+        document.cookie = `${cookieName}=${null}; domain=${DOMAIN}; expires=${expires}; path=/;`
     },
 
     delAllCookie() {
