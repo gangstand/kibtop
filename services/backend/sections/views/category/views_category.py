@@ -1,5 +1,3 @@
-import math
-import random
 from itertools import chain
 
 from django.core import serializers
@@ -123,8 +121,6 @@ class CategoryFullAPIList(generics.ListAPIView):
 
 def create_filter_expression(fields, search, table_name):
     return " ".join([f"LOWER('{table_name}.{field}') LIKE LOWER('%%{search}%%') OR" for field in fields])[:-3]
-
-print(fuzz.token_set_ratio('Привет в мир', 'Мир ураа покаа sdfdfdfdf привет здравсвуй fdfdfdfdfdfdfdf новый эээээ вввввв во'))
 
 class CategorySearchAPI(generics.ListAPIView):
     serializer_class = FullCategoryFieldsSerializer
