@@ -8,6 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1', 'api.kibtop.com', '94.250.251.138']
+BASE_URL = env("URL")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
