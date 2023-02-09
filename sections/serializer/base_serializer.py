@@ -1,4 +1,7 @@
 from rest_framework import serializers
+from sections.models import (
+    AvtoFull, AvtoFullUpload, AvtoFullViewsUser, AvtoFullFavouritesUser
+)
 
 from sections.models import Money, City
 from sections.serializer import (
@@ -77,3 +80,9 @@ class FullFavouritesUserSerializer(serializers.Serializer):
     realty = RealtyFullFavouritesUserSerializer(many=True)
     services = ServicesFullFavouritesUserSerializer(many=True)
     work = WorkFullFavouritesUserSerializer(many=True)
+
+
+class FullCategoryFieldsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AvtoFull
+        fields = '__all__'
