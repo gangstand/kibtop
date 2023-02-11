@@ -1,47 +1,20 @@
 import { useEffect, useRef, useState } from "react";
+import { useSwipe } from "../../../../AppHooks/useSwipe";
 import Text from "../../../../Elementes/Text/Text";
 import ApplyLocationButtonContainer from "./ApplyLocationButton/ApplyLocationButtonContainer";
 import LocationFieldContainer from "./LocationField/LocationFieldContainer";
 import LocationSelectOptionsContainer from "./LocationSelectOptions/LocationSelectOptionsContainer";
 
 const LocationSelect = ({closeLocationSelect}) => {
-    const [touchStart, setTouchStart] = useState(null)
-    const [touchEnd, setTouchEnd] = useState(null)
+    const {swipe, handleClose} =  useSwipe({onClose: closeLocationSelect})
     
-    const minSwipeDistance = 30
-    
-    const onTouchStart = (e) => {
-      setTouchEnd(null) 
-      setTouchStart(e.targetTouches[0].clientY)
-    }
-    
-    const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientY)
-    
-    const onTouchEnd = () => {
-      if (!touchStart || !touchEnd) return
 
-      const distance = touchEnd - touchStart
-      const isSwipe = distance > minSwipeDistance
-      if(isSwipe && window.innerWidth < 600) {
-            locationSelectElem.current.style.bottom = '-100%'
-
-            setTimeout(closeLocationSelect, 500)
-        }
-    }
-
-    const locationSelectElem = useRef(null)
-    useEffect(() => {
-        if(locationSelectElem.current && window.innerWidth < 600) {
-            locationSelectElem.current.style.bottom = '0'
-            locationSelectElem.current.style.transition = 'bottom 500ms'
-        }
-    }, [locationSelectElem.current, window.innerWidth])
 
     return (
         <>
-            <div className="modal-screen modal-screen--location">
-                <div className="location-select" ref={locationSelectElem} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-                    <div className="close-line" onClick={closeLocationSelect} />
+            <div className="modal-screen modal-screen--location" {...swipe}>
+                <div className="location-select" >
+                    <div className="close-line" onClick={handleClose} />
 
                     <h5 className="title title--loc"><Text content="Location" /></h5>
 
