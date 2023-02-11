@@ -35,7 +35,7 @@ const BrandField = () => {
                         placeholder={t("Brand name")} 
                         type="text" />
                 </div>
-                { (!!error && isTouche && !!error.message) && <p className="warn warn--absolute"><Text content={error.message} /></p> }
+                { (!!error && isTouched && !!error.message) && <p className="warn warn--absolute"><Text content={error.message} /></p> }
             </div>
             
             <div className="address-select">

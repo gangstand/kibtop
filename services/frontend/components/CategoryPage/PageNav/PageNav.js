@@ -3,11 +3,14 @@ import { useRouter } from "next/router";
 import Text from "../../Elementes/Text/Text";
 import PageLink from "./PageLink";
 
-const PageNav = ({pages}) => {
+const PageNav = ({pages, maxPage}) => {
     const {query: {page, category}, pathname} = useRouter()
 
     const currentPage = !!page ? +page : 0
-    const nextPage = (currentPage+1 < pages.length) ? currentPage+1 : page
+    const nextPage = (currentPage+1 < maxPage) ? currentPage+1 : page
+    
+    const link = !!category  ? `/adverts/${category}/${nextPage}/` : `/adverts/?page=${nextPage}`
+   
     return (
         <>
             <div className="page-nav">
@@ -15,7 +18,7 @@ const PageNav = ({pages}) => {
                     pages.map(page => <PageLink key={page.number} {...page} />)
                 }
 
-                <Link href={`/adverts/${category}/${nextPage}/`} className="profile-link next-page">
+                <Link href={link} className="profile-link next-page">
                     <Text content={'Next'} />
 
                     <svg  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

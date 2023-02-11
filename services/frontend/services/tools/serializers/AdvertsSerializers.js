@@ -20,7 +20,7 @@ const serializeAdvertsUploadsNull = (categoryUploads, AdvertUpload) => {
 }
 
 
-export const serializeAdverts = (adverts, lang) => {
+export const serializeAdverts = (adverts, lang, isSearching=false) => {
     let advertsFull = []
     for (const category in adverts) {
         advertsFull = [...advertsFull, 
@@ -39,7 +39,25 @@ export const serializeAdverts = (adverts, lang) => {
 
     advertsFull = advertsFull.sort((advert_new, advert_old) => advert_old.created_at - advert_new.created_at)
 
+    if(isSearching) {
+        advertsFull = advertsFull.map(advert => ({
+            advertId: advert.id,
+            title: advert[`title_${lang}`],
+            cost: advert.price,
+            address: advert.city,
+            img: BASE_URL+advert.upload,
+            date: convertDate(advert.created_at),
+            category: advert.category,
+            categoryName: advert[`category_${lang}`],
+            currency: advert.currency,
+            fuzz: advert.fuzz || 1
+        })).sort((advert_1, advert_2) => advert_1.fuzz - advert_2.fuzz)
 
+        return [...advertsFull]
+    }
+
+
+    
     advertsFull = advertsFull.map(advert => ({
         advertId: advert.id,
         title: advert[`title_${lang}`],
@@ -48,6 +66,7 @@ export const serializeAdverts = (adverts, lang) => {
         img: BASE_URL+advert.upload,
         date: convertDate(advert.created_at),
         category: advert.category,
+        categoryName: advert[`category_${lang}`],
         currency: advert.currency
     }))
 
@@ -84,7 +103,7 @@ export const serializeFavorites = (favorites) => favorites
     })
 
 export const serializeAdvertDatails = (advert, lang, category) => {
-    console.log(advert);
+    
     return {
         title: advert[`title_${lang}`] || null,
         description: advert[`description_${lang}`] || null,

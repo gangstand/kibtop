@@ -14,6 +14,8 @@ import { FavoritesReducer } from "./slices/FavoritesSlice";
 import { AdvertReducer } from "./slices/AdvertSlice";
 import { AddAdvertReducer } from "./slices/AddAdvertSlice";
 import { CategoryReducer } from "./slices/CategorySlice";
+import { SearchReducer } from "./slices/SearchSlice";
+import { FilterReducer } from "./slices/FilterSlice";
 
 const reducer = {
     auth: authReducer,
@@ -30,6 +32,8 @@ const reducer = {
     advert: AdvertReducer,
     addAdvert: AddAdvertReducer,
     category: CategoryReducer,
+    search: SearchReducer,
+    filter: FilterReducer,
     [HomePageApi.reducerPath]: HomePageApi.reducer
 }
 

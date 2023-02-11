@@ -233,7 +233,8 @@
     .advert__desc {
         min-height: 40px;
         display: grid;
-        grid-template: 'column1 column2' max-content 'info info' max-content / min-content max-content;
+        grid-template: 'column1 column2' max-content 'info info' max-content / 1fr max-content;
+        grid-gap: 5px;
     }
 }
 

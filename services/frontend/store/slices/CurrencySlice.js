@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { setScrollDisable } from "../tools/setScrollDisable"
 
 const initialState = {
     isOpen: false
@@ -9,6 +10,8 @@ const CurrencySlice = createSlice({
     initialState,
     reducers: {
         setOpenCurrencySelect(state, {payload}) {
+            setScrollDisable(!state.isOpen)
+
             state.isOpen = !state.isOpen
         }
     }

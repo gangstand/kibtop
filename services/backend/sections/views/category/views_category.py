@@ -1,6 +1,10 @@
+import math
+import random
+from functools import reduce
 from itertools import chain
 
 from django.core import serializers
+from django.core.paginator import Paginator
 from django.db.models import Q
 
 import requests
@@ -14,6 +18,7 @@ from rest_framework import filters
 from sections.serializer.base_serializer import FullCategoryFieldsSerializer
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
+from datetime import datetime
 
 from sections.models import (
     AvtoFull,
@@ -46,81 +51,103 @@ class CategoryFullAPIList(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         query = self.request.query_params
-        category = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
-        urls = [f'{BASE_URL}/v1/{i}/?lang=en' for i in category]
-        responses = [requests.get(u) for u in urls]
-        res = []
-        for response in responses:
-            res.append(response.json()['results']['en'])
-        res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
-        int_len = len(res)
+        limit = int(query['limit']) if 'limit' in query.keys() else 8
+        page = int(query['page']) if 'page' in query.keys() else 0
 
-        limit = int(query['limit'])
-        page = int(query['page'])
-        if limit <= int_len:
+        avto = [{**advert, 'categoryType': 'avto', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(AvtoFull.objects.all().values()))]
+        children = [{**advert, 'categoryType': 'children', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ChildrenFull.objects.all().values()))]
+        electronics = [{**advert, 'categoryType': 'electronics', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ElectronicsFull.objects.all().values()))]
+        fashion = [{**advert, 'categoryType': 'fashion', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(FashionFull.objects.all().values()))]
+        house_garden = [{**advert, 'categoryType': 'house_garden', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(HouseGardenFull.objects.all().values()))]
+        realty = [{**advert, 'categoryType': 'realty', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(RealtyFull.objects.all().values()))]
+        services = [{**advert, 'categoryType': 'services', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ServicesFull.objects.all().values()))]
+        work = [{**advert, 'categoryType': 'work', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(WorkFull.objects.all().values()))]
+
+        full_adverts = [*avto, *children, *electronics, *fashion, *house_garden, *realty, *services, *work]
+        full_adverts = sorted(full_adverts, key=lambda advert: advert['created_at'], reverse=True)
+
+        if 'search' in query.keys():
+            try:
+                search_unique = bool(int(query['unique'])) if 'unique' in query.keys() else False
+            except:
+                search_unique = True
+
+            search = query['search']
+
+            full_adverts = self.search_models(full_adverts, search)
+
+            if search_unique:
+                unique_adverts = []
+                for advert in full_adverts:
+                    if not any([advert['title_en'] in unique_ad.values() for unique_ad in unique_adverts]):
+                        unique_adverts.append(advert)
+
+                full_adverts = unique_adverts
+
+            def get_fuzz(advert):
+                search_fields = ['title_en', 'title_ru', 'title_tr']
+                return sorted([fuzz.token_set_ratio(advert[field], search) for field in search_fields], reverse=True)[0]
+
+            full_adverts = [{**advert, 'fuzz': get_fuzz(advert)} for advert in full_adverts]
+
+            full_adverts = sorted(full_adverts, key=lambda advert: advert['fuzz'], reverse=True)
+
+
+        adverts_len = len(full_adverts)
+
+        if limit <= adverts_len:
             first = page * limit
             last = first + limit
-            res = res[first:last]
-        try:
-            if query['lang'] == 'en':
+            full_adverts = full_adverts[first:last]
 
-                urls = [f'{BASE_URL}/v1/{i}/?lang=en' for i in category]
-                responses = [requests.get(u) for u in urls]
-                res = []
-                for response in responses:
-                    res.append(response.json()['results']['en'])
-                res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
-                int_len = len(res)
+        res = {
+            "results": {
+                'avto': [advert for advert in full_adverts if advert['categoryType'] == 'avto'],
+                'children': [advert for advert in full_adverts if advert['categoryType'] == 'children'],
+                'electronics': [advert for advert in full_adverts if advert['categoryType'] == 'electronics'],
+                'fashion': [advert for advert in full_adverts if advert['categoryType'] == 'fashion'],
+                'house_garden': [advert for advert in full_adverts if advert['categoryType'] == 'house_garden'],
+                'realty': [advert for advert in full_adverts if advert['categoryType'] == 'realty'],
+                'services': [advert for advert in full_adverts if advert['categoryType'] == 'services'],
+                'work': [advert for advert in full_adverts if advert['categoryType'] == 'work'],
+            },
+            "total_pages": int(math.ceil(adverts_len/limit))
 
-                limit = int(query['limit'])
-                page = int(query['page'])
-                if limit <= int_len:
-                    first = page * limit
-                    last = first + limit
-                    res = res[first:last]
-                return Response(res, status=HTTP_200_OK)
-            if query['lang'] == 'ru':
+        }
 
-                urls = [f'{BASE_URL}/v1/{i}/?lang=ru' for i in category]
-                responses = [requests.get(u) for u in urls]
-                res = []
-                for response in responses:
-                    res.append(response.json()['results']['ru'])
-                res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
-                int_len = len(res)
+        return Response(res, status=HTTP_200_OK)
 
-                limit = int(query['limit'])
-                page = int(query['page'])
+    @staticmethod
+    def search_models(model, search: str):
+        def generate_expression(advert):
+            search_fields = ['title_en', 'title_ru', 'title_tr']
 
-                if limit <= int_len:
-                    first = page * limit
-                    last = first + limit
-                    res = res[first:last]
-                return Response(res, status=HTTP_200_OK)
-            if query['lang'] == 'tr':
+            entry = any(
+                [any(word in advert[field].lower() for word in search.lower().split(' ')) for field in search_fields])
 
-                urls = [f'{BASE_URL}/v1/{i}/?lang=tr' for i in category]
-                responses = [requests.get(u) for u in urls]
-                res = []
-                for response in responses:
-                    res.append(response.json()['results']['tr'])
-                res = [*res[0], *res[1], *res[2], *res[3], *res[4], *res[5], *res[6], *res[7]]
-                int_len = len(res)
+            if entry:
+                return True
 
-                limit = int(query['limit'])
-                page = int(query['page'])
+            def prepare_words(string: str):
+                word_list = string.replace(',', ' ').replace('.', ' ').replace('-', ' ').strip().split(' ')
+                return [word.lower() for word in word_list if word]
 
-                if limit <= int_len:
-                    first = page * limit
-                    last = first + limit
-                    res = res[first:last]
-                return Response(res, status=HTTP_200_OK)
-            return Response(res, status=HTTP_200_OK)
-        except Exception:
-            return Response(res, status=HTTP_200_OK)
+            similarity = any([
+                                any([
+                                    any([
+                                        fuzz.token_set_ratio(field_word, word) > 50 for word in prepare_words(search)])
+                                        for field_word in prepare_words(advert[field])
+                                ]) for field in search_fields
+                            ])
+
+            return similarity
+
+        return [advert for advert in model if generate_expression(advert)]
+
 
 def create_filter_expression(fields, search, table_name):
     return " ".join([f"LOWER('{table_name}.{field}') LIKE LOWER('%%{search}%%') OR" for field in fields])[:-3]
+
 
 class CategorySearchAPI(generics.ListAPIView):
     serializer_class = FullCategoryFieldsSerializer
@@ -155,7 +182,7 @@ class CategorySearchAPI(generics.ListAPIView):
             search_fields = ['title_en', 'title_ru', 'title_tr']
 
             similarity = any([fuzz.token_set_ratio(advert[field], search) > 70 for field in search_fields])
-            entry = any([any(word in advert[field] for word in search.split(' ')) for field in search_fields])
+            entry = any([any(word in advert[field].lower() for word in search.lower().split(' ')) for field in search_fields])
 
             return similarity or entry
 

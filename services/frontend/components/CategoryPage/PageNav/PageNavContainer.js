@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCategoryPages } from "../../../store/slices/CategorySlice";
 import PageNav from "./PageNav";
 
-const PageNavContainer = ({serverPages}) => {
+const PageNavContainer = ({serverPages = []}) => {
     const {query: {page}} = useRouter()
     const category = useSelector(state => state.category)
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const PageNavContainer = ({serverPages}) => {
     const navPages = pages.slice(lastPage, beforePage+count)
 
     
-    return <PageNav {...{pages: navPages}} />;
+    return <PageNav {...{pages: navPages, maxPage: category.pages.length}} />;
 }
 
 export default PageNavContainer;
