@@ -1,10 +1,13 @@
+import { useDeferredValue } from "react";
 import BrandOption from "./BrandOption";
 
 const BrandSelect = ({brands, onBrandClick, isSearching}) => {
+
+    const values = useDeferredValue(brands)
     return (
         <>
             {
-                isSearching ? brands.map(((brand, index) => <BrandOption key={index} {...{brand, onBrandClick}} />)) : ''
+                isSearching ? values.map(((brand, index) => <BrandOption key={index} {...{brand, onBrandClick}} />)) : ''
             }
         </>
     );

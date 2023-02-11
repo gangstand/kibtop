@@ -22,7 +22,7 @@ const CategoriesNav = () => {
             <nav className="categories-nav">
                 <div className="container container--categories">
                     <div className="categories-nav__item">
-                        <Link href='/' className="all-link">
+                        <Link href='/adverts/' className="all-link">
                             <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_572_482)">
                                     <path d="M3.33336 29.1666H7.5C9.34094 29.1666 10.8334 30.659 10.8334 32.5V36.6666C10.8334 38.5076 9.34094 40 7.5 40H3.33336C1.49242 40 0 38.5076 0 36.6666V32.5C0 30.659 1.49242 29.1666 3.33336 29.1666Z" fill="#414042"/>

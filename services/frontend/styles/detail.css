@@ -1201,3 +1201,9 @@
         margin-left: 31px;
     }
 }
+
+@media (max-width: 600px) {
+    .advert__img {
+        border-radius: 16px;
+    }
+}

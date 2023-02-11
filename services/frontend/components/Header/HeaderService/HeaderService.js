@@ -1,4 +1,7 @@
 
+import { useDispatch, useSelector } from "react-redux";
+import { setFilterOpen } from "../../../store/slices/FilterSlice";
+import { setSearchOpen } from "../../../store/slices/SearchSlice";
 import AddAdvertMobileButton from "./AddAdvertMobileButton/AddAdvertMobileButton";
 import BurgerLocaleMenuContainer from "./BurgerLocaleMenu/BurgerLocaleMenuContainer";
 import BurgerUserMenuContainer from "./BurgerUserMenu/BurgerUserMenuContainer";
@@ -8,9 +11,19 @@ import Services from "./Services/Services";
 import useHideMobilePages from "./useHideMobilePages";
 
 const HeaderService = () => {
+    const {isSearchOpen} = useSelector(state => state.search)
+    const {isFilterOpen} = useSelector(state => state.filter)
+
+    const dispatch = useDispatch()
+
+    const closeFilterMenu = () => {
+        dispatch(setFilterOpen(false))
+        dispatch(setSearchOpen(false))
+    }
+    
+
 
     const ExceptionStyle = useHideMobilePages()
-
     return (
         <>
             <div className={"header__service" + ExceptionStyle}>
@@ -20,6 +33,7 @@ const HeaderService = () => {
                 </div>
             </div>
             
+            {(isSearchOpen || isFilterOpen) && <div onClick={closeFilterMenu} className="screen-dimmer screen-dimmer--full" style={{zIndex: '2'}} />}
         </>
         
     );

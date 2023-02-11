@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import FilterButtonContainer from "./FilterButton/FilterButtonContainer";
 import MobileFilterButtonContainer from "./MobileFilterButton/MobileFilterButtonContainer";
+import SearchedAdvertsContainer from "./SearchedAdverts/SearchedAdvertsContainer";
 import SearchProductsFormContainer from "./SearchProductsForm/SearchProductsFormContainer";
 import useMobileException from "./UseMobileException";
 
@@ -23,6 +24,8 @@ const SearchProducts = () => {
                 <SearchProductsFormContainer />
 
                 <FilterButtonContainer />
+
+                <SearchedAdvertsContainer />
             </div>
             { !isCategoryPage && <MobileFilterButtonContainer />}
         </>
