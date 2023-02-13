@@ -1,23 +1,18 @@
+import { useMutation } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { dislikeAdvertThunk, likeAdvertThunk, setFavoritesWarnOpen } from "../../../store/slices/FavoritesSlice";
+import {FavoritesApi} from "../../../services/FavoritesApi"
 import LikeButton from "./LikeButton";
+import useLikeMutation from "./useLikeMutation";
 
 const LikeButtonContainer = ({className, id, category}) => {
-    const {isAuthed, userId} = useSelector(state => state.auth)
-    const dispatch = useDispatch()
-    const openFavoritesWarning = () => dispatch(setFavoritesWarnOpen(true))
 
-    const {favorites, isLoading} = useSelector(state => state.favorites)
+    const {onLike, onDislike, isLoading, userFavorite} = useLikeMutation(id, category)
+
+    const onClick = !!userFavorite ? onDislike : onLike
 
 
-    const userFavorite = favorites.find(favorite => favorite.advertId === id && favorite.category === category) || null
-
-    const onLikeClick = () => dispatch(likeAdvertThunk(id, category, userId))
-
-    const onDislikeClick = () => 
-        !!userFavorite ? dispatch(dislikeAdvertThunk(userFavorite.favouriteId, userFavorite.category, userFavorite.userId)) : null
-
-    return <LikeButton {...{isAuthed, openFavoritesWarning, isLoading, className, userFavorite, onLikeClick, onDislikeClick}} />;
+    return <LikeButton {...{isLoading, className, userFavorite, onClick}} />;
 }
 
 export default LikeButtonContainer;

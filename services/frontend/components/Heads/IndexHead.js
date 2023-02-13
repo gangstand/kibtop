@@ -3,11 +3,12 @@ import { useLanguage } from "../../locales/hooks/useLanguage";
 
 const IndexHead = () => {
     const {t} = useLanguage()
+    const title = `Kibtop - ${t('Home page')}`
     return (
         <>
             <Head>
                 <title>
-                    Kibtop - {t('Home page')}
+                    {title}
                 </title>
             </Head>
         </>

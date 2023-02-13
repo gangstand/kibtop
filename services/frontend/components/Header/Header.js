@@ -17,7 +17,7 @@ const Header = () => {
         dispatch(getCitiesThunk(locale))
         if(isAuthed) dispatch(setUserFavoritesThunk(userId))
         if(isAuthed) dispatch((setProfileDataThunk()))
-    }, [userId, locale])
+    }, [locale])
 
     return (
         <>

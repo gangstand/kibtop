@@ -500,12 +500,6 @@
     }
 }
 
-.detail-maps__map img {
-    object-fit: cover;
-    
-    /* transform: translateY(-50%); */
-    object-position: bottom;
-}
 
 .detail-maps__string {
     display: flex;
@@ -567,7 +561,7 @@
 }
 
 .detail-title--mb-10 {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .detail-title--mb-40 {
@@ -628,12 +622,19 @@
 
 .detail-profile__user {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 }
 
+@media (max-width: 600px) {
+    .detail-profile__user {
+        align-items: center;
+    }
+}
+
+
 .detail-profile__ava {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
 
     border-radius: 50%;
     margin-right: 15px;
@@ -645,27 +646,26 @@
     line-height: 1em;
 }
 
-.detail-profile__data .detail-title {
-    margin-top: 4px;
-}
+
 
 @media (max-width: 600px) {
     .detail-profile {
-        height: 62px;
+        height: 82px;
 
         margin-bottom: 19px;
     }
     .detail-profile__ava {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
 
         margin-right: 10px;
     }
 
     .detail-profile__data .detail-title {
         margin-top: 0;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
     }
+
 }
 
 .detail-wrapper__container {
@@ -1199,6 +1199,24 @@
 
 .detail-maps__place .detail-text--low {
     margin-left: 36px;
+}
+
+.gm-style span ~ div {
+    /* transform: translateY(50%); */
+    margin-top: 20px;
+    
+    background-color: transparent;
+
+    background-image: url('/img/goods/marker.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.gm-style span ~ div img {
+    transform: translateY(50%);
+    /* padding-top: 20px; */
+    
+    /* background-color: #fff; */
 }
 
 @media (max-width: 600px) {

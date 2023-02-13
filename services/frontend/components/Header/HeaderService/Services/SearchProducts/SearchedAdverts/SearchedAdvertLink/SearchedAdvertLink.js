@@ -15,7 +15,7 @@ const SearchedAdvertLink = ({title, categoryName, category}) => {
 
     return (
         <>
-            <Link href={`/adverts/?search=${title}`} onClick={closeFilterMenu} className="search__value">
+            <Link href={`/adverts/?search=${title}&category=${category}`} onClick={closeFilterMenu} className="search__value">
                 <div className="search__head">
                     <CategoryIcon {...{category}} />
                     <p className="search__category">{categoryName}</p>

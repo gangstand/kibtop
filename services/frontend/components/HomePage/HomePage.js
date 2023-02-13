@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserFavoritesThunk } from "../../store/slices/FavoritesSlice";
 import AddAdvertMobileButton from "../Header/HeaderService/AddAdvertMobileButton/AddAdvertMobileButton";
 import HeaderService from "../Header/HeaderService/HeaderService";
 import BannerContainer from "./Banner/BannerContainer";

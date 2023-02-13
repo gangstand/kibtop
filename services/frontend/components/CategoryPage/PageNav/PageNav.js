@@ -4,12 +4,15 @@ import Text from "../../Elementes/Text/Text";
 import PageLink from "./PageLink";
 
 const PageNav = ({pages, maxPage}) => {
-    const {query: {page, category}, pathname} = useRouter()
+    const {query: {page, category, search}, pathname} = useRouter()
 
     const currentPage = !!page ? +page : 0
     const nextPage = (currentPage+1 < maxPage) ? currentPage+1 : page
+
+    console.log(useRouter());
     
-    const link = !!category  ? `/adverts/${category}/${nextPage}/` : `/adverts/?page=${nextPage}`
+    const link = pathname !== '/adverts'  ? `/adverts/${category}/${nextPage}/` 
+                        : `/adverts/?page=${nextPage}&search=${search}&category=${category}`
    
     return (
         <>

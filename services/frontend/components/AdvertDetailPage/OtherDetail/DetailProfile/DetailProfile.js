@@ -4,7 +4,7 @@ import Text from "../../../Elementes/Text/Text";
 import Image from "next/image"
 
 
-const DetailProfile = ({name, avatar, userId}) => {
+const DetailProfile = ({name, phone, avatar, userId}) => {
     const {query: {category}} = useRouter()
 
     return (
@@ -29,7 +29,8 @@ const DetailProfile = ({name, avatar, userId}) => {
                             }
                         </p>
 
-                        <p className="detail-text">{name}</p>
+                        <p className="detail-text" style={{fontWeight: 600}}>{name}</p>
+                        <p className="detail-text" style={{fontWeight: 500}}>{phone}</p>
                     </div>
                 </div>
 

@@ -22,7 +22,6 @@ const FavoritesSlice = createSlice({
         },
 
         setUserFavorites(state, {payload}) {
-            
             state.favorites = payload
         },
 
