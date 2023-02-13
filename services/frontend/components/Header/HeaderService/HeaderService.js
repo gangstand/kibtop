@@ -2,7 +2,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterOpen } from "../../../store/slices/FilterSlice";
 import { setSearchOpen } from "../../../store/slices/SearchSlice";
-import AddAdvertMobileButton from "./AddAdvertMobileButton/AddAdvertMobileButton";
 import BurgerLocaleMenuContainer from "./BurgerLocaleMenu/BurgerLocaleMenuContainer";
 import BurgerUserMenuContainer from "./BurgerUserMenu/BurgerUserMenuContainer";
 import Logo from "./Logo/Logo";

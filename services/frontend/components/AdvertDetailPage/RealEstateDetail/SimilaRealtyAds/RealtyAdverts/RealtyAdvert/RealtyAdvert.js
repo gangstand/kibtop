@@ -35,7 +35,7 @@ const RealtyAdvert = ({advertId, category, title, cost, currency, address, img, 
                     </p>
 
                     <p className="advert-cost mobile-realty-advert__cost">
-                        {cur.currency}{cur.countCurrencyPrice(cost, currency)}
+                        <span style={{fontWeight: 600}}>{cur.currency}</span>{cur.countCurrencyPrice(cost, currency)}
                     </p>
 
                     <div className="mobile-realty-advert__info">

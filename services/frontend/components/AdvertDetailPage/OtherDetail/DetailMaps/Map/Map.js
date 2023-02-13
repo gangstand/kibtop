@@ -37,6 +37,7 @@ const Map = ({center}) => {
         mapRef.current = null
       }, [])
 
+
     return (
         <>
             <GoogleMap
@@ -49,7 +50,8 @@ const Map = ({center}) => {
             >
                 { /* Child components, such as markers, info windows, etc. */ }
                 <>
-                    <Marker position={center} icon={{url: '/img/goods/marker.svg'}} />
+                    
+                        <Marker position={center} icon={{url: '/img/goods/marker.svg'}} />
                 </>
             </GoogleMap>
         </>

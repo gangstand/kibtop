@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import CategorySection from "../../../components/CategoryPage/Category";
+import AddAdvertMobileButton from "../../../components/Header/HeaderService/AddAdvertMobileButton/AddAdvertMobileButton";
 import { useLanguage } from "../../../locales/hooks/useLanguage";
 import { CategoryApi } from "../../../services/CategoryApi";
 
@@ -24,6 +25,8 @@ function Category({categoryAdverts, pages}) {
                 </title>
             </Head>
             <CategorySection {...{categoryAdverts, pages}} />
+            <AddAdvertMobileButton />
+
         </>
     );
 }
