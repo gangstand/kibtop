@@ -73,8 +73,9 @@ class CategoryFullAPIList(generics.ListAPIView):
                 search_unique = True
 
             search = query['search']
+            fuzz_int = int(query['fuzz']) if 'fuzz' in query.keys() else 70
 
-            full_adverts = self.search_models(full_adverts, search)
+            full_adverts = self.search_models(full_adverts, search, fuzz_int)
 
             if search_unique:
                 unique_adverts = []
@@ -118,7 +119,7 @@ class CategoryFullAPIList(generics.ListAPIView):
         return Response(res, status=HTTP_200_OK)
 
     @staticmethod
-    def search_models(model, search: str):
+    def search_models(model, search: str, fuzz_int: int):
         def generate_expression(advert):
             search_fields = ['title_en', 'title_ru', 'title_tr']
 
@@ -135,7 +136,7 @@ class CategoryFullAPIList(generics.ListAPIView):
             similarity = any([
                                 any([
                                     any([
-                                        fuzz.token_set_ratio(field_word, word) > 50 for word in prepare_words(search)])
+                                        fuzz.token_set_ratio(field_word, word) > fuzz_int for word in prepare_words(search)])
                                         for field_word in prepare_words(advert[field])
                                 ]) for field in search_fields
                             ])
