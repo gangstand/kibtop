@@ -19,7 +19,7 @@ const ArchiveAdvert = ({advertId, category, index, title, cost, currency, addres
                             {title}
                         </h5>
 
-                        <p className="advert-cost advert-cost--desk advert-cost--profile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
+                        <p className="advert-cost advert-cost--desk advert-cost--profile"><span style={{fontWeight: 600}}>{cur.currency}</span>{cur.countCurrencyPrice(cost, currency)}</p>
                     
                         
                     </div>

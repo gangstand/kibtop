@@ -1,3 +1,4 @@
+import AddAdvertMobileButton from "../../components/Header/HeaderService/AddAdvertMobileButton/AddAdvertMobileButton";
 import ProfileHead from "../../components/Heads/ProfileHead";
 import ProfilePage from "../../components/ProfilePage/ProfilePage";
 import { AuthApi } from "../../services/AuthApi";
@@ -9,6 +10,8 @@ const Profile = ({user, adverts}) => {
         <>
             <ProfileHead />
             <ProfilePage {...{user, adverts}} />
+            <AddAdvertMobileButton />
+
         </>
     );
 }

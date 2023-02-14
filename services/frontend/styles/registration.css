@@ -863,7 +863,7 @@
     }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 390px) {
     .alt-reg__btn {
         height: 45px;
         padding-left: 8px;
@@ -872,25 +872,43 @@
     }
 }
 
+/* @media (min-width: 460px) {
+    .alt-reg__btn {
+        height: 50px;
+        padding-left: 10px;
+
+        font-weight: 600;
+        font-size: 18px;
+    }
+} */
+
 .alt-reg__btns {
     box-sizing: border-box;
     width: 100%;
     padding: 0;
     display: flex;
     justify-content: space-between;
+
+    margin: 0 auto;
 }
 
-@media (min-width: 370px) {
+@media (min-width: 345px) {
     .alt-reg__btns {
-        padding: 0 5%;
+        width: calc(290px + 15px);
     }
 }
 
-@media (min-width: 450px) {
+@media (min-width: 390px) {
     .alt-reg__btns {
-        padding: 0 10%;
+        width: calc(345px + 20px);
     }
 }
+
+/* @media (min-width: 460px) {
+    .alt-reg__btns {
+        width: calc(365px + 20px);
+    }
+} */
 
 
 @media (min-width: 980px) {
@@ -904,7 +922,14 @@
     height: 25px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 390px) {
+    .alt-reg__btn svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (min-width: 460px) {
     .alt-reg__btn svg {
         width: 30px;
         height: 30px;
@@ -918,7 +943,7 @@
     margin-right: 28px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 390px) {
     .alt-reg__btn--google {
         padding-right: 44px;
     }
@@ -934,7 +959,7 @@
     margin-right: 20px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 390px) {
     .alt-reg__btn--facebook {
         padding-right: 34px;
     }
@@ -969,7 +994,6 @@
     height: 115px;
 
     border-radius: 20px;
-    border-img-width:  0 0;
 
     position: absolute;
     top: 0;

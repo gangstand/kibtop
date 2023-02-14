@@ -11,9 +11,8 @@ const CategoriesNav = () => {
         {id: 3, link: 'adverts/services', text: 'Services', backgroundColor: '#CDDDFF', img: 'paint.png'},
         {id: 4, link: 'adverts/children', text: 'For kids', backgroundColor: '#F7D055', img: 'carriage.png'},
         {id: 5, link: 'adverts/electronics', text: 'Electronics', backgroundColor: '#F8D8CB', img: 'phone.png'},
-        {id: 7, link: 'adverts/fashion', text: 'Fashion and style', backgroundColor: '#D1DEFC', img: 'dress.png'},
-        {id: 6, link: 'adverts/house_garden', text: 'House and garden', backgroundColor: '#D2F7F5', img: 'armchair.png'},
-
+        {id: 6, link: 'adverts/fashion', text: 'Fashion and style', backgroundColor: '#D1DEFC', img: 'dress.png'},
+        {id: 7, link: 'adverts/house_garden', text: 'House and garden', backgroundColor: '#D2F7F5', img: 'armchair.png'},
     ]
 
 

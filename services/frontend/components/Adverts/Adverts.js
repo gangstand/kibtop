@@ -8,7 +8,7 @@ const Adverts = ({adverts}) => {
                     adverts?.map(advert => <Advert key={`${advert.category}_${advert.advertId}`} {...advert}  />)
                 }
             </div>
-                
+            
         </>
     );
 }

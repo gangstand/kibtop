@@ -8,13 +8,13 @@ export const FavoritesApi = {
             user: userId
         }, {
             headers: await createHeaders()
-        })
+        }).catch(() => null)
     },
 
     async deleteFavoriteAdvert(favoriteId, category) {
         return await instance.delete(`${category}/favourites/${favoriteId}/`, {
             headers: await createHeaders()
-        })
+        }).catch(() => null)
     },
 
 

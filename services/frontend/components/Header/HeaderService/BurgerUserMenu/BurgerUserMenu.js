@@ -58,7 +58,7 @@ const BurgerUserMenu = ({isOpen, closeBurgerUserMenu, delay}) => {
                     </div>
                     
                     {
-                        isOpen && <div className="screen-dimmer screen-dimmer--full" onClick={onClose} />
+                        isOpen && <div style={{height: '100vh'}} className="screen-dimmer screen-dimmer--full" onClick={onClose} />
                     }
                     
                 </>

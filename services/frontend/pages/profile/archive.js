@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import ArchiveContainer from "../../components/ArchivePage/ArchiveContainer";
 import Header from "../../components/Header/Header";
+import AddAdvertMobileButton from "../../components/Header/HeaderService/AddAdvertMobileButton/AddAdvertMobileButton";
 import HeaderService from "../../components/Header/HeaderService/HeaderService";
 import HeaderSettings from "../../components/Header/HeaderSettings/HeaderSettings";
 import ArchiveHead from "../../components/Heads/ArchiveHead";
@@ -21,6 +22,8 @@ const Archive = ({archiveAdverts}) => {
                 
                 <ArchiveContainer {...{archiveAdverts}} />
             </main>
+            <AddAdvertMobileButton />
+
         </>
     );
 }

@@ -9,6 +9,7 @@ const MenuChoseButtonContainer = ({value, text, menu}) => {
         dispatch(setLocaleMenuType({menu: value}))
     }
 
+
     return <MenuChoseButton {...{isActive: menu === value, text, onChangeMenuClick}} />;
 }
 

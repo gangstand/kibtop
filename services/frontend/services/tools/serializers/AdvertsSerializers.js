@@ -20,13 +20,15 @@ const serializeAdvertsUploadsNull = (categoryUploads, AdvertUpload) => {
 }
 
 
-export const serializeAdverts = (adverts, lang, isSearching=false) => {
+export const serializeAdverts = (adverts, lang, isSearching=false, category) => {
     let advertsFull = []
     for (const category in adverts) {
         advertsFull = [...advertsFull, 
             ...adverts[category].map(advert => ({...advert, category: category})
             )]
     }
+
+    if(!!category && category in adverts) advertsFull = [...adverts[category].map(advert => ({...advert, category: category}))]
 
 
     advertsFull = advertsFull.map(advert => {

@@ -3,16 +3,16 @@ import { serializeAdverts } from "./tools/serializers/AdvertsSerializers"
 
 export const SearchApi = {
     async getSearchAdverts(value, lang) {
-        return await instance.get(`category/?page=0&limit=14&search=${value}&unique=1`)
+        return await instance.get(`category/?page=0&limit=14&search=${value}&fuzz=50&unique=1`)
             .then(({data}) => {
                 return serializeAdverts(data.results, lang)
             }).catch(() => null)
     },
 
-    async getFindAdverts(search='', page=0, lang) {
-        return await instance.get(`category/?page=${page}&limit=8&search=${search}`)
+    async getFindAdverts(search='', page=0, lang, category) {
+        return await instance.get(`category/?page=${page}&limit=8${search ? `&search=${search}&fuzz=70` : ''}`)
             .then(({data}) => {
-                const adverts = serializeAdverts(data.results, lang, true).reverse()
+                const adverts = serializeAdverts(data.results, lang, true, category)
                 
                 const count = data.total_pages
                 let pages = []

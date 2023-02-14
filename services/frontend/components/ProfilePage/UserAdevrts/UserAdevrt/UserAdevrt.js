@@ -21,7 +21,7 @@ const UserAdevrt = ({advertId, title, cost, currency, address, img, date, catego
                             {title}
                         </h5>
 
-                        <p className="advert-cost advert-cost--desk">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
+                        <p className="advert-cost advert-cost--desk"><span style={{fontWeight: 600}}>{cur.currency}</span>{cur.countCurrencyPrice(cost, currency)}</p>
                     
                         
                     </div>

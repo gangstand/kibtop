@@ -3,12 +3,18 @@ import AdvertDetailPage from "../../../components/AdvertDetailPage/AdvertDetailP
 import { AdvertApi } from "../../../services/AdvertApi";
 
 const AdvertId = ({serverAdvert}) => {
+    const title = `Kibtop - ${serverAdvert.title}`
     return (
         <>
             <Head>
                 <title>
-                    Kibtop - {serverAdvert.title}
+                    {title}
                 </title>
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={title} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://kibtop.com" />
+                <meta property="og:image" content="https://kibtop.com/img/kibtop.png" />
             </Head>
             <AdvertDetailPage {...{serverAdvert}} />
         </>
