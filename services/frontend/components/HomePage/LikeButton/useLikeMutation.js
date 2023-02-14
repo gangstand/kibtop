@@ -48,7 +48,7 @@ const useLikeMutation = (advertId, category) => {
     })
     
     const onLike = () => {
-        isAuthed ? like.mutate(advertId, category, userId) : openFavoritesWarning()
+        isAuthed ? like.mutate(advertId, category, userId) : dispatch(setFavoritesWarnOpen(true))
     }
         
 

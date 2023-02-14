@@ -7,12 +7,12 @@ const PageNav = ({pages, maxPage}) => {
     const {query: {page, category, search}, pathname} = useRouter()
 
     const currentPage = !!page ? +page : 0
-    const nextPage = (currentPage+1 < maxPage) ? currentPage+1 : page
+    const nextPage = (currentPage+1 < maxPage) ? currentPage+1 : currentPage
 
-    console.log(useRouter());
+    console.log(currentPage, nextPage);
     
     const link = pathname !== '/adverts'  ? `/adverts/${category}/${nextPage}/` 
-                        : `/adverts/?page=${nextPage}&search=${search}&category=${category}`
+    : `/adverts/?page=${nextPage}${!!search ? `&search=${search}` : ''}${!!category ? `&category=${category}` : ''}`
    
     return (
         <>

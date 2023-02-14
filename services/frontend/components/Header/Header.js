@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { BASE_URL } from '../../services/Instance';
 import { getUserData } from '../../services/tools/crypto';
 import { setUserFavoritesThunk } from '../../store/slices/FavoritesSlice';
 import { getCitiesThunk } from '../../store/slices/LocationSlice';

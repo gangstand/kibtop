@@ -9,7 +9,7 @@ const PageLink = ({page, number}) => {
     const isSelectedStyle = +currentPage === +page ? ' page-link--selcted' : ''
 
     const link = pathname !== '/adverts' ? `/adverts/${query.category}/${page}/` 
-                : `/adverts/?page=${page}&search=${query.search}&category=${query.category}`
+                : `/adverts/?page=${page}${!!query.search ? `&search=${query.search}` : ''}${!!query.category ? `&category=${query.category}` : ''}`
 
     return (
         <>

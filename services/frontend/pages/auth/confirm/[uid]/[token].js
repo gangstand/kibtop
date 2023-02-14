@@ -27,12 +27,19 @@ const EmailConfirm = () => {
         }, asPath, {locale: localStorage.getItem('i18nextLng') || 'en'})
     }, [])
 
+    const title = `Kibtop - ${t('Confirm account')}`
+
     return (
         <>
             <Head>
                 <title>
-                    Kibtop - {t('Confirm account')}
+                    {title}
                 </title>
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={title} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://kibtop.com" />
+                <meta property="og:image" content="https://kibtop.com/img/kibtop.png" />
             </Head>
             <Header/>
             <section className="section section--reg">

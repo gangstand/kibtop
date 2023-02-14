@@ -8,21 +8,28 @@ import { CategoryApi } from "../../../../services/CategoryApi";
 const CategoryPage = ({categoryAdverts, pages}) => {
     const {t} = useLanguage()
     const {query: {category, page}, locale} = useRouter()
+    const title = `Kibtop - ${
+        category === 'realty' ? t('Real estate') :
+        category === 'avto' ? t('Auto')  :
+        category === 'work' ? t('Job')  :
+        category === 'services' ? t('Services')  :
+        category === 'children' ? t('For kids')  :
+        category === 'electronics' ? t('Electronics')  :
+        category === 'house_garden' ? t('House and garden')  :
+        category === 'fashion' ? t('Fashion and style') : 'Category' 
+    }`
+
     return (
-        <>  
+        <>
             <Head>
                 <title>
-                    {
-                        category === 'realty' ? t('Real estate') :
-                        category === 'avto' ? t('Auto')  :
-                        category === 'work' ? t('Job')  :
-                        category === 'services' ? t('Services')  :
-                        category === 'children' ? t('For kids')  :
-                        category === 'electronics' ? t('Electronics')  :
-                        category === 'house_garden' ? t('House and garden')  :
-                        category === 'fashion' ? t('Fashion and style') : 'Category'
-                    } - {t('Page')} {+page+1}
-                </title> 
+                        {title}
+                </title>
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={title} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://kibtop.com" />
+                <meta property="og:image" content="https://kibtop.com/img/kibtop.png" />
 
                 <link rel="canonical" href={`${process.env.NEXTAUTH_URL}/${locale}/adverts/${category}/`} />
             </Head>
