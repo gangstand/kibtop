@@ -1,12 +1,14 @@
 import { useForm } from "react-hook-form";
 import { useLanguage } from "../../../../../../locales/hooks/useLanguage";
 
-const SearchProductsForm = ({onSearchProductSubmit, searchInput, onChange}) => {
+const SearchProductsForm = ({onSearchProductSubmit, searchInput, onChange, onSubmit}) => {
     const {t} = useLanguage();
+
+
 
     return (
         <>
-            <form className="search__form">
+            <form className="search__form" onSubmit={onSubmit}>
                 <div className="search__submit-btn">
 
                     <svg className="loop-icon" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">

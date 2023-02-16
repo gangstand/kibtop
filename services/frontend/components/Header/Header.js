@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,12 +14,12 @@ const Header = () => {
     const {userId, isAuthed} = useSelector(state => state.auth)
     const {favorites} = useSelector(state => state.favorites)
     const dispatch = useDispatch()
-
+    
     useEffect(() => {
         dispatch(getCitiesThunk(locale))
         if(isAuthed) dispatch(setUserFavoritesThunk(userId))
         if(isAuthed) dispatch((setProfileDataThunk()))
-    }, [locale])
+    }, [locale, isAuthed])
 
     return (
         <>

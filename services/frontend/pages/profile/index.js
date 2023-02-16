@@ -19,7 +19,6 @@ const Profile = ({user, adverts}) => {
 export async function getServerSideProps({req, res, locale}) {
 
     const user = await getServerSideUser(req.cookies)
-
     if(!user) {
         return {
             redirect: {

@@ -32,6 +32,8 @@ export async function getServerSideProps({req, res}) {
 
     const user = await getServerSideUser(req.cookies)
 
+    
+
     if(!user) {
         return {
             redirect: {

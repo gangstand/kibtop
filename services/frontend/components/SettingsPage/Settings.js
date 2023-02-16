@@ -1,5 +1,6 @@
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { Cookies } from "../../services/tools/CookieController";
 import { setAuth } from "../../store/slices/AuthSlice";
@@ -10,12 +11,13 @@ import SettingsNav from "./SettingsNav";
 
 const Settings = () => {
     const dispatch = useDispatch()
+    const {push} = useRouter()
     const closeDeletingAccount = () => dispatch(setDeletingOpen(false))
 
-    const onExitClick = () => {
+    const onExitClick = async () => {
         Cookies.delAllCookie()
-        signOut('google')
-        dispatch(setAuth({userId: null, isAuthed: false}))
+        await signOut('google')
+        
     }
     
     return (
@@ -37,9 +39,9 @@ const Settings = () => {
                             <Text content="Сontact support" />
                         </Link>
 
-                        <Link href="/" onClick={onExitClick} style={{color: "#FF5A5A"}} className="settings__link settings__link--red">
+                        <a onClick={onExitClick} style={{color: "#FF5A5A"}} className="settings__link settings__link--red">
                             <Text content="Exit" />
-                        </Link>
+                        </a>
 
                         <DeleteAccountButtonContainer />
                     </nav>

@@ -82,11 +82,13 @@ export const AuthApi = {
         return await instance.post('social_auth/google/', {auth_token})
             .then(({data}) => {
                 const {access, refresh} = data
-
+                
                 Cookies.setCookie('access', access)
                 Cookies.setCookie('refresh', refresh)
 
-                return data
+                const {user_id} = jwtDecode(access)
+
+                return {userId: user_id, isAuthed: true}
             })
     }
 }
