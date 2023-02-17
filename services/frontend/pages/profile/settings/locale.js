@@ -6,6 +6,7 @@ import LocaleSettingsHead from "../../../components/Heads/LocaleSettingsHead";
 import MobileSettingsSelect from "../../../components/ProfilePage/ProfileMenu/ProfileUser/UserLocale/MobileSettingsSelect/MobileSettingsSelect";
 import { backPath } from "../../../components/SettingsPage/backPath";
 import SettingsNav from "../../../components/SettingsPage/SettingsNav";
+import { useLanguage } from "../../../locales/hooks/useLanguage";
 import { getServerSideUser } from "../../../services/tools/getServerSideUser/getServerSideUser";
 
 const Locale = ({user}) => {
@@ -14,10 +15,20 @@ const Locale = ({user}) => {
 
     const onBack = () => push(back)
 
-
+    const {t} = useLanguage()
+    const title = `Kibtop - ${t('Locale settings')}`
     return (
         <>
-            <LocaleSettingsHead />
+            <Head>
+                <title>
+                    {title}
+                </title>
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={title} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://kibtop.com" />
+                <meta property="og:image" content="https://kibtop.com/img/kibtop.png" />
+            </Head>
             <Header />
             <HeaderService />
             <main className="main">

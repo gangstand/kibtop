@@ -731,7 +731,7 @@
 
 .user-menu  {
     width: 77vw;
-    height: 100vh;
+    height: 100%;
 
     position: fixed;
     top: 0;
@@ -828,7 +828,7 @@
 
 .user-menu__body {
     flex-grow: 1;
-    padding: 24px 12px 79px;
+    padding: 24px 12px 17px;
 
 
     display: flex;

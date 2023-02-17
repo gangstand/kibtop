@@ -10,11 +10,15 @@ export const SearchApi = {
     },
 
     async getFindAdverts(search='', page=0, lang, category) {
-        return await instance.get(`category/?page=${page}&limit=8${search ? `&search=${search}&fuzz=70` : ''}`)
+        const limit = 8
+        const params = `?${category ? `cat=${category}&` : ''}page=${page}&limit=${limit}${search ? `&search=${search}&fuzz=70` : ''}`
+        return await instance.get(`category/${params}`)
             .then(({data}) => {
                 const adverts = serializeAdverts(data.results, lang, true, category)
+
+                console.log(data);
                 
-                const count = data.total_pages
+                const count = Math.ceil(data.total / limit) 
                 let pages = []
                 for (let i = 0; i < count; i++) {
                     pages.push({page: i, number: i+1})

@@ -6,12 +6,6 @@ const IndexHead = () => {
     const {t} = useLanguage()
     const title = `Kibtop - ${t('Home page')}`
 
-    try {
-        location.href
-    }
-    catch(e) {
-
-    }
     return (
         <>
             <Head>

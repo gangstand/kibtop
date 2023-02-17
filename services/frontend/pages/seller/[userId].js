@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -12,15 +13,26 @@ import UserLocale from "../../components/ProfilePage/ProfileMenu/ProfileUser/Use
 import UserStatistic from "../../components/ProfilePage/ProfileMenu/ProfileUser/UserStatistic/UserStatistic";
 import UserAdevrtsContainer from "../../components/ProfilePage/UserAdevrts/UserAdevrtsContainer";
 import SellerPage from "../../components/SellerPage/SellerPage";
+import { useLanguage } from "../../locales/hooks/useLanguage";
 import { AdvertApi } from "../../services/AdvertApi";
 import { GoodsApi } from "../../services/IndexApi";
 import { ProfileApi } from "../../services/ProfileApi";
 
 const Seller = ({newGoods, user}) => {
-    
+    const {t} = useLanguage()
+    const title = `Kibtop - ${t('Seller page')}`
     return (
         <>
-            <SellerHead />
+            <Head>
+                <title>
+                    {title}
+                </title>
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={title} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://kibtop.com" />
+                <meta property="og:image" content="https://kibtop.com/img/kibtop.png" />
+            </Head>
             <Header />
             <HeaderService />
             <main className="main main--profile">

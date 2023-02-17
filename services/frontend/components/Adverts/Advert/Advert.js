@@ -15,29 +15,45 @@ const Advert = ({advertId, category, title, cost, currency, address, img, date})
 
                 <div className="advert__desc">
                     <div className="advert__column">
-                        <h5 className="advert-title advert-title--profile">
-                            {title}
-                        </h5>
+                        <Link href={`/advert/${category}/${advertId}`}>
 
-                        <p className="advert-cost advert-cost--desk advert-cost--profile"><span style={{fontWeight: 600}}>{cur.currency}</span>{cur.countCurrencyPrice(cost, currency)}</p>
+                            <h5 className="advert-title advert-title--profile">
+                                {title}
+                            </h5>
+
+                            <p className="advert-cost advert-cost--desk advert-cost--profile">
+                                <span style={{fontWeight: 600}}>{cur.currency}</span>{cur.countCurrencyPrice(cost, currency)}
+                            </p>
                     
-                        
+                        </Link>
                     </div>
 
                     <div className="advert__column advert__column--right">
                         <LikeButtonContainer {...{id: advertId, category}} />
 
-                        <p className="advert-cost advert-cost--mob advert-cost--profile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
+                        <p className="advert-cost advert-cost--mob advert-cost--profile">
+                            <Link href={`/advert/${category}/${advertId}`}>
+                                <span style={{fontWeight: 600}}>{cur.currency}</span>{cur.countCurrencyPrice(cost, currency)}
+                            </Link>
+                        </p>
 
                         <div className="advert__info advert__info--desk">
-                            <p className="info-text">{address}</p>
-                            <p className="info-text">{date}</p>
+                            <Link href={`/advert/${category}/${advertId}`}>
+                                <p className="info-text">{address}</p>
+                            </Link>
+                            <Link href={`/advert/${category}/${advertId}`}>
+                                <p className="info-text">{date}</p>
+                            </Link>
                         </div>
                     </div>
 
                     <div className="advert__info advert__info--mob">
-                            <p className="info-text">{address}</p>
-                            <p className="info-text">{date}</p>
+                            <Link href={`/advert/${category}/${advertId}`}>
+                                <p className="info-text">{address}</p>
+                            </Link>
+                            <Link href={`/advert/${category}/${advertId}`}>
+                                <p className="info-text">{date}</p>
+                            </Link>
                     </div>
                 </div>
             </div>
