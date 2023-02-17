@@ -54,16 +54,31 @@ class CategoryFullAPIList(generics.ListAPIView):
         limit = int(query['limit']) if 'limit' in query.keys() else 8
         page = int(query['page']) if 'page' in query.keys() else 0
 
-        avto = [{**advert, 'categoryType': 'avto', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(AvtoFull.objects.all().values()))]
-        children = [{**advert, 'categoryType': 'children', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ChildrenFull.objects.all().values()))]
-        electronics = [{**advert, 'categoryType': 'electronics', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ElectronicsFull.objects.all().values()))]
-        fashion = [{**advert, 'categoryType': 'fashion', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(FashionFull.objects.all().values()))]
-        house_garden = [{**advert, 'categoryType': 'house_garden', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(HouseGardenFull.objects.all().values()))]
-        realty = [{**advert, 'categoryType': 'realty', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(RealtyFull.objects.all().values()))]
-        services = [{**advert, 'categoryType': 'services', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ServicesFull.objects.all().values()))]
-        work = [{**advert, 'categoryType': 'work', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(WorkFull.objects.all().values()))]
+        category_list = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
 
-        full_adverts = [*avto, *children, *electronics, *fashion, *house_garden, *realty, *services, *work]
+        models = {
+            'avto': [{**advert, 'categoryType': 'avto', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(AvtoFull.objects.all().values()))],
+            'children': [{**advert, 'categoryType': 'children', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ChildrenFull.objects.all().values()))],
+            'electronics': [{**advert, 'categoryType': 'electronics', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ElectronicsFull.objects.all().values()))],
+            'fashion': [{**advert, 'categoryType': 'fashion', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(FashionFull.objects.all().values()))],
+            'house_garden': [{**advert, 'categoryType': 'house_garden', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(HouseGardenFull.objects.all().values()))],
+            'realty': [{**advert, 'categoryType': 'realty', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(RealtyFull.objects.all().values()))],
+            'services': [{**advert, 'categoryType': 'services', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ServicesFull.objects.all().values()))],
+            'work': [{**advert, 'categoryType': 'work', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(WorkFull.objects.all().values()))],
+        }
+
+        full_adverts = [*models['avto'], *models['children'], *models['electronics'], *models['fashion'], *models['house_garden'], *models['realty'], *models['services'], *models['work']]
+
+
+        search_category = query['cat'] if 'cat' in query.keys() else False
+        if search_category in category_list:
+            try:
+                full_adverts = [*models[search_category]]
+            except:
+                pass
+            
+        print(full_adverts)
+
         full_adverts = sorted(full_adverts, key=lambda advert: advert['created_at'], reverse=True)
 
         if 'search' in query.keys():
@@ -101,6 +116,7 @@ class CategoryFullAPIList(generics.ListAPIView):
             last = first + limit
             full_adverts = full_adverts[first:last]
 
+
         res = {
             "results": {
                 'avto': [advert for advert in full_adverts if advert['categoryType'] == 'avto'],
@@ -112,7 +128,7 @@ class CategoryFullAPIList(generics.ListAPIView):
                 'services': [advert for advert in full_adverts if advert['categoryType'] == 'services'],
                 'work': [advert for advert in full_adverts if advert['categoryType'] == 'work'],
             },
-            "total_pages": int(math.ceil(adverts_len/limit))
+            "total": int(adverts_len)
 
         }
 
