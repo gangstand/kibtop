@@ -7,14 +7,9 @@ import RegGoogleButton from "./RegGoogleButton";
 
 
 const RegGoogleButtonContainer = () => {
-    const {data} = useSession()
-    const dispatch = useDispatch()
+    
 
-    useEffect(() => {
-        if(!!data) dispatch(googleLoginThunk(data.auth_token))
-    }, [data])
-
-    const onSigInClick = () => signIn('google')
+    const onSigInClick = async () => await signIn('google')
 
 
     return <RegGoogleButton {...{onSigInClick}} />;

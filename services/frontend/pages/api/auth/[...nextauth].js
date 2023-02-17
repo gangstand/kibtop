@@ -1,6 +1,7 @@
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook"
+import { AuthApi } from "../../../services/AuthApi";
 
 export default NextAuth({
     providers: [
@@ -20,16 +21,27 @@ export default NextAuth({
           // Persist the OAuth access_token to the token right after signin
 
           const { token, user, account } = data
-        
+
           if (account) {
-            token.id_token = account.id_token;
+            const authToken = account.id_token
+
+            token.id_token = authToken
+
           }
           return token;
         },
         async session({ session, token }) {
           // Send properties to the client, like an access_token from a provider.
-          session.auth_token = token.id_token;
+          const authToken = token.id_token
+          session.auth_token = authToken;
+
           return session;
         },
+        
+        async redirect({ url, baseUrl}) {
+            if (url.startsWith("/")) return `${baseUrl}`
+            return baseUrl
+        }
+        
       },
 })

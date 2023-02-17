@@ -5,9 +5,9 @@ import { setAuthThunk } from "../../store/slices/AuthSlice"
 
 export const useAuthRedirect = user => {
     const {push} = useRouter()
-    useEffect(() => {
-        if(!user) push('/auth/login')
-    }, [])
+    // useEffect(() => {
+    //     if(!user) push('/auth/login')
+    // }, [])
 
     return
 }
