@@ -48,7 +48,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://api.kibtop.com'
+    'https://api.kibtop.com',
     'http://94.250.251.138:8000'
 ]
 

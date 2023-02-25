@@ -77,7 +77,6 @@ class CategoryFullAPIList(generics.ListAPIView):
             except:
                 pass
             
-        print(full_adverts)
 
         full_adverts = sorted(full_adverts, key=lambda advert: advert['created_at'], reverse=True)
 
