@@ -10,7 +10,8 @@ CATEGORY_EN = [
     ('For kids', 'For kids'),
     ('Electronics', 'Electronics'),
     ('House and garden', 'House and garden'),
-    ('Fashion and style', 'Fashion and style')
+    ('Fashion and style', 'Fashion and style'),
+    ('Free', 'Free')
 ]
 CATEGORY_RU = [
     ('Недвижимость', 'Недвижимость'),
@@ -20,7 +21,8 @@ CATEGORY_RU = [
     ('Для детей', 'Для детей'),
     ('Электроника', 'Электроника'),
     ('Дом и сад', 'Дом и сад'),
-    ('Мода и стиль', 'Мода и стиль')
+    ('Мода и стиль', 'Мода и стиль'),
+    ('Бесплатный', 'Бесплатный')
 ]
 CATEGORY_TR = [
     ('Emlak', 'Emlak'),
@@ -30,7 +32,8 @@ CATEGORY_TR = [
     ('Çocuklar için', 'Çocuklar için'),
     ('Elektronik', 'Elektronik'),
     ('Ev ve bahçe', 'Ev ve bahçe'),
-    ('Moda ve stil', 'Moda ve stil')
+    ('Moda ve stil', 'Moda ve stil'),
+    ('ücretsiz', 'ücretsiz')
 ]
 CITY_EN = [
     ('Nicosia', 'Nicosia'),

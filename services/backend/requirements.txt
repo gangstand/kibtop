@@ -71,3 +71,5 @@ django-graylog
 psycopg2
 fuzzywuzzy
 python-Levenshtein
+channels==3.0.4
+channels-redis==3.3.1

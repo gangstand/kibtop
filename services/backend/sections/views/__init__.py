@@ -10,6 +10,12 @@ from .realty.views_realty import (
     RealtyFullFavouritesUserAPIList, RealtyFullFavouritesUserAPIUpdateDestroy, RealtyFullArchiveUserAPIDestroy,
     RealtyFullUploadsAPIUpdateList, RealtyFullUploadsAPIList,
 )
+from .free.views_house_free import (
+    FreeFullAPIUpdateDestroy, FreeFullAPIListCreate, FreeFullAPIList,
+    FreeFullViewsUserAPIList, FreeFullFavouritesUserAPIList,
+    FreeFullFavouritesUserAPIUpdateDestroy, FreeFullArchiveUserAPIDestroy,
+    FreeFullUploadsAPIList, FreeFullUploadsAPIUpdateList
+)
 from .views_base import (
     CityAPIList, MoneyAPIList, MoneyAPIUpdateDestroy
 )
@@ -63,6 +69,16 @@ __all__ = [
     'RealtyFullArchiveUserAPIDestroy',
     'RealtyFullUploadsAPIList',
     'RealtyFullUploadsAPIUpdateList',
+
+    'FreeFullAPIUpdateDestroy',
+    'FreeFullAPIListCreate',
+    'FreeFullAPIList',
+    'FreeFullViewsUserAPIList',
+    'FreeFullFavouritesUserAPIList',
+    'FreeFullFavouritesUserAPIUpdateDestroy',
+    'FreeFullArchiveUserAPIDestroy',
+    'FreeFullUploadsAPIList',
+    'FreeFullUploadsAPIUpdateList',
 
     'StockAPIList',
     'StockAPIUpdateDestroy',

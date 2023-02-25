@@ -20,5 +20,6 @@ urlpatterns = [
     path('', include('sections.urls.electronics.urls_electronics')),
     path('', include('sections.urls.fashion.urls_fashion')),
     path('', include('sections.urls.house_garden.urls_house_garden')),
+    path('', include('sections.urls.free.urls_free')),
     path('favourites/all/', FullFavouritesUser.as_view()),
 ]

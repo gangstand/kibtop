@@ -31,7 +31,6 @@ urlpatterns = [
                   path('v1/', include([
                       path('auth/', include('accounts.urls')),
                       path('social_auth/', include(('social_auth.urls', 'social_auth'), namespace="social_auth")),
-                      path('messages/', include("messages_drf.urls", namespace="messages")),
                       path('', include('sections.urls.base_urls')),
                       path('docs/', include([
                           path('', schema_view.with_ui('swagger', cache_timeout=0), name="swagger-schema"),
