@@ -55,22 +55,33 @@ class CategoryFullAPIList(generics.ListAPIView):
         limit = int(query['limit']) if 'limit' in query.keys() else 8
         page = int(query['page']) if 'page' in query.keys() else 0
 
-        category_list = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work', 'free']
+        category_list = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work',
+                         'free']
 
         models = {
-            'avto': [{**advert, 'categoryType': 'avto', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(AvtoFull.objects.all().values()))],
-            'children': [{**advert, 'categoryType': 'children', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ChildrenFull.objects.all().values()))],
-            'electronics': [{**advert, 'categoryType': 'electronics', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ElectronicsFull.objects.all().values()))],
-            'fashion': [{**advert, 'categoryType': 'fashion', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(FashionFull.objects.all().values()))],
-            'house_garden': [{**advert, 'categoryType': 'house_garden', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(HouseGardenFull.objects.all().values()))],
-            'realty': [{**advert, 'categoryType': 'realty', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(RealtyFull.objects.all().values()))],
-            'services': [{**advert, 'categoryType': 'services', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ServicesFull.objects.all().values()))],
-            'work': [{**advert, 'categoryType': 'work', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(WorkFull.objects.all().values()))],
-            'free': [{**advert, 'categoryType': 'free', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(FreeFull.objects.all().values()))],
+            'avto': [{**advert, 'categoryType': 'avto', 'upload': f'/media/{advert["upload"]}'} for advert in
+                     list(chain(AvtoFull.objects.all().values()))],
+            'children': [{**advert, 'categoryType': 'children', 'upload': f'/media/{advert["upload"]}'} for advert in
+                         list(chain(ChildrenFull.objects.all().values()))],
+            'electronics': [{**advert, 'categoryType': 'electronics', 'upload': f'/media/{advert["upload"]}'} for advert
+                            in list(chain(ElectronicsFull.objects.all().values()))],
+            'fashion': [{**advert, 'categoryType': 'fashion', 'upload': f'/media/{advert["upload"]}'} for advert in
+                        list(chain(FashionFull.objects.all().values()))],
+            'house_garden': [{**advert, 'categoryType': 'house_garden', 'upload': f'/media/{advert["upload"]}'} for
+                             advert in list(chain(HouseGardenFull.objects.all().values()))],
+            'realty': [{**advert, 'categoryType': 'realty', 'upload': f'/media/{advert["upload"]}'} for advert in
+                       list(chain(RealtyFull.objects.all().values()))],
+            'services': [{**advert, 'categoryType': 'services', 'upload': f'/media/{advert["upload"]}'} for advert in
+                         list(chain(ServicesFull.objects.all().values()))],
+            'work': [{**advert, 'categoryType': 'work', 'upload': f'/media/{advert["upload"]}'} for advert in
+                     list(chain(WorkFull.objects.all().values()))],
+            'free': [{**advert, 'categoryType': 'free', 'upload': f'/media/{advert["upload"]}'} for advert in
+                     list(chain(FreeFull.objects.all().values()))],
         }
 
-        full_adverts = [*models['avto'], *models['children'], *models['electronics'], *models['fashion'], *models['house_garden'], *models['realty'], *models['services'], *models['work'], *models['free']]
-
+        full_adverts = [*models['avto'], *models['children'], *models['electronics'], *models['fashion'],
+                        *models['house_garden'], *models['realty'], *models['services'], *models['work'],
+                        *models['free']]
 
         search_category = query['cat'] if 'cat' in query.keys() else False
         if search_category in category_list:
@@ -78,7 +89,6 @@ class CategoryFullAPIList(generics.ListAPIView):
                 full_adverts = [*models[search_category]]
             except:
                 pass
-            
 
         full_adverts = sorted(full_adverts, key=lambda advert: advert['created_at'], reverse=True)
 
@@ -109,14 +119,12 @@ class CategoryFullAPIList(generics.ListAPIView):
 
             full_adverts = sorted(full_adverts, key=lambda advert: advert['fuzz'], reverse=True)
 
-
         adverts_len = len(full_adverts)
 
         if limit <= adverts_len:
             first = page * limit
             last = first + limit
             full_adverts = full_adverts[first:last]
-
 
         res = {
             "results": {
@@ -151,12 +159,12 @@ class CategoryFullAPIList(generics.ListAPIView):
                 return [word.lower() for word in word_list if word]
 
             similarity = any([
-                                any([
-                                    any([
-                                        fuzz.token_set_ratio(field_word, word) > fuzz_int for word in prepare_words(search)])
-                                        for field_word in prepare_words(advert[field])
-                                ]) for field in search_fields
-                            ])
+                any([
+                    any([
+                        fuzz.token_set_ratio(field_word, word) > fuzz_int for word in prepare_words(search)])
+                    for field_word in prepare_words(advert[field])
+                ]) for field in search_fields
+            ])
 
             return similarity
 
@@ -174,14 +182,14 @@ class CategorySearchAPI(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         search = self.request.query_params['search']
 
-        avto = self.search_models( list(chain(AvtoFull.objects.all().values())), search )
-        children = self.search_models( list(chain(ChildrenFull.objects.all().values())), search )
-        electronics = self.search_models( list(chain(ElectronicsFull.objects.all().values())), search )
-        fashion = self.search_models( list(chain(FashionFull.objects.all().values())), search )
-        house_garden = self.search_models( list(chain(HouseGardenFull.objects.all().values())), search )
-        realty = self.search_models( list(chain(RealtyFull.objects.all().values())), search )
-        services = self.search_models( list(chain(ServicesFull.objects.all().values())), search )
-        work = self.search_models( list(chain(WorkFull.objects.all().values())), search )
+        avto = self.search_models(list(chain(AvtoFull.objects.all().values())), search)
+        children = self.search_models(list(chain(ChildrenFull.objects.all().values())), search)
+        electronics = self.search_models(list(chain(ElectronicsFull.objects.all().values())), search)
+        fashion = self.search_models(list(chain(FashionFull.objects.all().values())), search)
+        house_garden = self.search_models(list(chain(HouseGardenFull.objects.all().values())), search)
+        realty = self.search_models(list(chain(RealtyFull.objects.all().values())), search)
+        services = self.search_models(list(chain(ServicesFull.objects.all().values())), search)
+        work = self.search_models(list(chain(WorkFull.objects.all().values())), search)
 
         return Response({
             'avto': avto,
@@ -200,7 +208,8 @@ class CategorySearchAPI(generics.ListAPIView):
             search_fields = ['title_en', 'title_ru', 'title_tr']
 
             similarity = any([fuzz.token_set_ratio(advert[field], search) > 70 for field in search_fields])
-            entry = any([any(word in advert[field].lower() for word in search.lower().split(' ')) for field in search_fields])
+            entry = any(
+                [any(word in advert[field].lower() for word in search.lower().split(' ')) for field in search_fields])
 
             return similarity or entry
 
