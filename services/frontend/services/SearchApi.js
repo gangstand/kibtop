@@ -16,7 +16,6 @@ export const SearchApi = {
             .then(({data}) => {
                 const adverts = serializeAdverts(data.results, lang, true, category)
 
-                console.log(data);
                 
                 const count = Math.ceil(data.total / limit) 
                 let pages = []

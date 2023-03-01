@@ -6,7 +6,7 @@ from django.utils import timezone
 
 from sections.models import (
     AvtoFull, ChildrenFull, FashionFull, RealtyFull, HouseGardenFull, ServicesFull, WorkFull,
-    ElectronicsFull
+    ElectronicsFull, FreeFull
 )
 from sections.serializer import (
     CategoryFullSerializerEN, CategoryFullSerializerRU, CategoryFullSerializerTR,
@@ -36,7 +36,8 @@ class NewAPIList(generics.ListAPIView):
             'house_garden': HouseGardenFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
             'realty': RealtyFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
             'services': ServicesFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
-            'work': WorkFull.objects.filter(publisher=True,created_at__lte=timezone.now()).order_by('-created_at'),
+            'work': WorkFull.objects.filter(publisher=True, created_at__lte=timezone.now()).order_by('-created_at'),
+            'free': FreeFull.objects.filter(publisher=True, created_at__lte=timezone.now()).order_by('-created_at'),
         }
         serializer_en = CategoryFullSerializerEN(filters)
         serializer_ru = CategoryFullSerializerRU(filters)

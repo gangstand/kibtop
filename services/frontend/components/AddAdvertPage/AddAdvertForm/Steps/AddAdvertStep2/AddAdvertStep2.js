@@ -132,6 +132,11 @@ const AddAdvertStep2 = () => {
                         <SubCategoryInput {...{text: "Accessories", value: "Accessories", categoryName: 'Fashion and style', category: 'fashion'}} style={{borderBottom: 'none'}} />
                     </>
                 }
+                {
+                    category === 'free' && <>
+                        <SubCategoryInput {...{text: "Free", value: "Free", categoryName: 'Free', category: 'free'}} />
+                    </>
+                }
                 <p className="step-text step-text--bottom">
                     <Text content="step" /> 2 <Text content="of" /> 3
                 </p>

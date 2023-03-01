@@ -52,7 +52,6 @@ const MapContainer = ({geocode, setDistance}) => {
                 lng: position.coords.longitude
             }
     
-            console.log(Math.floor(getDistance({lat, lng}, pos))/ 1000)
 
             setDistance(Math.floor(getDistance({lat, lng}, pos) / 1000))
         });

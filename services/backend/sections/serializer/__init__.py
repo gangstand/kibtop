@@ -3,6 +3,11 @@ from .realry.serializer import (
     RealtyFullSerializer, RealtyFullViewsUserSerializer, RealtyFullFavouritesUserSerializer,
     RealtyFullUploadSerializer
 )
+from .free.serializer import (
+    FreeFullSerializerEN, FreeFullSerializerDetail, FreeFullSerializerRU, FreeFullSerializerTR,
+    FreeFullSerializer, FreeFullViewsUserSerializer, FreeFullFavouritesUserSerializer,
+    FreeFullUploadSerializer
+)
 from .stock.serializer import StockSerializerEN, StockSerializerRU, StockSerializerTR, StockSerializer
 from .avto.serializer import (
     AvtoFullSerializer, AvtoFullSerializerDetail, AvtoFullSerializerEN, AvtoFullSerializerRU,
@@ -56,6 +61,15 @@ __all__ = [
     'RealtyFullViewsUserSerializer',
     'RealtyFullFavouritesUserSerializer',
     'RealtyFullUploadSerializer',
+
+    'FreeFullSerializerEN',
+    'FreeFullSerializerDetail',
+    'FreeFullSerializerRU',
+    'FreeFullSerializerTR',
+    'FreeFullSerializer',
+    'FreeFullViewsUserSerializer',
+    'FreeFullFavouritesUserSerializer',
+    'FreeFullUploadSerializer',
 
     'FullFavouritesUserSerializer',
     'CitySerializer',

@@ -7,3 +7,4 @@ from .services.admin_services import *
 from .house_garden.admin_house_garden import *
 from .fashion.admin_fashion import *
 from .electronics.models_electronics import *
+from .free.admin_free import *

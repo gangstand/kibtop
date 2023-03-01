@@ -28,7 +28,8 @@ from sections.models import (
     HouseGardenFull,
     RealtyFull,
     ServicesFull,
-    WorkFull
+    WorkFull,
+    FreeFull
 )
 from sections.serializer import (
     CategoryFullSerializer
@@ -54,7 +55,7 @@ class CategoryFullAPIList(generics.ListAPIView):
         limit = int(query['limit']) if 'limit' in query.keys() else 8
         page = int(query['page']) if 'page' in query.keys() else 0
 
-        category_list = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
+        category_list = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work', 'free']
 
         models = {
             'avto': [{**advert, 'categoryType': 'avto', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(AvtoFull.objects.all().values()))],
@@ -65,9 +66,10 @@ class CategoryFullAPIList(generics.ListAPIView):
             'realty': [{**advert, 'categoryType': 'realty', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(RealtyFull.objects.all().values()))],
             'services': [{**advert, 'categoryType': 'services', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(ServicesFull.objects.all().values()))],
             'work': [{**advert, 'categoryType': 'work', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(WorkFull.objects.all().values()))],
+            'free': [{**advert, 'categoryType': 'free', 'upload': f'/media/{advert["upload"]}'} for advert in list(chain(FreeFull.objects.all().values()))],
         }
 
-        full_adverts = [*models['avto'], *models['children'], *models['electronics'], *models['fashion'], *models['house_garden'], *models['realty'], *models['services'], *models['work']]
+        full_adverts = [*models['avto'], *models['children'], *models['electronics'], *models['fashion'], *models['house_garden'], *models['realty'], *models['services'], *models['work'], *models['free']]
 
 
         search_category = query['cat'] if 'cat' in query.keys() else False
@@ -77,7 +79,6 @@ class CategoryFullAPIList(generics.ListAPIView):
             except:
                 pass
             
-        print(full_adverts)
 
         full_adverts = sorted(full_adverts, key=lambda advert: advert['created_at'], reverse=True)
 
@@ -127,9 +128,9 @@ class CategoryFullAPIList(generics.ListAPIView):
                 'realty': [advert for advert in full_adverts if advert['categoryType'] == 'realty'],
                 'services': [advert for advert in full_adverts if advert['categoryType'] == 'services'],
                 'work': [advert for advert in full_adverts if advert['categoryType'] == 'work'],
+                'free': [advert for advert in full_adverts if advert['categoryType'] == 'free']
             },
             "total": int(adverts_len)
-
         }
 
         return Response(res, status=HTTP_200_OK)

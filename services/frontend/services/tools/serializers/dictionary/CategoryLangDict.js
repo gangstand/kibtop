@@ -235,6 +235,20 @@ export const subCategoryTrans = {
             'Other': 'Diğer',
         }
     },
+    free: {
+        en: {
+            'Free': 'Free',
+            'free': 'Free'
+        },
+        ru: {
+            'Free': 'Free',
+            'free': 'Free'
+        },
+        tr: {
+            'Free': 'Free',
+            'free': 'Free'
+        },
+    }
     
 }
 
@@ -249,7 +263,8 @@ export const categoryTrans = {
         'For kids': 'For kids',
         'Electronics': 'Electronics',
         'House and garden': 'House and garden',
-        'Fashion and style': 'Fashion and style'
+        'Fashion and style': 'Fashion and style',
+        'Free': 'Free'
     },
     ru: {
         'Real estate': 'Недвижимость',
@@ -259,7 +274,8 @@ export const categoryTrans = {
         'For kids': 'Для детей',
         'Electronics': 'Электроника',
         'House and garden': 'Дом и сад',
-        'Fashion and style': 'Мода и стиль'
+        'Fashion and style': 'Мода и стиль',
+        'Free': 'Бесплатный'
     },
     tr: {
         'Real estate': 'Emlak',
@@ -269,6 +285,7 @@ export const categoryTrans = {
         'For kids': 'Çocuklar için',
         'Electronics': 'Elektronik',
         'House and garden': 'Ev ve bahçe',
-        'Fashion and style': 'Moda ve stil'
+        'Fashion and style': 'Moda ve stil',
+        'Free': 'ücretsiz'
     }
 }

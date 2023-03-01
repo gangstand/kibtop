@@ -2,6 +2,9 @@ from .stock.models_stock import Stock
 from .base_models_full import (
     BaseModelFull, City, Money
 )
+from .free.models_free import (
+    FreeFull, FreeFullUpload, FreeFullViewsUser, FreeFullFavouritesUser
+)
 from .realty.models_realty import (
     RealtyFull, RealtyFullUpload, RealtyFullViewsUser, RealtyFullFavouritesUser
 )
@@ -38,6 +41,11 @@ __all__ = [
     'FashionFull',
     'FashionFullViewsUser',
     'FashionFullFavouritesUser',
+
+    'FreeFull',
+    'FreeFullUpload',
+    'FreeFullViewsUser',
+    'FreeFullFavouritesUser',
 
     'HouseGardenFull',
     'HouseGardenFullUpload',

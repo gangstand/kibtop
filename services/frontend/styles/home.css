@@ -149,7 +149,7 @@
 
 .categories-nav__wrapper {
     display: grid;
-    grid-template: 1fr / repeat(8, 1fr);
+    grid-template: 1fr / repeat(9, 1fr);
     grid-gap: 9px;
 
     width: 470px;
@@ -216,7 +216,7 @@
 }
 
 .categories-nav__list {
-    max-width: 943px;
+    max-width: 1000px;
     height: 100%;
     width: 100%;
 

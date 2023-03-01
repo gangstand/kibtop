@@ -6,7 +6,7 @@ environ.Env.read_env('.env')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'api.kibtop.com', '94.250.251.138']
 BASE_URL = env("URL")
 
@@ -19,7 +19,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'corsheaders',
+    # 'channels',
     'rest_framework',
+    # 'channels_redis',
     'rest_framework.authtoken',
     'drf_multiple_model',
     'django_filters',
@@ -30,7 +32,6 @@ INSTALLED_APPS = [
     'drf_yasg',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
-    'messages_drf.apps.MessagesDrfConfig',
 ]
 
 SITE_ID = 1
@@ -48,7 +49,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://api.kibtop.com'
+    'https://api.kibtop.com',
     'http://94.250.251.138:8000'
 ]
 
@@ -78,23 +79,32 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'settings.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [('127.0.0.1', "6379")],
+#         },
+#     },
 # }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env("POSTGRES_DB"),
-        'USER': env("POSTGRES_USER"),
-        'PASSWORD': env("POSTGRES_PASSWORD"),
-        'HOST': env("POSTGRES_HOST"),
-        'PORT': env("POSTGRES_PORT")
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env("POSTGRES_DB"),
+#         'USER': env("POSTGRES_USER"),
+#         'PASSWORD': env("POSTGRES_PASSWORD"),
+#         'HOST': env("POSTGRES_HOST"),
+#         'PORT': env("POSTGRES_PORT")
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -177,7 +187,7 @@ DJOSER = {
 }
 
 # EMAIL
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_PORT = env("EMAIL_PORT")
@@ -188,28 +198,23 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env("EMAIL_HOST_USER")
 SERVER_EMAIL = env("EMAIL_HOST_USER")
 
-GRAYLOG_ENDPOINT = 'http://graylog:12201/gelf'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'gelf': {
-            'class': 'graypy.GELFUDPHandler',
-            'host': 'graylog',
-            'port': 12201,
-        },
-    },
-    'loggers': {
-        'custom_gy_logger': {
-            'handlers': ['gelf'],
-            'level': 'DEBUG',
-            'propagate': True,
-        }
-    }
-}
-
-import logging
-
-logger = logging.getLogger('custom_gy_logger')
-logger.debug('This is funny error')
+# GRAYLOG_ENDPOINT = 'http://graylog:12201/gelf'
+#
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'gelf': {
+#             'class': 'graypy.GELFUDPHandler',
+#             'host': 'graylog',
+#             'port': 12201,
+#         },
+#     },
+#     'loggers': {
+#         'custom_gy_logger': {
+#             'handlers': ['gelf'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         }
+#     }
+# }

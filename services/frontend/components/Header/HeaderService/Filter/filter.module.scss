@@ -1,2 +1,345 @@
-@import '../../../../styles/base.scss'
+@import '../../../../styles/base.scss';
 
+.filter {
+    box-sizing: border-box;
+    max-width: 1161px;
+    @include box(80.55vw, 280px);
+    padding: 35px 40px 0;
+    background: #FFFFFF;
+    border-radius: 20px;
+
+    position: absolute;
+    bottom: calc(-300px);
+
+    background-color: #fff;
+
+}   
+
+@media (max-width: 600px) {
+    .filter {
+        width: 100vw;
+        height: 100%;
+
+        border-radius: 0;
+        padding: 25px 12px;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+}
+
+.baseFilters {
+    height: min-content;
+    box-sizing: border-box;
+    padding-right: 20px;
+    border-right: 2px solid #EDEDED;
+}
+
+@media (max-width: 600px) {
+    .baseFilters {
+        padding-right: 0;
+        border-right: none;
+    }
+}
+
+.titleFilter {
+    margin-bottom: 12px;
+
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+
+    & svg {
+        margin-right: 12px;
+    }
+}
+
+@media (min-width: 600px) {
+    .titleFilter {
+        & svg {
+            display: none;
+        }
+    }
+}
+
+.row {
+    width: 100%;
+
+    display: grid;
+    grid-template: 1fr / 262px 1fr;
+}
+
+@media (max-width: 600px) {
+    .row {
+        display: block;
+    }
+}
+
+.select {
+    box-sizing: border-box;
+    border: 1px solid #EDEDED;
+    border-radius: 7px;
+
+    @include box(100%, 40px);
+    padding-right: 11px;
+    margin-bottom: 10px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    @include flex-contain();
+
+    box-shadow: 0px 4px 4px rgba(65, 64, 66, 0.05);
+    background: #FFFFFF;
+
+    @include font(16px, 700, 16px);
+
+    position: relative;
+
+    & button {
+        @include font(16px, 700, 14px);
+
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+
+        height: 100%;
+        max-width: 90%;
+
+        padding-left: 13px;
+        padding-top: 13px;
+        padding-bottom: 5px;
+        
+        flex-grow: 1;
+        text-align: left;
+
+        display: flex;
+        align-items: flex-start;
+
+        &::after {
+            content: '';
+            @include box(100%, 7px);
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            background: linear-gradient(180deg, rgba(255,255,255,.4) 0%, rgba(255,255,255,1) 50%);
+
+            opacity: .5;
+            z-index: 2;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .select {
+        margin-bottom: 12px;
+
+        &:last-child {
+            margin-bottom: 12px;
+        }
+    }
+}
+
+
+
+.selectArrow {
+    @include box(18px, 10px);
+}
+
+
+.selectOptions {
+    padding: 0 10px;
+
+    box-sizing: border-box;
+    @include box(calc(100% + 2px), max-content);
+
+    @include flex-center-vert();
+    justify-content: flex-start;
+
+    position: absolute;
+    top: 100%;
+    left: -1px;
+    z-index: 3;
+
+    background-color: #fff;
+
+    border-radius: 0px 0px 7px 7px;
+    border: 1px solid #EDEDED;
+    border-top: 0;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        @include box(100%, 1px);
+
+        margin-bottom: 15px;
+
+        background-color: #EDEDED;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .selectOptions {
+        box-sizing: border-box;
+        $height: 403px;
+        @include box(100vw, $height);
+
+        padding-top: 31px;
+        border: none;
+
+        border-radius: 16px 16px 0 0;
+
+        z-index: 5 !important;
+        position: fixed;
+        top: calc(100% - $height);
+        left: 0;
+
+        &::before {
+            display: none;
+        }
+    }
+}
+
+.selectDimmer {
+    z-index: 4;
+
+    height: 100%;
+    width: 100%;
+
+    background: rgba(0, 0, 0, 0.3);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.selectTitle {
+    @include font(14px, 600);
+    margin-bottom: 12px;
+}
+
+.selectScroll {
+    max-height: 340px;
+    @include box(100%, max-content);
+    
+
+    border: 1px solid #EDEDED;
+    border-top: none;
+    border-radius: 0px 0px 7px 7px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::after {
+        content: '';
+        @include box(100%, 35px);
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        border-radius: 0px 0px 7px 7px;
+        background: linear-gradient(360deg, #FFFFFF 22.4%, rgba(217, 217, 217, 0) 100%);
+    }
+
+    &::-webkit-scrollbar {
+        background-color: #fff;
+        width: 8px;
+        height: 70px;
+        position: absolute;
+        border-bottom-right-radius: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+
+    }
+
+    &::-webkit-scrollbar-thumb  {
+        background: #BDBDBD;
+        border-radius: 20px;
+        border: 2px solid #fff;
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: #BDBDBD #fff;
+}
+
+.backDropper {
+    @include box(100%, max-content);
+
+    position: absolute;
+    top: 100%;
+    left: -1px;
+    z-index: 3;
+}
+
+.selectScrollOptions {
+    composes: selectOptions;
+    position: initial;
+    width: 100%;
+    border: none;
+
+    padding-bottom: 10px;
+}
+
+.option {
+    @include flex-contain();
+    box-sizing: border-box;
+    @include box(100%);
+
+    min-height: 20px;
+    max-height: max-content;
+
+    padding-left: 6px;
+    padding-right: 2px;
+    margin-bottom: 12px;
+
+    &:last-child {
+        margin-bottom: 16px;
+    }
+
+    & svg {
+        @include box(20px);
+        min-width: 20px;
+        fill: #65A4FE;
+        margin-left: 23px;
+    }
+}
+
+@media (max-width: 600px) {
+    .option {
+        & svg {
+            display: none;
+        }
+
+        justify-content: flex-start;
+
+        @include font(14px, 600);
+        color: #414042 !important;
+    }
+}
+
+@media (min-width: 599px) {
+    .option {
+        & div {
+            display: none;
+        }
+
+        padding-right: 0;
+    }
+
+    .selectDimmer {
+        display: none;
+    }
+
+    .selectTitle {
+        display: none;
+    }
+}

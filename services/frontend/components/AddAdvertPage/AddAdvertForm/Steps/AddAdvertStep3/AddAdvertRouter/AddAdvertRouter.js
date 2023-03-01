@@ -1,6 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { useSelector } from "react-redux";
 import AddAvto from "./AddAvto/AddAvto";
+import AddFree from "./AddFree/AddFree";
 import AddOther from "./AddOther/AddOther";
 import AddRealty from "./AddRealty/AddRealty";
 import AddWork from "./AddWork/AddWork";
@@ -18,6 +19,7 @@ const AddAdvertRouter = () => {
                     category === 'children' ? <AddOther /> :
                     category === 'electronics' ? <AddOther /> :
                     category === 'house_garden' ? <AddOther /> :
+                    category === 'free' ? <AddFree /> :
                     category === 'fashion' ? <AddOther /> : ''
                 }
         </>
