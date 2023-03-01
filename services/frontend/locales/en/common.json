@@ -22,6 +22,7 @@
     "Electronics": "Electronics",
     "House and garden": "House and garden",
     "Fashion and style": "Fashion and style",
+    "Free": "Free",
 
     "MORE": "MORE",
 
@@ -165,6 +166,7 @@
     "Cars": "Cars",
     "Other technique": "Other technique",
     "Retail/sales/purchasing": "Retail/sales/purchasing",
+    "Retail / sales / purchasing": "Retail / sales / purchasing",
     "Logistics / Warehouse / Delivery": "Logistics / Warehouse / Delivery",
     "Construction / finishing works": "Construction / finishing works",
     "Administrative staff / HR / Secretariat": "Administrative staff / HR / Secretariat",
@@ -287,7 +289,8 @@
     "Registration": "Registration",
     "No such ads": "No such ads",
     "Search results for": "Search results for",
-    "Adverts": "Adverts"
+    "Adverts": "Adverts",
+    "Subcategory": "Subcategory"
 
     
 }

@@ -22,6 +22,8 @@
     "Electronics": "Электроника",
     "House and garden": "Дом и сад",
     "Fashion and style": "Мода и стиль",
+    "Free": "Бесплатно",
+
 
 
     "MORE": "ПОДРОБНЕЕ",
@@ -168,6 +170,7 @@
     "Cars": "Автомобили",
     "Other technique": "Другая техника",
     "Retail/sales/purchasing": "Розничная торговля/продажи/закупки",
+    "Retail / sales / purchasing": "Розничная торговля / продажи / закупки",
     "Logistics / Warehouse / Delivery": "Логистика / Склад / Доставка",
     "Construction / finishing works": "Строительные / отделочные работы",
     "Administrative staff / HR / Secretariat": "Административный персонал / Отдел кадров / Секретариат",
@@ -290,7 +293,8 @@
     "Registration": "Регистрация",
     "No such ads": "Нет похожих товаров",
     "Search results for": "Результаты поиска по",
-    "Adverts": "Объявления"
+    "Adverts": "Объявления",
+    "Subcategory": "Подкатегория"
 
 
 

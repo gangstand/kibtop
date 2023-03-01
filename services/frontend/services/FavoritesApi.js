@@ -45,7 +45,7 @@ export const FavoritesApi = {
         const favorites  = await instance.get(`favourites/all/?user=${userId}`)
             .then(({data}) => {
                 return serializeFavorites(data)
-            })
+            }).catch(err => null)
 
 
 

@@ -16,7 +16,8 @@ function Category({categoryAdverts, pages}) {
         category === 'children' ? t('For kids')  :
         category === 'electronics' ? t('Electronics')  :
         category === 'house_garden' ? t('House and garden')  :
-        category === 'fashion' ? t('Fashion and style') : 'Category' 
+        category === 'fashion' ? t('Fashion and style') :
+        category === 'free' ? t('Free') : 'Category' 
     }`
 
     return (

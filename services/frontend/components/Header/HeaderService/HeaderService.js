@@ -4,6 +4,7 @@ import { setFilterOpen } from "../../../store/slices/FilterSlice";
 import { setSearchOpen } from "../../../store/slices/SearchSlice";
 import BurgerLocaleMenuContainer from "./BurgerLocaleMenu/BurgerLocaleMenuContainer";
 import BurgerUserMenuContainer from "./BurgerUserMenu/BurgerUserMenuContainer";
+import FilterContainer from "./Filter/FilterContainer";
 import Logo from "./Logo/Logo";
 import MobileFilterButtonContainer from "./Services/SearchProducts/MobileFilterButton/MobileFilterButtonContainer";
 import Services from "./Services/Services";
@@ -29,7 +30,12 @@ const HeaderService = () => {
                 <div className="container container--header">
                     <Logo />
                     <Services />
+                    
                 </div>
+
+                {
+                    isFilterOpen && <FilterContainer />
+                }
             </div>
             
             {(isSearchOpen || isFilterOpen) && <div onClick={closeFilterMenu} className="screen-dimmer screen-dimmer--full" style={{zIndex: '2'}} />}

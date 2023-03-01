@@ -1,20 +1,21 @@
 import { useRouter } from "next/router";
-import HomeFilter from "./Filters/HomeFilter/HomeFilter";
+import { useWatch } from "react-hook-form";
+import RealtyFilter from "./Filters/RealtyFilter/RealtyFilter";
+
 
 const FilterRouter = () => {
-    const {query: {category}} = useRouter()
+    const category = useWatch({name: 'category'})
     return (
         <>
             {
-                category === 'realty' ? '' :
+                category === 'realty' ? <RealtyFilter /> :
                 category === 'avto' ? '' :
                 category === 'work' ? '' :
                 category === 'services' ? '' :
                 category === 'children' ? '' :
                 category === 'electronics' ? '' :
                 category === 'house_garden' ? ''  :
-                category === 'fashion' ? '' 
-                : <HomeFilter />
+                category === 'fashion' ? '' : ''
             }
         </>
     );
