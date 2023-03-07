@@ -21,6 +21,8 @@ class FilterWork(django_filters.FilterSet):
     employment_ru = django_filters.CharFilter()
     employment_tr = django_filters.CharFilter()
     currency = django_filters.CharFilter()
+    city = django_filters.CharFilter()
+    full_price = django_filters.CharFilter()
 
     class Meta:
         model = WorkFull

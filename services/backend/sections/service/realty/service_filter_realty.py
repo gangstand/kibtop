@@ -35,7 +35,8 @@ class FilterRealty(django_filters.FilterSet):
     number_rooms_ru = ListFilter(field_name="number_rooms_en", lookup_expr="in")
     number_rooms_tr = ListFilter(field_name="number_rooms_en", lookup_expr="in")
     currency = django_filters.CharFilter()
-
+    city = django_filters.CharFilter()
+    full_price = django_filters.CharFilter()
     class Meta:
         model = RealtyFull
         fields = [

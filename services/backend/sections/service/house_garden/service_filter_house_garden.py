@@ -12,6 +12,8 @@ class FilterHouseGarden(django_filters.FilterSet):
     sub_category_ru = django_filters.CharFilter()
     sub_category_tr = django_filters.CharFilter()
     currency = django_filters.CharFilter()
+    city = django_filters.CharFilter()
+    full_price = django_filters.CharFilter()
     class Meta:
         model = HouseGardenFull
         fields = ['price', 'sub_category_en', 'sub_category_ru', 'sub_category_tr', 'currency']

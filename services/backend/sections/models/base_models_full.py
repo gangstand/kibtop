@@ -106,6 +106,7 @@ class BaseModelFull(models.Model):
     city = models.CharField(max_length=255, blank=True, null=True)
     geocode = models.CharField(max_length=255, blank=True, null=True)
     currency = models.CharField(choices=CURRENCY, max_length=1, blank=True, null=True)
+    full_price = models.IntegerField(default=None, null=True)
 
     def updated_at(self):
         self.published_date = timezone.now()
