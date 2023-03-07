@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 
 from sections.models import (
-    AvtoFull, ChildrenFull, FashionFull, RealtyFull, HouseGardenFull, ServicesFull, WorkFull,
+    AvtoFull, ChildrenFull, FashionFull, RealtyFull, HouseGardenFull, ServicesFull, WorkFull, FreeFull,
     ElectronicsFull
 )
 from sections.serializer import (
@@ -43,6 +43,7 @@ class MyAdsAPIList(generics.ListAPIView):
             'realty': RealtyFull.objects.filter(user=user_id, publisher=True),
             'services': ServicesFull.objects.filter(user=user_id, publisher=True),
             'work': WorkFull.objects.filter(user=user_id, publisher=True),
+            'free': FreeFull.objects.filter(user=user_id, publisher=True),
         }
         serializer_en = CategoryFullSerializerEN(filters)
         serializer_ru = CategoryFullSerializerRU(filters)

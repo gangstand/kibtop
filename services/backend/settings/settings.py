@@ -198,23 +198,23 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env("EMAIL_HOST_USER")
 SERVER_EMAIL = env("EMAIL_HOST_USER")
 
-GRAYLOG_ENDPOINT = 'http://graylog:12201/gelf'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'gelf': {
-            'class': 'graypy.GELFUDPHandler',
-            'host': 'graylog',
-            'port': 12201,
-        },
-    },
-    'loggers': {
-        'custom_gy_logger': {
-            'handlers': ['gelf'],
-            'level': 'DEBUG',
-            'propagate': True,
-        }
-    }
-}
+# GRAYLOG_ENDPOINT = 'http://graylog:12201/gelf'
+#
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'gelf': {
+#             'class': 'graypy.GELFUDPHandler',
+#             'host': 'graylog',
+#             'port': 12201,
+#         },
+#     },
+#     'loggers': {
+#         'custom_gy_logger': {
+#             'handlers': ['gelf'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         }
+#     }
+# }

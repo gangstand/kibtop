@@ -5,7 +5,7 @@ from rest_framework.status import HTTP_200_OK
 
 from sections.models import (
     AvtoFull, ChildrenFull, FashionFull, RealtyFull, HouseGardenFull, ServicesFull, WorkFull,
-    ElectronicsFull
+    ElectronicsFull, FreeFull
 )
 from sections.serializer import (
     CategoryFullSerializerEN, CategoryFullSerializerRU, CategoryFullSerializerTR,
@@ -36,6 +36,8 @@ class RecommendFullAPIList(generics.ListAPIView):
             'realty': RealtyFull.objects.filter(recommend=True, publisher=True,),
             'services': ServicesFull.objects.filter(recommend=True, publisher=True,),
             'work': WorkFull.objects.filter(recommend=True, publisher=True,),
+            'free': FreeFull.objects.filter(recommend=True, publisher=True,),
+
         }
         serializer_en = CategoryFullSerializerEN(filters)
         serializer_ru = CategoryFullSerializerRU(filters)

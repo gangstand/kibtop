@@ -36,8 +36,8 @@ class FreeFullSerializerEN(serializers.ModelSerializer):
 
     class Meta:
         model = FreeFull
-        fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'free_full_upload',)
+        fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address', 'city', 'geocode',
+                  'category_en', 'currency', 'price', 'upload', 'free_full_upload',)
 
 
 class FreeFullSerializerRU(serializers.ModelSerializer):
@@ -45,8 +45,8 @@ class FreeFullSerializerRU(serializers.ModelSerializer):
 
     class Meta:
         model = FreeFull
-        fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'free_full_upload',)
+        fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address', 'city', 'geocode',
+                  'category_ru', 'currency', 'price', 'upload', 'free_full_upload',)
 
 
 class FreeFullSerializerTR(serializers.ModelSerializer):
@@ -54,8 +54,8 @@ class FreeFullSerializerTR(serializers.ModelSerializer):
 
     class Meta:
         model = FreeFull
-        fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
-                  'price', 'upload', 'free_full_upload',)
+        fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address', 'city', 'geocode',
+                  'category_tr', 'currency', 'price', 'upload', 'free_full_upload',)
 
 
 class FreeFullSerializer(serializers.Serializer):
