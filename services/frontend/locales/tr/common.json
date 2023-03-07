@@ -12,6 +12,7 @@
     "Search product": "Ürün arama",
     "Filter": "Filtre",
     "Add advert": "Reklam ekle",
+    "All": "Tüm",
 
     "All categories": "Tüm kategoriler",
     "Real estate": "Emlak",
@@ -295,7 +296,28 @@
     "No such ads": "Benzer reklamlar yok",
     "Search results for": "İçin arama sonuçları",
     "Adverts": "Değiniyor",
-    "Subcategory": "Alt Kategori"
+    "Subcategory": "Alt Kategori",
+    "Buy": "Almak",
+    "Rent": "Kira",
+    "Price": "Fiyat",
+    "from": "-den",
+    "to_": "-e doğru",
+    "Sorting": "Sıralama",
+    "Default": "Varsayılan",
+    "Cheaper": "Daha ucuz",
+    "Expensive": "Pahalı",
+    "for work": "Çalışma",
+    "for an employee": "Boş yer",
+    "Reset filter": "Filtreyi sıfırla",
 
+    "Service type": "Hizmet türü",
+    "Shoes": "Ayakkabılar",
+    "Clothing": "Giyim",
+    "Domestic": "Yerli",
+    "Beauty": "Güzellik",
+    "Phones": "Telefonlar",
+    "Computers": "Bilgisayarlar",
+    "TV / Photo": "TV / Fotoğraf",
+    "Interior": "İç"
 }
 

@@ -9,7 +9,8 @@ const PageNavContainer = ({serverPages = []}) => {
     const category = useSelector(state => state.category)
     const dispatch = useDispatch()
 
-    const pages = category.pages.length > 0 ? category.pages : serverPages
+    console.log(category.pages , serverPages);
+    const pages = serverPages
 
     const count = 4
     const currentPage = !page ? 0 : +page
@@ -18,7 +19,7 @@ const PageNavContainer = ({serverPages = []}) => {
     const navPages = pages.slice(lastPage, beforePage+count)
 
     
-    return <PageNav {...{pages: navPages, maxPage: category.pages.length}} />;
+    return <PageNav {...{pages: navPages, maxPage: category.pages?.length}} />;
 }
 
 export default PageNavContainer;

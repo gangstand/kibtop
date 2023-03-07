@@ -43,7 +43,10 @@ export async function getServerSideProps({req, res, locale, query}) {
 
     const {category, page} = query
 
-    const {adverts, pages} = await CategoryApi.getCategoryAdverts(category, locale, query)
+
+    console.log('dfdf', query);
+
+    const {adverts, pages} = await CategoryApi.getCategoryAdverts(category, locale, page, query)
 
     return {
         props: {

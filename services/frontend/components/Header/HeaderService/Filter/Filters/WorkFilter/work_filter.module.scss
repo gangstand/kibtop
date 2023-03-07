@@ -1,0 +1,23 @@
+.workFilter {
+    padding-left: 18px;
+
+    display: grid;
+    grid-template: 'type type' max-content 'employ salary' max-content / 170px 170px;
+    grid-gap: 8px 20px;
+}
+
+@media (max-width: 1300px) {
+    .workFilter {
+        margin-top: 12px;
+        padding-left: 0;
+
+        grid-template: 'type type' max-content 'employ salary' max-content / 1fr 1fr;
+
+    }
+}
+
+@media (max-width: 600px) {
+    .workFilter {
+        margin-top: 0;
+    }
+}

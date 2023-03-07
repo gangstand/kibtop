@@ -12,6 +12,7 @@
     "Search product": "Search product",
     "Filter": "Filter",
     "Add advert": "Add advert",
+    "All": "All",
 
     "All categories": "All categories",
     "Real estate": "Real estate",
@@ -290,7 +291,28 @@
     "No such ads": "No such ads",
     "Search results for": "Search results for",
     "Adverts": "Adverts",
-    "Subcategory": "Subcategory"
+    "Subcategory": "Subcategory",
+    "Buy": "Buy",
+    "Rent": "Rent",
+    "Price": "Price",
+    "from": "from",
+    "to_": "to",
+    "Sorting": "Sorting",
+    "Default": "Default",
+    "Cheaper": "Cheaper",
+    "Expensive": "Expensive",
+    "for work": "for work",
+    "for an employee": "for an employee",
+    "Reset filter": "Reset filter",
 
+    "Service type": "Service type",
+    "Shoes": "Shoes",
+    "Clothing": "Clothing",
+    "Domestic": "Domestic",
+    "Beauty": "Beauty",
+    "Phones": "Phones",
+    "Computers": "Computers",
+    "TV / Photo": "TV / Photo",
+    "Interior": "Interior"
     
 }

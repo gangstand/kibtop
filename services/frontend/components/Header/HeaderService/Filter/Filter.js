@@ -1,12 +1,16 @@
 import { useSelector } from "react-redux";
 import FilterRouter from "./FilterRouter";
 import HomeFilter from "./Filters/HomeFilter/HomeFilter";
-import {filter, row, titleFilter} from "./filter.module.scss"
+import {filter, row, titleFilter, btns, reset} from "./filter.module.scss"
 import Text from "../../../Elementes/Text/Text";
 import Link from "next/link";
+import OrderFilter from "./Filters/OrderFilter/OrderFilter";
+import ResetBtn from "./Filters/Selectors/ResetBtn/ResetBtn";
+import { useFormContext } from "react-hook-form";
 
 const Filter = ({closeFilter}) => {
     const {isFilterOpen} = useSelector(state => state.filter)
+    const {submit} = useFormContext()
     return (
         <>
             {
@@ -23,6 +27,14 @@ const Filter = ({closeFilter}) => {
                         <div className={row}>
                             <HomeFilter />
                             <FilterRouter />
+                            <OrderFilter />
+                        </div>
+                        <div className={btns}>
+                            <a className="reg-btn" onClick={submit}>
+                                <Text content="Apply" />
+                            </a>
+
+                            <ResetBtn />
                         </div>
                     </div>
                     

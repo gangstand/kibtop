@@ -11,7 +11,6 @@ const LikeButtonContainer = ({className, id, category}) => {
 
     const onClick = !!userFavorite ? onDislike : onLike
 
-    console.log(userFavorite);
     return <LikeButton {...{isLoading, className, userFavorite, onClick}} />;
 }
 

@@ -15,6 +15,22 @@
 
 }   
 
+@media (max-width: 1300px) {
+    .filter {
+        @include box(80.55vw, max-content);
+        max-width: 1300px;
+        padding-bottom: 20px;
+        
+        top: calc(100% + 20px);
+    }
+}
+
+@media (max-width: 800px) {
+    .filter {
+        width: calc(100% - 60px);
+    }
+}
+
 @media (max-width: 600px) {
     .filter {
         width: 100vw;
@@ -34,14 +50,38 @@
     box-sizing: border-box;
     padding-right: 20px;
     border-right: 2px solid #EDEDED;
+
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    grid-gap: 15px;
+}
+
+@media (max-width: 1300px) {
+    .baseFilters {
+        padding-right: 0;
+        border-right: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .baseFilters {
+        margin-bottom: 12px;
+    }
 }
 
 @media (max-width: 600px) {
     .baseFilters {
         padding-right: 0;
         border-right: none;
+
+        display: flex;
+        flex-direction: column;
+        grid-gap: 0;
+
+        margin-bottom: 0;
     }
 }
+
 
 .titleFilter {
     margin-bottom: 12px;
@@ -68,7 +108,14 @@
     width: 100%;
 
     display: grid;
-    grid-template: 1fr / 262px 1fr;
+    grid-template: 1fr / 502px 1fr;
+}
+
+@media (max-width: 1300px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 600px) {
@@ -84,11 +131,6 @@
 
     @include box(100%, 40px);
     padding-right: 11px;
-    margin-bottom: 10px;
-
-    &:last-child {
-        margin-bottom: 0;
-    }
 
     @include flex-contain();
 
@@ -98,6 +140,11 @@
     @include font(16px, 700, 16px);
 
     position: relative;
+
+    &:last-child {
+        margin-bottom: 12px;
+    }
+
 
     & button {
         @include font(16px, 700, 14px);
@@ -138,10 +185,6 @@
 @media (max-width: 600px) {
     .select {
         margin-bottom: 12px;
-
-        &:last-child {
-            margin-bottom: 12px;
-        }
     }
 }
 
@@ -164,7 +207,6 @@
     position: absolute;
     top: 100%;
     left: -1px;
-    z-index: 3;
 
     background-color: #fff;
 
@@ -206,6 +248,7 @@
     }
 }
 
+
 .selectDimmer {
     z-index: 4;
 
@@ -227,6 +270,8 @@
 .selectScroll {
     max-height: 340px;
     @include box(100%, max-content);
+
+    position: initial;
     
 
     border: 1px solid #EDEDED;
@@ -242,7 +287,7 @@
 
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: 2px;
 
         border-radius: 0px 0px 7px 7px;
         background: linear-gradient(360deg, #FFFFFF 22.4%, rgba(217, 217, 217, 0) 100%);
@@ -282,12 +327,40 @@
 
 .selectScrollOptions {
     composes: selectOptions;
-    position: initial;
+    position: static;
     width: 100%;
     border: none;
 
     padding-bottom: 10px;
 }
+
+@media (max-width: 600px) {
+    .backDropper {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        z-index: 100;
+
+        @include box(100vw, 100%);
+    }
+
+    .selectScroll {
+        @include box(100%, 100%);
+        max-height: 100%;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .selectScrollOptions {
+        max-height: 100%;
+        height: 100%;
+    }
+}
+
+
 
 .option {
     @include flex-contain();
@@ -319,6 +392,9 @@
             display: none;
         }
 
+        height: max-content;
+
+
         justify-content: flex-start;
 
         @include font(14px, 600);
@@ -341,5 +417,219 @@
 
     .selectTitle {
         display: none;
+    }
+}
+
+.selectCategory {
+    composes: selectOptions;
+
+}
+
+@media (max-width: 600px) {
+    .selectCategory {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        @include box(100vw, 100vh);
+        border-radius: 0;
+        padding-top: 25px;
+
+
+    }
+}
+
+
+.optionCategory {
+    composes: option;
+
+    & img {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .optionCategory {
+        @include box(100%, max-content);
+        padding: 12px 0;
+        border-bottom: 1px solid #EDEDED;
+        margin-bottom: 0;
+
+        display: flex;
+        align-items: center;
+
+        & img {
+            display: inline-block;
+        }
+
+        & svg {
+            display: none;
+        }
+    }
+}
+
+.categoryTitle {
+    width: 100%;
+
+    margin-bottom: 25px;
+}
+
+@media (min-width: 599px) {
+    .categoryTitle {
+        display: none;
+    }
+}
+
+.subCatgroryOption {
+    composes: option;
+}
+
+@media (max-width: 600px) {
+    .subCatgroryOption {
+        padding: 20px 0;
+        border-bottom: 1px solid #EDEDED;
+        margin-bottom: 0;
+
+        height: max-content;
+        box-sizing: content-box;
+    }
+}
+
+.checkInput {
+
+    &:checked ~ svg {
+        opacity: 1 !important;
+    }
+
+    & ~ span {
+        display: flex;
+        align-items: center;
+    }
+
+    &:checked ~ span {
+        color: #65A4FE;
+    }
+
+    & ~ span div {
+        background-color: #F6F6F6;
+        border-color: #F6F6F6;
+
+        @include box(25px);
+        min-width: max-content;
+
+        margin-right: 13px;
+    }
+
+    &:checked ~ span div {
+        background-color: #7AB1FF;
+        border-color: #7AB1FF;
+
+    }
+    
+    & ~ span svg {
+        @include box(16px);
+    }
+
+    &:checked ~ span svg {
+        display: inline-block;
+    }
+}
+
+.checkOption {
+    composes: option;
+    font-size: 15px;
+
+    & svg {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .checkOption {
+        height: max-content;
+
+        font-size: 14px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        & svg {
+            display: none;
+        }
+    }
+
+    .checkInput {
+        &:checked ~ span svg {
+            display: inline-block;
+        }
+    }
+}
+
+.applyBtn {
+    $width: calc(100% - 24px);
+    @include box($width, 37px);
+    border-radius: 16px;
+
+    @include font(14px, 600, 14px, #fff);
+    background-color: #7AB1FF;
+
+    @include flex-center();
+
+    position: absolute;
+    bottom: 2px;
+
+
+}
+
+@media (min-width: 600px) {
+    .applyBtn {
+        display: none;
+    }
+}
+
+.otherFilter {
+    width: 240px;
+    padding-left: 18px;
+
+    box-sizing: content-box;
+}
+
+@media (max-width: 1300px) {
+    .otherFilter {
+        padding-left: 0;
+        margin-top: 12px;
+
+        width: calc(50% - 7px);
+    }
+}
+
+@media (max-width: 600px) {
+    .otherFilter {
+        margin-top: 0;
+        width: 100%;
+    }
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+
+    margin-top: 27px;
+    grid-gap: 17px;
+}
+
+.reset {
+    @include font(16px, 600, 16px, #7AB1FF);
+}
+
+@media (max-width: 600px) {
+    .btns {
+        flex-direction: column;
+        margin-top: 12px;
+    }
+
+    .reset {
+        font-size: 14px;
     }
 }

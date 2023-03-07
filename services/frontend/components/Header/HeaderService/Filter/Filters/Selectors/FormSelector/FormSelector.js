@@ -12,7 +12,7 @@ const selctedStyle = {
 }
 
 
-const FormSelector = ({holder, name, items, zIndex}) => {
+const FormSelector = ({holder, name, items, zIndex=2}) => {
     const [isOpen, setOpen] = useState(false)
     const onSwitchOpen = () => setOpen(!isOpen)
 

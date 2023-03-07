@@ -12,6 +12,7 @@
     "Search product": "Поиск объявлений",
     "Filter": "Фильтр",
     "Add advert": "Объявление",
+    "All": "Все",
 
     "All categories": "Все категории",
     "Real estate": "Недвижимость",
@@ -294,8 +295,29 @@
     "No such ads": "Нет похожих товаров",
     "Search results for": "Результаты поиска по",
     "Adverts": "Объявления",
-    "Subcategory": "Подкатегория"
+    "Subcategory": "Подкатегория",
+    "Buy": "Покупка",
+    "Rent": "Аренда",
+    "Price": "Цена",
+    "from": "от",
+    "to_": "до",
+    "Sorting": "Сортировка",
+    "Default": "По умолчанию",
+    "Cheaper": "Дешевые",
+    "Expensive": "Дорогие",
+    "for work": "Работа",
+    "for an employee": "Вакансии",
+    "Reset filter": "Сбросить фильтр",
 
+    "Service type": "Тип услуги",
+    "Shoes": "Обувь",
+    "Clothing": "Одежда",
+    "Domestic": "Хозяйство",
+    "Beauty": "Красота",
+    "Phones": "Телефоны",
+    "Computers": "Компьютеры",
+    "TV / Photo": "ТВ / Фото",
+    "Interior": "Интерьер"
 
 
 
