@@ -1,7 +1,18 @@
 import django_filters
+from django_filters import filters
+from django_filters.constants import EMPTY_VALUES
 from sections.models import (
     RealtyFull, RealtyFullViewsUser, RealtyFullFavouritesUser
 )
+
+
+class ListFilter(filters.Filter):
+    def filter(self, qs, value):
+        if value in EMPTY_VALUES:
+            return qs
+        value_list = value.split(",")
+        qs = super().filter(qs, value_list)
+        return qs
 
 
 class FilterRealty(django_filters.FilterSet):
@@ -16,17 +27,16 @@ class FilterRealty(django_filters.FilterSet):
     sell_type_ru = django_filters.CharFilter()
     sell_type_tr = django_filters.CharFilter()
 
-    all_old_new_en = django_filters.CharFilter()
-    all_old_new_ru = django_filters.CharFilter()
-    all_old_new_tr = django_filters.CharFilter()
+    all_old_new_en = ListFilter(field_name="all_old_new_en", lookup_expr="in")
+    all_old_new_ru = ListFilter(field_name="all_old_new_ru", lookup_expr="in")
+    all_old_new_tr = ListFilter(field_name="all_old_new_tr", lookup_expr="in")
 
-    number_rooms_en = django_filters.CharFilter()
-    number_rooms_ru = django_filters.CharFilter()
-    number_rooms_tr = django_filters.CharFilter()
+    number_rooms_en = ListFilter(field_name="number_rooms_en", lookup_expr="in")
+    number_rooms_ru = ListFilter(field_name="number_rooms_en", lookup_expr="in")
+    number_rooms_tr = ListFilter(field_name="number_rooms_en", lookup_expr="in")
     currency = django_filters.CharFilter()
-
-
-
+    city = django_filters.CharFilter()
+    full_price = django_filters.CharFilter()
     class Meta:
         model = RealtyFull
         fields = [

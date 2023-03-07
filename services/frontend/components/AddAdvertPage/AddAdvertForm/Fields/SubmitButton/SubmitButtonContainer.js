@@ -21,6 +21,7 @@ const SubmitButtonContainer = ({requiredFields}) => {
         dispatch(setAddAdvertPhoneOpen(true))
     }
 
+
     return <SubmitButton {...{onSubmitClick, isDisabled, openAddPhoneModal, isLoading,
                                 isPhoneNull: !phone}} />;
 }

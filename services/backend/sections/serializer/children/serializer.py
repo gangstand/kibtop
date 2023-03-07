@@ -38,7 +38,7 @@ class ChildrenFullSerializerEN(serializers.ModelSerializer):
         model = ChildrenFull
         fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'children_full_upload', 'sub_category_en', 'category_en', 'recommend', 'publisher',
-                  'city', 'geocode', 'currency')
+                  'city', 'geocode', 'currency', 'full_price')
 
 
 class ChildrenFullSerializerRU(serializers.ModelSerializer):
@@ -48,7 +48,7 @@ class ChildrenFullSerializerRU(serializers.ModelSerializer):
         model = ChildrenFull
         fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'children_full_upload', 'sub_category_ru', 'category_ru', 'recommend', 'publisher',
-                  'city', 'geocode', 'currency')
+                  'city', 'geocode', 'currency', 'full_price')
 
 
 class ChildrenFullSerializerTR(serializers.ModelSerializer):
@@ -58,7 +58,7 @@ class ChildrenFullSerializerTR(serializers.ModelSerializer):
         model = ChildrenFull
         fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'children_full_upload', 'sub_category_tr', 'category_tr', 'recommend', 'publisher',
-                  'city', 'geocode', 'currency')
+                  'city', 'geocode', 'currency', 'full_price')
 
 
 class ChildrenFullSerializer(serializers.Serializer):

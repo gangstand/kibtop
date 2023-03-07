@@ -37,7 +37,7 @@ class AvtoFullSerializerEN(serializers.ModelSerializer):
         fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'avto_full_upload', 'sub_category_en', 'brand', 'mileage', 'year', 'category_en',
                   'recommend',
-                  'publisher', 'city', 'geocode', 'currency')
+                  'publisher', 'city', 'geocode', 'currency', 'full_price')
 
 
 class AvtoFullSerializerRU(serializers.ModelSerializer):
@@ -47,7 +47,7 @@ class AvtoFullSerializerRU(serializers.ModelSerializer):
         fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'avto_full_upload', 'sub_category_ru', 'brand', 'mileage', 'year', 'category_ru',
                   'recommend',
-                  'publisher', 'city', 'geocode', 'currency')
+                  'publisher', 'city', 'geocode', 'currency', 'full_price')
 
 
 class AvtoFullSerializerTR(serializers.ModelSerializer):
@@ -57,7 +57,7 @@ class AvtoFullSerializerTR(serializers.ModelSerializer):
         fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'avto_full_upload', 'sub_category_tr', 'brand', 'mileage', 'year', 'category_tr',
                   'recommend',
-                  'publisher', 'city', 'geocode', 'currency')
+                  'publisher', 'city', 'geocode', 'currency', 'full_price')
 
 
 class AvtoFullSerializer(serializers.Serializer):

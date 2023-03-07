@@ -6,7 +6,7 @@ import AdvertDetailRouter from "./AdvertDetailRouter";
 
 const AdvertDetailPage = ({serverAdvert}) => {
     const {query: {category}, push} = useRouter()
-    const allPaths = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work']
+    const allPaths = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work', 'free']
 
     return (
         <>

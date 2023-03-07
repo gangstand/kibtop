@@ -22,6 +22,7 @@
     "Electronics": "Elektronik",
     "House and garden": "Ev ve bahçe",
     "Fashion and style": "Moda ve stil",
+    "Free": "Ücretsiz",
 
     
     "MORE": "daha",
@@ -169,6 +170,7 @@
     "Cars": "Arabalar",
     "Other technique": "Diğer teknik",
     "Retail/sales/purchasing": "Perakende/satış/satınalma",
+    "Retail / sales / purchasing": "Perakende / satış / satınalma",
     "Logistics / Warehouse / Delivery": "Lojistik / Depo / Teslimat",
     "Construction / finishing works": "İnşaat / terbiye işleri",
     "Administrative staff / HR / Secretariat": "İdari personel / İK / Sekreterlik",
@@ -292,7 +294,8 @@
     "Registration": "Kayıt",
     "No such ads": "Benzer reklamlar yok",
     "Search results for": "İçin arama sonuçları",
-    "Adverts": "Değiniyor"
+    "Adverts": "Değiniyor",
+    "Subcategory": "Alt Kategori"
 
 }
 

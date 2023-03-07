@@ -39,7 +39,7 @@ class RealtyFullSerializerEN(serializers.ModelSerializer):
         fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'realty_full_upload', 'sub_category_en',
                   'all_old_new_en', 'number_rooms_en', 'category_en', 'recommend', 'publisher', 'city', 'geocode',
-                  'currency')
+                  'currency', 'full_price')
 
 
 class RealtyFullSerializerRU(serializers.ModelSerializer):
@@ -50,7 +50,7 @@ class RealtyFullSerializerRU(serializers.ModelSerializer):
         fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'realty_full_upload', 'sub_category_ru',
                   'all_old_new_ru', 'number_rooms_ru', 'category_ru', 'recommend', 'publisher', 'city', 'geocode',
-                  'currency')
+                  'currency', 'full_price')
 
 
 class RealtyFullSerializerTR(serializers.ModelSerializer):
@@ -61,7 +61,7 @@ class RealtyFullSerializerTR(serializers.ModelSerializer):
         fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'realty_full_upload', 'sub_category_tr',
                   'all_old_new_tr', 'number_rooms_tr', 'category_tr', 'recommend', 'publisher', 'city', 'geocode',
-                  'currency')
+                  'currency', 'full_price')
 
 
 class RealtyFullSerializer(serializers.Serializer):

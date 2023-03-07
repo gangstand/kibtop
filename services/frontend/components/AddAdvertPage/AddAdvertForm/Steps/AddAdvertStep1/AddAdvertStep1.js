@@ -199,6 +199,20 @@ const AddAdvertStep1 = () => {
 
                     </div>
                 </div>
+
+                <div className="category-wrapper">
+                    <div className="category-line">
+                        <img width={100} height={100} alt={''} src="/img/add_advert/free.png" className="advert-form__icon" />
+
+                        <label className="category-title">
+                            <Text content="Free" />
+                        </label>
+                    </div>
+
+                    <div className="category-line">
+                        <DeskCategoryInput {...{text: "Free", value: "Free", categoryName: 'Free', category: 'free'}} />
+                    </div>
+                </div>
             </div>
             
             <div className="categories-choice categories-choice--mob">
@@ -210,7 +224,7 @@ const AddAdvertStep1 = () => {
                 <CategoryNameInput {...{value: 'Electronics', text: 'Electronics', category: 'electronics'}} />
                 <CategoryNameInput {...{value: 'House and garden', text: 'House and garden', category: 'house_garden'}} />
                 <CategoryNameInput {...{value: 'Fashion and style', text: 'Fashion and style', category: 'fashion'}} />
-
+                <CategoryNameInput {...{value: 'Free', text: 'Free', category: 'free'}} />
             </div>
         </>
     );

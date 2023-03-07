@@ -17,6 +17,8 @@ class FilterAvto(django_filters.FilterSet):
     year__gt = django_filters.NumberFilter(field_name='year', lookup_expr='gt')
     year__lt = django_filters.NumberFilter(field_name='year', lookup_expr='lt')
     currency = django_filters.CharFilter()
+    city = django_filters.CharFilter()
+    full_price = django_filters.CharFilter()
 
     class Meta:
         model = AvtoFull

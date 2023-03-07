@@ -11,12 +11,23 @@ export const useSwipe = ({onClose, dist=30, side='bottom', isVertical=true, alt=
     const swipeElem = useRef(null)
 
     const onTouchStart = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+
         setTouchEnd(null) 
         setTouchStart(e.targetTouches[0][swipeDirection])
     }
-    const onTouchMove = (e) => setTouchEnd(e.targetTouches[0][swipeDirection])
+    const onTouchMove = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
 
-    const onTouchEnd = () => {
+        setTouchEnd(e.targetTouches[0][swipeDirection])
+    }
+
+    const onTouchEnd = (e) => {
+        // e.preventDefault()
+        // e.stopPropagation()
+
         if (!touchStart || !touchEnd) return
   
         const distance = touchEnd - touchStart

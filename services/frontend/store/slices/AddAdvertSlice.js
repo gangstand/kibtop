@@ -82,7 +82,10 @@ export const addAdvertThunk = (data, category, lang) => async dispatch => {
         .then(advert => {
             dispatch(setAddAdvertLoading(false))
             dispatch(setNewAdvertData(advert))
-        }).catch(err => dispatch(setAddAdvertLoading(false)))
+        }).catch(err => {
+            dispatch(setAddAdvertLoading(false))
+            console.log(err);
+        })
 }
 
 

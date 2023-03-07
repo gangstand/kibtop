@@ -14,7 +14,8 @@ const CategoryRouter = ({categoryAdverts}) => {
                 category === 'children' ? <Other {...{categoryAdverts}} /> :
                 category === 'electronics' ? <Other {...{categoryAdverts}} /> :
                 category === 'house_garden' ? <Other {...{categoryAdverts}} /> :
-                category === 'fashion' ? <Other {...{categoryAdverts}} /> : ''
+                category === 'fashion' ? <Other {...{categoryAdverts}} /> :
+                category === 'free' ? <Other {...{categoryAdverts}} /> : ''
             }
         </>
     );

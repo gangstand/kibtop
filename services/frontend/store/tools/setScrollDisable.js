@@ -4,8 +4,8 @@ import disableScroll from 'disable-scroll';
 export const setScrollDisable = isDisable => {
 
     if(isDisable) {
-        disableScroll.on()
+        document.querySelector('body').style.overflow = 'none'
     } else {
-        disableScroll.off()
+        document.querySelector('body').style.overflow = 'none'
     }
 }

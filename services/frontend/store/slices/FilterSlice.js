@@ -10,7 +10,6 @@ const FilterSlice = createSlice({
     initialState,
     reducers: {
         setFilterOpen(state, {payload}) {
-            console.log(payload)
             setScrollDisable(payload)
             state.isFilterOpen = payload
         }
