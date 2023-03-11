@@ -19,6 +19,8 @@ const CheckSelector = ({holder, name, items, zIndex}) => {
 
     const nameValue = useWatch({name})
     const {register} = useFormContext()
+
+    console.log(nameValue);
     
     return (
         <>
@@ -40,7 +42,7 @@ const CheckSelector = ({holder, name, items, zIndex}) => {
                             {   
                                 items?.map(({text, value}, index) => <CheckOption key={index} 
                                                                                 {...{text, value, 
-                                                                                    isChecked: nameValue?.some((item) => item.value === value),
+                                                                                    isChecked: nameValue?.includes(value),
                                                                                 register: {...register(name, {required: false})}}} />)
                             }
 

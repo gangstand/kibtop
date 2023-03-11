@@ -188,3 +188,10 @@
     }
 }
 
+@media (max-width: 600px) {
+    .filterRow {
+        grid-template: 1fr 1fr / 1fr;
+
+        grid-gap: 12px;
+    }
+}

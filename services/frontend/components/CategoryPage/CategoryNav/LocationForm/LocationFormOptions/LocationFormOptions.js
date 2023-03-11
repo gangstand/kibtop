@@ -18,8 +18,8 @@ const LocationFormOptions = ({options, onChange, href, onSwitchOpen}) => {
         <>
             <div className="locatin-select__list">
                 {
-                    options?.map(city => (
-                        <button className="locatin-select__option" onClick={() => setLocationValue(city)}>
+                    options?.map((city, index) => (
+                        <button key={index} className="locatin-select__option" onClick={() => setLocationValue(city)}>
                             {city}
                         </button>
                     ))
@@ -28,8 +28,8 @@ const LocationFormOptions = ({options, onChange, href, onSwitchOpen}) => {
 
             <div className="locatin-select__list locatin-select__list--mobile">
                 {
-                    options?.map(city => (
-                        <Link href={{pathname, query: {...query, city}}} className="locatin-select__option" onClick={() => {
+                    options?.map((city, index) => (
+                        <Link key={index} href={{pathname, query: {...query, city}}} className="locatin-select__option" onClick={() => {
                                 setLocationValue(city)
                                 onSwitchOpen()
                             }

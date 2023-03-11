@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCategoryPages } from "../../../store/slices/CategorySlice";
 import PageNav from "./PageNav";
 
-const PageNavContainer = ({serverPages = []}) => {
+const PageNavContainer = ({serverPages}) => {
     const {query: {page}} = useRouter()
     const category = useSelector(state => state.category)
     const dispatch = useDispatch()
 
     console.log(category.pages , serverPages);
-    const pages = serverPages
+    const pages = serverPages || category.pages || []
 
     const count = 4
     const currentPage = !page ? 0 : +page

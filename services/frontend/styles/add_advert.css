@@ -1344,3 +1344,15 @@
 .address-select__option--brand {
     margin-top: 20px;
 }
+
+@media (max-width: 600px) {
+    .desktop {
+        display: none !important;
+    }
+}
+
+@media (min-width: 600px) {
+    .mobile {
+        display: none !important;
+    }
+}

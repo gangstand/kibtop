@@ -9,7 +9,9 @@ import Text from "../../../../Elementes/Text/Text"
 import LocationFormOptions from "./LocationFormOptions"
 
 const LocationFormOptionsContainer = ({isOpen, onSwitchOpen}) => {
-    const {data} = useQuery(['locationsFilters'], FilterApi.getFilterLocations)
+    const {pathname, query} = useRouter()
+    
+    const {data} = useQuery(['locationsFilters', query.category], () => FilterApi.getFilterLocations(query.category))
 
     const [value, changeValue] = useState('')
     const onChange = e => changeValue(e.currentTarget.value)
@@ -17,7 +19,6 @@ const LocationFormOptionsContainer = ({isOpen, onSwitchOpen}) => {
 
     const options = data?.filter(city => city.toLowerCase().includes(value.toLowerCase()))
 
-    const {pathname, query} = useRouter()
 
     const href = () => ({
         pathname, query: {...query, city: LocalStorage.getItem('city')}

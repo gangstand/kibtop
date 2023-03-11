@@ -12,7 +12,7 @@ const LocationForm = () => {
     const onSwitchOpen = () => setOpen(!isOpen)
 
 
-    const city = useClientSideValue(LocalStorage.getItem('city')?.slice(0, 13))
+    const {query: {city}} = useRouter()
 
     return (
         <>

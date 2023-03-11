@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useFormContext } from "react-hook-form";
+import { defaultFilterValues } from "../../../services/tools/serializers/dictionary/DefaultFilterValues";
 import Text from "../../Elementes/Text/Text";
 import ResetBtn from "../../Header/HeaderService/Filter/Filters/Selectors/ResetBtn/ResetBtn";
 import CategoryFiltersRouter from "./CategoryFiltersRouter";
@@ -27,7 +28,7 @@ const CategoryFilters = () => {
                             <button className="reg-btn" onClick={submit}>
                                 <Text content="Apply" />
                             </button>
-                            <ResetBtn />
+                            <ResetBtn defaultValues={defaultFilterValues[category]} />
                         </div>
                     </div>
                 ) : <IconsCategoriesFilter />

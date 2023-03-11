@@ -10,22 +10,13 @@ import Adverts from "../../../Adverts/Adverts"
 
 const Realty = ({categoryAdverts}) => {
     const {locale, query, asPath} = useRouter()
-    // const {adverts} = useSelector(state => state.category)
     const dispatch = useDispatch()
-
-    const {currency} = useCurrency()
-
     const {category, page, subCategory} = query
-
-    useEffect(() => {
-        console.log(subCategory);
-        dispatch(getCategoryAdvertsThunk(category, locale, page, query))
-    }, [category, locale, page, subCategory])
 
     const {data} = useQuery(['realtyAdverts', category, locale, page, query], () => CategoryApi.getCategoryAdverts(category, locale, page, query), {
         onSuccess: () => dispatch(setCategoryPages(data?.pages))
     })
-    const adverts = data?.adverts
+    const adverts = data?.adverts || categoryAdverts
 
     return (
         <>

@@ -11,8 +11,8 @@ const LocationOptions = ({options, onChange, value}) => {
         <>
             <div className="locatin-select__list">
                 {
-                    options?.filter(city => city.toLowerCase().includes(value.toLowerCase())).map(city => (
-                        <button className="locatin-select__option" onClick={() => setLocationValue(city)}>
+                    options?.filter((city) => city.toLowerCase().includes(value.toLowerCase())).map((city, index) => (
+                        <button key={index} className="locatin-select__option" onClick={() => setLocationValue(city)}>
                             {city}
                         </button>
                     ))
@@ -21,8 +21,8 @@ const LocationOptions = ({options, onChange, value}) => {
 
             <div className="locatin-select__list locatin-select__list--mobile">
                 {
-                    options?.filter(city => city.toLowerCase().includes(value.toLowerCase())).map(city => (
-                        <button className="locatin-select__option" onClick={() => setLocationValue(city)}>
+                    options?.filter((city) => city.toLowerCase().includes(value.toLowerCase())).map((city , index) => (
+                        <button key={index} className="locatin-select__option" onClick={() => setLocationValue(city)}>
                             {city}
                         </button>
                     ))

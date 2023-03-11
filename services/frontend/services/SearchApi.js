@@ -1,5 +1,6 @@
 import { instance } from "./Instance"
 import { serializeAdverts } from "./tools/serializers/AdvertsSerializers"
+import { createQueryParams } from "./tools/serializers/FilterSerializers"
 
 export const SearchApi = {
     async getSearchAdverts(value, lang) {
@@ -9,9 +10,10 @@ export const SearchApi = {
             }).catch(() => null)
     },
 
-    async getFindAdverts(search='', page=0, lang, category) {
+    async getFindAdverts(search='', page=0, lang, category, city, sorting) {
+        console.log(city);
         const limit = 8
-        const params = `?${category ? `cat=${category}&` : ''}page=${page}&limit=${limit}${search ? `&search=${search}&fuzz=70` : ''}`
+        const params = `?${category ? `cat=${category}&` : ''}page=${page}&limit=${limit}${search ? `&search=${search}&fuzz=70` : ''}&${createQueryParams({city, sorting})}`
         return await instance.get(`category/${params}`)
             .then(({data}) => {
                 const adverts = serializeAdverts(data.results, lang, true, category)
