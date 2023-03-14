@@ -2,20 +2,21 @@ import { useRouter } from "next/router";
 import { FormProvider, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useCurrency } from "../../../../locales/hooks/useCurrency";
-import { removeEmptyFields } from "../../../../services/tools/serializers/FilterSerializers";
+import { removeEmptyFields, serializeFormFilter } from "../../../../services/tools/serializers/FilterSerializers";
 import { setFilterOpen } from "../../../../store/slices/FilterSlice";
 import { dataWithNormalQuery } from "../../../CategoryPage/CategoryFilters/CategoryFilterContainer";
 import Filter from "./Filter";
 
 const FilterContainer = () => {
-    const filterForm = useForm({mode: 'onChange'})
+    const {query, push} = useRouter()
+
+    const filterForm = useForm({mode: 'onChange', defaultValues: {...serializeFormFilter(query)}})
     const {handleSubmit} = filterForm
 
 
     const dispatch = useDispatch()
     const closeFilter = () => dispatch(setFilterOpen(false))
 
-    const {query, push} = useRouter()
     const {currency} = useCurrency()
 
     const onFilterSubmit = data => {

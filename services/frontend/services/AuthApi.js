@@ -90,6 +90,15 @@ export const AuthApi = {
 
                 return {userId: user_id, isAuthed: true}
             })
+    },
+
+    async getGoogleCredentials(auth_token) {
+        return await instance.post('social_auth/google/', {auth_token})
+            .then(({data}) => {
+                const {access, refresh} = data
+
+                return {access, refresh}
+            }).catch(() => null)
     }
 }
 

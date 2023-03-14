@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useLanguage } from "../../../../../locales/hooks/useLanguage"
 import { FilterApi } from "../../../../../services/FilterApi"
 import LocalStorage from "../../../../../services/tools/ClientTools/getLocalStorage"
+import { useSwipe } from "../../../../AppHooks/useSwipe"
 import Text from "../../../../Elementes/Text/Text"
 import LocationFormOptions from "./LocationFormOptions"
 
@@ -29,11 +30,13 @@ const LocationFormOptionsContainer = ({isOpen, onSwitchOpen}) => {
         changeValue('')
     }
 
+    const {swipe} = useSwipe({onClose: onSwitchOpen})
+
     return (
         <>
             {
                 isOpen && <>
-                    <div className="modal-screen modal-screen--location modal-screen--filter">
+                    <div className="modal-screen modal-screen--location modal-screen--filter" {...swipe}>
                         <div className="location-select" >
                             <div className="close-line" onClick={onSwitchOpen} />
 

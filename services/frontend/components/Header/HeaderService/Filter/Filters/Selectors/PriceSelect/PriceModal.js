@@ -1,15 +1,28 @@
+import { useFormContext } from "react-hook-form";
 import { useLanguage } from "../../../../../../../locales/hooks/useLanguage";
 import Text from "../../../../../../Elementes/Text/Text";
+import { useFilterSwipe } from "../hooks/useFilterSwipe";
 import {modal, dimmer, modalTitle, field, input, line, apply} from "./price_modal.module.scss"
+
+const errorStyle = {
+    borderColor: '#FF5A5A'
+}
 
 
 const PriceModal = ({onSwitchOpen, holder, inputs}) => {
     const {t} = useLanguage()
+
+    const {formState, getFieldState} = useFormContext()
+
+    const fromInput = getFieldState(inputs[0].name, formState)
+    const toInput = getFieldState(inputs[1].name, formState)
+
+    const {swipe} = useFilterSwipe({onClose: onSwitchOpen, elemHeight: '70%'})
     
     return (
         <>
-            <div className={dimmer} onClick={onSwitchOpen} />
-            <div className={modal}>
+            <div className={dimmer} onClick={onSwitchOpen}/>
+            <div className={modal} {...swipe} >
                 <div className="close-line close-line--top" onClick={onSwitchOpen} />
                 <p className={`title ${modalTitle}`}><Text content={holder} /></p>
                 <button className="close-location" onClick={onSwitchOpen}>
@@ -19,14 +32,20 @@ const PriceModal = ({onSwitchOpen, holder, inputs}) => {
                 </button>
 
                 <div className={field}>
-                    <input {...inputs[0]} className={input} type="text" placeholder={t("from")} inputMode="numeric" />
+                    <input {...inputs[0]}   className={input} style={!!fromInput.error ? errorStyle : {}}
+                                            type="text" 
+                                            placeholder={t("from")} 
+                                            inputMode="numeric" />
 
                     <div className={line} />
 
-                    <input {...inputs[1]} className={input} type="text" placeholder={t("to_")} inputMode="numeric" />
+                    <input {...inputs[1]}   className={input} style={!!toInput.error ? errorStyle : {}}
+                                            type="text" 
+                                            placeholder={t("to_")} 
+                                            inputMode="numeric" />
                 </div>
 
-                <button className={apply} onClick={onSwitchOpen}>
+                <button className={apply} onClick={onSwitchOpen} disabled={fromInput.error || toInput.error}>
                     <Text content="Apply" />
                 </button>
             </div>

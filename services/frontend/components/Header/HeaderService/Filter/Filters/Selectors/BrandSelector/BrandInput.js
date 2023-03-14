@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLanguage } from "../../../../../../../locales/hooks/useLanguage";
+import { useSwipe } from "../../../../../../AppHooks/useSwipe";
 import Text from "../../../../../../Elementes/Text/Text";
 import BrandOptions from "./BrandOptions";
 
@@ -8,13 +9,15 @@ const BrandInput = ({onSwitchOpen, options}) => {
     const onChange = e => changeValue(e.currentTarget.value)
     const {t} = useLanguage()
 
+    const {swipe} = useSwipe({onClose: onSwitchOpen})
+
     return (
         <>
-            <div className="modal-screen modal-screen--location modal-screen--filter">
+            <div className="modal-screen modal-screen--location modal-screen--filter" {...swipe}>
                 <div className="location-select" >
                     <div className="close-line" onClick={onSwitchOpen} />
 
-                    <h5 className="title title--loc"><Text content="Location" /></h5>
+                    <h5 className="title title--loc"><Text content="Brand" /></h5>
 
                     <div className="search-wrapper">
                         <div className="search search--location">
@@ -43,7 +46,7 @@ const BrandInput = ({onSwitchOpen, options}) => {
                         </button>
                     </div>
 
-                    <BrandOptions {...{options, onChange: changeValue, value}} />
+                    <BrandOptions {...{options, onChange: changeValue, value, onSwitchOpen}} />
 
                     <button onClick={onSwitchOpen} className="btn btn--hug">
                         <Text content="Apply" />

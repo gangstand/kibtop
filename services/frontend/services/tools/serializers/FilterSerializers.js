@@ -56,3 +56,27 @@ export const createQueryParams = data => {
 
     return query
 }
+
+export const serializeFormFilter = (query, ignoreCategory=false) => {
+    const filterFields = ['city', 'sorting', 'category', 'subCategory', 'condition', 'isMonth', 'rooms', 'cost_from', 'cost_to', 'brand', 'mileage_from', 'mileage_to', 
+                            'year_from', 'year_to', 'employment', 'workType']
+    if(ignoreCategory) filterFields.pop('category')
+
+    let filterForm = {}
+
+    for (const key in query) {
+        const value = query[key]
+
+        if(filterFields.includes(key)) filterForm[key] = serializeArrayQuery(key, value)
+    }
+
+
+    return filterForm
+}
+
+const serializeArrayQuery = (key, value) => {
+    const ignoreFields = ['condition']
+
+    if(value.includes(',') && !ignoreFields.includes(key)) return value.split(',')
+    return value
+}

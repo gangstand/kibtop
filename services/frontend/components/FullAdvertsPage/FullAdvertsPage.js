@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LocationForm from "../CategoryPage/CategoryNav/LocationForm/LocationForm";
 import PageNavContainer from "../CategoryPage/PageNav/PageNavContainer";
 import Header from "../Header/Header";
 import HeaderService from "../Header/HeaderService/HeaderService";
@@ -26,7 +27,7 @@ const FullAdvertsPage = () => {
                         </div>
                         
 
-                        <LocationContainer />
+                        <LocationForm />
                     </div>
                 </div>
 

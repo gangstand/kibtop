@@ -5,18 +5,10 @@ import {reset} from "../../../filter.module.scss"
 
 
 const ResetBtn = ({defaultValues}) => {
-    const {getValues, setValue} = useFormContext()
+    const form = useFormContext()
     const {push, pathname, query} = useRouter()
     const onResetClick = () => {
-        const fields = Object.keys(getValues())
-
-        fields.forEach(field => setValue(field, ''))
-
-        for (const field in defaultValues) {
-            const value = defaultValues[field]
-
-            setValue(field, value)
-        }
+        form.reset(defaultValues)
 
         const {category, page} = query
         
@@ -31,6 +23,7 @@ const ResetBtn = ({defaultValues}) => {
 
         push({pathname, query: {}})
     }
+    console.log(form.watch());
     return (
         <>
             <a className={reset} onClick={onResetClick}>

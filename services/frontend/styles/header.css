@@ -84,6 +84,9 @@
     align-items: center;
 
     background-color: #F6F6F6;
+
+    position: relative;
+    z-index: 5;
 }
 
 @media (min-width: 800px) {

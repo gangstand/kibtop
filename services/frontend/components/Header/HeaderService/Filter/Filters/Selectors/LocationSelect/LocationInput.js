@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLanguage } from "../../../../../../../locales/hooks/useLanguage";
+import { useSwipe } from "../../../../../../AppHooks/useSwipe";
 import Text from "../../../../../../Elementes/Text/Text";
 import LocationFieldContainer from "../../../../../../HomePage/Recommend/Location/LocationSelect/LocationField/LocationFieldContainer";
 import LocationOptions from "./LocationOptions";
@@ -9,9 +10,12 @@ const LocationInput = ({onSwitchOpen, options}) => {
     const onChange = e => changeValue(e.currentTarget.value)
     const {t} = useLanguage()
 
+    const {swipe} = useSwipe({onClose: onSwitchOpen})
+
+
     return (
         <>
-            <div className="modal-screen modal-screen--location modal-screen--filter">
+            <div className="modal-screen modal-screen--location modal-screen--filter" {...swipe}>
                 <div className="location-select" >
                     <div className="close-line" onClick={onSwitchOpen} />
 
@@ -48,7 +52,7 @@ const LocationInput = ({onSwitchOpen, options}) => {
                         </button>
                     </div>
 
-                    <LocationOptions {...{options, onChange: changeValue, value}} />
+                    <LocationOptions {...{options, onChange: changeValue, value, onSwitchOpen}} />
 
                     <button onClick={onSwitchOpen} className="btn btn--hug">
                         <Text content="Apply" />

@@ -1,10 +1,11 @@
 import { useFormContext } from "react-hook-form";
 
-const BrandOptions = ({options, onChange, value}) => {
+const BrandOptions = ({options, onChange, value, onSwitchOpen}) => {
     const {setValue} = useFormContext()
     const setBrandValue = value => {
         onChange(value)
         setValue('brand', value)
+        if(window.innerWidth <= 600) onSwitchOpen()
     }
 
     return (

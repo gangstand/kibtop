@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-const LocationOptions = ({options, onChange, value}) => {
+const LocationOptions = ({options, onChange, value, onSwitchOpen}) => {
     const {setValue} = useFormContext()
     const setLocationValue = value => {
         onChange(value)
@@ -22,7 +22,10 @@ const LocationOptions = ({options, onChange, value}) => {
             <div className="locatin-select__list locatin-select__list--mobile">
                 {
                     options?.filter((city) => city.toLowerCase().includes(value.toLowerCase())).map((city , index) => (
-                        <button key={index} className="locatin-select__option" onClick={() => setLocationValue(city)}>
+                        <button key={index} className="locatin-select__option" onClick={() => {
+                                setLocationValue(city)
+                                onSwitchOpen()
+                            }}>
                             {city}
                         </button>
                     ))

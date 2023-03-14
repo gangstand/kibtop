@@ -2,15 +2,13 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import LocalStorage from "../../../../services/tools/ClientTools/getLocalStorage";
+import { useModalOpen } from "../../../AppHooks/useModalOpen";
 import Text from "../../../Elementes/Text/Text";
 import { useClientSideValue } from "../../../hooks/useClientSideValue";
 import LocationFormOptionsContainer from "./LocationFormOptions/LocationFormOptionsContainer";
 
 const LocationForm = () => {
-    const [isOpen, setOpen] = useState(false)
-
-    const onSwitchOpen = () => setOpen(!isOpen)
-
+    const [isOpen, setOpen, onSwitchOpen] = useModalOpen()
 
     const {query: {city}} = useRouter()
 

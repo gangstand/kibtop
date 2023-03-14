@@ -177,10 +177,11 @@
             background: linear-gradient(180deg, rgba(255,255,255,.4) 0%, rgba(255,255,255,1) 50%);
 
             opacity: .5;
-            z-index: 2;
+            z-index: 1;
         }
     }
 }
+
 
 @media (max-width: 600px) {
     .select {
@@ -197,6 +198,7 @@
 
 .selectArrow {
     @include box(18px, 10px);
+    cursor: pointer;
 }
 
 
@@ -378,6 +380,8 @@
     padding-left: 6px;
     padding-right: 2px;
     margin-bottom: 12px;
+
+    cursor: pointer;
 
     &:last-child {
         margin-bottom: 16px;
@@ -636,5 +640,13 @@
 
     .reset {
         font-size: 14px;
+    }
+}
+
+.fakeSapce {
+    margin-left: 3px;
+
+    &:first-child {
+        margin-left: 0;
     }
 }

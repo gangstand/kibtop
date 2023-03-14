@@ -68,6 +68,7 @@
 
 .rowOption {
     // flex-grow: 1;
+    cursor: pointer;
     @include flex-center();
     
     border-radius: 7px;

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useModalOpen } from "../../../AppHooks/useModalOpen";
 import Text from "../../../Elementes/Text/Text";
 import Option from "../../../Header/HeaderService/Filter/Filters/Selectors/FormSelector/Option";
+import { useFilterSwipe } from "../../../Header/HeaderService/Filter/Filters/Selectors/hooks/useFilterSwipe";
 import { selectDimmer, sortingOptions, selectTitle, sort, select, rusSelect } from "./sorting_select.module.scss";
 
 const options = [
@@ -12,9 +14,8 @@ const options = [
 ]
 
 const SortingSelect = ({className}) => {
-    const [isOpen, setOpen] = useState(false)
+    const [isOpen, setOpen, onSwitchOpen] = useModalOpen()
 
-    const onSwitchOpen = () => setOpen(!isOpen)
 
     const {locale, query, pathname} = useRouter()
     const pathnameTo = pathname === '/adverts/[category]' ? pathname : '/adverts'
@@ -23,21 +24,23 @@ const SortingSelect = ({className}) => {
     const sortingOption = options.find(({value}) => value === query.sorting)
     const sortingValue = sortingOption?.value || 'default'
 
+    const {swipe} = useFilterSwipe({onClose: onSwitchOpen})
+
     return (
         <>
             
              <>
                         <button className={`${select} ${locale === 'ru' ? rusSelect : ''} ${className}`} onClick={onSwitchOpen}>
                             <svg viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15.6677 0.329895C15.5615 0.225362 15.4351 0.142392 15.2958 0.0857716C15.1566 0.0291509 15.0072 0 14.8564 0C14.7055 0 14.5562 0.0291509 14.4169 0.0857716C14.2776 0.142392 14.1513 0.225362 14.045 0.329895L8.81134 5.43783C8.7051 5.54236 8.57872 5.62533 8.43947 5.68195C8.30021 5.73857 8.15085 5.76772 8 5.76772C7.84915 5.76772 7.69979 5.73857 7.56053 5.68195C7.42128 5.62533 7.29489 5.54236 7.18866 5.43783L1.95497 0.329895C1.84874 0.225362 1.72235 0.142392 1.5831 0.0857716C1.44385 0.0291509 1.29449 0 1.14363 0C0.99278 0 0.843419 0.0291509 0.704167 0.0857716C0.564915 0.142392 0.438528 0.225362 0.332297 0.329895C0.119462 0.538854 0 0.821521 0 1.11616C0 1.4108 0.119462 1.69346 0.332297 1.90242L5.57742 7.02151C6.2202 7.64807 7.09153 8 8 8C8.90847 8 9.7798 7.64807 10.4226 7.02151L15.6677 1.90242C15.8805 1.69346 16 1.4108 16 1.11616C16 0.821521 15.8805 0.538854 15.6677 0.329895Z" fill="#414042" fill-opacity="0.4"/>
+                                <path d="M15.6677 0.329895C15.5615 0.225362 15.4351 0.142392 15.2958 0.0857716C15.1566 0.0291509 15.0072 0 14.8564 0C14.7055 0 14.5562 0.0291509 14.4169 0.0857716C14.2776 0.142392 14.1513 0.225362 14.045 0.329895L8.81134 5.43783C8.7051 5.54236 8.57872 5.62533 8.43947 5.68195C8.30021 5.73857 8.15085 5.76772 8 5.76772C7.84915 5.76772 7.69979 5.73857 7.56053 5.68195C7.42128 5.62533 7.29489 5.54236 7.18866 5.43783L1.95497 0.329895C1.84874 0.225362 1.72235 0.142392 1.5831 0.0857716C1.44385 0.0291509 1.29449 0 1.14363 0C0.99278 0 0.843419 0.0291509 0.704167 0.0857716C0.564915 0.142392 0.438528 0.225362 0.332297 0.329895C0.119462 0.538854 0 0.821521 0 1.11616C0 1.4108 0.119462 1.69346 0.332297 1.90242L5.57742 7.02151C6.2202 7.64807 7.09153 8 8 8C8.90847 8 9.7798 7.64807 10.4226 7.02151L15.6677 1.90242C15.8805 1.69346 16 1.4108 16 1.11616C16 0.821521 15.8805 0.538854 15.6677 0.329895Z" fill="#414042" fillOpacity="0.4"/>
                             </svg>
 
                             <Text content={"Sort"} />:<span style={{textTransform: 'lowercase', marginLeft: 3}}><Text content={sortingOption?.text || 'Default'} /></span>
 
                             {
                                 isOpen && <>
-                                    <div className={selectDimmer} />
-                                    <div className={sortingOptions}>
+                                    <div className={selectDimmer} onClick={onSwitchOpen} />
+                                    <div className={sortingOptions} {...swipe}>
                                         <div className="close-line close-line--top" onClick={onSwitchOpen} />
                                         <p className={selectTitle}><Text content={'Sorting'} /></p>
 
