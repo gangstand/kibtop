@@ -2,8 +2,12 @@ from django.db import models
 from django.utils import timezone
 
 from accounts.models import CustomUser
-from .for_realty import *
-from sections.models import BaseModelFull
+from sections.models.realty.for_realty import (
+    REALTY_CATEGORY_EN, REALTY_CATEGORY_RU, REALTY_CATEGORY_TR, ALL_OLD_NEW_EN,
+    ALL_OLD_NEW_RU, ALL_OLD_NEW_TR, NUMBER_ROOMS_EN, NUMBER_ROOMS_RU, NUMBER_ROOMS_TR
+)
+
+from sections.models.base_models_full import BaseModelFull
 
 
 class RealtyFull(BaseModelFull):

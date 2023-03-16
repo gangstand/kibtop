@@ -1,4 +1,4 @@
-from .realry.serializer import (
+from .realty.serializer import (
     RealtyFullSerializerEN, RealtyFullSerializerDetail, RealtyFullSerializerRU, RealtyFullSerializerTR,
     RealtyFullSerializer, RealtyFullViewsUserSerializer, RealtyFullFavouritesUserSerializer,
     RealtyFullUploadSerializer

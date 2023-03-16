@@ -1,40 +1,47 @@
 from django.db import models
 from django.utils import timezone
 from accounts.models import CustomUser
+#from sections.views.view_dicts.category_dicts import *
 
-CATEGORY_EN = [
-    ('Real estate', 'Real estate'),
-    ('Auto', 'Auto'),
-    ('Job', 'Job'),
-    ('Services', 'Services'),
-    ('For kids', 'For kids'),
-    ('Electronics', 'Electronics'),
-    ('House and garden', 'House and garden'),
-    ('Fashion and style', 'Fashion and style'),
-    ('Free', 'Free')
-]
-CATEGORY_RU = [
-    ('Недвижимость', 'Недвижимость'),
-    ('Авто', 'Авто'),
-    ('Работа', 'Работа'),
-    ('Услуги', 'Услуги'),
-    ('Для детей', 'Для детей'),
-    ('Электроника', 'Электроника'),
-    ('Дом и сад', 'Дом и сад'),
-    ('Мода и стиль', 'Мода и стиль'),
-    ('Бесплатный', 'Бесплатный')
-]
-CATEGORY_TR = [
-    ('Emlak', 'Emlak'),
-    ('Oto', 'Oto'),
-    ('İş', 'İş'),
-    ('Hizmetler', 'Hizmetler'),
-    ('Çocuklar için', 'Çocuklar için'),
-    ('Elektronik', 'Elektronik'),
-    ('Ev ve bahçe', 'Ev ve bahçe'),
-    ('Moda ve stil', 'Moda ve stil'),
-    ('ücretsiz', 'ücretsiz')
-]
+# CATEGORY_EN = get_one_nesting_choices(category_lang_dict, 'en')
+# CATEGORY_RU = get_one_nesting_choices(category_lang_dict, 'ru')
+# CATEGORY_TR = get_one_nesting_choices(category_lang_dict, 'tr')
+
+# CATEGORY_EN = [
+#     ('Real estate', 'Real estate'),
+#     ('Auto', 'Auto'),
+#     ('Job', 'Job'),
+#     ('Services', 'Services'),
+#     ('For kids', 'For kids'),
+#     ('Electronics', 'Electronics'),
+#     ('House and garden', 'House and garden'),
+#     ('Fashion and style', 'Fashion and style'),
+#     ('Free', 'Free')
+# ]
+# CATEGORY_RU = [
+#     ('Недвижимость', 'Недвижимость'),
+#     ('Авто', 'Авто'),
+#     ('Работа', 'Работа'),
+#     ('Услуги', 'Услуги'),
+#     ('Для детей', 'Для детей'),
+#     ('Электроника', 'Электроника'),
+#     ('Дом и сад', 'Дом и сад'),
+#     ('Мода и стиль', 'Мода и стиль'),
+#     ('Бесплатный', 'Бесплатный')
+# ]
+# CATEGORY_TR = [
+#     ('Emlak', 'Emlak'),
+#     ('Oto', 'Oto'),
+#     ('İş', 'İş'),
+#     ('Hizmetler', 'Hizmetler'),
+#     ('Çocuklar için', 'Çocuklar için'),
+#     ('Elektronik', 'Elektronik'),
+#     ('Ev ve bahçe', 'Ev ve bahçe'),
+#     ('Moda ve stil', 'Moda ve stil'),
+#     ('ücretsiz', 'ücretsiz')
+# ]
+from sections.models.for_base import CATEGORY_EN, CATEGORY_RU, CATEGORY_TR
+
 CITY_EN = [
     ('Nicosia', 'Nicosia'),
     ('Kyrenia', 'Kyrenia'),
@@ -96,7 +103,12 @@ class BaseModelFull(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.CASCADE)
     address = models.CharField(max_length=1024, verbose_name='The address is')
+
     price = models.IntegerField(verbose_name='Starting price')
+    price_dol = models.IntegerField(verbose_name='Dollar price', default=0)
+    price_eur = models.IntegerField(verbose_name='Euro price', default=0)
+    price_lir = models.IntegerField(verbose_name='Lira price', default=0)
+
     upload = models.FileField(upload_to='', blank=False)
     category_en = models.CharField(choices=CATEGORY_EN, max_length=255, blank=True, null=True, default=None)
     category_ru = models.CharField(choices=CATEGORY_RU, max_length=255, blank=True, null=True, default=None)

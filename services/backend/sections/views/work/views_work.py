@@ -17,6 +17,10 @@ from sections.service import (
     FilterWork, FilterWorkFavourites, FilterWorkViews
 )
 from sections.utils import query_list_lang
+from sections.views.translators.translate_fields import translate_all_flexible_fields
+from sections.views.view_tools import get_number_rooms_trans, get_sub_category_trans, get_category_trans, \
+    get_for_work_type_trans, get_employment_trans, get_base_fields_trans
+from sections.views.views_base import with_price_sorting, convert_currency_price, get_price_list
 
 model_work = WorkFull.objects.filter(publisher=True, )
 
@@ -38,17 +42,17 @@ class WorkFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
 
         querylist_full = [
             {
-                'queryset': model_work,
+                'queryset': with_price_sorting(model_work, query),
                 'serializer_class': WorkFullSerializerEN,
                 'label': 'en',
             },
             {
-                'queryset': model_work,
+                'queryset': with_price_sorting(model_work, query),
                 'serializer_class': WorkFullSerializerRU,
                 'label': 'ru',
             },
             {
-                'queryset': model_work,
+                'queryset': with_price_sorting(model_work, query),
                 'serializer_class': WorkFullSerializerTR,
                 'label': 'tr',
             },
@@ -56,11 +60,11 @@ class WorkFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
 
         try:
             if query['lang'] == 'en':
-                return query_list_lang(model_work, WorkFullSerializerEN, 'en')
+                return query_list_lang(with_price_sorting(model_work, query), WorkFullSerializerEN, 'en')
             elif query['lang'] == 'ru':
-                return query_list_lang(model_work, WorkFullSerializerRU, 'ru')
+                return query_list_lang(with_price_sorting(model_work, query), WorkFullSerializerRU, 'ru')
             elif query['lang'] == 'tr':
-                return query_list_lang(model_work, WorkFullSerializerTR, 'tr')
+                return query_list_lang(with_price_sorting(model_work, query), WorkFullSerializerTR, 'tr')
             return querylist_full
         except Exception:
             return querylist_full
@@ -77,80 +81,20 @@ class WorkFullAPIListCreate(generics.CreateAPIView):
         serializer_class = self.get_serializer_class()
         serializer = serializer_class(data=request_data, context={'request': request})
 
-        request_data_set = []
-        for lang in ['_ru', '_en', '_tr']:
-            request_data_set.append([s for s in filter(lambda x: lang in x, [i for i in request_data])])
+        base_fields_list = get_base_fields_trans(request_data, 'work')
 
-        request_data_set = [x for x in request_data_set if x != []][0]
-        request_data_set_no_lang = [i[:-3] for i in request_data_set]
-        request_data = [request_data[i] for i in request_data_set]
-        lang = request_data_set[0][-2:]
+        for_work_type_list = get_for_work_type_trans(request_data)
+        employment_list = get_employment_trans(request_data)
 
-        if lang == "tr":
-            lang_ru = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'ru', 'tr').result for i in request_data]
-            ))
-            lang_en = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'en', 'tr').result for i in request_data]
-            ))
-            print(lang_en, lang_ru)
-            if serializer.is_valid():
-                serializer.save(
-                    title_en=lang_en['title'],
-                    title_ru=lang_ru['title'],
-                    description_en=lang_en['description'],
-                    description_ru=lang_ru['description'],
-                    category_en=lang_en['category'],
-                    category_ru=lang_ru['category'],
-                    sub_category_en=lang_en['sub_category'],
-                    sub_category_ru=lang_ru['sub_category'],
-                )
-        elif lang == "en":
-            lang_ru = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'ru', 'en').result for i in request_data]
-            ))
-            lang_tr = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'tr', 'en').result for i in request_data]
-            ))
-            print(lang_tr, lang_ru)
-            if serializer.is_valid():
-                serializer.save(
-                    title_tr=lang_tr['title'],
-                    title_ru=lang_ru['title'],
-                    description_tr=lang_tr['description'],
-                    description_ru=lang_ru['description'],
-                    category_tr=lang_tr['category'],
-                    category_ru=lang_ru['category'],
-                    sub_category_tr=lang_tr['sub_category'],
-                    sub_category_ru=lang_ru['sub_category'],
-                )
-        elif lang == "ru":
-            lang_en = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'en', 'ru').result for i in request_data]
-            ))
-            lang_tr = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'tr', 'ru').result for i in request_data]
-            ))
-            print(lang_tr, lang_en)
-            if serializer.is_valid():
-                serializer.save(
-                    title_tr=lang_tr['title'],
-                    title_en=lang_en['title'],
-                    description_tr=lang_tr['description'],
-                    description_en=lang_en['description'],
-                    category_tr=lang_tr['category'],
-                    category_en=lang_en['category'],
-                    sub_category_tr=lang_tr['sub_category'],
-                    sub_category_en=lang_en['sub_category'],
-                )
-        else:
-            return Response({'message': 'bad'})
+        model_args_list = {
+            **base_fields_list,
+            **for_work_type_list,
+            **employment_list
+        }
+
+        if serializer.is_valid():
+            serializer.save(**model_args_list)
+
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 

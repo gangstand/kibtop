@@ -18,6 +18,8 @@ from sections.service import (
     FilterFashion, FilterFashionViews, FilterFashionFavourites
 )
 from sections.utils import query_list_lang
+from sections.views.view_tools import get_base_fields_trans
+from sections.views.views_base import with_price_sorting, convert_currency_price
 
 model_fashion = FashionFull.objects.filter(publisher=True)
 
@@ -39,17 +41,17 @@ class FashionFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
 
         querylist_full = [
             {
-                'queryset': model_fashion,
+                'queryset': with_price_sorting(model_fashion, query),
                 'serializer_class': FashionFullSerializerEN,
                 'label': 'en',
             },
             {
-                'queryset': model_fashion,
+                'queryset': with_price_sorting(model_fashion, query),
                 'serializer_class': FashionFullSerializerRU,
                 'label': 'ru',
             },
             {
-                'queryset': model_fashion,
+                'queryset': with_price_sorting(model_fashion, query),
                 'serializer_class': FashionFullSerializerTR,
                 'label': 'tr',
             },
@@ -57,11 +59,11 @@ class FashionFullAPIList(ObjectMultipleModelAPIView, generics.ListAPIView):
 
         try:
             if query['lang'] == 'en':
-                return query_list_lang(model_fashion, FashionFullSerializerEN, 'en')
+                return query_list_lang(with_price_sorting(model_fashion, query), FashionFullSerializerEN, 'en')
             elif query['lang'] == 'ru':
-                return query_list_lang(model_fashion, FashionFullSerializerRU, 'ru')
+                return query_list_lang(with_price_sorting(model_fashion, query), FashionFullSerializerRU, 'ru')
             elif query['lang'] == 'tr':
-                return query_list_lang(model_fashion, FashionFullSerializerTR, 'tr')
+                return query_list_lang(with_price_sorting(model_fashion, query), FashionFullSerializerTR, 'tr')
             return querylist_full
         except Exception:
             return querylist_full
@@ -78,80 +80,11 @@ class FashionFullAPIListCreate(generics.CreateAPIView):
         serializer_class = self.get_serializer_class()
         serializer = serializer_class(data=request_data, context={'request': request})
 
-        request_data_set = []
-        for lang in ['_ru', '_en', '_tr']:
-            request_data_set.append([s for s in filter(lambda x: lang in x, [i for i in request_data])])
+        model_args_list = get_base_fields_trans(request_data, 'fashion')
 
-        request_data_set = [x for x in request_data_set if x != []][0]
-        request_data_set_no_lang = [i[:-3] for i in request_data_set]
-        request_data = [request_data[i] for i in request_data_set]
-        lang = request_data_set[0][-2:]
+        if serializer.is_valid():
+            serializer.save(**model_args_list)
 
-        if lang == "tr":
-            lang_ru = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'ru', 'tr').result for i in request_data]
-            ))
-            lang_en = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'en', 'tr').result for i in request_data]
-            ))
-            print(lang_en, lang_ru)
-            if serializer.is_valid():
-                serializer.save(
-                    title_en=lang_en['title'],
-                    title_ru=lang_ru['title'],
-                    description_en=lang_en['description'],
-                    description_ru=lang_ru['description'],
-                    category_en=lang_en['category'],
-                    category_ru=lang_ru['category'],
-                    sub_category_en=lang_en['sub_category'],
-                    sub_category_ru=lang_ru['sub_category'],
-                )
-        elif lang == "en":
-            lang_ru = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'ru', 'en').result for i in request_data]
-            ))
-            lang_tr = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'tr', 'en').result for i in request_data]
-            ))
-            print(lang_tr, lang_ru)
-            if serializer.is_valid():
-                serializer.save(
-                    title_tr=lang_tr['title'],
-                    title_ru=lang_ru['title'],
-                    description_tr=lang_tr['description'],
-                    description_ru=lang_ru['description'],
-                    category_tr=lang_tr['category'],
-                    category_ru=lang_ru['category'],
-                    sub_category_tr=lang_tr['sub_category'],
-                    sub_category_ru=lang_ru['sub_category'],
-                )
-        elif lang == "ru":
-            lang_en = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'en', 'ru').result for i in request_data]
-            ))
-            lang_tr = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'tr', 'ru').result for i in request_data]
-            ))
-            print(lang_tr, lang_en)
-            if serializer.is_valid():
-                serializer.save(
-                    title_tr=lang_tr['title'],
-                    title_en=lang_en['title'],
-                    description_tr=lang_tr['description'],
-                    description_en=lang_en['description'],
-                    category_tr=lang_tr['category'],
-                    category_en=lang_en['category'],
-                    sub_category_tr=lang_tr['sub_category'],
-                    sub_category_en=lang_en['sub_category'],
-                )
-        else:
-            return Response({'message': 'bad'})
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
