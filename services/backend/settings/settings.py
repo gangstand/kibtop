@@ -11,6 +11,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'api.kibtop.com', '94.250.251.138']
 BASE_URL = env("URL")
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,6 +33,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
+    'chat.apps.ChatConfig',
 ]
 
 SITE_ID = 1
@@ -78,15 +80,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'settings.wsgi.application'
+ASGI_APPLICATION = 'settings.asgi.application'
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [('127.0.0.1', "6379")],
-#         },
-#     },
-# }
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [env("REDIS_URL")],
+        },
+    },
+}
 
 DATABASES = {
     'default': {
@@ -171,7 +174,7 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'SET_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
-    'TOKEN_MODEL': None,  # We use only JWT
+    'TOKEN_MODEL': None,
     'ACTIVATION_URL': 'auth/confirm/{uid}/{token}/',
     'PASSWORD_RESET_CONFIRM_URL': '/auth/recovery/{uid}/{token}',
     'HIDE_USERS': True,
