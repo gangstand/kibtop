@@ -11,7 +11,7 @@ from django.conf.urls.static import static
 class BothHttpAndHttpsSchemaGenerator(OpenAPISchemaGenerator):
     def get_schema(self, request=None, public=False):
         schema = super().get_schema(request, public)
-        schema.schemes = ["http"]
+        schema.schemes = ["http", "https"]
         return schema
 
 
@@ -28,10 +28,12 @@ schema_view = get_schema_view(
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
+                  path('', include("chat.urls")),
                   path('v1/', include([
                       path('auth/', include('accounts.urls')),
                       path('social_auth/', include(('social_auth.urls', 'social_auth'), namespace="social_auth")),
                       path('', include('sections.urls.base_urls')),
+                      path('chat/', include('chat.urls')),
                       path('docs/', include([
                           path('', schema_view.with_ui('swagger', cache_timeout=0), name="swagger-schema"),
                           path('api.json/', schema_view.without_ui(cache_timeout=0), name='schema-swagger-ui'),
