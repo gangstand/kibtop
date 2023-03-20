@@ -152,7 +152,7 @@
     grid-template: 1fr / repeat(9, 1fr);
     grid-gap: 9px;
 
-    width: 470px;
+    width: 523px;
     padding-right: 40px;
 }
 
@@ -478,7 +478,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 10px;
-    line-height: 8px;
+    line-height: 11px;
 
     background-color: transparent;
 
@@ -493,6 +493,41 @@
     height: 12px;
     width: 12px;
 }
+
+.location p {
+    max-width: 150px;
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    position: relative;
+}
+
+@media (max-width: 500px) {
+    .location p {
+        max-width: 60px;
+    }
+}
+
+/* .location::after {
+    content: '';
+
+    display: inline-block;
+    height: 11px;
+    width: 3px;
+
+    position: relative;
+    top: 0;
+    right: 3px;
+
+    background-color: rgba(255, 255, 255, .);
+}
+
+@media (min-width: 500px) {
+    .location::after {
+        display: none;
+    }
+} */
 
 @media (min-width: 500px) {
     .location {
@@ -1017,18 +1052,21 @@
 
 .locatin-select__list {
     margin-left: 20px;
-    margin-bottom: 20px;
-    max-height: 137px;
+    margin-bottom: 10px;
+    max-height: 72px;
 
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+
+    overflow: hidden;
 }
 
 @media (min-width: 670px) {
     .locatin-select__list {
         margin-left: 40px;
-        margin-bottom: 40px;
+        margin-bottom: 15px;
+        max-height: 86px;
     }
 }
 
@@ -1044,6 +1082,10 @@
 
 .locatin-select__list--mobile {
     display: flex;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100%);
 }
 
 @media (min-width: 600px) {
@@ -1056,7 +1098,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
-    line-height: 11px;
+    line-height: 14px;
     text-align: left;
 
     margin-bottom: 15px;
@@ -1163,5 +1205,23 @@
 @media (min-width: 600px) {
     .add-advert-mobile-area {
         display: none;
+    }
+}
+
+/* @media (max-width: 600px) {
+    .modal-screen--filter {
+        left: 0;
+        top: calc(100% - 643px);
+    }
+} */
+
+.row-locale {
+    display: flex;
+    grid-gap: 10px;
+}
+
+@media (max-width: 600px) {
+    .row-locale .sorting-locale {
+        display: none !important;
     }
 }

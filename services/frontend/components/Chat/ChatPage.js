@@ -8,14 +8,12 @@ const ChatPage = () => {
             + '/ws/chat/1/'
         );
     
-        console.log(chatSocket);
 
         chatSocket.onmessage = function(event) {
             alert("Получены данные " + event.data);
         };
         
     } catch(err) {
-        console.log(err);
 
     }
     

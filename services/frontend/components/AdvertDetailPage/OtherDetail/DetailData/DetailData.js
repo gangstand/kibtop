@@ -31,9 +31,11 @@ const DetailData = ({title, cost, currency, description, square, isMonth}) => {
                     <Text content="description" />
                 </h3>
 
-                <p className="detail-text">
-                    {description}
-                </p>
+                <div className="detail-text">
+                    {
+                        description.split('\n').map((text, index) => <p key={index}>{text}</p>)
+                    }
+                </div>
             </article>
                 
             

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { AddAdvertApi } from "../../services/AddAdvertApi"
 import { ProfileApi } from "../../services/ProfileApi"
+import { setScrollDisable } from "../tools/setScrollDisable"
 import { setProfileDataThunk } from "./ProfileSlice"
 
 const initialState = {
@@ -36,6 +37,7 @@ const AddAdvertSlice = createSlice({
         },
 
         setAddAdvertPhoneOpen(state, {payload}) {
+            setScrollDisable(payload)
             state.isPhoneOpen = payload
         },
         setAddAdvertPhoneError(state, {payload}) {
@@ -82,10 +84,11 @@ export const addAdvertThunk = (data, category, lang) => async dispatch => {
         .then(advert => {
             dispatch(setAddAdvertLoading(false))
             dispatch(setNewAdvertData(advert))
-        }).catch(err => {
-            dispatch(setAddAdvertLoading(false))
-            console.log(err);
         })
+        // .catch(err => {
+        //     dispatch(setAddAdvertLoading(false))
+        //     console.log(err);
+        // })
 }
 
 

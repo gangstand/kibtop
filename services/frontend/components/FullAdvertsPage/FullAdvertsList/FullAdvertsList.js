@@ -7,8 +7,8 @@ import { setCategoryPages } from "../../../store/slices/CategorySlice";
 import Adverts from "../../Adverts/Adverts";
 
 const FullAdvertsList = () => {
-    const {locale, query: {search, page, category}} = useRouter()
-    const {data} = useQuery(['findAdverts', search, locale, page], () => SearchApi.getFindAdverts(search, page, locale, category))
+    const {locale, query: {search, page, category, city, sorting}} = useRouter()
+    const {data} = useQuery(['findAdverts', search, locale, page, city, sorting], () => SearchApi.getFindAdverts(search, page, locale, category, city, sorting))
 
     const dispatch = useDispatch()
     

@@ -37,7 +37,7 @@ class ServicesFullSerializerEN(serializers.ModelSerializer):
         model = ServicesFull
         fields = ('id', 'title_en', 'description_en', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'services_full_upload', 'sub_category_en', 'category_en', 'recommend', 'publisher',
-                  'city', 'geocode', 'currency')
+                  'city', 'geocode', 'currency', 'full_price')
 
 
 class ServicesFullSerializerRU(serializers.ModelSerializer):
@@ -47,7 +47,7 @@ class ServicesFullSerializerRU(serializers.ModelSerializer):
         model = ServicesFull
         fields = ('id', 'title_ru', 'description_ru', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'services_full_upload', 'sub_category_ru', 'category_ru', 'recommend', 'publisher',
-                  'city', 'geocode', 'currency')
+                  'city', 'geocode', 'currency', 'full_price')
 
 
 class ServicesFullSerializerTR(serializers.ModelSerializer):
@@ -57,7 +57,7 @@ class ServicesFullSerializerTR(serializers.ModelSerializer):
         model = ServicesFull
         fields = ('id', 'title_tr', 'description_tr', 'created_at', 'updated_at', 'address',
                   'price', 'upload', 'services_full_upload', 'sub_category_tr', 'category_tr', 'recommend', 'publisher',
-                  'city', 'geocode', 'currency')
+                  'city', 'geocode', 'currency', 'full_price')
 
 
 class ServicesFullSerializer(serializers.Serializer):

@@ -9,7 +9,9 @@
     --color-green: #35D073;
 }
 
-
+/* * {
+    touch-action: none;
+} */
 
 html {
     width: 100vw;

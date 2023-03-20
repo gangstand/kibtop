@@ -44,6 +44,10 @@ function MyApp({ Component, pageProps, session }) {
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+      </Head>
       <SessionProvider {...{session}}>
         <Provider store={store}>
           <CoogleMapProvider>

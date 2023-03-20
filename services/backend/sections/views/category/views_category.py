@@ -36,6 +36,8 @@ from sections.serializer import (
 
 )
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+from sections.views.views_base import full_with_price_sorting
 from settings.settings import BASE_URL
 
 
@@ -43,17 +45,52 @@ class CategoryLimitPagination(PageNumberPagination):
     default_limit = 10
 
 
+class CategoryCities(generics.ListAPIView):
+    serializer_class = CategoryFullSerializer
+    queryset = AvtoFull
+    # filter_backends = (DjangoFilterBackend,)
+    pagination_class = CategoryLimitPagination
+
+    def get(self, request, *args, **kwargs):
+        query = self.request.query_params
+
+        models_list = {
+            'avto': AvtoFull,
+            'children': ChildrenFull,
+            'electronics': ElectronicsFull,
+            'fashion': FashionFull,
+            'house_garden': HouseGardenFull,
+            'realty': RealtyFull,
+            'services': ServicesFull,
+            'work': WorkFull,
+            'free': FreeFull
+        }
+
+        category = query['category'] if ('category' in query) and (query['category'] in models_list) else None
+
+        models = [models_list[category], ] if category else models_list.values()
+
+        cities = []
+        for model in models:
+            cities = [*cities, *list(chain(model.objects.values_list('city', flat=True)))]
+
+        cities = sorted(set([city.strip() for city in cities if city]))
+
+        return Response(cities, status=HTTP_200_OK)
+
+
 class CategoryFullAPIList(generics.ListAPIView):
     serializer_class = CategoryFullSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = AvtoFull
-    filter_backends = (DjangoFilterBackend,)
+    # filter_backends = (DjangoFilterBackend,)
     pagination_class = CategoryLimitPagination
 
     def get(self, request, *args, **kwargs):
         query = self.request.query_params
         limit = int(query['limit']) if 'limit' in query.keys() else 8
         page = int(query['page']) if 'page' in query.keys() else 0
+
 
         category_list = ['avto', 'children', 'electronics', 'fashion', 'house_garden', 'realty', 'services', 'work',
                          'free']
@@ -119,12 +156,21 @@ class CategoryFullAPIList(generics.ListAPIView):
 
             full_adverts = sorted(full_adverts, key=lambda advert: advert['fuzz'], reverse=True)
 
+        if 'city' in query:
+            location = query['city']
+
+            full_adverts = [advert for advert in full_adverts if bool(advert['city']) and location in advert['city']]
+
+        full_adverts = full_with_price_sorting(full_adverts, query)
+
         adverts_len = len(full_adverts)
 
         if limit <= adverts_len:
             first = page * limit
             last = first + limit
             full_adverts = full_adverts[first:last]
+
+
 
         res = {
             "results": {

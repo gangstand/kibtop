@@ -8,12 +8,10 @@ const PageLink = ({page, number}) => {
 
     const isSelectedStyle = +currentPage === +page ? ' page-link--selcted' : ''
 
-    const link = pathname !== '/adverts' ? `/adverts/${query.category}/${page}/` 
-                : `/adverts/?page=${page}${!!query.search ? `&search=${query.search}` : ''}${!!query.category ? `&category=${query.category}` : ''}`
 
     return (
         <>
-            <Link className={"page-link"+isSelectedStyle} href={link} >{number}</Link>
+            <Link className={"page-link"+isSelectedStyle} href={{pathname, query: {...query, page}}} >{number}</Link>
         </>
     );
 }

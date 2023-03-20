@@ -3,7 +3,7 @@ import { useFormContext, useWatch } from "react-hook-form";
 import { getSubCategoryOptions } from "./getSubCategoryOptions";
 import SubCategorySelector from "./SubCategorySelector";
 
-const SubCategorySelectorContainer = () => {
+const SubCategorySelectorContainer = ({zIndex}) => {
     const category = useWatch({name: 'category'})
     const {setValue} = useFormContext()
 
@@ -13,7 +13,14 @@ const SubCategorySelectorContainer = () => {
 
     return (
         <>
-            <SubCategorySelector name={'subCategory'} holder={'Subcategory'} items={getSubCategoryOptions(category)} disabled={!category} />
+            {
+                category !== 'free' && <SubCategorySelector    name={'subCategory'} 
+                                                                holder={category === 'work' ? 'Profession' : 'Subcategory'} 
+                                                                items={getSubCategoryOptions(category)} 
+                                                                disabled={!category} 
+                                                                zIndex={zIndex} />
+            }
+            
         </>
     );
 }

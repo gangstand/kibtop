@@ -10,7 +10,7 @@ export const subCategoryTrans = {
             'Apartments': 'Апартаменты',
             'House': 'Дом',
             'Land': 'Земля',
-            'Other': 'Другой',
+            'Other': 'Другое',
         },
         tr: {
             'Apartments': 'Daireler',

@@ -5,7 +5,7 @@ const RealtyAdverts = ({adverts}) => {
         <>
             <div className="mobile-realty">
                 {
-                    adverts.map(advert => <RealtyAdvert key={`${advert.category}_${advert.advertId}`} {...advert} />)
+                    adverts?.map(advert => <RealtyAdvert key={`${advert.category}_${advert.advertId}`} {...advert} />)
                 }
             </div>
         </>

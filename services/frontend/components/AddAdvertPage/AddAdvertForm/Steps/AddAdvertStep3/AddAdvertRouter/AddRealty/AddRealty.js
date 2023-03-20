@@ -117,7 +117,7 @@ const AddRealty = () => {
                     <Text content="description" />
                 </label>
 
-                <div className="advert-form__files">
+                <div className="advert-form__files" style={{marginLeft: 0}}>
                     <DescriptionInput placeholderName={"apartment"} />
                 </div>
             </div>
@@ -144,7 +144,6 @@ const AddRealty = () => {
                                                     'photos',
                                                     'rooms',
                                                     'subCategory',
-                                                    'square'
                                                     ]} />
             </div>
 
@@ -166,7 +165,6 @@ const AddRealty = () => {
                                                     'photos',
                                                     'rooms',
                                                     'subCategory',
-                                                    'square'
                                                     ]} />
             </div>
 
@@ -183,7 +181,6 @@ const AddRealty = () => {
                                                     'photos',
                                                     'rooms',
                                                     'subCategory',
-                                                    'square'
                                                     ]} />
 
             <NextButtonContainer    requiredFields={['title', 
@@ -199,7 +196,6 @@ const AddRealty = () => {
                                                     'photos',
                                                     'rooms',
                                                     'subCategory',,
-                                                    'square'
                                                     ]} />
 
             <p className="step-text">

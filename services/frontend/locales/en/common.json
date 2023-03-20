@@ -12,6 +12,7 @@
     "Search product": "Search product",
     "Filter": "Filter",
     "Add advert": "Add advert",
+    "All": "All",
 
     "All categories": "All categories",
     "Real estate": "Real estate",
@@ -274,7 +275,7 @@
     "Describe the product in detail": "Describe the product in detail",
     "Publishing": "Publishing",
     "Add your phone number": "Add your phone number",
-    "In order for customers to contact you, we need your phone number": "In order for customers to contact you, we need your phone number",
+    "In order for customers to contact you, we need your phone number": "In order for customers to contact you via whatsapp, we need your phone number",
     "Sell much faster and more profitably!": "Sell much faster and more profitably!",
     "purpose": "purpose",
 
@@ -290,7 +291,30 @@
     "No such ads": "No such ads",
     "Search results for": "Search results for",
     "Adverts": "Adverts",
-    "Subcategory": "Subcategory"
+    "Subcategory": "Subcategory",
+    "Buy": "Buy",
+    "Rent": "Rent",
+    "Price": "Price",
+    "from": "from",
+    "to_": "to",
+    "Sorting": "Sorting",
+    "Default": "Default",
+    "Cheaper": "Cheaper",
+    "Expensive": "Expensive",
+    "for work": "for work",
+    "for an employee": "for an employee",
+    "Reset filter": "Reset filter",
 
+    "Service type": "Service type",
+    "Shoes": "Shoes",
+    "Clothing": "Clothing",
+    "Domestic": "Domestic",
+    "Beauty": "Beauty",
+    "Phones": "Phones",
+    "Computers": "Computers",
+    "TV / Photo": "TV / Photo",
+    "Interior": "Interior",
+    "Sort": "Sort",
+    "max length is 255 symbols": "max length is 255 symbols"
     
 }

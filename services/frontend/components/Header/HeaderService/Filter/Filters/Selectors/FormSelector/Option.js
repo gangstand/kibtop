@@ -3,13 +3,13 @@ import Text from "../../../../../../Elementes/Text/Text";
 import {option} from "../../../filter.module.scss"
 
 
-const Option = ({text, value, isSelected, register, onClick}) => {
+const Option = ({text, value, isSelected, register, onClick, className = option}) => {
 
     return (
         <>
             <label style={{
                 color: isSelected ? '#65A4FE' : 'inherit'
-            }} className={option} {...{onClick}}>
+            }} {...{onClick, className}}>
                 <input {...register} hidden={true} value={value} type="radio" className="radio-input" />
                 <div className="select-circle" />
 

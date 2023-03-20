@@ -23,7 +23,7 @@ const AdvertId = ({serverAdvert}) => {
 
 export async function getServerSideProps({req, res, locale, query: {advertId, category}}) {
     const serverAdvert = await AdvertApi.getAdvertDatails(advertId, category, locale)
-
+    console.log(serverAdvert);
     if(!serverAdvert) {
         return {
             redirect: {

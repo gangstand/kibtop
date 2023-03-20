@@ -21,6 +21,7 @@ export const roomsTrans = {
         'Studio': 'Studio',
         '1+1': '1+1',
         '2+1': '2+1',
+        '2+2': '2+2',
         '3+1': '3+1',
         '4+1 and more': '4+1 and more'
     },

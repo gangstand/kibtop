@@ -38,7 +38,7 @@ const CostField = ({placeholder='Full amount'}) => {
                 })}
                     type="text" 
                     placeholder={t(placeholder)} 
-                    className={"empty-field" + ((!!error && isTouched) ? ' field--error': '')} />
+                    className={"empty-field empty-field--small" + ((!!error && isTouched) ? ' field--error': '')} />
 
                 
                 <a onClick={onCurrencyClick} className="currency-input">{data.currency}</a>

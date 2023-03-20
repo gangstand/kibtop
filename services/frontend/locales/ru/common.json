@@ -12,6 +12,7 @@
     "Search product": "Поиск объявлений",
     "Filter": "Фильтр",
     "Add advert": "Объявление",
+    "All": "Все",
 
     "All categories": "Все категории",
     "Real estate": "Недвижимость",
@@ -246,7 +247,7 @@
     "Only title": "Только название",
     "Rent out": "Сдавать",
     "Sell": "Продать",
-    "Old": "Старое",
+    "Old": "Вторичное",
     "New": "Новое",
     "Describe the car in detail": "Опишите автомобиль в деталях",
     "Post your resume": "Опубликовать резюме",
@@ -278,7 +279,7 @@
     "Publishing": "Публикуем",
     "Salary": "Зарплата",
     "Add your phone number": "Добавьте ваш номер телефона",
-    "In order for customers to contact you, we need your phone number": "Для того чтобы клиенты могли связаться с вами, нам нужен ваш номер телефона",
+    "In order for customers to contact you, we need your phone number": "Для того чтобы клиенты могли связаться с вами через whatsapp, нам нужен ваш номер телефона",
     "Sell much faster and more profitably!": "Продавайте намного быстрее и выгоднее!",
     "purpose": "цель",
 
@@ -294,7 +295,31 @@
     "No such ads": "Нет похожих товаров",
     "Search results for": "Результаты поиска по",
     "Adverts": "Объявления",
-    "Subcategory": "Подкатегория"
+    "Subcategory": "Подкатегория",
+    "Buy": "Покупка",
+    "Rent": "Аренда",
+    "Price": "Цена",
+    "from": "от",
+    "to_": "до",
+    "Sorting": "Сортировка",
+    "Default": "По умолчанию",
+    "Cheaper": "Дешевые",
+    "Expensive": "Дорогие",
+    "for work": "Работа",
+    "for an employee": "Вакансии",
+    "Reset filter": "Сбросить фильтр",
+
+    "Service type": "Тип услуги",
+    "Shoes": "Обувь",
+    "Clothing": "Одежда",
+    "Domestic": "Хозяйство",
+    "Beauty": "Красота",
+    "Phones": "Телефоны",
+    "Computers": "Компьютеры",
+    "TV / Photo": "ТВ / Фото",
+    "Interior": "Интерьер",
+    "Sort": "Выборка",
+    "max length is 255 symbols": "максимум 255 символов"
 
 
 

@@ -4,14 +4,12 @@ import Text from "../../Elementes/Text/Text";
 import PageLink from "./PageLink";
 
 const PageNav = ({pages, maxPage}) => {
-    const {query: {page, category, search}, pathname} = useRouter()
+    const {query, pathname} = useRouter()
+    const {page, category, search} = query
 
     const currentPage = !!page ? +page : 0
     const nextPage = (currentPage+1 < maxPage) ? currentPage+1 : currentPage
 
-    
-    const link = pathname !== '/adverts'  ? `/adverts/${category}/${nextPage}/` 
-    : `/adverts/?page=${nextPage}${!!search ? `&search=${search}` : ''}${!!category ? `&category=${category}` : ''}`
    
     return (
         <>
@@ -22,7 +20,7 @@ const PageNav = ({pages, maxPage}) => {
 
                 {
                     currentPage+1 < maxPage && <>
-                        <Link href={link} className="profile-link next-page">
+                        <Link href={{pathname, query: {...query, page: nextPage}}} className="profile-link next-page">
                             <Text content={'Next'} />
 
                             <svg  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

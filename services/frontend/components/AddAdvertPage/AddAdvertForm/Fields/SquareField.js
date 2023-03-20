@@ -13,7 +13,7 @@ const SquareField = () => {
         <>
             <div className="advert-form__text-input">
                 <input {...register('square', {
-                    required: t('field is required'),
+                    required: false,
                     pattern: {
                         value: /^[0-9]+$/,
                         message: t('invalid format')
@@ -21,7 +21,7 @@ const SquareField = () => {
                 })}
                     type="text" 
                     placeholder={t('Square')} 
-                    className={"empty-field" + ((!!error && isTouched) ? ' field--error': '')} />
+                    className={"empty-field empty-field--small" + ((!!error && isTouched) ? ' field--error': '')} />
 
                 
                 <p className="currency-input currency-input--black"><Text content="m²" /></p>

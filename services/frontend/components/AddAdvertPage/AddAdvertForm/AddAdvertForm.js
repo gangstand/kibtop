@@ -19,10 +19,9 @@ const AddAdvertForm = ({formStep, onAddAdvertSubmit, category, switchFormStepToS
     
     const {categoryName, subCategory} = watch()
     useEffect(() => {
-        if(!category || !categoryName || !subCategory) switchFormStepToStart()
+        if(!category || !categoryName) switchFormStepToStart()
     }, [category, categoryName, subCategory])
 
-    
     return (
         <>
             <form className="advert-form">

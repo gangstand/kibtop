@@ -93,7 +93,7 @@ const AddAvto = () => {
                     <Text content="description" />
                 </label>
 
-                <div className="advert-form__files">
+                <div className="advert-form__files" style={{marginLeft: 0}}>
                     <DescriptionInput placeholderName={"car"} />
                 </div>
             </div>

@@ -15,6 +15,9 @@ from sections.serializer import (
     FreeFullUploadSerializer
 )
 from sections.utils import query_list_lang
+from sections.views.translators.translate_fields import translate_all_flexible_fields
+from sections.views.view_tools import get_base_fields_trans, get_category_trans
+from sections.views.views_base import get_price_list
 
 model_fashion = FreeFull.objects.filter(publisher=True)
 
@@ -74,74 +77,19 @@ class FreeFullAPIListCreate(generics.CreateAPIView):
         serializer_class = self.get_serializer_class()
         serializer = serializer_class(data=request_data, context={'request': request})
 
-        request_data_set = []
-        for lang in ['_ru', '_en', '_tr']:
-            request_data_set.append([s for s in filter(lambda x: lang in x, [i for i in request_data])])
+        price_list = get_price_list(request_data)
+        category_list = get_category_trans(request_data)
+        flexible_fields_list = translate_all_flexible_fields(request_data)
 
-        request_data_set = [x for x in request_data_set if x != []][0]
-        request_data_set_no_lang = [i[:-3] for i in request_data_set]
-        request_data = [request_data[i] for i in request_data_set]
-        lang = request_data_set[0][-2:]
+        model_args_list = {
+            **price_list,
+            **category_list,
+            **flexible_fields_list,
+        }
 
-        if lang == "tr":
-            lang_ru = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'ru', 'tr').result for i in request_data]
-            ))
-            lang_en = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'en', 'tr').result for i in request_data]
-            ))
-            print(lang_en, lang_ru)
-            if serializer.is_valid():
-                serializer.save(
-                    title_en=lang_en['title'],
-                    title_ru=lang_ru['title'],
-                    description_en=lang_en['description'],
-                    description_ru=lang_ru['description'],
-                    category_en=lang_en['category'],
-                    category_ru=lang_ru['category'],
-                )
-        elif lang == "en":
-            lang_ru = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'ru', 'en').result for i in request_data]
-            ))
-            lang_tr = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'tr', 'en').result for i in request_data]
-            ))
-            print(lang_tr, lang_ru)
-            if serializer.is_valid():
-                serializer.save(
-                    title_tr=lang_tr['title'],
-                    title_ru=lang_ru['title'],
-                    description_tr=lang_tr['description'],
-                    description_ru=lang_ru['description'],
-                    category_tr=lang_tr['category'],
-                    category_ru=lang_ru['category'],
-                )
-        elif lang == "ru":
-            lang_en = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'en', 'ru').result for i in request_data]
-            ))
-            lang_tr = dict(zip(
-                request_data_set_no_lang,
-                [Translator().translate(i, 'tr', 'ru').result for i in request_data]
-            ))
-            print(lang_tr, lang_en)
-            if serializer.is_valid():
-                serializer.save(
-                    title_tr=lang_tr['title'],
-                    title_en=lang_en['title'],
-                    description_tr=lang_tr['description'],
-                    description_en=lang_en['description'],
-                    category_tr=lang_tr['category'],
-                    category_en=lang_en['category'],
-                )
-        else:
-            return Response({'message': 'bad'})
+        if serializer.is_valid():
+            serializer.save(**model_args_list)
+
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 

@@ -255,7 +255,10 @@
     max-width: 500px;
     height: 45px;
 
-    overflow-x: scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-color: #00000000 #00000000;
+    scrollbar-width: thin;
 
     margin-left: 10px;
 }
@@ -330,8 +333,8 @@
 }
 
 .advert-nav__delete svg {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 
     margin-left: 10px;
 }
@@ -462,6 +465,8 @@
     font-size: 16px;
     line-height: 14px;
     color: #414042;
+
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {
@@ -509,6 +514,12 @@
     background: #F6F6F6;
 }
 
+@media (max-width: 600px) {
+    .empty-field {
+        padding-left: 13px;
+    }
+}
+
 .empty-field--full {
     width: 340px;
 }
@@ -541,6 +552,8 @@
     color: #65A4FE;
 
     margin-left: 20px;
+
+    min-width: 36px;
 }
 
 .currency-input--black {
@@ -550,6 +563,9 @@
 .search--address {
     width: 340px;
     max-width: 340px;
+
+    padding: 0;
+    padding-left: 10px;
 }
 
 @media (max-width: 640px) {
@@ -641,6 +657,12 @@
     flex-wrap: wrap;
 
     max-width: 740px;
+}
+
+@media (max-width: 600px) {
+    .advert-form__files {
+        margin-left: 10px;
+    }
 }
 
 .upload {
@@ -760,12 +782,12 @@
 
 .desc-field {
     width: 340px;
-    height: 196px;
+    /* height: 196px; */
     display: block;
     box-sizing: border-box;
     resize: none;
 
-    border: none;
+    border: 2px solid transparent;
     border-radius: 20px;
     padding: 11px 15px;
 
@@ -780,7 +802,7 @@
 @media (max-width: 600px) {
     .desc-field {
         width: 100%;
-        height: 161px;
+        /* height: 161px; */
     }
 
     .advert-form__text-input {
@@ -1134,7 +1156,7 @@
 @media (min-width: 600px) {
     .modal-phone {
         width: 95vw;
-        height: 360px;
+        height: 380px;
 
         align-items: flex-start;
         padding-top: 60px;
@@ -1166,6 +1188,19 @@
     justify-content: space-between;
 }
 
+@media (max-width: 600px) {
+    .submit-row {
+        flex-direction: column-reverse;
+    }
+
+    .submit-row .warn {
+        margin-bottom: 5px;
+        margin-left: 5px;
+    }
+}
+
+
+
 .modal-title {
     max-width: 75%;
 
@@ -1192,8 +1227,10 @@
 
 @media (min-width: 800px){
     .modal-screen--phone {
-        left: calc(50vw - 600px / 2);
-        bottom: calc(50vh - 300px / 2);
+        left: 50vw;
+        bottom: 50vh;
+
+        transform: translate(-50%, 50%);
     }
 }
 
@@ -1343,4 +1380,79 @@
 
 .address-select__option--brand {
     margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .desktop {
+        display: none !important;
+    }
+}
+
+@media (min-width: 600px) {
+    .mobile {
+        display: none !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .empty-field--small {
+        max-width: 200px;
+    }
+}
+
+
+.code-option {
+    display: flex;
+}
+
+.code-option img {
+    height: 20px;
+    width: 30px;
+
+    margin-right: 15px;
+}
+
+.code-option {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: left;
+
+    margin-bottom: 10px;
+}
+
+.phone-codes-list {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.phone-code {
+    width: 28px !important;
+    background-color: transparent !important;
+
+    margin-left: 0 !important;
+
+
+    box-sizing: border-box;
+
+    
+}  
+
+.tel-svg {
+    min-width: 30px;
+    width: 30px;
+}
+
+.code-back {
+    background-color: #ffffffaa !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+
+    height: 90% !important;
+    padding: 0 5px;
+
 }

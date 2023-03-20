@@ -14,6 +14,7 @@ const CategoryNameInput = ({value, text, category}) => {
         setValue('categoryName', value, {shouldTouch: true, shouldValidate: true})
         setCategoryForm(category)
         switchFormStep(2)
+
     }
 
     return (
