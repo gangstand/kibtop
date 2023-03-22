@@ -72,56 +72,66 @@ class JoinAndLeave(WebsocketConsumer):
         return super().send(text_data, bytes_data, close)
 
 
-class GroupConsumer(AsyncWebsocketConsumer):
-    async def connect(self):
-        self.group_uuid = str(self.scope["url_route"]["kwargs"]["uuid"])
-        self.group = await database_sync_to_async(Group.objects.get)(uuid=self.group_uuid)
-        await self.channel_layer.group_add(
-            self.group_uuid, self.channel_name
+class GroupConsumer(WebsocketConsumer):
+    def connect(self):
+        # print(self.scope['user'])
+        self.user_id = str(self.scope["url_route"]["kwargs"]["user_id"])
+        print(self.user_id)
+
+        self.group = 'chat'
+
+        async_to_sync(self.channel_layer.group_add)(
+            'chat', self.channel_name
         )
-        self.user = self.scope["user"]
 
-        await self.accept()
 
-    async def receive(self, text_data=None, bytes_data=None):
-        text_data = json.loads(text_data)
-        type = text_data.get("type", None)
-        message = text_data.get("message", None)
+        # self.user = self.scope["user"]
 
-        author = text_data.get("author", None)
-        if type == "text_message":
-            user = await database_sync_to_async(CustomUser.objects.get)(username=author)
-            message = await database_sync_to_async(Message.objects.create)(
-                author=user,
-                content=message,
-                group=self.group
-            )
 
-            await self.channel_layer.group_send(self.group_uuid, {
-                "type": "text_message",
-                "message": str(message),
-                "author": author
-            })
+        self.accept()
 
-    async def text_message(self, event):
+    def receive(self, text_data=None, bytes_data=None):
+        pass
+        # print(self.groups)
+        # text_data = json.loads(text_data)
+        # print(text_data, 'это то')
+        #
+        # type = text_data.get("type", None)
+        # message = text_data.get("message", None)
+        #
+        # author = text_data.get("author", None)
+        # print(self.channel_name)
+        # async_to_sync(self.channel_layer.group_send)('chat', {
+        #     "type": "new_message",
+        #     "message": message,
+        # })
+        # if type == "text_message":
+        #     pass
+            # user = CustomUser.objects.get(username=author)
+            # message = Message.objects.create(
+            #     author=user,
+            #     content=message,
+            #     group='bceb623a-468b-40a4-aceb-58a4425be646'
+            # )
+
+
+    def new_message(self, event):
         message = event["message"]
-        author = event.get("author")
-        print(event, "jjjj")
 
         returned_data = {
-            "type": "text_message",
-            "message": message,
-            "group_uuid": self.group_uuid
+            "type": "new_message",
+            "group_uuid": message,
+
         }
-        await self.send(json.dumps(
+        self.send(json.dumps(
             returned_data
         ))
 
-    async def event_message(self, event):
+    def event_message(self, event):
         message = event.get("message")
         user = event.get("user", None)
 
-        await self.send(
+        self.send(
             json.dumps(
                 {
                     "type": "event_message",
@@ -132,5 +142,5 @@ class GroupConsumer(AsyncWebsocketConsumer):
             )
         )
 
-    async def disconnect(self, code):
-        await self.channel_layer.group_discard("chat", self.channel_name)
+    def disconnect(self, code):
+        self.channel_layer.group_discard("chat", self.channel_name)

@@ -17,7 +17,7 @@ class Group(models.Model):
     '''
     uuid = models.UUIDField(default=uuid4, editable=False)
     name = models.CharField(max_length=30)
-    members = models.ManyToManyField(User)
+    members = models.ManyToManyField(User, related_name="users")
 
     def __str__(self) -> str:
         return f"Group {self.name}-{self.uuid}"
@@ -43,8 +43,9 @@ class Message(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
     file = models.FileField(upload_to='', null=True, blank=False)
+    is_read = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         date = self.timestamp.date()
@@ -64,7 +65,7 @@ class Event(models.Model):
     description = models.CharField(help_text="A description of the event that occured", max_length=50, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
 
     def save(self, *args, **kwargs):
         self.description = f"{self.user} {self.type} the {self.group.name} group"

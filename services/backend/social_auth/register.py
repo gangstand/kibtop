@@ -28,7 +28,9 @@ def register_social_user(provider, user_id, email, name, last_name):
 
         if provider == filtered_user_by_email[0].auth_provider:
             payload = {'username': name, 'password': env('SOCIAL_SECRET')}
+
             response = requests.post(f'{env("URL")}/v1/auth/jwt/create', data=payload).json()
+
             return {"refresh": response['refresh'], "access": response['access']}
         else:
             raise AuthenticationFailed(
@@ -44,7 +46,7 @@ def register_social_user(provider, user_id, email, name, last_name):
         }
         user = CustomUser.objects.create_user_activate(**user)
         user.save()
-
         payload = {'username': name, 'password': env('SOCIAL_SECRET')}
         response = requests.post(f'{env("URL")}/api/v1/auth/jwt/create', data=payload).json()
+
         return {"refresh": response['refresh'], "access": response['access']}

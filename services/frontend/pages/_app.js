@@ -14,7 +14,7 @@ import '../styles/favorites.css'
 import '../styles/detail.css'
 import '../styles/add_advert.css'
 import '../styles/category.css'
-
+import '../styles/chat.css'
 
 
 

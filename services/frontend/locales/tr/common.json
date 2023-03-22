@@ -320,6 +320,23 @@
     "TV / Photo": "TV / Fotoğraf",
     "Interior": "İç",
     "Sort": "Çeşit",
-    "max length is 255 symbols": "maksimum uzunluk 255 semboldür"
+    "max length is 255 symbols": "maksimum uzunluk 255 semboldür",
+
+    "Chats": "Sohbetler",
+    "Message search": "Mesajların aranması",
+    "Write to the seller": "Satıcıya yaz",
+    "Clear palace message":"Bir ürünü satın almak için işlemin fiyatını ve yerini belirterek satıcıya yazın",
+
+    "Beware of scammers!": "Dolandırıcılara dikkat!",
+    "Only real support support has a blue check mark": "Yalnızca gerçek destek desteğinin mavi onay işareti vardır",
+
+    "Accept": "Kabul etmek",
+    "Reject": "Reddetmek",
+    "The seller claims to have sold the product to you": "Satıcı ürünü size sattığını iddia ediyor",
+
+    "Support": "Destek",
+
+    "Video": "Video",
+    "Photo": "Fotoğraf"
 }
 

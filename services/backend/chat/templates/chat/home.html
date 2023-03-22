@@ -74,8 +74,10 @@ websocket.onopen = function(event){
 }
 
 websocket.onmessage = function(event){
+    console.log(event)
     /*Called when the websocket server send a message to the client websocket*/
     message = JSON.parse(event.data)
+    console.log(message)
     type = data.type
     data = message.data
     switch(type){

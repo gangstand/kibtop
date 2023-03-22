@@ -5,11 +5,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
+from .filters import FilterMessageAPIList, FilterGroup
 from .models import Group, Message, Event
 from django.contrib.auth.decorators import login_required
 
 from .serializer import GroupSerializer, MessageSerializer, EventSerializer
 from .utils import get_online_user
+from rest_framework import filters
 
 
 def HomeView(request):
@@ -50,23 +52,22 @@ def GroupChatView(request, uuid):
         "active_members": active_members
     }
 
-    print(context)
 
     return render(request, template_name="chat/groupchat.html", context=context)
+
 
 
 class GroupAPIList(generics.ListCreateAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    filter_backends = (DjangoFilterBackend, )
+    filterset_class = FilterGroup
 
+    # def get(self, request, *args, **kwargs):
+    #     query_params = request.GET
+    #     query = request
+    #     groups = Group.objects.filter()
 
-class FilterMessageAPIList(django_filters.FilterSet):
-    group = django_filters.NumberFilter()
-    author = django_filters.NumberFilter()
-
-    class Meta:
-        model = Message
-        fields = ['group', 'author']
 
 
 class MessageAPIList(generics.ListCreateAPIView):
@@ -75,9 +76,13 @@ class MessageAPIList(generics.ListCreateAPIView):
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
 
+    def get(self, request, *args, **kwargs):
+        print(self.get(request, *args, **kwargs))
+
+
 
 class MessageAPIUpdate(generics.UpdateAPIView):
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend)
     filterset_class = FilterMessageAPIList
     queryset = Message.objects.all()
     serializer_class = MessageSerializer

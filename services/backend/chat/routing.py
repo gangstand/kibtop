@@ -3,6 +3,6 @@ from django.urls import re_path,path
 from . import consumers
 
 websocket_urlpatterns = [
-    path('', consumers.JoinAndLeave.as_asgi()),
-    path('groups/<uuid:uuid>/',consumers.GroupConsumer.as_asgi())
+    path('<int:user_id>', consumers.GroupConsumer.as_asgi()),
+    path('', consumers.JoinAndLeave.as_asgi())
 ]

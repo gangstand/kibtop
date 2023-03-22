@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'accounts.apps.AccountsConfig',
     'sections.apps.SectionsConfig',
-    'seo.apps.SeoConfig'
+    'seo.apps.SeoConfig',
     'chat.apps.ChatConfig',
 ]
 

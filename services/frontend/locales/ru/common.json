@@ -319,7 +319,25 @@
     "TV / Photo": "ТВ / Фото",
     "Interior": "Интерьер",
     "Sort": "Выборка",
-    "max length is 255 symbols": "максимум 255 символов"
+    "max length is 255 symbols": "максимум 255 символов",
+
+
+    "Chats": "Чаты",
+    "Message search": "Поиск сообщений",
+    "Write to the seller": "Написать продавцу",
+    "Clear palace message":"Чтобы купить товар, напишите продавцу, указав цену и место совершения сделки",
+
+    "Beware of scammers!": "Остерегайтесь мошенников!",
+    "Only real support support has a blue check mark": "Только реальная служба поддержки имеет синюю галочку",
+
+    "Accept": "Принять",
+    "Reject": "Отклонить",
+    "The seller claims to have sold the product to you": "Продавец утверждает, что продал вам товар",
+
+    "Support": "Поддержка",
+
+    "Video": "Видео",
+    "Photo": "Фото"
 
 
 

@@ -16,6 +16,8 @@ import { AddAdvertReducer } from "./slices/AddAdvertSlice";
 import { CategoryReducer } from "./slices/CategorySlice";
 import { SearchReducer } from "./slices/SearchSlice";
 import { FilterReducer } from "./slices/FilterSlice";
+import { messageReduser } from "./slices/MessagesSlice";
+import { CurrentDialogReducer } from "./slices/CurrentDialogSlice";
 
 const reducer = {
     auth: authReducer,
@@ -34,6 +36,8 @@ const reducer = {
     category: CategoryReducer,
     search: SearchReducer,
     filter: FilterReducer,
+    messages: messageReduser,
+    CurrentDialog: CurrentDialogReducer,
     [HomePageApi.reducerPath]: HomePageApi.reducer
 }
 

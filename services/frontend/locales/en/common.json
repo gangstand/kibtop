@@ -315,6 +315,25 @@
     "TV / Photo": "TV / Photo",
     "Interior": "Interior",
     "Sort": "Sort",
-    "max length is 255 symbols": "max length is 255 symbols"
+    "max length is 255 symbols": "max length is 255 symbols",
+
+
+    "Chats": "Chats",
+    "Message search": "Message search",
+    "Write to the seller": "Write to the seller",
+    "Clear palace message":"To buy a product, write to the seller, specifying the price and place of the transaction",
+
+    "Beware of scammers!": "Beware of scammers!",
+    "Only real support support has a blue check mark": "Only real support support has a blue check mark",
+
+    "Accept": "Accept",
+    "Reject": "Reject",
+    "The seller claims to have sold the product to you": "The seller claims to have sold the product to you",
+
+    "Support": "Support",
+
+    "Video": "Video",
+    "Photo": "Photo"
+
     
 }
