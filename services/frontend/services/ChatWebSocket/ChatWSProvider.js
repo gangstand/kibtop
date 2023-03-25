@@ -52,7 +52,7 @@ let ws
 const createConnection = () => {
     if(!!ws) cleanup(ws)
 
-    ws = new WebSocket(`ws://${API_DOMAIN}/?token=${Cookies.getCookies('access')}`)
+    ws = new WebSocket(`ws://${API_DOMAIN}/ws/?token=${Cookies.getCookies('access')}`)
 
     ws.addEventListener('open', openHandler)
     ws.addEventListener('message', messageHandler)
