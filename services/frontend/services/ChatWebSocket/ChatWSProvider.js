@@ -4,6 +4,7 @@ import { createContext } from "react";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { ChatApi } from "../ChatApi";
+import { API_DOMAIN } from "../Instance";
 import { QUERY_CONNECTED_USERS, QUERY_DIALOGS } from "../QueryClient/ChatQueries";
 import { queryClient } from "../QueryClient/QueryClient";
 import { Cookies } from "../tools/CookieController";

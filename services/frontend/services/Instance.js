@@ -3,7 +3,7 @@ import { AuthApi } from "./AuthApi";
 import { Cookies } from "./tools/CookieController";
 import { getServerSideUser } from "./tools/getServerSideUser/getServerSideUser";
 
-export const API_DOMAIN = process.env.NEX_PUBLIC_API_DOMAIN
+export const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN
 
 export const BASE_URL = `http://${API_DOMAIN}`
 
