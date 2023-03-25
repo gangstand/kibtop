@@ -1200,6 +1200,8 @@
     position: fixed;
     left: 0;
     bottom: 13px;
+
+    z-index: 1;
 }
 
 @media (min-width: 600px) {

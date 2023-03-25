@@ -3,43 +3,30 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useLanguage } from "../../../../locales/hooks/useLanguage";
 import VerifiedAccFlag from "../../ChatComponents/ChatStatuses/VerifiedAccFlag";
+import CurrentDialogContainer from "../Dialogs/CurrentDialogContainer";
+import AdvertisementComponent from "./AdvertisementComponent";
 import HeaderButton from "./_HeaderComponents/HeaderButton";
 import LogoComponent from "./_HeaderComponents/LogoComponent";
 import UsernameComponent from "./_HeaderComponents/UsernameComponent";
 
-function ChatHeader({ seller }) {
-    const router = useRouter();
-    const {t} = useLanguage();
+function ChatHeader({talk, connectedUsers }) {
 
-    const [windowSize, setWindowSize] = useState(0);
-
-    if (typeof window !== 'undefined') {
-        window.addEventListener('resize', function() {
-            setWindowSize(window.innerWidth);
-        });
-    }
-
-    if (windowSize >= 800) {
-        return (
-            <div className="dialog-header">
-                <LogoComponent photo={seller.photo}/>
-
-                <UsernameComponent username={seller.username} isVerified={seller.isVrified} online={seller.online}/>
-            
-                <HeaderButton condition={true} sellerId={seller.id} />
-            </div>
-            );}
-
+    const seller = talk || {}
     return (
-        <div className="dialog-header">
-                <HeaderButton condition={false} sellerId={seller.id} />
+            <div className="dialog-header">
+                <LogoComponent photo={seller.avatar}/>
 
-                <UsernameComponent username={seller.username} isVerified={seller.isVrified} online={seller.online}/>
+                <UsernameComponent username={seller.name} isVerified={seller.isVerified} online={connectedUsers?.includes(seller.userId)}/>
+            
+                <HeaderButton condition={true} sellerId={seller.userId} />
 
-                <LogoComponent photo={seller.photo}/>
-        
-        </div>
-        );
+
+                <CurrentDialogContainer>
+                    <AdvertisementComponent />
+                </CurrentDialogContainer>
+            </div>
+            );
+
 }
 
 export default ChatHeader;

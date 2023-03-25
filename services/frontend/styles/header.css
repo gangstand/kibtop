@@ -809,6 +809,9 @@
     height: 54px;
     border-radius: 50%;
 
+    object-fit: cover;
+    object-position: center;
+
     background-color: var(--color-blue);
 }
 

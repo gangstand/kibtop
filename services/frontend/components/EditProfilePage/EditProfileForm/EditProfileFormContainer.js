@@ -20,8 +20,9 @@ const EditProfileFormContainer = ({user}) => {
 
     const onEditProfileSubmit = data => {
         
-        const {email, name, city, file} = data
-        dispatch(editUserDataThunk({email, name, city, avatar: file[0]}))
+        const {email, name, city, file, phoneNumber, phoneCode} = data
+        const phone = `+${phoneCode}${phoneNumber}`
+        dispatch(editUserDataThunk({email, name, city, avatar: file[0], phone}))
     }
 
     const userData = user || { email, name, city, avatar }

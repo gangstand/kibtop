@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import MessageAPIList, GroupAPIList, MessageAPIUpdate, HomeView, GroupChatView
+from .views import MessageAPIList, GroupAPIList, MessageAPIUpdate, HomeView, GroupChatView, get_my_connected_users, \
+    GroupDetailView, GroupAPICreate
 
 from django.contrib.auth import views as auth_views
 
@@ -9,5 +10,8 @@ urlpatterns = [
 
     path('messages/', MessageAPIList.as_view()),
     path('messages/<int:pk>/', MessageAPIUpdate.as_view()),
-    path('group/', GroupAPIList.as_view())
+    path('group/', GroupAPIList.as_view()),
+    path('group/create/', GroupAPICreate.as_view()),
+    path('group/<int:pk>/', GroupDetailView.as_view()),
+    path('connected/', get_my_connected_users)
 ]

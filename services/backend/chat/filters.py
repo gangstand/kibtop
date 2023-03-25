@@ -17,4 +17,4 @@ class FilterGroup(django_filters.FilterSet):
 
     class Meta:
         model = Group
-        fields = ('user',)
+        fields = ('user', 'members')

@@ -1,12 +1,8 @@
 import React from "react"
 import { useSelector } from "react-redux"
+import { addPropsToReactElement } from "../../../Utils/Utils"
 
-const addPropsToReactElement = (element, props) => {
-    if (React.isValidElement(element)) {
-      return React.cloneElement(element, props)
-    }
-    return element
-  }
+
 
 const AdvertsPropertyContainer = ({children, serverAdvert}) => {
     const storeAdvert = useSelector(state => state.advert)

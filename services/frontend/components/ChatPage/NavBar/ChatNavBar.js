@@ -4,16 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import ChatSearch from "../ChatComponents/ChatInputs/ChatSearch";
 import NavBarDialogComponent from "./NavBarDialogComponent";
 
-const ChatNavBar = () => {
-    const messages = useSelector(state => state.messages.messages);
-    
+const ChatNavBar = ({extraClass, data}) => {
     return (
-        <div className="chat-navbar">
+        <div className={`chat-navbar ${extraClass}`}>
             <ChatSearch />
+                <div className="chat-container">
+                        {data?.map((chat, index) => (<NavBarDialogComponent key={index} {...chat} />))}
+
+                </div>
             
-            <div className="chat-container">
-                {messages.map((message, index) => (<NavBarDialogComponent key={index} message={message} />))}
-            </div>
             
         </div>
 );

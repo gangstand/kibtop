@@ -8,29 +8,23 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "../../locales/hooks/useLanguage";
 import { useRouter } from "next/router";
 import { BASE_URL } from "../../services/Instance";
+import { Cookies } from "../../services/tools/CookieController";
+import ChatNavBar from "./NavBar/ChatNavBar";
+import ActiveDialog from "./ActiveDialog/ActiveDialog";
+import VoidDialog from "./ActiveDialog/Dialogs/VoidDialog";
+import ModileChatsNav from "./ModileChatsNav/ModileChatsNav";
+import ChatNavBarContainer from "./NavBar/ChatNavBarContainer";
 
 
 const Chat = ({categoryAdverts, pages}) => {
     const {t} = useLanguage();
     const router = useRouter();    
 
-    const [windowSize, setWindowSize] = useState();
-
-    if (typeof window !== 'undefined') {
-        window.addEventListener('resize', function() {
-            setWindowSize(window.innerWidth);
-        });
-    }
-
-    useEffect(()=>{
-        setWindowSize(window.innerWidth);
-        
-    }, [])
 
     try {
-        const socket = new WebSocket(`ws://127.0.0.1:8000/1`)
-        socket.onopen = (e) => console.log('прив');
-        socket.onmessage = (e) => console.log(e);
+        // const socket = new WebSocket(`ws://127.0.0.1:8000/?token=${Cookies.getCookies('access')}`)
+        // socket.onopen = (e) => console.log('прив');
+        // socket.onmessage = (e) => console.log(e);
     } catch(e) {
         console.log(e);
     }
@@ -40,24 +34,31 @@ const Chat = ({categoryAdverts, pages}) => {
 
     return (
         <>
-            { router.pathname==="/chat/[id]" && windowSize < 801 ? 
-            <>
+            <div className="chat-desktop-elem">
+                <Header />
+                <HeaderService />
                 <div className="main">
-                    <DialogPlace />
+                    <SubTitle />
+                
+                    <div className="container chat-place center-void">
+                        <ChatNavBarContainer>
+                            <ChatNavBar />
+                        </ChatNavBarContainer>
+
+                        <div className="place-chat void">
+                            <VoidDialog />
+                        </div>
+                        
+                    </div>
                 </div>
-            </> 
-            :
-            <>
-            <Header />
-            <HeaderService />
-            <div className="main">
-                <SubTitle />
-            
-                <DialogPlace />
             </div>
-            </> 
-            }
-        </>
+            <ChatNavBarContainer>
+                <ModileChatsNav />
+            </ChatNavBarContainer>
+            
+        </> 
+            
+        
     );
 }
 

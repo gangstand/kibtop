@@ -93,9 +93,9 @@ export const setProfileDataThunk = () => async dispatch => {
     dispatch(setProfileData({...user}))
 }
 
-export const editUserDataThunk = ({email, name, city, avatar}) => async dispatch => {
+export const editUserDataThunk = ({email, name, city, avatar, phone}) => async dispatch => {
     dispatch(setProfileEditingLoading(true))
-    await ProfileApi.editUserData(email, name, city, avatar)
+    await ProfileApi.editUserData(email, name, city, avatar, phone)
         .then(() => {
             dispatch(setProfileChangeResendEmail(email))
             dispatch(setProfileEditingSuccess(true))

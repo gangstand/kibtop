@@ -6,7 +6,8 @@ const AddPhoneFormContainer = () => {
     const {isPhoneLoading, isPhoneSuccess} = useSelector(state => state.addAdvert)
     const dispatch = useDispatch()
     const onPhoneSubmit = data => {
-        const {phone} = data
+        const {phoneNumber, phoneCode} = data
+        const phone = `+${phoneCode}${phoneNumber}`
         dispatch(addUserPhoneThunk(phone))
     }
     return <AddPhoneForm {...{onPhoneSubmit, isLoading: isPhoneLoading}} />;

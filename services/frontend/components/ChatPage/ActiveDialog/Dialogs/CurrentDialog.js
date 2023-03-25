@@ -9,48 +9,24 @@ import AdvertisementComponent from "../ActiveDialogComponents/AdvertisementCompo
 import { append, set } from '../../../../store/slices/CurrentDialogSlice';
 import MessagePlace from "../ActiveDialogComponents/MessagePlace";
 import { useRouter } from "next/router";
-import MediaModal from "../../ChatComponents/MediaModal";
+import MediaModal from "../../ChatComponents/MediaModal/MediaModal";
+import CurrentDialogContainer from "./CurrentDialogContainer";
 
-const CurrentDialog = ({mediaModalActivity, setMediaModalActivity}) => {
-    const {t} = useLanguage();
-    const dispatch = useDispatch();
-    const messages = useSelector(state => state.CurrentDialog.messages)
-    const router = useRouter();
+const CurrentDialog = () => {
+ 
 
-    // const [dialogMessages, setDialogMessages] = useState([])
-    const [seller, setSeller] = useState({
-        id: 'seller_id',
-        username: 'penis',
-        isVerified: false, 
-        online: true,
-        photo: 'https://s0.rbk.ru/v6_top_pics/media/img/5/00/756703327882005.jpg',
-    })
-    const [product, setProduct] = useState({
-        title: 'some product',
-        img: 'https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png',
-        userId: 'userId',
-        category: 'reality',
-        advertId: 'laksdj9u2etgn',
-        cost: 1000-7,
-        currency: '₤',
-    })
-
-
-
-    useEffect(()=>{
-        let mes = fetchDialogByChatId('ebat` kakoy id');
-        dispatch(set(mes));
-    }, []);
-    
+  
     return (
         <>
-            <ChatHeader seller={seller} />
-
-            <AdvertisementComponent seller={seller} product={product} />
+            <CurrentDialogContainer>
+                <ChatHeader />
+            </CurrentDialogContainer>
         
-            <MessagePlace messages={messages}/>
+            <CurrentDialogContainer>
+                <MessagePlace />
+            </CurrentDialogContainer>
             
-            <ChatInput mediaModalActivity={mediaModalActivity} setMediaModalActivity={setMediaModalActivity} />
+            <ChatInput  />
         </>
     );
 }

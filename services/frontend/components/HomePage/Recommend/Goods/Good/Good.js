@@ -16,7 +16,7 @@ const Good = ({id, img, title, cost, currency, address, date, category}) => {
                 <div className="goods__article">
                     <div>
                         <h5 className="goods__title">{title}</h5>
-                        <h5 className="goods__cost">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</h5>
+                        <h5 className="goods__cost">{cur.currency}{cur.countCurrencyPrice(cost, currency)}</h5>
 
                         <div className="goods__litle-info goods__litle-info--mobile">
                             <p className="goods__text">{address}</p>
@@ -31,7 +31,7 @@ const Good = ({id, img, title, cost, currency, address, date, category}) => {
                         
                     </div>
 
-                    <h5 className="goods__cost goods__cost--mobile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</h5>
+                    <h5 className="goods__cost goods__cost--mobile">{cur.currency}{cur.countCurrencyPrice(cost, currency)}</h5>
                 </div>
 
                 <LikeButtonContainer className={'like-btn like-btn--mobile'} {...{id, category}} />

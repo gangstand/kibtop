@@ -618,6 +618,9 @@
     margin-right: 9px;
 
     background-color: var(--color-blue);
+
+    object-fit: cover;
+    object-position: center;
 }
 
 .user__data {

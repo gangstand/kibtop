@@ -27,7 +27,7 @@ const ArchiveAdvert = ({advertId, category, index, title, cost, currency, addres
                     <div className="advert__column advert__column--right">
                          <DeleteAdvertButtonContainer {...{category, id: advertId, index}} />
 
-                        <p className="advert-cost advert-cost--mob advert-cost--profile">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
+                        <p className="advert-cost advert-cost--mob advert-cost--profile">{cur.currency}{cur.countCurrencyPrice(cost, currency)}</p>
 
                         <div className="advert__info advert__info--desk">
                             <p className="info-text">{address}</p>

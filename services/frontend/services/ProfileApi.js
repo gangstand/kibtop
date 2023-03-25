@@ -15,17 +15,19 @@ export const ProfileApi = {
             })
     },
 
-    async editUserData (email, name, city, avatar) {
+    async editUserData (email, name, city, avatar, phone) {
         const formData = !!avatar ? FormDataCreator({
             "first_name": name,
             "email": email,
             "addres": city || '',
-            "upload_user": avatar || ''
+            "upload_user": avatar || '',
+            "phone": phone
         }) : {
             "first_name": name,
             "email": email,
             "addres": city || '',
-            "upload_user": undefined
+            "upload_user": undefined,
+            "phone": phone
         }
 
         return await instance.put('auth/users/me/', formData, {

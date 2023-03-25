@@ -29,7 +29,7 @@ const UserAdevrt = ({advertId, title, cost, currency, address, img, date, catego
                     <div className="advert__column advert__column--right">
                         <LikeButtonContainer {...{id: advertId, category}} /> 
 
-                        <p className="advert-cost advert-cost--mob">{cur.currency} {cur.countCurrencyPrice(cost, currency)}</p>
+                        <p className="advert-cost advert-cost--mob">{cur.currency}{cur.countCurrencyPrice(cost, currency)}</p>
 
                         <div className="advert__info advert__info--desk">
                             <p className="info-text">{address}</p>

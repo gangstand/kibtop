@@ -1,5 +1,6 @@
 import { instance } from "./Instance"
 import { serializeAdvertDatails, serializeCategory } from "./tools/serializers/AdvertsSerializers";
+import { serializeChatData } from "./tools/serializers/ChatSerializers";
 import { serializeUserData } from "./tools/serializers/UserSerializers";
 
 export const AdvertApi = {
@@ -24,5 +25,18 @@ export const AdvertApi = {
                 
                 return serializeCategory(data.results, lang, category).slice(0, 8)
             }).catch(err => null)
+    },
+
+    async createNewDialogByAdvert({advertId, category, userId, sellerId, redirect}) {
+        return await instance.post('chat/group/create/', {
+            members: [userId, sellerId],
+            category_key: category,
+            advert_id: advertId
+        }).then(({data}) => {
+            const chat = serializeChatData(data)
+
+            redirect(chat.chatId)
+            return chat
+        }).catch(e => console.log(e))
     }
 }

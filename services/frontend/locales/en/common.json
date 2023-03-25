@@ -162,23 +162,23 @@
 
     "Apartment": "Apartment",
     "House": "House",
-    "land": "land",
+    "land": "Land",
     "Other": "Other",
     "Cars": "Cars",
     "Other technique": "Other technique",
-    "Retail/sales/purchasing": "Retail/sales/purchasing",
-    "Retail / sales / purchasing": "Retail / sales / purchasing",
+    "Retail/sales/purchasing": "Retail / Sales / Purchasing",
+    "Retail / sales / purchasing": "Retail / Sales / Purchasing",
     "Logistics / Warehouse / Delivery": "Logistics / Warehouse / Delivery",
-    "Construction / finishing works": "Construction / finishing works",
+    "Construction / finishing works": "Construction / Finishing works",
     "Administrative staff / HR / Secretariat": "Administrative staff / HR / Secretariat",
-    "Security/security": "Security/security",
+    "Security/security": "Security",
     "Cleaning / Home staff": "Cleaning / Home staff",
     "Beauty / Fitness / Sports": "Beauty / Fitness / Sports",
-    "Education/translation": "Education/translation",
+    "Education/translation": "Education / Translation",
     "Culture / Arts / Entertainment": "Culture / Arts / Entertainment",
     "Medicine / Pharmacy": "Medicine / Pharmacy",
-    "IT / computers": "IT / computers",
-    "Banking /  Finance / Insurance / Jurisprudence": "Banking /  Finance / Insurance / Jurisprudence",
+    "IT / computers": "IT / Computers",
+    "Banking /  Finance / Insurance / Jurisprudence": "Banking / Finance / Insurance / Jurisprudence",
     "Advertising / Design / PR": "Advertising / Design / PR",
     "Production / Working specialties": "Production / Working specialties",
     "Work abroad": "Work abroad",
@@ -333,7 +333,10 @@
     "Support": "Support",
 
     "Video": "Video",
-    "Photo": "Photo"
+    "Photo": "Photo",
+    "Go to the ad": "Go to the ad",
+    "Write a message": "Write a message",
+    "Your phone": "Your phone"
 
     
 }

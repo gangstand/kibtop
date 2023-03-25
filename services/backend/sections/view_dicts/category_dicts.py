@@ -81,16 +81,16 @@ sub_category_lang_dict = {
         'en': {
             'Retail | Sales | Procurement': 'Retail | Sales | Procurement',
             'Logistics | Warehouse | Delivery': 'Logistics | Warehouse | Delivery',
-            'Construction | finishing works': 'Construction | finishing works',
+            'Construction | finishing works': 'Construction | Finishing works',
             'Administrative staff | HR | Secretariat': 'Administrative staff | HR | Secretariat',
-            'Security | security': 'Security | security',
+            'Security | security': 'Security',
             'Cleaning | Home staff': 'Cleaning | Home staff',
 
             'Beauty | Fitness | Sports': 'Beauty | Fitness | Sports',
-            'Education | translation': 'Education | translation',
+            'Education | translation': 'Education | Translation',
             'Culture | Arts | Entertainment': 'Culture | Arts | Entertainment',
             'Medicine | Pharmacy': 'Medicine | Pharmacy',
-            'IT | computers': 'IT | computers',
+            'IT | computers': 'IT | Computers',
             'Banking | Finance | Insurance | Jurisprudence': 'Banking | Finance | Insurance | Jurisprudence',
             'Real estate': 'Real estate',
             'Advertising | Design | PR': 'Advertising | Design | PR',
@@ -106,16 +106,16 @@ sub_category_lang_dict = {
         'ru': {
             'Retail | Sales | Procurement': 'Розничная торговля | Продажи | Приобретение',
             'Logistics | Warehouse | Delivery': 'Логистика | Склад | Доставка',
-            'Construction | finishing works': 'Строительство | отделочные работы',
+            'Construction | finishing works': 'Строительство | Отделочные работы',
             'Administrative staff | HR | Secretariat': 'Административный персонал | HR | Секретариат',
-            'Security | security': 'Безопасность | безопасность',
+            'Security | security': 'Безопасность',
             'Cleaning | Home staff': 'Уборка | Домашний персонал',
 
             'Beauty | Fitness | Sports': 'Красота | Фитнес | Спорт',
-            'Education | translation': 'Образование | перевод',
+            'Education | translation': 'Образование | Перевод',
             'Culture | Arts | Entertainment': 'Культура | Искусство | Развлечения',
             'Medicine | Pharmacy': 'Медицина | Аптека',
-            'IT | computers': 'IT | компьютеры',
+            'IT | computers': 'IT | Компьютеры',
             'Banking | Finance | Insurance | Jurisprudence': 'Банковское дело | Финансы | Страхование | Юриспруденция',
             'Real estate': 'Недвижимость',
             'Advertising | Design | PR': 'Реклама | Дизайн | Пиар',
@@ -132,14 +132,14 @@ sub_category_lang_dict = {
             'Logistics | Warehouse | Delivery': 'Lojistik | Depo | Teslimat',
             'Construction | finishing works': 'İnşaat | İşleri bitirmek',
             'Administrative staff | HR | Secretariat': 'İdari Personel | HR | Sekreterlik',
-            'Security | security': 'Güvenlik | güvenlik',
+            'Security | security': 'Güvenlik',
             'Cleaning | Home staff': 'Temizlik | Ev personeli',
 
             'Beauty | Fitness | Sports': 'Güzellik | Fitness | Spor Dalları',
-            'Education | translation': 'Eğitim | tercüme',
+            'Education | translation': 'Eğitim | Tercüme',
             'Culture | Arts | Entertainment': 'Kültür | Sanat | Eğlence',
             'Medicine | Pharmacy': 'Tıp | Eczane',
-            'IT | computers': 'IT | bilgisayar',
+            'IT | computers': 'IT | Bilgisayar',
             'Banking | Finance | Insurance | Jurisprudence': 'Bankacılık | Finans | Sigorta | İçtihat',
             'Real estate': 'Emlak',
             'Advertising | Design | PR': 'Reklam | Tasarım | PR',
@@ -217,7 +217,7 @@ sub_category_lang_dict = {
         'tr': {
             'Phones | Accessories': 'Telefonlar | Aksesuarlar',
             'Computers | Games': 'Bilgisayarlar | Oyunlar',
-            'Video | Audio | TV | Photo': 'Video | Ses | televizyon | Fotoğraf',
+            'Video | Audio | TV | Photo': 'Video | Ses | Televizyon | Fotoğraf',
             'Other equipment': 'Diğer ekipman',
         }
     },
@@ -303,5 +303,8 @@ def get_sub_category_choices(category_key, lang):
 
 languages = ['en', 'ru', 'tr']
 
+category_keys = ['realty', 'work', 'services', 'free', 'avto', 'house_garden', 'electronics', 'children', 'fashion' ]
 
 
+def get_category_key_choices():
+    return ((category_key, category_key) for category_key in category_keys)

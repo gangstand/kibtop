@@ -6,51 +6,45 @@ import UnreadMessages from "../ChatComponents/ChatStatuses/UnreadMessages";
 import ReadUserMessage from '../ChatComponents/ChatStatuses/ReadUserMessage';
 import { applingActive } from "../../../store/slices/MessagesSlice";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import style from "./nav_bar.module.scss"
 
-const NavBarDialogComponent = ({message}) => {
-    const dispatch = useDispatch();
-
-    const [windowSize, setWindowSize] = useState();
-
-    if (typeof window !== 'undefined') {
-        window.addEventListener('resize', function() {
-            setWindowSize(window.innerWidth);
-        });
-    }
-
-
+const NavBarDialogComponent = ({chatId, talk, messages, me, unread, last}) => {
+    const {query} = useRouter()
+    const isActiveChat = chatId === query.chatId
     return (
-        <Link href={`/chat/${message.id}`}>
-            <div className={ message.isActiveChat ? "nav-dialog__active" : "nav-dialog__passive"} onClick={() => {dispatch(applingActive(message.id))}}>
-                <div className="nav-dialog">
-                    {/* It is only user logotype */}
-                    <div className="user-logo">
-                        <img className="user-logo__image" src={ message.user.photo }></img>
-                    </div>
+        <Link href={`/chat/${chatId}`} className={style.dialogWarpper}>
+            <div className={style.dialog}>
+                    <img className={style.avatar} src={ talk.avatar }></img>
 
                     {/* It is part with another payload (like username, last message date and another) */}
-                    <div className="dialog-preview">
+                    <div className={style.dialogDatail}>
 
                         {/* This part contains username, verify star and date of last message */}
-                        <div className="dialog-title">
-                            <span className="dialog-title__username">{ message.user.username }</span>
-                                { message.is_verified ? <VerifiedAccFlag /> : <span></span> }
-                                <span className={ message.user.online ? "onlineFlag" : ""}></span>
-                                <span className="dialog-time">
-                                    { message.reciver=='you' ?  <ReadUserMessage isReadMessage={message.readMessage} /> : <span></span>}
-                                { message.time }
+                        <div className={style.dialogHead}>
+                            <h5 className={style.title}>
+                                { talk.name }
+                                { talk.isVerified && <VerifiedAccFlag /> }
+                            </h5>
+                            
+                            <span className={style.time}>
+                                {(!!last && last.authorId === me.userId) &&  <ReadUserMessage isReadMessage={last.isRead} /> }
+                                <span>
+                                    { last?.time }
                                 </span>
+                            </span>
                         </div>
 
                         {/* This part contains the part of the last message and their unread status */}
-                        <div className="dialog-message">
-                            <div className="dialog-message__text">
-                                { message.text }
-                            </div>
-                            { message.readMessage && message.reciver=='another' ? (<UnreadMessages messagesCount={ message.unread_message_count } />) : <span></span> }
+                        <div className={style.content}>
+                            <p className={style.text}>
+                                { last?.text }
+                            </p>
+                            
+                            { (!!last && !last.isRead && last.authorId !== me.userId) && <div className={style.number}>{unread}</div> }
+                            
                         </div>
                     </div>
-                </div>
             </div>
         </Link>
     );

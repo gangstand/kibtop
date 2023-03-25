@@ -61,7 +61,7 @@ const MobFileField = () => {
                                         validate: {
                                             format: val => fileFormValid(val) || t('invalid format')
                                         }
-                                })} type="file" accept=".jpg,.jpeg,.png" placeholder={t("Your email")} id="ava" />
+                                })} type="file" accept="image/*" placeholder={t("Your email")} id="ava" />
 
                             <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_508_6265)">

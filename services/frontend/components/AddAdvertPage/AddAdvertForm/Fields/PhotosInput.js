@@ -58,7 +58,7 @@ const PhotosInput = () => {
                                 
                 </label>
                 
-                <input {...register('photos')} type="file" accept=".jpg,.jpeg,.png" hidden={true} />
+                <input {...register('photos')} type="file" accept="image/*" hidden={true} />
             </div>
         </>
     );

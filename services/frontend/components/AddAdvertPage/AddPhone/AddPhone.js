@@ -24,7 +24,6 @@ const AddPhone = ({isOpen, closeAddPhoneModal, isSuccess}) => {
                             {
                                 isSuccess ? <AddPhoneSucces {...{onLoad: () => {
                                     handleClose()
-                                    closeAddPhoneModal()
                                 }}} /> :<>
                                     <h4 className="title modal-title"><Text content={'Add your phone number'} /></h4>
                                     <p className="greeting__text modal-text"><Text content={'In order for customers to contact you, we need your phone number'} /></p>

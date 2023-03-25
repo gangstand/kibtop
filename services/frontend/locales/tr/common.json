@@ -166,22 +166,22 @@
 
     "Apartment": "Apartman",
     "House": "Ev",
-    "land": "arazi",
+    "land": "Arazi",
     "Other": "Diğer",
     "Cars": "Arabalar",
     "Other technique": "Diğer teknik",
-    "Retail/sales/purchasing": "Perakende/satış/satınalma",
-    "Retail / sales / purchasing": "Perakende / satış / satınalma",
+    "Retail/sales/purchasing": "Perakende / Satış / Satınalma",
+    "Retail / sales / purchasing": "Perakende / Satış / Satınalma",
     "Logistics / Warehouse / Delivery": "Lojistik / Depo / Teslimat",
-    "Construction / finishing works": "İnşaat / terbiye işleri",
+    "Construction / finishing works": "İnşaat / Terbiye işleri",
     "Administrative staff / HR / Secretariat": "İdari personel / İK / Sekreterlik",
-    "Security/security": "Güvenlik / güvenlik",
+    "Security/security": "Güvenlik",
     "Cleaning / Home staff": "Temizlik / Ev personeli",
     "Beauty / Fitness / Sports": "Güzellik / Fitness / Spor",
-    "Education/translation": "Eğitim /çeviri",
+    "Education/translation": "Eğitim / Çeviri",
     "Culture / Arts / Entertainment": "Kültür / Sanat / Eğlence",
     "Medicine / Pharmacy": "İlaç / Eczacılık",
-    "IT / computers": "BT / bilgisayarlar",
+    "IT / computers": "BT / Bilgisayarlar",
     "Banking /  Finance / Insurance / Jurisprudence": "Bankacılık / Finans / Sigorta / Hukuk",
     "Advertising / Design / PR": "Reklam / Tasarım / Halkla İlişkiler",
     "Production / Working specialties": "Üretim / Çalışma spesiyaliteleri",
@@ -337,6 +337,9 @@
     "Support": "Destek",
 
     "Video": "Video",
-    "Photo": "Fotoğraf"
+    "Photo": "Fotoğraf",
+    "Go to the ad": "İlana git",
+    "Write a message": "Mesaj yaz",
+    "Your phone": "Telefonunuz"
 }
 

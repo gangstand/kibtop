@@ -1,5 +1,6 @@
 .edit-profile {
     width: 100%;
+    padding-bottom: 20px;
 
     display: flex;
     flex-direction: column;
@@ -247,5 +248,16 @@
 @media (min-width: 900px) {
     .ask-text {
         margin-left: 261px;
+    }
+}
+
+.edit-form-ask {
+    display: flex;
+}
+
+@media (max-width: 600px) {
+    .edit-form-ask {
+        flex-direction: column;
+        grid-gap: 10px;
     }
 }

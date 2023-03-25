@@ -7,6 +7,7 @@ from uuid import uuid4
 from django.urls import reverse
 
 # Create your models here.
+from sections.view_dicts.category_dicts import get_category_key_choices
 
 User = get_user_model()
 
@@ -16,11 +17,12 @@ class Group(models.Model):
     The group model where multiple users can share and discuss ideas.
     '''
     uuid = models.UUIDField(default=uuid4, editable=False)
-    name = models.CharField(max_length=30)
-    members = models.ManyToManyField(User, related_name="users")
+    members = models.ManyToManyField(User)
+    category_key = models.CharField(max_length=100, choices=get_category_key_choices())
+    advert_id = models.IntegerField()
 
     def __str__(self) -> str:
-        return f"Group {self.name}-{self.uuid}"
+        return f"Group -{self.uuid}"
 
     def get_absolute_url(self):
         return reverse("group", args=[str(self.uuid)])
@@ -38,14 +40,20 @@ class Group(models.Model):
         self.event_set.create(type="Left", user=user)
         self.save()
 
+MESSAGES_TYPES = (
+    ('text', 'text'),
+    ('img', 'img'),
+    ('video', 'video'),
+)
 
 class Message(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
-    group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
-    file = models.FileField(upload_to='', null=True, blank=False)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="messages", null=True)
+    file = models.FileField(upload_to='', null=True, blank=True)
     is_read = models.BooleanField(default=False)
+    type = models.CharField(null=True, blank=False, choices=MESSAGES_TYPES, max_length=5)
 
     def __str__(self) -> str:
         date = self.timestamp.date()
@@ -73,3 +81,10 @@ class Event(models.Model):
 
     def __str__(self) -> str:
         return f"{self.description}"
+
+
+class ConnectedUsers(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+

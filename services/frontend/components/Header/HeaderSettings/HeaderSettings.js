@@ -9,13 +9,6 @@ import Locales from "./Locales/Locales";
 import SupportNav from "./SupportNav/SupportNav";
 
 const HeaderSettings = () => {
-    const dispatch = useDispatch();
-    const {data} = useSession()
-    const {isAuthed} = useSelector(state => state.auth)
-    useEffect(() => {
-        if(!isAuthed) dispatch(setAuthThunk())
-        if(!!data && !isAuthed) dispatch(googleLoginThunk(data.auth_token))
-    },[dispatch, isAuthed, data])
 
     return (
         <>

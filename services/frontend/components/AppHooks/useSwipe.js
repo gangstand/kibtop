@@ -3,13 +3,14 @@ import { useState } from "react"
 import { useRef } from "react"
 import { setScrollDisable } from "../../store/tools/setScrollDisable"
 
-export const useSwipe = ({onClose, dist=30, side='bottom', isVertical=true, alt=false, transition=500, workingWidth=600}) => {
+export const useSwipe = ({onClose, dist=30, side='bottom', isVertical=true, alt=false, transition=500, workingWidth=600, closeHeight}) => {
     const [touchStart, setTouchStart] = useState(null)
     const [touchEnd, setTouchEnd] = useState(null)
 
     const minSwipeDistance = dist
     const swipeDirection = isVertical ? 'clientY' : 'clientX'
     const swipeElem = useRef(null)
+    const heightToClose = !!closeHeight ? `-${closeHeight}px` : '-100%'
 
     const onTouchStart = (e) => {
 
@@ -33,7 +34,7 @@ export const useSwipe = ({onClose, dist=30, side='bottom', isVertical=true, alt=
         const distance = touchEnd - touchStart
         const isSwipe = !alt ? distance > minSwipeDistance : distance < minSwipeDistance
         if(isSwipe && window.innerWidth < workingWidth) {
-            swipeElem.current.style[side] = '-100%'
+            swipeElem.current.style[side] = heightToClose
             setTimeout(onClose, transition)
         }
     }
@@ -49,7 +50,7 @@ export const useSwipe = ({onClose, dist=30, side='bottom', isVertical=true, alt=
     }, [swipeElem.current])
 
     const handleClose = () => {
-        swipeElem.current.style[side] = '-100%'
+        swipeElem.current.style[side] = heightToClose
         setTimeout(onClose, transition)
         setScrollDisable(false)
     }

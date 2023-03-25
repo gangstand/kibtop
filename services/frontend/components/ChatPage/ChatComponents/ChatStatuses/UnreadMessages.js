@@ -1,8 +1,6 @@
 const UnreadMessages = ({messagesCount}) => {
     return (
-        <span className="unreadMessages">
-            { messagesCount }
-        </span>
+        ''
     );
 }
 

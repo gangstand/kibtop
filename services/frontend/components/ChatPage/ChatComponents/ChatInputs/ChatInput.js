@@ -1,32 +1,41 @@
 import { useRef, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useLanguage } from "../../../../locales/hooks/useLanguage";
 import _ChatInputComponent from "../Inputs/_ChatInputComponent";
-import MediaModal from "../MediaModal";
+import MediaModal from "../MediaModal/MediaModal";
+import MediaModalContainer from "../MediaModal/MediaModalContainer";
 import PaperClip from "../SVGComponents/PaperClip";
 import SendButton from "../SVGComponents/SendButton";
+import MediaUploads from "./MediaUploads/MediaUploads";
+import useCreateMessage from "./useCreateMessage";
 
 
-let clearInput = (e) => {
-    e.preventDefault();
-    e.target[0].value = '';
-}
+function ChatInput() {
+    const messageForm = useForm({mode: 'onChange'});
+    const {handleSubmit, reset} = messageForm
 
-function ChatInput({mediaModalActivity, setMediaModalActivity}) {
-    const [text, setText] = useState();
+    
+    const createMessage = useCreateMessage()
+
+    const submit = handleSubmit(data => {
+        createMessage(data)
+        reset()
+    })
 
     return (
-        <div className="chat-input">
-            <div className="input-container">
-                <MediaModal modalActivity={mediaModalActivity} setMediaModalActivity={setMediaModalActivity}/>
+        <form className="chat-input">
+            <FormProvider {...{...messageForm, submit}}>
+                    <MediaUploads />
+                    <div className="input-container">
+                            <MediaModalContainer />
 
-                <PaperClip modalActivity={mediaModalActivity} setModalActivity={setMediaModalActivity}/>
-                <_ChatInputComponent 
-                    clearInput={clearInput} 
-                    setText={setText} />
-                <SendButton text={text} />
-            </div>
-        </div>
+                            <_ChatInputComponent />
+
+                            <SendButton />
+                    </div>
+            </FormProvider>
+        </form>
     );
 }
 

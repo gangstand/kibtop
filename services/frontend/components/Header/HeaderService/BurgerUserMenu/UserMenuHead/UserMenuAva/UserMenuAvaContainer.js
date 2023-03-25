@@ -8,9 +8,9 @@ const UserMenuAvaContainer = ({isAuthed, onClose}) => {
     const {avatar, name} = useSelector(state => state.profile)
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(setProfileDataThunk())
-    }, [userId])
+    // useEffect(() => {
+    //     dispatch(setProfileDataThunk())
+    // }, [userId])
 
     return <UserMenuAva {...{isAuthed, onClose, avatar, name}} />;
 }

@@ -36,9 +36,11 @@ const WorkData = ({title, cost, description, currency, workType}) => {
                     <Text content="description" />
                 </h3>
 
-                <p className="detail-text">
-                    {description}
-                </p>
+                <div className="detail-text">
+                    {
+                        description.split('\n').map((text, index) => <p key={index}>{text}</p>)
+                    }
+                </div>
             </article>
                 
             

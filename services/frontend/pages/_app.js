@@ -29,15 +29,10 @@ import {SessionProvider} from 'next-auth/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ArchiveApi } from '../services/ArchiveApi'
 import { CoogleMapProvider } from '../locales/MapContext'
+import { queryClient } from '../services/QueryClient/QueryClient'
+import ChatWSProvider from '../services/ChatWebSocket/ChatWSProvider'
 
-const queryClient = new QueryClient()
 
-queryClient.setMutationDefaults(['delArchive'], {
-  mutationFn: (category, id) => ArchiveApi.deleteUserArchiveAdvert(category, id),
-  onMutate: async () => {
-    await queryClient.cancelQueries({ queryKey: ['archive'] })
-  }
-})
 
 function MyApp({ Component, pageProps, session }) {
   
@@ -48,19 +43,23 @@ function MyApp({ Component, pageProps, session }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
       </Head>
-      <SessionProvider {...{session}}>
-        <Provider store={store}>
-          <CoogleMapProvider>
-            <QueryClientProvider client={queryClient}>
-              <LocationProvider>
-                <CurrencyProvider>
-                  <Component {...pageProps} />
-                </CurrencyProvider>
-              </LocationProvider>
-            </QueryClientProvider>
-          </CoogleMapProvider>
-        </Provider>
-      </SessionProvider>
+      
+        <SessionProvider {...{session}}>
+          <Provider store={store}>
+            <CoogleMapProvider>
+              <QueryClientProvider client={queryClient}>
+                <LocationProvider>
+                  <CurrencyProvider>
+                    <ChatWSProvider>
+                      <Component {...pageProps} />
+                    </ChatWSProvider>
+                  </CurrencyProvider>
+                </LocationProvider>
+              </QueryClientProvider>
+            </CoogleMapProvider>
+          </Provider>
+        </SessionProvider>
+      
     </>
   )
 }
