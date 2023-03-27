@@ -5,7 +5,7 @@ import { getServerSideUser } from "./tools/getServerSideUser/getServerSideUser";
 
 export const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN
 
-export const BASE_URL = `http://${API_DOMAIN}`
+export const BASE_URL = `https://${API_DOMAIN}`
 
 
 
