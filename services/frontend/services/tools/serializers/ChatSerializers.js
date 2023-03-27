@@ -3,36 +3,6 @@ import { serializeFullAdvertData } from "./AdvertsSerializers"
 import { removeEmptyFields } from "./FilterSerializers"
 import {serializeUserData} from "./UserSerializers"
 
-const messages = [
-    {
-      "id": 10,
-      "timestamp": "2023-03-23T18:15:49.459133Z",
-      "content": "content",
-      "file": "http://127.0.0.1:8000/media/2021-08-09_18-18-28.mkv",
-      "is_read": false,
-      "author": 5,
-      "group": 1
-    },
-    {
-      "id": 9,
-      "timestamp": "2023-03-23T18:15:35.532767Z",
-      "content": "content",
-      "file": "http://127.0.0.1:8000/media/apartament_adERmKZ_PEMf7V4.jpeg",
-      "is_read": false,
-      "author": 5,
-      "group": 1
-    },
-    {
-      "id": 8,
-      "timestamp": "2023-03-22T16:03:41.846394Z",
-      "content": "Новое сообщение",
-      "file": null,
-      "is_read": false,
-      "author": 1,
-      "group": 1
-    }
-  ]
-
 
 const MounthDateDict = {
     'en': {
@@ -94,7 +64,6 @@ export const serializeChatMessage = (message, lang) => {
     const [dateDay, time, datetime] = getHumanDate(message.timestamp, lang)
 
     const type = !!message.type ? message.type : ( !!message.file ? 'img' : 'text' )
-
     return {
         dateDay, time, type,
         chatId: message.group,
@@ -129,20 +98,24 @@ export const chunkMessagesByDate = serializedMessages => {
 }
 
 
-export const serializeChatData = data => ({
-    advertId: data.advert_id,
-    category: data.category_key,
-    chatId: data.id
-})
+export const serializeChatData = data => {
+    return {
+        advertId: data.advert_id,
+        category: data.category_key,
+        chatId: data.id
+    }
+}
 
 
 
 export const serializeChatFullData = (data, userId, lang) => {
     const members = data.members
-    
-    const me = serializeUserData(members.find(member => member.id === userId))
-    const talk = serializeUserData(members.find(member => member.id !== userId))
+
+    const me = serializeUserData(members.find(member => member?.id === userId))
+    const talk = serializeUserData(members.find(member => member?.id !== userId))
+
     const messages = serializeMessages(data.messages, lang)
+
     return {
         ...serializeChatData(data),
         me, talk,

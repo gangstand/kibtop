@@ -5,6 +5,7 @@ export const ChatApi = {
     async getUserDialogs(userId, lang) {
         return await instance.get(`chat/group/?members=${userId}`)
             .then((res) => {
+                    console.log(res.data);
                     return serializeChats(res.data, userId, lang)
             }).catch(e => console.log(e))
             

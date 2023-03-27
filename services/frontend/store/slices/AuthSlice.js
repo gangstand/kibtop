@@ -80,7 +80,7 @@ export const registrationThunk = (email, password1, password2, name, city, file)
             }
 
             const {name, message, deskStep, mobileStep} = serializeRegistrationErrors(error)
-            // console.log(name, ':', message)
+            console.log(name, ':', message)
 
             dispatch(setRegistrationError({name, message, deskStep, mobileStep}))
             dispatch(setRegistrationLoading({bool: false}))

@@ -15,9 +15,9 @@ const DialogPlace = () => {
             <ChatNavBar />
 
         
-            <div className="place-chat chat__active" style={{display: "grid"}}>
+            {/* <div className="place-chat chat__active" style={{display: "grid"}}>
                 <CurrentDialog mediaModalActivity={mediaModalActivity} setMediaModalActivity={setMediaModalActivity} /> 
-            </div>
+            </div> */}
             
         </div>
     );

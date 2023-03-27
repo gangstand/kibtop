@@ -2,6 +2,8 @@ const convertFieldName = name => {
     switch (name) {
         case 'username':
             return 'email'
+        case 'email':
+            return 'email'
 
         case 'middle_name':
             return 'name'
@@ -20,11 +22,11 @@ const convertFieldName = name => {
     }
 }
 
-const convertFieldError = message => {
+const convertFieldError = message => {console.log(message);
     switch (message) {
-        case 'user with this email address already exists.':
+        case 'custom user with this username already exists.':
             return 'email is registered'
-        case 'user with this username already exists.':
+        case 'custom user with this username already exists.':
                 return 'email is registered'
         default:
             return null
@@ -39,12 +41,14 @@ const convertFieldError = message => {
 
 
 export const serializeRegistrationErrors = error => {
+    console.log(error);
     if(!error || Object.keys(error) === 0) return {name: null, message: null}
 
     let name, message, deskStep, mobileStep
 
+    
+
     for (const key in error) {
-        name = convertFieldName(key)
         message = convertFieldError(error[key][0])
     }
 

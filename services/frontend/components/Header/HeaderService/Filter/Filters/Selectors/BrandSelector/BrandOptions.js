@@ -12,8 +12,8 @@ const BrandOptions = ({options, onChange, value, onSwitchOpen}) => {
         <>
             <div className="locatin-select__list">
                 {
-                    options?.filter(brand => brand.toLowerCase().includes(value.toLowerCase())).map(brand => (
-                        <button className="locatin-select__option" onClick={() => setBrandValue(brand)}>
+                    options?.filter(brand => brand.toLowerCase().includes(value.toLowerCase())).map((brand, index) => (
+                        <button key={index} className="locatin-select__option" onClick={() => setBrandValue(brand)}>
                             {brand}
                         </button>
                     ))
@@ -22,8 +22,8 @@ const BrandOptions = ({options, onChange, value, onSwitchOpen}) => {
 
             <div className="locatin-select__list locatin-select__list--mobile">
                 {
-                    options?.filter(brand => brand.toLowerCase().includes(value.toLowerCase())).map(brand => (
-                        <button className="locatin-select__option" onClick={() => setBrandValue(brand)}>
+                    options?.filter(brand => brand.toLowerCase().includes(value.toLowerCase())).map((brand, index) => (
+                        <button key={index} className="locatin-select__option" onClick={() => setBrandValue(brand)}>
                             {brand}
                         </button>
                     ))
