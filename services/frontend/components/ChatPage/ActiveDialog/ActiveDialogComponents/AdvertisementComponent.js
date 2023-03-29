@@ -14,7 +14,6 @@ function AdvertisementComponent({ talk,  advert }) {
     */
     const seller = talk || {}
     const product = advert || {}
-
     return (
         <>
             {
@@ -35,7 +34,7 @@ function AdvertisementComponent({ talk,  advert }) {
                         </div>
                     
                         <div className="advertisement__link">
-                            <Link href={`/advert/${ product.category }/${ product.advertId }`}>{t("Go to the ad")}</Link>
+                            <Link href={`/advert/${ product.category }/${ product.id }`}>{t("Go to the ad")}</Link>
                         </div>
                     </div>
                 </>

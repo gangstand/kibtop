@@ -94,23 +94,23 @@ CHANNEL_LAYERS = {
     },
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env("POSTGRES_DB"),
-        'USER': env("POSTGRES_USER"),
-        'PASSWORD': env("POSTGRES_PASSWORD"),
-        'HOST': env("POSTGRES_HOST"),
-        'PORT': env("POSTGRES_PORT")
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env("POSTGRES_DB"),
+#         'USER': env("POSTGRES_USER"),
+#         'PASSWORD': env("POSTGRES_PASSWORD"),
+#         'HOST': env("POSTGRES_HOST"),
+#         'PORT': env("POSTGRES_PORT")
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -206,24 +206,24 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env("EMAIL_HOST_USER")
 SERVER_EMAIL = env("EMAIL_HOST_USER")
 
-
-GRAYLOG_ENDPOINT = 'http://graylog:12201/gelf'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'gelf': {
-            'class': 'graypy.GELFUDPHandler',
-            'host': 'graylog',
-            'port': 12201,
-        },
-    },
-    'loggers': {
-        'custom_gy_logger': {
-            'handlers': ['gelf'],
-            'level': 'DEBUG',
-            'propagate': True,
-        }
-    }
-}
+#
+# GRAYLOG_ENDPOINT = 'http://graylog:12201/gelf'
+#
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'gelf': {
+#             'class': 'graypy.GELFUDPHandler',
+#             'host': 'graylog',
+#             'port': 12201,
+#         },
+#     },
+#     'loggers': {
+#         'custom_gy_logger': {
+#             'handlers': ['gelf'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         }
+#     }
+# }

@@ -24,7 +24,7 @@ function MediaModal({isOpen, switchOpen}) {
                             </svg>
                         </span>
 
-                        <span>{t('Video')}</span>
+                        <span className="button__mediaModal__text">{t('Video')}</span>
 
                         <input  {...register('video', {
                                 required: false,
@@ -48,7 +48,7 @@ function MediaModal({isOpen, switchOpen}) {
                             </svg> 
                         </span>
 
-                        <span>{t('Photo')}</span>
+                        <span className="button__mediaModal__text">{t('Photo')}</span>
 
                         <input  {...register('img', {
                                 required: false,

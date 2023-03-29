@@ -43,14 +43,12 @@ const convertFieldError = message => {console.log(message);
 export const serializeRegistrationErrors = error => {
     console.log(error);
     if(!error || Object.keys(error) === 0) return {name: null, message: null}
+    if(!'email' in error && !'username' in error) return {name: null, message: null}
 
     let name, message, deskStep, mobileStep
 
-    
-
-    for (const key in error) {
-        message = convertFieldError(error[key][0])
-    }
+    name = 'email'
+    message = 'email is registered'
 
     const firstStepFields = ['email', 'password1', 'password1']
     deskStep = firstStepFields.some(field => field === name) ? 1 : 2

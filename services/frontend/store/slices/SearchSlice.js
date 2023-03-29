@@ -27,7 +27,7 @@ const SearchSlice = createSlice({
 
 export const {setSearchAdverts, setSearchOpen, setFindAdverts} = SearchSlice.actions
 
-function sleep (time) {
+export function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 

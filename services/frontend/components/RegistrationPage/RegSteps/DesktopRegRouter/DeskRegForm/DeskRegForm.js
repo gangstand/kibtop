@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useLanguage } from "../../../../../locales/hooks/useLanguage";
+import { setRegistrationError } from "../../../../../store/slices/RegistrationSlice";
 import Text from "../../../../Elementes/Text/Text";
 import DeskRegStep1 from "./DeskRegStep1/DeskRegStep1";
 import DeskRegStep2 from "./DeskRegStep2/DeskRegStep2";
@@ -13,11 +15,15 @@ const DeskRegForm = ({deskStep, error, setErrorStep,
     const RegistrationForm = useForm({mode: 'onChange'})
     const {handleSubmit, setError, formState: {errors, isValid, dirtyFields, touchedFields}} = RegistrationForm
 
+    const dispatch = useDispatch()
+    const {t} = useLanguage()
+
     useEffect(() => {
         const {deskStep, name, message} = error
         if(!!name) {
             setErrorStep(deskStep)
-            setError(name, {type: 'submit', message})
+            setError(name, {type: 'submit', message: t(message)})
+            dispatch(setRegistrationError({name: null, message: null, deskStep: null, mobileStep: null}))
         }
     }, [error.name])
 

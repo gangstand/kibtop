@@ -5,8 +5,9 @@ import { getServerSideUser } from "./tools/getServerSideUser/getServerSideUser";
 
 export const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN
 
-export const BASE_URL = `https://${API_DOMAIN}`
+const isDeploy = !!+process.env.NEXT_PUBLIC_IS_DEPLOY
 
+export const BASE_URL = `${isDeploy ? 'https' : 'http'}://${API_DOMAIN}`
 
 
 export const createHeaders = async (accessToken) => {
@@ -34,8 +35,8 @@ export const instance = axios.create({
     baseURL: `${BASE_URL}/v1/`,
 
     withCredentials: false,
-    // headers: {
-    //     "Accept-Encoding": "*"
-    // }
+    headers: isDeploy ? {
+        "Accept-Encoding": "*"
+    } : {}
 })
 

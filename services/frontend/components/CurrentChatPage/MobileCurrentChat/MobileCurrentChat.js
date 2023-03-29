@@ -12,22 +12,7 @@ import ChatNavBarContainer from "../../ChatPage/NavBar/ChatNavBarContainer";
 import CurrentDialogContainer from "../../ChatPage/ActiveDialog/Dialogs/CurrentDialogContainer";
 
 const MobileCurrentChat = () => {
-    const [seller, setSeller] = useState({
-        id: 'seller_id',
-        username: 'penis',
-        isVerified: false, 
-        online: true,
-        photo: 'https://s0.rbk.ru/v6_top_pics/media/img/5/00/756703327882005.jpg',
-    })
-    const [product, setProduct] = useState({
-        title: 'some product',
-        img: 'https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png',
-        userId: 'userId',
-        category: 'reality',
-        advertId: 'laksdj9u2etgn',
-        cost: 1000-7,
-        currency: '₤',
-    })
+    
 
     return (
         <>

@@ -66,15 +66,19 @@ class GroupConsumer(WebsocketConsumer):
             ConnectedUsers.objects.get(user=self.scope['user']).delete()
         except:
             pass
-        # Получение всех юзеров, которые состоят в группе с вышедшим и рассылка уведомления
-        involved_users = get_involved_users(self.user_id)
-        for involved_user_id in involved_users:
-            async_to_sync(self.channel_layer.group_send)(str(involved_user_id), {
-                "type": "connected_changes",
-                "message": self.user_id
-            })
 
-        self.channel_layer.group_discard(self.user_id, self.channel_name)
+        try:
+            # Получение всех юзеров, которые состоят в группе с вышедшим и рассылка уведомления
+            involved_users = get_involved_users(self.user_id)
+            for involved_user_id in involved_users:
+                async_to_sync(self.channel_layer.group_send)(str(involved_user_id), {
+                    "type": "connected_changes",
+                    "message": self.user_id
+                })
+
+            self.channel_layer.group_discard(self.user_id, self.channel_name)
+        except:
+            pass
 
     def new_message(self, event):
         message = event["message"]

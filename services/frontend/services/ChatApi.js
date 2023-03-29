@@ -1,11 +1,18 @@
+import { sleep } from "../store/slices/SearchSlice"
 import { createHeaders, instance } from "./Instance"
-import {serializeChatDialogDetail, serializeChatMessage, serializeChats, serializeMessageForm} from "./tools/serializers/ChatSerializers"
+import {serializeChatData, serializeChatDialogDetail, serializeChatMessage, serializeChats, serializeMessageForm} from "./tools/serializers/ChatSerializers"
 
 export const ChatApi = {
+    async checkExistingChat({userId, category, advertId}) {
+        return await instance.get(`chat/group/?members=${userId}&category_key=${category}&advert_id=${advertId}`)
+            .then(({data}) => {
+                return data instanceof Array && data.length > 0 && serializeChatData(data[0])
+            }).catch(e => console.log(e))
+    },
+
     async getUserDialogs(userId, lang) {
         return await instance.get(`chat/group/?members=${userId}`)
             .then((res) => {
-                    console.log(res.data);
                     return serializeChats(res.data, userId, lang)
             }).catch(e => console.log(e))
             
@@ -29,8 +36,17 @@ export const ChatApi = {
     async createMessage(message) {
         return await instance.post('chat/messages/', serializeMessageForm(message))
             .then(({data}) => {
-                console.log(serializeChatMessage(data));
                 return serializeChatMessage(data)
             }).catch(e => console.log(e))
+    },
+
+
+    async updateMessagesAsReaded(messages) {
+        return await instance.patch(`chat/messages/read_update/`, {
+            is_read: true,
+            messages: messages
+        }, {
+            headers: await createHeaders()
+        }).catch(e => console.log(e))
     }
 }

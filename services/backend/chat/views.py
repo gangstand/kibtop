@@ -125,7 +125,7 @@ class MessageAPIList(generics.ListCreateAPIView):
 
 
 class MessageAPIUpdate(generics.UpdateAPIView):
-    filter_backends = (DjangoFilterBackend)
+
     filterset_class = FilterMessageAPIList
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
@@ -174,3 +174,31 @@ def get_my_connected_users(request, format=None):
     connected_users = ConnectedUsers.objects.filter(user_id__in=involved_users).values()
 
     return Response(connected_users)
+
+
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def mass_update_messages(request):
+    msg_list = request.data['messages']
+
+    for msg_id in msg_list:
+        instance = Message.objects.get(id=msg_id)
+        # data = MessageSerializer(instance).data
+        setattr(instance, 'is_read', request.data['is_read'])
+        instance.save()
+        # serializer = MessageSerializer(instance=instance, data=data)
+        # serializer.is_valid(raise_exception=True)
+        # serializer.save()
+    user = UserSerializer(request.user).data
+    user_id = user['id']
+    involved_users = get_involved_users(user_id)
+
+    for user in involved_users:
+        async_to_sync(channel_layer.group_send)(str(user), {
+            "type": "new_message",
+            "message": "read",
+        })
+
+
+
+    return Response(None, status=status.HTTP_204_NO_CONTENT)

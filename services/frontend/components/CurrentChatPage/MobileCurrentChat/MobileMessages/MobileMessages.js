@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { chunkMessagesByDate } from "../../../../services/tools/serializers/ChatSerializers";
+import LoadingMessages from "../../../ChatPage/ActiveDialog/ActiveDialogComponents/LoadingMessages";
 import MessageComponent from "../../../ChatPage/ActiveDialog/ActiveDialogComponents/MessageComponent";
 import VoidDialog from "../../../ChatPage/ActiveDialog/Dialogs/VoidDialog";
 import Relative from "../../../Elementes/Relative/Relative";
@@ -24,7 +25,7 @@ const MobileMessages = ({messages, me}) => {
                                 )
                                 
                             }
-
+                            <LoadingMessages/>
                         </>
                 }
             </div>

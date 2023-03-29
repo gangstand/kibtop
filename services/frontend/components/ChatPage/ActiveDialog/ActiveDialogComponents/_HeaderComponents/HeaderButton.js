@@ -8,7 +8,7 @@ function HeaderButton({condition, sellerId}) {
         {
             condition ?
             <div className="dialog-button">
-                <Link href={`/seller/${ sellerId }`}><div className="dialog-button__button">{t("Go to profile")}</div></Link>
+                <Link href={`/seller/${sellerId}/`}><div className="dialog-button__button">{t("Go to profile")}</div></Link>
             </div>
             : 
             <div className="dialog-button">

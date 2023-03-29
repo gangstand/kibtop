@@ -8,12 +8,13 @@ import { applingActive } from "../../../store/slices/MessagesSlice";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import style from "./nav_bar.module.scss"
+import Text from "../../Elementes/Text/Text";
 
 const NavBarDialogComponent = ({chatId, talk, messages, me, unread, last}) => {
     const {query} = useRouter()
-    const isActiveChat = chatId === query.chatId
+    const isActiveChat = chatId === +query.chatId
     return (
-        <Link href={`/chat/${chatId}`} className={style.dialogWarpper}>
+        <Link href={`/chat/${chatId}`} className={style.dialogWarpper} style={isActiveChat ? {backgroundColor: 'rgba(122, 177, 255, 0.2)'} : {}}>
             <div className={style.dialog}>
                     <img className={style.avatar} src={ talk.avatar }></img>
 
@@ -38,7 +39,11 @@ const NavBarDialogComponent = ({chatId, talk, messages, me, unread, last}) => {
                         {/* This part contains the part of the last message and their unread status */}
                         <div className={style.content}>
                             <p className={style.text}>
-                                { last?.text }
+                                {
+                                    last?.type === 'text' ? last?.text :
+                                    last?.type === 'img' ? <Text content="Photo" /> : <Text content="Video" />
+                                }
+                                
                             </p>
                             
                             { (!!last && !last.isRead && last.authorId !== me.userId) && <div className={style.number}>{unread}</div> }

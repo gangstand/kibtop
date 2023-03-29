@@ -1,7 +1,7 @@
 @import "../../../styles/base.scss";
 
 .dialogWarpper {
-    display: inline-block;
+    display: flex;
     box-sizing: border-box;
 
     @include box(100%, 75px);

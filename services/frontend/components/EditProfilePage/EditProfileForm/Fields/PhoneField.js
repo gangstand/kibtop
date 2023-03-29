@@ -47,9 +47,13 @@ const PhoneField = ({defaultValue}) => {
     const [isOpen, setOpen] = useBoolState()
 
     useEffect(() => {
-        const [codeValue, numberValue] = defaultValue.split('(')
-        setValueCode(codeValue.replace('+', ''))
-        setValueNumber('('+numberValue)
+        try {
+            const [codeValue, numberValue] = defaultValue.split('(')
+            setValueCode(codeValue.replace('+', ''))
+            setValueNumber('('+numberValue)
+        }catch(e) {
+            
+        }
     }, [])
 
     return (

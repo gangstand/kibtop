@@ -39,7 +39,7 @@ const CityField = () => {
                                     value: /^[А-яA-ZİĞÜŞÖÇа-яa-zğüşöç\s\-,]+$/,
                                     message: t('invalid format')
                                 }
-                        })} type="text" placeholder={t("City or region")} />
+                        })} type="text" placeholder={t("City or region")} style={{borderRadius: '0 30px 30px 0'}} />
                 <a className="use-location" onClick={setCityInputLocation}><Text content="Use my location" /></a>
             </div>
         </>

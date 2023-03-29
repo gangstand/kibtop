@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useEffect } from "react";
 import VoidDialog from "../../components/ChatPage/ActiveDialog/Dialogs/VoidDialog";
 import Chat from "../../components/ChatPage/Chat";
+import LoadingMessagesProvider from "../../components/ChatPage/LoadingMessagesContext/LoadingMessagesContext";
 import CurrentChatPage from "../../components/CurrentChatPage/CurrentChatPage";
 import Header from "../../components/Header/Header";
 import HeaderService from "../../components/Header/HeaderService/HeaderService";
@@ -26,8 +27,9 @@ const Chats = () => {
                 <meta property="og:url" content="https://kibtop.com" />
                 <meta property="og:image" content="https://kibtop.com/img/kibtop.png" />
             </Head>
-
-            <CurrentChatPage />
+            <LoadingMessagesProvider>
+                <CurrentChatPage />
+            </LoadingMessagesProvider>
         </>
     );
 }

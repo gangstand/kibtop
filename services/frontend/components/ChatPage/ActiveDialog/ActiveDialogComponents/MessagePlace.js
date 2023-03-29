@@ -7,9 +7,12 @@ import MessageComponent from "./MessageComponent";
 import style from "./message.module.scss"
 import AdvertisementComponent from "./AdvertisementComponent";
 import CurrentDialogContainer from "../Dialogs/CurrentDialogContainer";
+import { chunkMessagesByDate } from "../../../../services/tools/serializers/ChatSerializers";
+import Relative from "../../../Elementes/Relative/Relative";
+import LoadingMessages from "./LoadingMessages";
 
 
-function MessagePlace({messages, me}) {
+function MessagePlace({messages, loadingMessages, me}) {
     const {t} = useLanguage();
     return (
         // <div className="dialog-container">
@@ -28,9 +31,15 @@ function MessagePlace({messages, me}) {
                         <VoidDialog />  
                         :
                         <>
-                            {messages?.map((message, index) => 
-                                <MessageComponent key={index} {...{message, me}}/>
-                                )}
+                            {
+                                chunkMessagesByDate(messages).map((msgChunk, index) =>
+                                    <Relative key={index}>
+                                        <p className="dialog-day">{msgChunk[0]}</p>
+                                        {msgChunk[1].map((message, index) => <MessageComponent key={index} {...{message, me}}/>)}
+                                    </Relative>
+                                )
+                            }
+                            <LoadingMessages />
                         </>
                 }
 

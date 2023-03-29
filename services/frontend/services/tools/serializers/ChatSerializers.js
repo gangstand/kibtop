@@ -141,8 +141,9 @@ export const serializeMessageForm = (message) => {
     const img = message.img?.[0]
     const video = message.video?.[0]
     const file = img || video
-    const type = !!file ? ( !!img ? 'img' : 'video'  ) : 'text'
     
+    const type = !!file ? ( !!img ? 'img' : 'video'  ) : 'text'
+    console.log(type);
 
     const data = {
         content: message.text,

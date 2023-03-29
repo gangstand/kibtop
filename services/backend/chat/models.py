@@ -49,7 +49,7 @@ MESSAGES_TYPES = (
 class Message(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
-    content = models.TextField()
+    content = models.TextField(null=True, blank=True)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="messages", null=True)
     file = models.FileField(upload_to='', null=True, blank=True)
     is_read = models.BooleanField(default=False)
