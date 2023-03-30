@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLanguage } from "../../../../locales/hooks/useLanguage";
 import DealClaims from "../../ChatComponents/DealClaims";
 import MediaModal from "../../ChatComponents/MediaModal/MediaModal";
@@ -14,6 +14,14 @@ import LoadingMessages from "./LoadingMessages";
 
 function MessagePlace({messages, loadingMessages, me}) {
     const {t} = useLanguage();
+
+    const messagesLent = useRef(null)
+
+    useEffect(() => {
+        console.log('fff');
+        if(messagesLent.current) messagesLent.current.scrollTop = messagesLent.current.scrollHeight
+    }, [messagesLent.current, messages, loadingMessages])
+
     return (
         // <div className="dialog-container">
         //     <div className="chat-main"> 
@@ -23,8 +31,8 @@ function MessagePlace({messages, loadingMessages, me}) {
         //     </div>
         // </div>
 
-        <div className={style.dialog}>
-            <div className={style.messages}>
+        <div className={style.dialog} ref={messagesLent}>
+            <div className={style.messages} >
                 {
                     !messages?.length
                         ?

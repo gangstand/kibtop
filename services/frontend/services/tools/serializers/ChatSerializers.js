@@ -85,6 +85,23 @@ export const serializeMessages = (messages, lang) => {
     return NewInTheEndMessages
 }
 
+export const serializeSearchMessages = (messages) => {
+    return sortMessagesByNewInTheEnd(
+            messages.map(msg => {
+                const [dateDay, time, datetime] = getHumanDate(msg.timestamp)
+                return {
+                    messageId: msg.id,
+                    time, datetime,
+                    text: msg.content,
+                    chatId: msg.group.id,
+                    author: serializeUserData(msg.author),
+                    isRead: msg.is_read
+                }
+
+            })
+    ).reverse()
+}
+
 export const chunkMessagesByDate = serializedMessages => {
     const existedDates = Array.from(new Set(serializedMessages.map(msg => msg.dateDay)))
 

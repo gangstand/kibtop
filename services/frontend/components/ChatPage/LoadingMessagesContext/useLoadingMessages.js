@@ -9,7 +9,7 @@ export const useLoadingMessages = () => {
             let removingIndex
             for (let i = 0; i < oldLoadingMessages.length; i++) {
                 const loadingMessage = oldLoadingMessages[i];
-                if(loadingMessage.text === message.text) {
+                if(loadingMessage?.text === message?.text) {
                     removingIndex = i
                     break
                 }

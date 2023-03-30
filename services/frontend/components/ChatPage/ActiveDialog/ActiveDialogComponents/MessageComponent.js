@@ -5,15 +5,26 @@ import { ChatApi } from "../../../../services/ChatApi";
 import RenderReadingCheckmarks from "./RenderReadingCheckmarks";
 
 
-function MessageComponent({ message, me }) {
+function MessageComponent({ message, me}) {
     const messagePlace = useRef();
 
-    
+    const {query: {search}} = useRouter()
 
     useEffect(()=>{
-        messagePlace.current?.scrollIntoView();
+        if( !!search && message.messageId === +search) {
+            console.log('perform');
+            
+            setTimeout(() => {
+                messagePlace.current?.scrollIntoView({
+                    block: 'center'
+                })
+                console.dir(messagePlace.current);
+                messagePlace.current.classList.add('message_active')
+                setTimeout(() => messagePlace.current.classList.remove('message_active'), 700)
+            })
+        }
         
-    }, [messagePlace]);
+    }, [messagePlace, search]);
     
 
     return (

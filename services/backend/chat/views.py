@@ -17,7 +17,8 @@ from .filters import FilterMessageAPIList, FilterGroup
 from .models import Group, Message, Event, ConnectedUsers
 from django.contrib.auth.decorators import login_required
 
-from .serializer import GroupSerializer, MessageSerializer, EventSerializer, GroupListSerializer, GroupDetailSerializer
+from .serializer import GroupSerializer, MessageSerializer, EventSerializer, GroupListSerializer, GroupDetailSerializer, \
+    MessageSearchSerializer
 from .utils import get_online_user, get_involved_users
 from rest_framework import filters
 channel_layer = get_channel_layer()
@@ -123,6 +124,11 @@ class MessageAPIList(generics.ListCreateAPIView):
     # def get(self, request, *args, **kwargs):
 
 
+class MessageSearchView(generics.ListAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = FilterMessageAPIList
+    queryset = Message.objects.all()
+    serializer_class = MessageSearchSerializer
 
 
 

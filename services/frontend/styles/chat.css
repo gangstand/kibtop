@@ -162,9 +162,10 @@ press ctrl + F and paste:
 
 .user-logo__image {
     border-radius: 50%;
-    border: 1px solid silver;
     height: 60px;
     width: 60px;
+
+    background-color: #7AB1FF;
 }
 
 @media (max-width: 600px) {
@@ -442,6 +443,7 @@ press ctrl + F and paste:
     font-weight: 700;
     size: 16px;
     line-height: 14px;
+    min-width: 190px;
 }
 
 @media (max-width: 960px) {
@@ -449,6 +451,7 @@ press ctrl + F and paste:
         grid-template-columns: 62px 1fr max-content;
     }
     .dialog-button__button {
+        min-width: auto;
         width: max-content;
         box-sizing: border-box;
         padding-left: 20px;
@@ -1310,6 +1313,7 @@ press ctrl + F and paste:
         position: fixed;
         bottom: 0;
         left: 0;
+        z-index: 2;
     }
 }
 
@@ -1411,4 +1415,61 @@ press ctrl + F and paste:
     .verified-btn-width {
         max-width: 190px;
     }
+}
+
+
+
+.search_msg-results {
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: -0.408px;
+    color: #414042;
+
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+@media (max-width: 800px) {
+    .search_msg-results {
+        padding: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .search_msg-results {
+        display: none;
+    }
+}
+
+.message {
+    position: relative;
+}
+
+.message * {
+    position: relative;
+    z-index: 1;
+}
+
+.message::before {
+    content: '';
+
+    position: absolute;
+    top: -5px;
+    left: 0;
+
+    width: 100%;
+    height: calc(100% + 10px);
+    border-radius: 20px;
+
+    background-color: #7AB1FF40;
+    opacity: 0;
+
+    transition: opacity 700ms;
+}
+
+.message_active::before {
+    opacity: 1;
 }

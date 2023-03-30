@@ -111,3 +111,11 @@ class ConnectedUsersSerializer(serializers.ModelSerializer):
         field = '__all__'
 
 
+
+class MessageSearchSerializer(serializers.ModelSerializer):
+    author = UserAPISerializer(read_only=True)
+    group = GroupSerializer(read_only=True)
+
+    class Meta:
+        model = Message
+        fields = ('id', 'timestamp', 'content', 'is_read', 'author', 'group')

@@ -1,6 +1,6 @@
 import { sleep } from "../store/slices/SearchSlice"
 import { createHeaders, instance } from "./Instance"
-import {serializeChatData, serializeChatDialogDetail, serializeChatMessage, serializeChats, serializeMessageForm} from "./tools/serializers/ChatSerializers"
+import {serializeChatData, serializeChatDialogDetail, serializeChatMessage, serializeChats, serializeMessageForm, serializeMessages, serializeSearchMessages} from "./tools/serializers/ChatSerializers"
 
 export const ChatApi = {
     async checkExistingChat({userId, category, advertId}) {
@@ -57,6 +57,14 @@ export const ChatApi = {
             const chat = serializeChatData(res.data)
             redirect(`/chat/${chat.chatId}`)
             return chat
-        })
+        }).catch(err => console.log(err))
+    },
+
+    async searchMessages(userId, search) {
+        return await instance.get(`/chat/messages/search/?search=${search}&members=${userId}`)
+            .then(res => {
+                console.log(res.data);
+                return serializeSearchMessages(res.data)
+            })
     }
 }
