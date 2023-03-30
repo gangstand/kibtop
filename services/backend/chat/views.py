@@ -1,16 +1,18 @@
 import django_filters
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
+from django.db.models import Q
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from djoser.serializers import UserSerializer
-from rest_framework import generics, status
+from rest_framework import generics, status, exceptions
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
+from accounts.models import CustomUser
 from .filters import FilterMessageAPIList, FilterGroup
 from .models import Group, Message, Event, ConnectedUsers
 from django.contrib.auth.decorators import login_required
@@ -202,3 +204,41 @@ def mass_update_messages(request):
 
 
     return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_support_chat(request):
+    user = request.user
+    user_data = UserSerializer(user).data
+    user_id = user_data['id']
+
+    try:
+        support_user = CustomUser.objects.get(username='kibtop')
+        support_user_data = UserSerializer(support_user).data
+        support_user_id = support_user_data['id']
+    except CustomUser.DoesNotExist:
+        raise exceptions.ValidationError({'database': 'There is no support user in database, please create support user with name "kibtop" in admin panel'})
+
+    try:
+        support_group = Group.objects.filter(members=user_id).filter(members=support_user_id)[0]
+        support_group = GroupSerializer(support_group).data
+    except:
+        data = {
+            'members': [user_id, support_user_id],
+            'category_key': 'kibtop',
+            'advert_id': 1
+        }
+        serializer = GroupSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        support_group = serializer.data
+
+        for member in support_group['members']:
+            async_to_sync(channel_layer.group_send)(str(member), {
+                "type": "new_message",
+                "message": support_group['id'],
+            })
+
+    return Response(support_group)
+

@@ -48,5 +48,15 @@ export const ChatApi = {
         }, {
             headers: await createHeaders()
         }).catch(e => console.log(e))
+    },
+
+    async getSupportChat(redirect) {
+        return await instance.get('chat/get_support/', {
+            headers: await createHeaders()
+        }).then(res => {
+            const chat = serializeChatData(res.data)
+            redirect(`/chat/${chat.chatId}`)
+            return chat
+        })
     }
 }

@@ -129,7 +129,7 @@ export const serializeChatDialogDetail = (data, userId, lang='en') => {
     const chat = serializeChatFullData(data, userId, lang)
     return {
         ...chat,
-        advert: serializeFullAdvertData(data.advert, lang, chat.category)
+        advert: data.advert && serializeFullAdvertData(data.advert, lang, chat.category)
     }
 }
 

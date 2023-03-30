@@ -40,10 +40,13 @@ const NavBarDialogComponent = ({chatId, talk, messages, me, unread, last}) => {
                         <div className={style.content}>
                             <p className={style.text}>
                                 {
-                                    last?.type === 'text' ? last?.text :
-                                    last?.type === 'img' ? <Text content="Photo" /> : <Text content="Video" />
+                                    !!last && <>
+                                        {
+                                            last.type === 'text' ? last.text :
+                                            last.type === 'img' ? <Text content="Photo" /> : <Text content="Video" />
+                                        }
+                                    </>
                                 }
-                                
                             </p>
                             
                             { (!!last && !last.isRead && last.authorId !== me.userId) && <div className={style.number}>{unread}</div> }

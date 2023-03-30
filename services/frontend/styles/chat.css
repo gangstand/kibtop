@@ -371,7 +371,7 @@ press ctrl + F and paste:
 
     border-bottom: 1px solid #EDEDED;
 
-    grid-template-columns: 62px auto 190px ;
+    grid-template-columns: 62px auto max-content ;
 
     padding: 25px 20px 20px;
     
@@ -1383,4 +1383,32 @@ press ctrl + F and paste:
     text-shadow: 1px 1px 5px #fff;
 
 
+}
+
+.chat-advertisement-verified {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 10px 20px;
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #414042;
+
+    min-height: 100px;
+    max-height: max-content;
+
+    grid-gap: 5px;
+}
+
+
+@media (max-width: 900px) {
+    .verified-btn-width {
+        max-width: 190px;
+    }
 }

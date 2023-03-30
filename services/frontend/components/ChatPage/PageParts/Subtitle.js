@@ -1,17 +1,18 @@
+import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../../../locales/hooks/useLanguage";
+import { ChatApi } from "../../../services/ChatApi";
 
 const SubTitle = () => {
     const {t} = useLanguage();
     const supportTitle = useRef();
-    // const [windowSize, setWindowSize] = useState(0);
-
-    // if (typeof window !== 'undefined') {
-    //     window.addEventListener('resize', function() {
-    //         setWindowSize(window.innerWidth);
-    //     });
-    // }
+    const {push} = useRouter()
+    
+    const {mutate, isLoading, isSuccess} = useMutation({
+        mutationFn: () => ChatApi.getSupportChat(push)
+    })
 
     return (
         <div className="container subtitle font">
@@ -24,14 +25,14 @@ const SubTitle = () => {
                         <span className="subtitle-go-back__text">{t('Go back to the main page')}</span>
                         
                 </Link>
-                <Link href="/" className="chat-mobile-elem">
+                <button onClick={mutate} disabled={isLoading} className="chat-mobile-elem">
                         <span className="subtitle-go-back__text" style={{paddingRight: 8}}>{t('Support')}</span>
                         <svg className="subtitle-vector__go-back" width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.19924 21C5.75247 21 6.28303 20.7787 6.67422 20.3849C7.06541 19.9911 7.28517 19.457 7.28517 18.9V12.6C7.28517 12.043 7.06541 11.5089 6.67422 11.1151C6.28303 10.7212 5.75247 10.5 5.19924 10.5V9.45C5.19924 7.50066 5.96843 5.63116 7.33758 4.25276C8.70674 2.87437 10.5637 2.1 12.5 2.1C14.4363 2.1 16.2933 2.87437 17.6624 4.25276C19.0316 5.63116 19.8008 7.50066 19.8008 9.45V10.5C19.2475 10.5 18.717 10.7212 18.3258 11.1151C17.9346 11.5089 17.7148 12.043 17.7148 12.6V18.9H14.5859C14.3093 18.9 14.044 19.0106 13.8484 19.2075C13.6528 19.4044 13.543 19.6715 13.543 19.95C13.543 20.2285 13.6528 20.4955 13.8484 20.6925C14.044 20.8894 14.3093 21 14.5859 21H19.8008C20.996 20.9964 22.1538 20.5795 23.0802 19.8192C24.0066 19.0589 24.6455 18.0013 24.8898 16.8234C25.1342 15.6455 24.9692 14.4188 24.4225 13.3487C23.8758 12.2786 22.9806 11.4301 21.8867 10.9452V9.45C21.8867 6.9437 20.8977 4.54006 19.1374 2.76784C17.377 0.995622 14.9895 0 12.5 0C10.0105 0 7.62295 0.995622 5.86261 2.76784C4.10226 4.54006 3.11331 6.9437 3.11331 9.45V10.9452C2.01941 11.4301 1.12417 12.2786 0.577469 13.3487C0.0307682 14.4188 -0.13421 15.6455 0.110153 16.8234C0.354517 18.0013 0.993388 19.0589 1.91982 19.8192C2.84624 20.5795 4.00399 20.9964 5.19924 21Z" fill="#7AB1FF"/>
                         </svg>
 
     
-                </Link>
+                </button>
             </div>
         </div>
     );

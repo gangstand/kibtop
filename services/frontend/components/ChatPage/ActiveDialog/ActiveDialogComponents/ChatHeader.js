@@ -12,13 +12,14 @@ import UsernameComponent from "./_HeaderComponents/UsernameComponent";
 function ChatHeader({talk, connectedUsers }) {
 
     const seller = talk || {}
+    console.log(seller);
     return (
             <div className="dialog-header">
                 <LogoComponent photo={seller.avatar}/>
 
                 <UsernameComponent username={seller.name} isVerified={seller.isVerified} online={connectedUsers?.includes(seller.userId)}/>
             
-                <HeaderButton condition={true} sellerId={seller.userId} />
+                <HeaderButton condition={true} sellerId={seller.userId} isVerified={seller.isVerified} />
 
 
                 <CurrentDialogContainer>

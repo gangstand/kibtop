@@ -307,4 +307,4 @@ category_keys = ['realty', 'work', 'services', 'free', 'avto', 'house_garden', '
 
 
 def get_category_key_choices():
-    return ((category_key, category_key) for category_key in category_keys)
+    return (*[(category_key, category_key) for category_key in category_keys], ('kibtop', 'kibtop'))

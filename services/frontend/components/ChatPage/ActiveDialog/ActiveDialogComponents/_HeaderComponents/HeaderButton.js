@@ -1,14 +1,18 @@
 import Link from "next/link";
 import { useLanguage } from "../../../../../locales/hooks/useLanguage";
 
-function HeaderButton({condition, sellerId}) {
+function HeaderButton({condition, sellerId, isVerified}) {
     const {t} = useLanguage()
     return (
         <>
         {
             condition ?
             <div className="dialog-button">
-                <Link href={`/seller/${sellerId}/`}><div className="dialog-button__button">{t("Go to profile")}</div></Link>
+                <Link href={!isVerified ? `/seller/${sellerId}/` : ''}>
+                    <div className={"dialog-button__button" + (isVerified ? ' verified-btn-width' : '')}>
+                        {isVerified ? t("Read the terms of service") : t("Go to profile")}
+                    </div>
+                </Link>
             </div>
             : 
             <div className="dialog-button">

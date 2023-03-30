@@ -18,11 +18,9 @@ function AdvertisementComponent({ talk,  advert }) {
         <>
             {
                 seller.isVerified ? <>
-                    <div className="chat-advertisement">
-                        <div className="advertisement-container">
+                    <div className="chat-advertisement chat-advertisement-verified">
                             <div className="alert-scammers__main">{ t("Beware of scammers!") }</div>
                             <div className="alert-scammers__discription">{ t("Only real support support has a blue check mark") }</div>
-                        </div>
                     </div>
                 </> : <>
                     <div className="chat-advertisement chat-advertisement__not-verified">
