@@ -87,10 +87,12 @@ ASGI_APPLICATION = 'settings.asgi.application'
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [env("REDIS_URL")],
-        },
+        # "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+
+        # "CONFIG": {
+        #     "hosts": [env("REDIS_URL")],
+        # },
     },
 }
 

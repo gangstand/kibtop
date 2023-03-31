@@ -46,7 +46,7 @@ const ModileChatsNav = ({data}) => {
                                     (!!searchMessages.data && !!search) ? <>
                                         <p className='search_msg-results'><Text content={"Searching results"} /></p>
                                         {
-                                            searchMessages.data.map((message, index) => <SearchMessage key={index} {...message} />)
+                                            searchMessages.data.map((message, index) => <SearchMessage key={index} {...message} search={search} />)
                                         }
                                     </> : <>
                                         {data?.map((chat, index) => (<NavBarDialogComponent key={index} {...chat} />))}

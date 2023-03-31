@@ -1,8 +1,10 @@
 import Link from "next/link";
 import style from "../nav_bar.module.scss"
+import VerifiedAccFlag from "../../ChatComponents/ChatStatuses/VerifiedAccFlag";
+import Relative from "../../../Elementes/Relative/Relative";
 
 
-const SearchMessage = ({author, chatId, text, time, messageId}) => {
+const SearchMessage = ({author, chatId, text, time, messageId, search}) => {
     return (
         <>
             <Link href={`/chat/${chatId}/?search=${messageId}`} className={style.dialogWarpper}>
@@ -38,7 +40,14 @@ const SearchMessage = ({author, chatId, text, time, messageId}) => {
                             {/* This part contains the part of the last message and their unread status */}
                             <div className={style.content}>
                                 <p className={style.text}>
-                                     {text}
+                                     {
+                                        text.split(search).map((words, index) => {
+                                            return <Relative key={index}>
+                                                {index > 0 && <span style={{color: '#7AB1FF', fontWeight: 700}}>{search}</span>}
+                                                {words}
+                                            </Relative>
+                                        })
+                                     }
                                 </p>
                                 
                                 {/* { (!!last && !last.isRead && last.authorId !== me.userId) && <div className={style.number}>{unread}</div> } */}
