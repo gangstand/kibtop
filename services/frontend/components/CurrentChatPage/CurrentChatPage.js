@@ -1,4 +1,5 @@
 import CurrentDialog from "../ChatPage/ActiveDialog/Dialogs/CurrentDialog";
+import CurrentDialogContainer from "../ChatPage/ActiveDialog/Dialogs/CurrentDialogContainer";
 import ChatNavBar from "../ChatPage/NavBar/ChatNavBar";
 import ChatNavBarContainer from "../ChatPage/NavBar/ChatNavBarContainer";
 import DialogPlace from "../ChatPage/PageParts/DialogPlace";
@@ -26,8 +27,10 @@ const CurrentChatPage = () => {
                     </div>
                 </div>
             </div>
-            
-            <MobileCurrentChat />
+            <CurrentDialogContainer>
+                <MobileCurrentChat />
+
+            </CurrentDialogContainer>
 
             
            

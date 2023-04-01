@@ -9,10 +9,12 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import style from "./nav_bar.module.scss"
 import Text from "../../Elementes/Text/Text";
+import { QUERY_CONNECTED_USERS } from "../../../services/QueryClient/ChatQueries";
 
-const NavBarDialogComponent = ({chatId, talk, messages, me, unread, last}) => {
+const NavBarDialogComponent = ({chatId, talk, messages, me, unread, last, connectedUsers}) => {
     const {query} = useRouter()
     const isActiveChat = chatId === +query.chatId
+
     return (
         <Link href={`/chat/${chatId}`} className={style.dialogWarpper} style={isActiveChat ? {backgroundColor: 'rgba(122, 177, 255, 0.2)'} : {}}>
             <div className={style.dialog}>
@@ -34,6 +36,13 @@ const NavBarDialogComponent = ({chatId, talk, messages, me, unread, last}) => {
                             <h5 className={style.title}>
                                 { talk.name }
                                 { talk.isVerified && <VerifiedAccFlag /> }
+                                {
+                                    connectedUsers?.includes(talk.userId) && <>
+                                            <svg className={style.online} width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="10" height="10" rx="5" fill="#71CD96"/>
+                                            </svg>
+                                        </>
+                                }
                             </h5>
                             
                             <span className={style.time}>

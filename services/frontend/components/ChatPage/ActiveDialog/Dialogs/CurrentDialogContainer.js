@@ -1,9 +1,9 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { ChatApi } from "../../../../services/ChatApi";
-import { QUERY_CONNECTED_USERS, QUERY_DETAIL_DIALOG } from "../../../../services/QueryClient/ChatQueries";
+import { QUERY_CONNECTED_USERS, QUERY_DETAIL_DIALOG, QUERY_DIALOGS } from "../../../../services/QueryClient/ChatQueries";
 import { addPropsToReactElement } from "../../../Utils/Utils";
 import { useLoadingMessages } from "../../LoadingMessagesContext/useLoadingMessages";
 
@@ -11,6 +11,7 @@ const CurrentDialogContainer = ({children}) => {
     const {locale, query: {chatId}} = useRouter()
     const {userId, isAuthed} = useSelector(state => state.auth)
     const {removeFromLoading} = useLoadingMessages()
+    const queryClient = useQueryClient()
 
     const connectedUsers = useQuery(
         [QUERY_CONNECTED_USERS], 
@@ -32,17 +33,7 @@ const CurrentDialogContainer = ({children}) => {
         }
     )
 
-    const updateMessageReaded = useMutation({
-        mutationFn: (messages) => ChatApi.updateMessagesAsReaded(messages)
-    })
-
-    useEffect(() => {
-        if(!data) return 
-
-        const onlyUnreadIds = data?.messages.filter(msg => !msg.isRead && msg.authorId !== userId).map(msg => msg.messageId)
-        if(onlyUnreadIds?.length > 0) updateMessageReaded.mutate(onlyUnreadIds)
-
-    }, [data?.messages])
+    
 
     return (
         <>

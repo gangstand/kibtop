@@ -12,7 +12,7 @@ import SearchMessage from "../NavBar/SearchMessage/SearchMessage";
 import SubTitle from "../PageParts/Subtitle";
 import style from "./chat_nav.module.scss"
 
-const ModileChatsNav = ({data}) => {
+const ModileChatsNav = ({data, connectedUsers}) => {
 
     const {userId} = useSelector(state => state.auth)
     const [search, setSearch] = useState('')
@@ -49,7 +49,7 @@ const ModileChatsNav = ({data}) => {
                                             searchMessages.data.map((message, index) => <SearchMessage key={index} {...message} search={search} />)
                                         }
                                     </> : <>
-                                        {data?.map((chat, index) => (<NavBarDialogComponent key={index} {...chat} />))}
+                                        {data?.map((chat, index) => (<NavBarDialogComponent key={index} connectedUsers={connectedUsers.data} {...chat} />))}
                                     </>
                                 }
                             </div>

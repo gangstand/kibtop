@@ -8,7 +8,7 @@ import ChatSearch from "../ChatComponents/ChatInputs/ChatSearch";
 import NavBarDialogComponent from "./NavBarDialogComponent";
 import SearchMessage from './SearchMessage/SearchMessage';
 
-const ChatNavBar = ({extraClass, data}) => {
+const ChatNavBar = ({extraClass, data, connectedUsers}) => {
     const {userId} = useSelector(state => state.auth)
     const [search, setSearch] = useState('')
 
@@ -35,7 +35,7 @@ const ChatNavBar = ({extraClass, data}) => {
                                 searchMessages.data.map((message, index) => <SearchMessage key={index} {...message} search={search} />)
                             }
                         </> : <>
-                            {data?.map((chat, index) => (<NavBarDialogComponent key={index} {...chat} />))}
+                            {data?.map((chat, index) => (<NavBarDialogComponent key={index} connectedUsers={connectedUsers.data} {...chat} />))}
                         </>
                     }
                 </div>

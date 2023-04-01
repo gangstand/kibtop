@@ -10,27 +10,28 @@ import style from "./mobile_chat.module.scss"
 import AdvertisementComponent from "../../ChatPage/ActiveDialog/ActiveDialogComponents/AdvertisementComponent";
 import ChatNavBarContainer from "../../ChatPage/NavBar/ChatNavBarContainer";
 import CurrentDialogContainer from "../../ChatPage/ActiveDialog/Dialogs/CurrentDialogContainer";
+import { useRef } from "react";
+import { useLoadingMessages } from "../../ChatPage/LoadingMessagesContext/useLoadingMessages";
+import { useEffect } from "react";
 
-const MobileCurrentChat = () => {
-    
+const MobileCurrentChat = ({messages, me, talk, connectedUsers, advert}) => {
+    const messagesLent = useRef(null)
+    const {loadingMessages} = useLoadingMessages()
+    useEffect(() => {
+        if(messagesLent.current) messagesLent.current.scrollTop = messagesLent.current.scrollHeight
+    }, [messagesLent.current, messages, loadingMessages])
 
     return (
         <>
             <div className={`${style.chatBody} chat-mobile-elem`}>
-                <CurrentDialogContainer>
-                    <MobileChatHeader />
-                </CurrentDialogContainer>
+                    <MobileChatHeader {...{talk, connectedUsers}} />
                 
                 
                 
-                <div className={`container ${style.dialogMain}`}>
-                    <CurrentDialogContainer>
-                        <AdvertisementComponent />
-                    </CurrentDialogContainer>  
+                <div className={`container ${style.dialogMain}`} ref={messagesLent}>
+                        <AdvertisementComponent {...{talk, advert}} />
                     
-                    <CurrentDialogContainer>
-                        <MobileMessages />
-                    </CurrentDialogContainer>
+                        <MobileMessages {...{messages, me}} />
                 </div>
 
                 <ChatInput  />

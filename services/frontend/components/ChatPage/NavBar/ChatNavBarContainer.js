@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { ChatApi } from "../../../services/ChatApi";
-import { QUERY_DIALOGS } from "../../../services/QueryClient/ChatQueries";
+import { QUERY_CONNECTED_USERS, QUERY_DIALOGS } from "../../../services/QueryClient/ChatQueries";
 import { addPropsToReactElement } from "../../Utils/Utils";
 
 const ChatNavBarContainer = ({children}) => {
-    const {userId} = useSelector(state => state.auth)
+    const {userId, isAuthed} = useSelector(state => state.auth)
     const {locale} = useRouter()
     const {data} = useQuery(
                             [QUERY_DIALOGS, userId, locale], 
@@ -15,10 +15,18 @@ const ChatNavBarContainer = ({children}) => {
                                 enabled: !!userId
                             }
                         )
+
+const connectedUsers = useQuery(
+                            [QUERY_CONNECTED_USERS], 
+                            () => ChatApi.getConnectedUsers(),
+                            {
+                                enabled: isAuthed
+                            }
+                        )
     
     return (
         <>
-            {addPropsToReactElement(children, {data})}
+            {addPropsToReactElement(children, {data, connectedUsers})}
         </>
     );
 }

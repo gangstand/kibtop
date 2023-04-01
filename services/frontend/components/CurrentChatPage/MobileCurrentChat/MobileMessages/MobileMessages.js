@@ -5,6 +5,7 @@ import MessageComponent from "../../../ChatPage/ActiveDialog/ActiveDialogCompone
 import VoidDialog from "../../../ChatPage/ActiveDialog/Dialogs/VoidDialog";
 import Relative from "../../../Elementes/Relative/Relative";
 import style from "../mobile_chat.module.scss"
+import { useRef } from "react";
 
 const MobileMessages = ({messages, me}) => {
     return (

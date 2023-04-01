@@ -10,17 +10,33 @@ import CurrentDialogContainer from "../Dialogs/CurrentDialogContainer";
 import { chunkMessagesByDate } from "../../../../services/tools/serializers/ChatSerializers";
 import Relative from "../../../Elementes/Relative/Relative";
 import LoadingMessages from "./LoadingMessages";
+import { ChatApi } from "../../../../services/ChatApi";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { QUERY_DIALOGS } from "../../../../services/QueryClient/ChatQueries";
 
 
 function MessagePlace({messages, loadingMessages, me}) {
     const {t} = useLanguage();
-
     const messagesLent = useRef(null)
 
     useEffect(() => {
-        console.log('fff');
         if(messagesLent.current) messagesLent.current.scrollTop = messagesLent.current.scrollHeight
     }, [messagesLent.current, messages, loadingMessages])
+
+    const queryClient = useQueryClient()
+
+    const updateMessageReaded = useMutation({
+        mutationFn: (messages) => ChatApi.updateMessagesAsReaded(messages),
+        onSuccess: () => queryClient.invalidateQueries(QUERY_DIALOGS)
+    })
+
+    useEffect(() => {
+        if(!messages) return 
+
+        const onlyUnreadIds = messages.filter(msg => !msg.isRead && msg.authorId !== me.userId).map(msg => msg.messageId)
+        if(onlyUnreadIds?.length > 0) updateMessageReaded.mutate(onlyUnreadIds)
+
+    }, [messages])
 
     return (
         // <div className="dialog-container">

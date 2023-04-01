@@ -58,6 +58,7 @@
 
 .title {
     justify-self: start;
+    align-items: center;
     display: flex;
 
     white-space: nowrap;
@@ -68,6 +69,11 @@
     line-height: 20px;
     letter-spacing: -0.5px;
     color: #414042;
+}
+
+.online {
+    margin-left: 7px;
+    margin-top: 2px;
 }
 
 
