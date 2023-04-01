@@ -29,7 +29,7 @@ const MobileCurrentChat = ({messages, me, talk, connectedUsers, advert}) => {
                 
                 
                 <div className={`container ${style.dialogMain}`} ref={messagesLent}>
-                        <AdvertisementComponent {...{talk, advert}} />
+                        <AdvertisementComponent {...{talk, advert, me}} />
                     
                         <MobileMessages {...{messages, me}} />
                 </div>

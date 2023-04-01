@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { ChatApi } from "../../../services/ChatApi";
@@ -13,7 +13,7 @@ import SubTitle from "../PageParts/Subtitle";
 import style from "./chat_nav.module.scss"
 
 const ModileChatsNav = ({data, connectedUsers}) => {
-
+    const queryClient = useQueryClient()
     const {userId} = useSelector(state => state.auth)
     const [search, setSearch] = useState('')
 
@@ -37,7 +37,9 @@ const ModileChatsNav = ({data, connectedUsers}) => {
                 <HeaderService />
                     <SubTitle />
 
-                    <ChatSearch control={{onChange, value: search}} />
+                    <ChatSearch control={{onChange, value: search}} isSerching={!!search && !!searchMessages.data} cancel={() => {
+                        setSearch('')
+                    }} />
 
                 
                     <div className={`container ${style.navWrapper}`}>

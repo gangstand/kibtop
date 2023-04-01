@@ -13,11 +13,14 @@ import LoadingMessages from "./LoadingMessages";
 import { ChatApi } from "../../../../services/ChatApi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { QUERY_DIALOGS } from "../../../../services/QueryClient/ChatQueries";
+import { useLoadingMessages } from "../../LoadingMessagesContext/useLoadingMessages";
 
 
-function MessagePlace({messages, loadingMessages, me}) {
+function MessagePlace({messages, me}) {
     const {t} = useLanguage();
     const messagesLent = useRef(null)
+
+    const {loadingMessages} = useLoadingMessages()
 
     useEffect(() => {
         if(messagesLent.current) messagesLent.current.scrollTop = messagesLent.current.scrollHeight

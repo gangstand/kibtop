@@ -99,13 +99,60 @@ press ctrl + F and paste:
 }
 
 .chat-search {
-    width: 90.55%;
-    margin: 0 auto;
+    margin: 0;
+
+    
+}
+
+@media (max-width: 640px) {
+    .chat-search input {
+        padding-left: 9px;
+    }
+}
+
+
+.chat-serch-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 20px;
+}
+
+@media (max-width: 800px) {
+    .chat-serch-area {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .chat-serch-area {
+        padding: 0 12px;
+    }
+}
+
+.search-cancel-btn {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13.1282px;
+    line-height: 10px;
+    text-align: center;
+    letter-spacing: -0.410256px;
+    color: #7AB1FF;
+
+    margin-left: 10px;
+}
+
+@media (min-width: 800px) {
+    .search-cancel-btn {
+        display: none;
+    }
 }
 
 @media (max-width: 800px) {
     .chat-search {
-        max-width: calc(100% - 60px);
+        max-width: calc(100%);
     }
 }
 
@@ -1374,6 +1421,7 @@ press ctrl + F and paste:
     border-radius: 20px;
     margin-top: 5px;
     padding: 10px 20px;
+    background-color: #f6f6f6;
 
 }
 

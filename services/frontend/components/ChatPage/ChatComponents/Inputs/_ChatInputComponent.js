@@ -18,7 +18,7 @@ function _ChatInputComponent({ clearInput, setText }) {
                         })}
                             type="text"
                             placeholder={t('Write a message')} 
-                              />
+                            autocomplete="off" />
                 </div>
             </div>
         </span>
